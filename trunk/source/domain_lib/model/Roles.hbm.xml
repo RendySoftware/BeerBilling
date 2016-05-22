@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="Roles" table="ROLES" lazy="false">
+    <id name="RoleID" column="ROLE_ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="RoleCode">
+      <column name="ROLE_CODE" not-null="true" />
+    </property>
+
+    <property name="Description">
+      <column name="DESCRIPTION" not-null="false" />
+    </property>
+
+    <property name="Status">
+      <column name="STATUS" not-null="true" />
+    </property>
+
+  </class>
+</hibernate-mapping>

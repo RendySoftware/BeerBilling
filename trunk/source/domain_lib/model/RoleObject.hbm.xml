@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="RoleObject" table="ROLE_OBJECT" lazy="false">
+    <composite-id>
+      <key-property name="RoleID">
+        <column name="ROLE_ID" not-null="true"/>
+      </key-property>
+      <key-property name="ObjectID">
+        <column name="OBJECT_ID" not-null="true"/>
+      </key-property>
+    </composite-id>
+
+    <property name="IsActive">
+      <column name="IS_ACTIVE" not-null="true" />
+    </property>
+
+  </class>
+</hibernate-mapping>
