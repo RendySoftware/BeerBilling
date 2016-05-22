@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="Objects" table="OBJECTS" lazy="false">
+    <id name="ObjectID" column="OBJECT_ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="ParentID">
+      <column name="PARENT_ID" not-null="false"/>
+    </property>
+
+    <property name="ObjectCode">
+      <column name="OBJECT_CODE" not-null="true" />
+    </property>
+
+    <property name="Description">
+      <column name="DESCRIPTION" not-null="false" />
+    </property>
+
+    <property name="ObjectUrl">
+      <column name="OBJECT_URL" not-null="false" />
+    </property>
+
+    <property name="Order">
+      <column name="ORDER" not-null="true" />
+    </property>
+
+    <property name="Status">
+      <column name="STATUS" not-null="true" />
+    </property>
+
+  </class>
+</hibernate-mapping>

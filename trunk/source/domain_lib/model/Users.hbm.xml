@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="Users" table="USERS" lazy="false">
+    <id name="UserID" column="USER_ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="UserName">
+      <column name="USER_NAME" not-null="true" />
+    </property>
+
+    <property name="FullName">
+      <column name="FULL_NAME" not-null="false" />
+    </property>
+
+    <property name="Password">
+      <column name="PASSWORD" not-null="true" />
+    </property>
+
+  </class>
+</hibernate-mapping>
