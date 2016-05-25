@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D09918F-177E-406F-8970-C07CE602A2A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mcontrol</RootNamespace>
+    <AssemblyName>mcontrol</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoCompleted.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AutoCompleted.Designer.cs">
+      <DependentUpon>AutoCompleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxManager.cs" />
+    <Compile Include="MHoTenTextBox2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MHoTenTextBox2.Designer.cs">
+      <DependentUpon>MHoTenTextBox2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOV\LOV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LOV\LOV.Designer.cs">
+      <DependentUpon>LOV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOV\MFullLov.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LOV\MFullLov.Designer.cs">
+      <DependentUpon>MFullLov.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOV\MLovTextField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LOV\MLovTextField.Designer.cs">
+      <DependentUpon>MLovTextField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOV\MoveWinDowHelper.cs" />
+    <Compile Include="MButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MButton.Designer.cs">
+      <DependentUpon>MButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MCheckedListBox.Designer.cs">
+      <DependentUpon>MCheckedListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MCheckBox.Designer.cs">
+      <DependentUpon>MCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MComboBox.Designer.cs">
+      <DependentUpon>MComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MComboBox2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MComboBox2.Designer.cs">
+      <DependentUpon>MComboBox2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MComboboxItem.cs" />
+    <Compile Include="MComponentConst.cs" />
+    <Compile Include="MDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDataGridView.Designer.cs">
+      <DependentUpon>MDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDataGridViewWithPaging.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MDataGridViewWithPaging.Designer.cs">
+      <DependentUpon>MDataGridViewWithPaging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDataGridViewWithRecordNumber.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDataGridViewWithRecordNumber.Designer.cs">
+      <DependentUpon>MDataGridViewWithRecordNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDateNgaySinhTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDateNgaySinhTextBox.Designer.cs">
+      <DependentUpon>MDateNgaySinhTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDateTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDateTextBox.Designer.cs">
+      <DependentUpon>MDateTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDisplayTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDisplayTextBox.Designer.cs">
+      <DependentUpon>MDisplayTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MForm.Designer.cs">
+      <DependentUpon>MForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MGroupBox.Designer.cs">
+      <DependentUpon>MGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MHoTenTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MHoTenTextBox.Designer.cs">
+      <DependentUpon>MHoTenTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MLabel.Designer.cs">
+      <DependentUpon>MLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MListBox.Designer.cs">
+      <DependentUpon>MListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MMessageBox.Designer.cs">
+      <DependentUpon>MMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MNumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MNumberTextBox.Designer.cs">
+      <DependentUpon>MNumberTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MNumberTextBox2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MNumberTextBox2.Designer.cs">
+      <DependentUpon>MNumberTextBox2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MPictureBox.Designer.cs">
+      <DependentUpon>MPictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MRadioButton.Designer.cs">
+      <DependentUpon>MRadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MSoXncTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MSoXncTextBox.Designer.cs">
+      <DependentUpon>MSoXncTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MStarLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MStarLabel.Designer.cs">
+      <DependentUpon>MStarLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MTabControl.Designer.cs">
+      <DependentUpon>MTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MTextBox.Designer.cs">
+      <DependentUpon>MTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MTextBoxNormal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MTextBoxNormal.Designer.cs">
+      <DependentUpon>MTextBoxNormal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MTreeView.Designer.cs">
+      <DependentUpon>MTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationForm\FrmNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotificationForm\FrmNotification.Designer.cs">
+      <DependentUpon>FrmNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationForm\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotificationForm\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationForm\ShowMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MTextDanhMuc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MTextDanhMuc.Designer.cs">
+      <DependentUpon>MTextDanhMuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="util\MControlUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LOV\LOV.resx">
+      <DependentUpon>LOV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOV\MFullLov.resx">
+      <DependentUpon>MFullLov.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOV\MLovTextField.resx">
+      <DependentUpon>MLovTextField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MComboBox.resx">
+      <DependentUpon>MComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDataGridView.resx">
+      <DependentUpon>MDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDataGridViewWithPaging.resx">
+      <DependentUpon>MDataGridViewWithPaging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MMessageBox.resx">
+      <DependentUpon>MMessageBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MTextDanhMuc.resx">
+      <DependentUpon>MTextDanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificationForm\FrmNotification.resx">
+      <DependentUpon>FrmNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificationForm\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core-lib\core_lib.csproj">
+      <Project>{8A7BE124-AB4D-42F0-B4F8-62A5B85CE15D}</Project>
+      <Name>core_lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\domain_lib\domain_lib.csproj">
+      <Project>{4965CB44-7651-4EF2-B0EB-DF17D8397D78}</Project>
+      <Name>domain_lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
