@@ -63,7 +63,7 @@ name nvarchar(100)
 )
 go
 
-create table Material
+create table Material(
 id int Indentity primary key,
 unit_id int ,
 code nvarchar(5)  ,
@@ -71,7 +71,7 @@ name nvarchar(200)
 )
 go
 
-create table Store
+create table Store(
 id bigint Indentity primary key,
 material_id int ,
 amount numeric(10,2)  ,
@@ -86,7 +86,7 @@ updated_date datetime
 )
 go
 
-create table Menu
+create table Menu(
 id int Indentity primary key,
 category_id int ,
 code nvarchar(10)  ,
@@ -102,11 +102,11 @@ updated_date datetime
 )
 go
 
-create table Order
+create table Order(
 id bigint Indentity primary key,
 bill_id bigint ,
 menu_id int ,
-amount numeric((5,1))  ,
+amount numeric(5,1)  ,
 created_by nvarchar(100)  ,
 created_date datetime ,
 updated_by nvarchar(100)  ,
@@ -130,7 +130,7 @@ updated_date datetime
 )
 go
 
-create table Customer
+create table Customer(
 id int Indentity primary key,
 name nvarchar(100)  ,
 birthday date ,
