@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="Menu" table="MENU" lazy="false">
+    <id name="Id" column="ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="CategoryId">
+      <column name="CATEGORY_ID" not-null="false" />
+    </property>
+
+    <property name="UnitId">
+      <column name="UNIT_ID" not-null="false" />
+    </property>
+
+    <property name="Code">
+      <column name="CODE" not-null="false" />
+    </property>
+
+    <property name="Name">
+      <column name="NAME" not-null="false" />
+    </property>
+
+    <property name="Price">
+      <column name="PRICE" not-null="false" />
+    </property>
+
+    <property name="Description">
+      <column name="DESCRIPTION" not-null="false" />
+    </property>
+
+    <property name="IsActive">
+      <column name="IS_ACTIVE" not-null="false" />
+    </property>
+
+    <property name="CreatedBy">
+      <column name="CREATED_BY" not-null="false" />
+    </property>
+
+    <property name="CreatedDate">
+      <column name="CREATED_DATE" not-null="false" />
+    </property>
+
+    <property name="UpdatedBy">
+      <column name="UPDATED_BY" not-null="false" />
+    </property>
+
+    <property name="UpdatedDate">
+      <column name="UPDATED_DATE" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

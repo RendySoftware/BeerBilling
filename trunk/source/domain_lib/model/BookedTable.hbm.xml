@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="BookedTable" table="BOOKEDTABLE" lazy="false">
+    <id name="Id" column="ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="CustomerId">
+      <column name="CUSTOMER_ID" not-null="false" />
+    </property>
+
+    <property name="TableId">
+      <column name="TABLE_ID" not-null="false" />
+    </property>
+
+    <property name="Status">
+      <column name="STATUS" not-null="false" />
+    </property>
+
+    <property name="Process">
+      <column name="PROCESS" not-null="false" />
+    </property>
+
+    <property name="FromDate">
+      <column name="FROM_DATE" not-null="false" />
+    </property>
+
+    <property name="ToDate">
+      <column name="TO_DATE" not-null="false" />
+    </property>
+
+    <property name="CreatedBy">
+      <column name="CREATED_BY" not-null="false" />
+    </property>
+
+    <property name="CreatedDate">
+      <column name="CREATED_DATE" not-null="false" />
+    </property>
+
+    <property name="UpdatedBy">
+      <column name="UPDATED_BY" not-null="false" />
+    </property>
+
+    <property name="UpdatedDate">
+      <column name="UPDATED_DATE" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

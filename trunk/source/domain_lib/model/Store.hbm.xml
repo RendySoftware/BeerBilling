@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="Store" table="STORE" lazy="false">
+    <id name="Id" column="ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="MaterialId">
+      <column name="MATERIAL_ID" not-null="false" />
+    </property>
+
+    <property name="Amount">
+      <column name="AMOUNT" not-null="false" />
+    </property>
+
+    <property name="StoredStatus">
+      <column name="STORED_STATUS" not-null="false" />
+    </property>
+
+    <property name="StoredDate">
+      <column name="STORED_DATE" not-null="false" />
+    </property>
+
+    <property name="StoredBy">
+      <column name="STORED_BY" not-null="false" />
+    </property>
+
+    <property name="Reason">
+      <column name="REASON" not-null="false" />
+    </property>
+
+    <property name="CreatedBy">
+      <column name="CREATED_BY" not-null="false" />
+    </property>
+
+    <property name="CreatedDate">
+      <column name="CREATED_DATE" not-null="false" />
+    </property>
+
+    <property name="UpdatedBy">
+      <column name="UPDATED_BY" not-null="false" />
+    </property>
+
+    <property name="UpdatedDate">
+      <column name="UPDATED_DATE" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

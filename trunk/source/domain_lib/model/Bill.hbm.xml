@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+xmlns="urn:nhibernate-mapping-2.2"
+namespace="domain_lib.model"
+assembly="domain_lib">
+  <class name="Bill" table="BILL" lazy="false">
+    <id name="Id" column="ID" unsaved-value="-1">
+      <generator class="identity" />
+    </id>
+
+    <property name="CustomerId">
+      <column name="CUSTOMER_ID" not-null="false" />
+    </property>
+
+    <property name="TableId">
+      <column name="TABLE_ID" not-null="false" />
+    </property>
+
+    <property name="IsPrinted">
+      <column name="IS_PRINTED" not-null="false" />
+    </property>
+
+    <property name="Payment">
+      <column name="PAYMENT" not-null="false" />
+    </property>
+
+    <property name="BillingDate">
+      <column name="BILLING_DATE" not-null="false" />
+    </property>
+
+    <property name="BillingNumber">
+      <column name="BILLING_NUMBER" not-null="false" />
+    </property>
+
+    <property name="CancelReason">
+      <column name="CANCEL_REASON" not-null="false" />
+    </property>
+
+    <property name="CreatedBy">
+      <column name="CREATED_BY" not-null="false" />
+    </property>
+
+    <property name="CreatedDate">
+      <column name="CREATED_DATE" not-null="false" />
+    </property>
+
+    <property name="UpdatedBy">
+      <column name="UPDATED_BY" not-null="false" />
+    </property>
+
+    <property name="UpdatedDate">
+      <column name="UPDATED_DATE" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

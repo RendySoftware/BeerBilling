@@ -63,10 +63,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\Controller.cs" />
+    <Compile Include="dto\BillDto.cs" />
+    <Compile Include="dto\BookedTableDto.cs" />
     <Compile Include="dto\CommonDto.cs" />
+    <Compile Include="dto\CustomerDto.cs" />
     <Compile Include="dto\DanhMucDto.cs" />
+    <Compile Include="dto\MenuDto.cs" />
+    <Compile Include="dto\ResOrderDto.cs" />
+    <Compile Include="dto\ResTableDto.cs" />
     <Compile Include="dto\RoleDto.cs" />
+    <Compile Include="dto\StoreDto.cs" />
     <Compile Include="dto\UserDto.cs" />
+    <Compile Include="model\Category.cs" />
+    <Compile Include="model\Bill.cs" />
+    <Compile Include="model\BookedTable.cs" />
+    <Compile Include="model\ResTable.cs" />
+    <Compile Include="model\Customer.cs" />
+    <Compile Include="model\ResOrder.cs" />
+    <Compile Include="model\Menu.cs" />
+    <Compile Include="model\Store.cs" />
+    <Compile Include="model\Material.cs" />
+    <Compile Include="model\Unit.cs" />
     <Compile Include="model\CurrentIdentity.cs" />
     <Compile Include="model\Objects.cs" />
     <Compile Include="model\RoleObject.cs" />
@@ -101,6 +118,56 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Category.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Unit.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Material.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Store.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Menu.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\ResOrder.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Bill.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Customer.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\ResTable.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\BookedTable.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
