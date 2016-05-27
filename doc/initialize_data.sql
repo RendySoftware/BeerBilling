@@ -22,7 +22,7 @@ set IDENTITY_INSERT Category on
 go
 
 insert into Category(id, code, name) values(1, 'LAU', 'Thế giới lẩu')
-insert into Category(id, code, name) values(2, 'THIT', 'Các món trâu tươi/Bò/Dê')
+insert into Category(id, code, name) values(2, 'MONNHAU', 'Các món trâu tươi/Bò/Dê')
 insert into Category(id, code, name) values(3, 'KHAIVI', 'Khai vị')
 insert into Category(id, code, name) values(4, 'SALAT', 'Các món sa lát')
 insert into Category(id, code, name) values(5, 'RAU', 'Rau xanh bốn mùa')
