@@ -50,6 +50,36 @@
     <Compile Include="main\MdiMain.Designer.cs">
       <DependentUpon>MdiMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\billing\BillingManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\billing\BillingManagement.Designer.cs">
+      <DependentUpon>BillingManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\statistic\ThongKeDoanhSoBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\statistic\ThongKeDoanhSoBanHang.Designer.cs">
+      <DependentUpon>ThongKeDoanhSoBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\statistic\ThongKeTonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\statistic\ThongKeTonKho.Designer.cs">
+      <DependentUpon>ThongKeTonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\store\NhapXuatKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\store\NhapXuatKho.Designer.cs">
+      <DependentUpon>NhapXuatKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\store\TraCuuNhapXuatKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\store\TraCuuNhapXuatKho.Designer.cs">
+      <DependentUpon>TraCuuNhapXuatKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="presenter\user\DanhSachUserImpl.cs" />
     <Compile Include="presenter\user\FrmDangNhap.cs">
       <SubType>Form</SubType>
@@ -70,6 +100,21 @@
     <Compile Include="view\IDanhSachUser.cs" />
     <EmbeddedResource Include="main\MdiMain.resx">
       <DependentUpon>MdiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\billing\BillingManagement.resx">
+      <DependentUpon>BillingManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\statistic\ThongKeDoanhSoBanHang.resx">
+      <DependentUpon>ThongKeDoanhSoBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\statistic\ThongKeTonKho.resx">
+      <DependentUpon>ThongKeTonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\store\NhapXuatKho.resx">
+      <DependentUpon>NhapXuatKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\store\TraCuuNhapXuatKho.resx">
+      <DependentUpon>TraCuuNhapXuatKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\user\FrmDangNhap.resx">
       <DependentUpon>FrmDangNhap.cs</DependentUpon>
