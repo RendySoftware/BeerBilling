@@ -47,6 +47,16 @@ namespace domain_lib.controller
             return m_PersistenceManager.GetCurrentIdentity(tableName);
         }
 
+        public UserDto login(string userName, string password)
+        {
+            return m_PersistenceManager.checkUser(userName, password);
+        }
+
+        public string changePassword(string userId, string oldPassword, string newPassword)
+        {
+            return m_PersistenceManager.changePassword(userId, oldPassword, newPassword);
+        }
+
         #endregion
     }
 }

@@ -259,6 +259,106 @@ namespace domain_lib.persistence
             }
         }
 
+        public UserDto checkUser(string userName, string password)
+        {
+            var userDto = new UserDto();
+            if (String.IsNullOrEmpty(userName))
+            {
+                userDto.Message = "Chưa nhập tên đăng nhập. Vui lòng thử lại.";
+                return userDto;
+            }
+            if (String.IsNullOrEmpty(password))
+            {
+                userDto.Message = "Chưa nhập mật khẩu. Vui lòng thử lại.";
+                return userDto;
+            }
+            var users = RetrieveEquals<Users>("UserName", userName.ToUpper());
+            if (users.Count == 0)
+            {
+                userDto.Message = "Người dùng chưa đăng ký. Vui lòng thử lại.";
+                return userDto;
+            }
+            var user = users[0];
+            if (string.Compare(MD5Util.EncodeMD5(password), user.Password, true) != 0)
+            {
+                userDto.Message = "Mật khẩu không khớp. Vui lòng thử lại.";
+                return userDto;
+            }
+            userDto.UserID = user.UserID;
+            userDto.UserName = user.UserName;
+            userDto.FullName = user.FullName;
+            LoadUserRole(userDto);
+            return userDto;
+        }
+
+        private void LoadUserRole(UserDto userDto)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select new Roles(r.RoleID, r.RoleCode, r.Description) from Roles r, UserRole ur "
+                    + " where r.RoleID = ur.RoleID and r.Status = 1 and ur.IsActive = :status and ur.UserID = :userId");
+                query.SetParameter("status", true);
+                query.SetParameter("userId", userDto.UserID);
+
+                // Get the matching objects
+                var allRoleInfos = query.List();
+
+                // Update Role info
+                var listRoleDtos = new List<RoleDto>();
+                foreach (Roles roleInfo in allRoleInfos)
+                {
+
+                    var roleDto = new RoleDto
+                    {
+                        RoleID = roleInfo.RoleID,
+                        RoleCode = roleInfo.RoleCode,
+                        Description = roleInfo.Description
+                    };
+                    listRoleDtos.Add(roleDto);
+                }
+                userDto.AllRoles = listRoleDtos.ToArray();
+            }
+        }
+
+        public string changePassword(string userId, string oldPassword, string newPassword)
+        {
+            if (String.IsNullOrEmpty(userId))
+            {
+                return "-1";
+            }
+            if (String.IsNullOrEmpty(oldPassword))
+            {
+                return "-2";
+            }
+            var users = RetrieveEquals<Users>("UserID", long.Parse(userId));
+            if (users.Count == 0)
+            {
+                return "-3";
+            }
+            var user = users[0];
+            oldPassword = MD5Util.EncodeMD5(oldPassword);
+            newPassword = MD5Util.EncodeMD5(newPassword);
+            if (string.Compare(oldPassword, user.Password, true) != 0)
+            {
+                return "-4";
+            }
+            if (String.IsNullOrEmpty(newPassword))
+            {
+                return "-5";
+            }
+            if (string.Compare(oldPassword, newPassword, true) == 0)
+            {
+                return "-6";
+            }
+
+            // Update new password
+            user.Password = newPassword;
+
+            // Save user
+            Save(user);
+            return "0";
+        }
+
         #endregion
 
         #region Private Methods

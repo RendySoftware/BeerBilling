@@ -17,9 +17,8 @@ namespace core_lib.common
         public const string ACTIVE_STATUS = "Y";
         public const string INACTIVE_STATUS = "N";
 
-        public const string QTHT = "QTHT";
-        public const string QLKT = "QLKT";
-        public const string QLTV = "QLTV";
+        public const string ADMIN = "ADMIN";
+        public const string USER = "USER";
 
         public const string MONTH_FORMAT = "yyyyMM";
         public const string DISPLAY_MONTH_FORMAT = "MM/yyyy";
@@ -30,5 +29,9 @@ namespace core_lib.common
 		public const string TEN_GT_NAM = "Nam";
         public const string TEN_GT_NU = "Nữ";
 
+        public const string DangNhapKhongKetNoiDuocCsdl = "DangNhapKhongKetNoiDuocCsdl";
+        public const string DangNhapKhongTonTaiUser = "DangNhapKhongTonTaiUser";
+        public const string DangNhapSaiPassword = "DangNhapSaiPassword";
+        public const string DangNhapThanhCong = "DangNhapThanhCong";
     }
 }

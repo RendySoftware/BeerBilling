@@ -50,10 +50,32 @@
     <Compile Include="main\MdiMain.Designer.cs">
       <DependentUpon>MdiMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\user\DanhSachUserImpl.cs" />
+    <Compile Include="presenter\user\FrmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\user\FrmDangNhap.Designer.cs">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\user\FrmDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\user\FrmDoiMatKhau.Designer.cs">
+      <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="util\UserUtil.cs" />
+    <Compile Include="view\IDanhMuc.cs" />
+    <Compile Include="view\IDanhSachUser.cs" />
     <EmbeddedResource Include="main\MdiMain.resx">
       <DependentUpon>MdiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\user\FrmDangNhap.resx">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\user\FrmDoiMatKhau.resx">
+      <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,10 +98,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\core-lib\core_lib.csproj">
+      <Project>{8A7BE124-AB4D-42F0-B4F8-62A5B85CE15D}</Project>
+      <Name>core_lib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\domain_lib\domain_lib.csproj">
       <Project>{4965CB44-7651-4EF2-B0EB-DF17D8397D78}</Project>
       <Name>domain_lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mcontrol-lib\mcontrol.csproj">
+      <Project>{4D09918F-177E-406F-8970-C07CE602A2A7}</Project>
+      <Name>mcontrol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
