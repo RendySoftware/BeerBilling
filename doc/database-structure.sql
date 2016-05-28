@@ -51,14 +51,14 @@ GO
 
 create table Category(
 id numeric(10, 0) IDENTITY(1, 1) primary key,
-code nvarchar(5)  ,
+code nvarchar(20)  ,
 name nvarchar(400)  
 )
 go
 
 create table Unit(
 id numeric(10, 0) IDENTITY(1, 1) primary key,
-code nvarchar(10)  ,
+code nvarchar(20)  ,
 name nvarchar(100)  
 )
 go
@@ -66,7 +66,7 @@ go
 create table Material(
 id numeric(10, 0) IDENTITY(1, 1) primary key,
 unit_id int ,
-code nvarchar(5)  ,
+code nvarchar(20)  ,
 name nvarchar(200)  
 )
 go
