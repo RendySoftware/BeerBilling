@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.categoryGroupBox = new mcontrol.MGroupBox(this.components);
-            this.btnAddCategory = new mcontrol.MButton(this.components);
             this.mDataGridView1 = new mcontrol.MDataGridView(this.components);
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnAddCategory = new mcontrol.MButton(this.components);
             this.menuListGroupBox = new mcontrol.MGroupBox(this.components);
-            this.btnAddMenu = new mcontrol.MButton(this.components);
             this.mDataGridView2 = new mcontrol.MDataGridView(this.components);
             this.menuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +48,7 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editMenu = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddMenu = new mcontrol.MButton(this.components);
             this.categoryGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mDataGridView1)).BeginInit();
             this.menuListGroupBox.SuspendLayout();
@@ -64,26 +68,32 @@
             this.categoryGroupBox.TabStop = false;
             this.categoryGroupBox.Text = "Nhóm thực đơn";
             // 
-            // btnAddCategory
-            // 
-            this.btnAddCategory.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnAddCategory.Location = new System.Drawing.Point(7, 20);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
-            this.btnAddCategory.TabIndex = 0;
-            this.btnAddCategory.Text = "Thêm";
-            this.btnAddCategory.UseVisualStyleBackColor = true;
-            // 
             // mDataGridView1
             // 
             this.mDataGridView1.AllowUserToAddRows = false;
             this.mDataGridView1.AllowUserToDeleteRows = false;
             this.mDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.mDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.code,
             this.name,
             this.edit});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.mDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.mDataGridView1.Location = new System.Drawing.Point(7, 50);
             this.mDataGridView1.MultiSelect = false;
             this.mDataGridView1.Name = "mDataGridView1";
@@ -108,6 +118,16 @@
             this.edit.HeaderText = "Sửa";
             this.edit.Name = "edit";
             // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnAddCategory.Location = new System.Drawing.Point(7, 20);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.TabIndex = 0;
+            this.btnAddCategory.Text = "Thêm";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            // 
             // menuListGroupBox
             // 
             this.menuListGroupBox.Controls.Add(this.mDataGridView2);
@@ -121,21 +141,19 @@
             this.menuListGroupBox.TabStop = false;
             this.menuListGroupBox.Text = "Danh sách thực đơn";
             // 
-            // btnAddMenu
-            // 
-            this.btnAddMenu.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnAddMenu.Location = new System.Drawing.Point(7, 20);
-            this.btnAddMenu.Name = "btnAddMenu";
-            this.btnAddMenu.Size = new System.Drawing.Size(75, 23);
-            this.btnAddMenu.TabIndex = 0;
-            this.btnAddMenu.Text = "Thêm";
-            this.btnAddMenu.UseVisualStyleBackColor = true;
-            // 
             // mDataGridView2
             // 
             this.mDataGridView2.AllowUserToAddRows = false;
             this.mDataGridView2.AllowUserToDeleteRows = false;
             this.mDataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.mDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.menuCode,
@@ -145,6 +163,14 @@
             this.description,
             this.editMenu,
             this.menuId});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.mDataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
             this.mDataGridView2.Location = new System.Drawing.Point(7, 50);
             this.mDataGridView2.MultiSelect = false;
             this.mDataGridView2.Name = "mDataGridView2";
@@ -192,6 +218,16 @@
             this.menuId.Name = "menuId";
             this.menuId.Visible = false;
             // 
+            // btnAddMenu
+            // 
+            this.btnAddMenu.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnAddMenu.Location = new System.Drawing.Point(7, 20);
+            this.btnAddMenu.Name = "btnAddMenu";
+            this.btnAddMenu.Size = new System.Drawing.Size(75, 23);
+            this.btnAddMenu.TabIndex = 0;
+            this.btnAddMenu.Text = "Thêm";
+            this.btnAddMenu.UseVisualStyleBackColor = true;
+            // 
             // MenuManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,6 +236,7 @@
             this.Controls.Add(this.menuListGroupBox);
             this.Controls.Add(this.categoryGroupBox);
             this.Name = "MenuManagement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý thực đơn";
             this.categoryGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mDataGridView1)).EndInit();

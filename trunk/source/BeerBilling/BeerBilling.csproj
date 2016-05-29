@@ -50,6 +50,7 @@
     <Compile Include="main\MdiMain.Designer.cs">
       <DependentUpon>MdiMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\BillingDAOImpl.cs" />
     <Compile Include="presenter\billing\BillingManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="util\ImportExportType.cs" />
     <Compile Include="util\UserUtil.cs" />
+    <Compile Include="view\IBillingDAO.cs" />
     <Compile Include="view\IDanhMuc.cs" />
     <Compile Include="view\IDanhSachUser.cs" />
     <EmbeddedResource Include="main\MdiMain.resx">
@@ -116,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\billing\BillingManagement.resx">
       <DependentUpon>BillingManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\billing\BillingProcessing.resx">
+      <DependentUpon>BillingProcessing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\menu\MenuManagement.resx">
       <DependentUpon>MenuManagement.cs</DependentUpon>

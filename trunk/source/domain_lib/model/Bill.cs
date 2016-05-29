@@ -38,6 +38,10 @@ namespace domain_lib.model
 
         private DateTime _updated_Date = default(DateTime);
 
+        private string _customerName = String.Empty;
+
+        private string _tableNumber = String.Empty;
+
         #endregion
 
     	#region Constructor
@@ -46,7 +50,22 @@ namespace domain_lib.model
         {
         }
 
-    	#endregion
+        public Bill(long id, int billingNumber, DateTime billingDate, long tableId, string tableNumber, string payment, 
+                string createdBy, DateTime createdDate, string isPrinted, string cancelReason)
+        {
+            _id = id;
+            _billing_Number = billingNumber;
+            _billing_Date = billingDate;
+            _table_Id = tableId;
+            _tableNumber = tableNumber;
+            _payment = payment;
+            _created_By = createdBy;
+            _created_Date = createdDate;
+            _is_Printed = isPrinted;
+            _cancel_Reason = cancelReason;
+        }
+
+        #endregion
 
         #region Properties
 
@@ -156,6 +175,24 @@ namespace domain_lib.model
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        /// <summary>
+        /// Customer Name.
+        /// </summary>
+        public virtual string CustomerName
+        {
+            get { return _customerName; }
+            set { _customerName = value; }
+        }
+
+        /// <summary>
+        /// Table Number.
+        /// </summary>
+        public virtual string TableNumber
+        {
+            get { return _tableNumber; }
+            set { _tableNumber = value; }
         }
 
         #endregion

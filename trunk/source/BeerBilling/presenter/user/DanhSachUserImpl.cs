@@ -15,11 +15,7 @@ namespace BeerBilling.presenter.user
 {
     public class DanhSachUserImpl : IDanhSachUser
     {
-        private Controller _controller;
-        protected static string LogSessionId;
-        public const int KhongConnectDuoc = -104;
-        public const int KhongTonTaiUser = -103;
-        public const int SaiPassword = -102;
+        private Controller _controller = new Controller();
 
         public UserDto CheckUser(string userName, string password)
         {
@@ -36,5 +32,11 @@ namespace BeerBilling.presenter.user
         {
             return true;
         }
+
+        public string GetCurrentTenNsd()
+        {
+            return _controller.GetTenNsd(ThamSo.UserId);
+        }
+
     }
 }

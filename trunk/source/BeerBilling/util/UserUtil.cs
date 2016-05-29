@@ -12,12 +12,12 @@ namespace BeerBilling.util
         {
             if (userDto == null)
             {
-                return ConstUtil.USER;
+                return ConstUtil.QLHD;
             }
             var allRoles = userDto.AllRoles;
             if (allRoles.Length == 0)
             {
-                return ConstUtil.USER;
+                return ConstUtil.QLHD;
             }
             return allRoles[0].RoleCode;
         }
@@ -27,9 +27,14 @@ namespace BeerBilling.util
             return string.Compare(GetRoleCode(userDto), ConstUtil.ADMIN, true) == 0;
         }
 
-        public static bool IsQltvRole(UserDto userDto)
+        public static bool IsQlkhRole(UserDto userDto)
         {
-            return string.Compare(GetRoleCode(userDto), ConstUtil.USER, true) == 0;
+            return string.Compare(GetRoleCode(userDto), ConstUtil.QLKH, true) == 0;
+        }
+
+        public static bool IsQlhdRole(UserDto userDto)
+        {
+            return string.Compare(GetRoleCode(userDto), ConstUtil.QLHD, true) == 0;
         }
 
         public static List<string> getAllRoleCode(UserDto userDto)
@@ -37,7 +42,7 @@ namespace BeerBilling.util
             var allCodes = new List<string>();
             if (userDto == null)
             {
-                allCodes.Add(ConstUtil.USER);
+                allCodes.Add(ConstUtil.QLHD);
                 return allCodes;
             }
             var allRoles = userDto.AllRoles;

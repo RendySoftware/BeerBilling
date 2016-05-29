@@ -359,6 +359,66 @@ namespace domain_lib.persistence
             return "0";
         }
 
+        public string getTenNsd(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return String.Empty;
+            }
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select u.FullName from Users u "
+                    + " where u.UserID = :userId");
+                query.SetParameter("userId", long.Parse(userId));
+
+                // Get the matching objects
+                var fullName = query.UniqueResult<string>();
+
+                // Set return value
+                if (fullName == null)
+                {
+                    return String.Empty;
+                }
+                return fullName;
+            }
+        }
+
+        public List<BillDto> GetAllBill()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select new Bill(b.Id, b.BillingNumber, b.BillingDate, "
+                    + "b.TableId, t.Position, b.Payment, b.CreatedBy, b.CreatedDate, b.IsPrinted, b.CancelReason) "
+                    + "from Bill b, ResTable t "
+                    + " where b.TableId = t.Id");
+
+                // Get the matching objects
+                var allBills = query.List();
+
+                // Update Role info
+                var listBillDtos = new List<BillDto>();
+                foreach (Bill bill in allBills)
+                {
+
+                    var billDto = new BillDto()
+                    {
+                        Id = bill.Id,
+                        BillingNumber = bill.BillingNumber,
+                        BillingDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.BillingDate),
+                        TableId = bill.TableId,
+                        TableNumber = bill.TableNumber,
+                        Payment = bill.Payment,
+                        CreatedBy = bill.CreatedBy,
+                        CreatedDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.CreatedDate),
+                        IsPrinted = bill.IsPrinted,
+                        CancelReason = bill.CancelReason
+                    };
+                    listBillDtos.Add(billDto);
+                }
+                return listBillDtos;
+            }
+        }
+
         #endregion
 
         #region Private Methods

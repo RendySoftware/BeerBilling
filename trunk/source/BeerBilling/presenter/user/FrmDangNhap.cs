@@ -39,10 +39,6 @@ namespace BeerBilling.presenter.user
         {
             ThamSo.UserId = null;
             ThamSo.UserRoleList = new List<string>();
-            lblOTP.Visible = false;
-            txtOTP.Visible = false;
-            btnDongY.Location = new Point(116, 135);
-            btnHuy.Location = new Point(225, 135);
         }
 
         public List<string> GetUserRoleList()

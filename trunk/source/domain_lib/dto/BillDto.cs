@@ -18,7 +18,7 @@ namespace domain_lib.dto
 
         private string _payment = String.Empty;
 
-        private DateTime _billing_Date = default(DateTime);
+        private string _billing_Date = String.Empty;
 
         private int _billing_Number = 0;
 
@@ -26,11 +26,15 @@ namespace domain_lib.dto
 
         private string _created_By = String.Empty;
 
-        private DateTime _created_Date = default(DateTime);
+        private string _created_Date = String.Empty;
 
         private string _updated_By = String.Empty;
 
-        private DateTime _updated_Date = default(DateTime);
+        private string _updated_Date = String.Empty;
+
+        private string _customerName = String.Empty;
+
+        private string _tableNumber = String.Empty;
 
         #endregion
 
@@ -63,12 +67,30 @@ namespace domain_lib.dto
         }
 
         /// <summary>
+        /// Customer Name.
+        /// </summary>
+        public virtual string CustomerName
+        {
+            get { return _customerName; }
+            set { _customerName = value; }
+        }
+
+        /// <summary>
         /// Table Id.
         /// </summary>
         public virtual long TableId
         {
             get { return _table_Id; }
             set { _table_Id = value; }
+        }
+
+        /// <summary>
+        /// Table Number.
+        /// </summary>
+        public virtual string TableNumber
+        {
+            get { return _tableNumber; }
+            set { _tableNumber = value; }
         }
 
         /// <summary>
@@ -92,7 +114,7 @@ namespace domain_lib.dto
         /// <summary>
         /// Billing Date.
         /// </summary>
-        public virtual DateTime BillingDate
+        public virtual string BillingDate
         {
             get { return _billing_Date; }
             set { _billing_Date = value; }
@@ -128,7 +150,7 @@ namespace domain_lib.dto
         /// <summary>
         /// Created Date.
         /// </summary>
-        public virtual DateTime CreatedDate
+        public virtual string CreatedDate
         {
             get { return _created_Date; }
             set { _created_Date = value; }
@@ -146,7 +168,7 @@ namespace domain_lib.dto
         /// <summary>
         /// Updated Date.
         /// </summary>
-        public virtual DateTime UpdatedDate
+        public virtual string UpdatedDate
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }

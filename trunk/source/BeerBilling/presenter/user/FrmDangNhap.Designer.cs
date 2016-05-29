@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDangNhap));
             this.btnHuy = new mcontrol.MButton(this.components);
             this.btnDongY = new mcontrol.MButton(this.components);
-            this.lblOTP = new mcontrol.MLabel(this.components);
-            this.txtOTP = new mcontrol.MTextBox(this.components);
             this.mLabel3 = new mcontrol.MLabel(this.components);
             this.txtPassword = new mcontrol.MTextBox(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
@@ -46,7 +44,7 @@
             // 
             this.btnHuy.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHuy.Location = new System.Drawing.Point(245, 153);
+            this.btnHuy.Location = new System.Drawing.Point(225, 135);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(104, 25);
             this.btnHuy.TabIndex = 17;
@@ -58,33 +56,13 @@
             // 
             this.btnDongY.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btnDongY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDongY.Location = new System.Drawing.Point(135, 153);
+            this.btnDongY.Location = new System.Drawing.Point(116, 135);
             this.btnDongY.Name = "btnDongY";
             this.btnDongY.Size = new System.Drawing.Size(102, 25);
             this.btnDongY.TabIndex = 16;
             this.btnDongY.Text = "   &1. Đồng ý";
             this.btnDongY.UseVisualStyleBackColor = true;
             this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
-            // 
-            // lblOTP
-            // 
-            this.lblOTP.AutoSize = true;
-            this.lblOTP.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblOTP.Location = new System.Drawing.Point(55, 104);
-            this.lblOTP.Name = "lblOTP";
-            this.lblOTP.Size = new System.Drawing.Size(74, 14);
-            this.lblOTP.TabIndex = 15;
-            this.lblOTP.Text = "Mã xác thực";
-            // 
-            // txtOTP
-            // 
-            this.txtOTP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOTP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtOTP.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.txtOTP.Location = new System.Drawing.Point(135, 101);
-            this.txtOTP.Name = "txtOTP";
-            this.txtOTP.Size = new System.Drawing.Size(229, 22);
-            this.txtOTP.TabIndex = 14;
             // 
             // mLabel3
             // 
@@ -131,9 +109,7 @@
             // 
             this.mGroupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.mGroupBox1.Controls.Add(this.btnHuy);
-            this.mGroupBox1.Controls.Add(this.lblOTP);
             this.mGroupBox1.Controls.Add(this.btnDongY);
-            this.mGroupBox1.Controls.Add(this.txtOTP);
             this.mGroupBox1.Controls.Add(this.mLabel3);
             this.mGroupBox1.Controls.Add(this.txtPassword);
             this.mGroupBox1.Controls.Add(this.mLabel2);
@@ -174,8 +150,6 @@
 
         private mcontrol.MButton btnHuy;
         private mcontrol.MButton btnDongY;
-        private mcontrol.MLabel lblOTP;
-        private mcontrol.MTextBox txtOTP;
         private mcontrol.MLabel mLabel3;
         private mcontrol.MTextBox txtPassword;
         private mcontrol.MLabel mLabel2;

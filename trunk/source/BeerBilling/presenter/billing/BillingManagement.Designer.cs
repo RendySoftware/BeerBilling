@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tracuuGroupBox = new mcontrol.MGroupBox(this.components);
+            this.billStatusComboBox = new mcontrol.MComboBox(this.components);
+            this.lblBillStatus = new mcontrol.MLabel(this.components);
+            this.tableComboBox = new mcontrol.MComboBox(this.components);
+            this.lblTableNumber = new mcontrol.MLabel(this.components);
+            this.txtBillingNumber = new mcontrol.MTextBox(this.components);
+            this.lblBillingNumber = new mcontrol.MLabel(this.components);
+            this.btnThucHien = new mcontrol.MButton(this.components);
             this.txtToDate = new mcontrol.MDateTextBox(this.components);
             this.lblToDate = new mcontrol.MLabel(this.components);
             this.txtFromDate = new mcontrol.MDateTextBox(this.components);
             this.lblFromDate = new mcontrol.MLabel(this.components);
-            this.btnThucHien = new mcontrol.MButton(this.components);
-            this.lblBillingNumber = new mcontrol.MLabel(this.components);
-            this.txtBillingNumber = new mcontrol.MTextBox(this.components);
-            this.lblTableNumber = new mcontrol.MLabel(this.components);
-            this.tableComboBox = new mcontrol.MComboBox(this.components);
-            this.lblBillStatus = new mcontrol.MLabel(this.components);
-            this.billStatusComboBox = new mcontrol.MComboBox(this.components);
             this.billListGroupBox = new mcontrol.MGroupBox(this.components);
-            this.mDataGridView1 = new mcontrol.MDataGridView(this.components);
+            this.dgvBilling = new mcontrol.MDataGridView(this.components);
             this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +56,7 @@
             this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracuuGroupBox.SuspendLayout();
             this.billListGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).BeginInit();
             this.SuspendLayout();
             // 
             // tracuuGroupBox
@@ -77,6 +79,81 @@
             this.tracuuGroupBox.Size = new System.Drawing.Size(759, 126);
             this.tracuuGroupBox.TabIndex = 0;
             this.tracuuGroupBox.TabStop = false;
+            // 
+            // billStatusComboBox
+            // 
+            this.billStatusComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.billStatusComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.billStatusComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.billStatusComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.billStatusComboBox.FormattingEnabled = true;
+            this.billStatusComboBox.LimitToList = true;
+            this.billStatusComboBox.Location = new System.Drawing.Point(101, 89);
+            this.billStatusComboBox.Name = "billStatusComboBox";
+            this.billStatusComboBox.Size = new System.Drawing.Size(142, 24);
+            this.billStatusComboBox.TabIndex = 14;
+            // 
+            // lblBillStatus
+            // 
+            this.lblBillStatus.AutoSize = true;
+            this.lblBillStatus.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lblBillStatus.Location = new System.Drawing.Point(17, 94);
+            this.lblBillStatus.Name = "lblBillStatus";
+            this.lblBillStatus.Size = new System.Drawing.Size(64, 14);
+            this.lblBillStatus.TabIndex = 13;
+            this.lblBillStatus.Text = "Tình trạng";
+            // 
+            // tableComboBox
+            // 
+            this.tableComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tableComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tableComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.tableComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tableComboBox.FormattingEnabled = true;
+            this.tableComboBox.LimitToList = true;
+            this.tableComboBox.Location = new System.Drawing.Point(328, 55);
+            this.tableComboBox.Name = "tableComboBox";
+            this.tableComboBox.Size = new System.Drawing.Size(164, 24);
+            this.tableComboBox.TabIndex = 12;
+            // 
+            // lblTableNumber
+            // 
+            this.lblTableNumber.AutoSize = true;
+            this.lblTableNumber.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lblTableNumber.Location = new System.Drawing.Point(263, 60);
+            this.lblTableNumber.Name = "lblTableNumber";
+            this.lblTableNumber.Size = new System.Drawing.Size(43, 14);
+            this.lblTableNumber.TabIndex = 11;
+            this.lblTableNumber.Text = "Bàn số";
+            // 
+            // txtBillingNumber
+            // 
+            this.txtBillingNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBillingNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtBillingNumber.Location = new System.Drawing.Point(101, 56);
+            this.txtBillingNumber.Name = "txtBillingNumber";
+            this.txtBillingNumber.Size = new System.Drawing.Size(142, 23);
+            this.txtBillingNumber.TabIndex = 10;
+            // 
+            // lblBillingNumber
+            // 
+            this.lblBillingNumber.AutoSize = true;
+            this.lblBillingNumber.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lblBillingNumber.Location = new System.Drawing.Point(17, 60);
+            this.lblBillingNumber.Name = "lblBillingNumber";
+            this.lblBillingNumber.Size = new System.Drawing.Size(69, 14);
+            this.lblBillingNumber.TabIndex = 9;
+            this.lblBillingNumber.Text = "Hóa đơn số";
+            // 
+            // btnThucHien
+            // 
+            this.btnThucHien.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThucHien.Location = new System.Drawing.Point(636, 21);
+            this.btnThucHien.Name = "btnThucHien";
+            this.btnThucHien.Size = new System.Drawing.Size(87, 23);
+            this.btnThucHien.TabIndex = 8;
+            this.btnThucHien.Text = "Thực hiện";
+            this.btnThucHien.UseVisualStyleBackColor = true;
             // 
             // txtToDate
             // 
@@ -118,84 +195,9 @@
             this.lblFromDate.TabIndex = 4;
             this.lblFromDate.Text = "Từ ngày";
             // 
-            // btnThucHien
-            // 
-            this.btnThucHien.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThucHien.Location = new System.Drawing.Point(636, 21);
-            this.btnThucHien.Name = "btnThucHien";
-            this.btnThucHien.Size = new System.Drawing.Size(87, 23);
-            this.btnThucHien.TabIndex = 8;
-            this.btnThucHien.Text = "Thực hiện";
-            this.btnThucHien.UseVisualStyleBackColor = true;
-            // 
-            // lblBillingNumber
-            // 
-            this.lblBillingNumber.AutoSize = true;
-            this.lblBillingNumber.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblBillingNumber.Location = new System.Drawing.Point(17, 60);
-            this.lblBillingNumber.Name = "lblBillingNumber";
-            this.lblBillingNumber.Size = new System.Drawing.Size(69, 14);
-            this.lblBillingNumber.TabIndex = 9;
-            this.lblBillingNumber.Text = "Hóa đơn số";
-            // 
-            // txtBillingNumber
-            // 
-            this.txtBillingNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBillingNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtBillingNumber.Location = new System.Drawing.Point(101, 56);
-            this.txtBillingNumber.Name = "txtBillingNumber";
-            this.txtBillingNumber.Size = new System.Drawing.Size(142, 23);
-            this.txtBillingNumber.TabIndex = 10;
-            // 
-            // lblTableNumber
-            // 
-            this.lblTableNumber.AutoSize = true;
-            this.lblTableNumber.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblTableNumber.Location = new System.Drawing.Point(263, 60);
-            this.lblTableNumber.Name = "lblTableNumber";
-            this.lblTableNumber.Size = new System.Drawing.Size(43, 14);
-            this.lblTableNumber.TabIndex = 11;
-            this.lblTableNumber.Text = "Bàn số";
-            // 
-            // tableComboBox
-            // 
-            this.tableComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.tableComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tableComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.tableComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tableComboBox.FormattingEnabled = true;
-            this.tableComboBox.LimitToList = true;
-            this.tableComboBox.Location = new System.Drawing.Point(328, 55);
-            this.tableComboBox.Name = "tableComboBox";
-            this.tableComboBox.Size = new System.Drawing.Size(164, 24);
-            this.tableComboBox.TabIndex = 12;
-            // 
-            // lblBillStatus
-            // 
-            this.lblBillStatus.AutoSize = true;
-            this.lblBillStatus.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblBillStatus.Location = new System.Drawing.Point(17, 94);
-            this.lblBillStatus.Name = "lblBillStatus";
-            this.lblBillStatus.Size = new System.Drawing.Size(64, 14);
-            this.lblBillStatus.TabIndex = 13;
-            this.lblBillStatus.Text = "Tình trạng";
-            // 
-            // billStatusComboBox
-            // 
-            this.billStatusComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.billStatusComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.billStatusComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.billStatusComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.billStatusComboBox.FormattingEnabled = true;
-            this.billStatusComboBox.LimitToList = true;
-            this.billStatusComboBox.Location = new System.Drawing.Point(101, 89);
-            this.billStatusComboBox.Name = "billStatusComboBox";
-            this.billStatusComboBox.Size = new System.Drawing.Size(142, 24);
-            this.billStatusComboBox.TabIndex = 14;
-            // 
             // billListGroupBox
             // 
-            this.billListGroupBox.Controls.Add(this.mDataGridView1);
+            this.billListGroupBox.Controls.Add(this.dgvBilling);
             this.billListGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.billListGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.billListGroupBox.Location = new System.Drawing.Point(13, 146);
@@ -205,13 +207,21 @@
             this.billListGroupBox.TabStop = false;
             this.billListGroupBox.Text = "Danh sách hóa đơn";
             // 
-            // mDataGridView1
+            // dgvBilling
             // 
-            this.mDataGridView1.AllowUserToAddRows = false;
-            this.mDataGridView1.AllowUserToDeleteRows = false;
-            this.mDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBilling.AllowUserToAddRows = false;
+            this.dgvBilling.AllowUserToDeleteRows = false;
+            this.dgvBilling.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBilling.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvBilling.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBilling.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.billNumber,
             this.billDate,
             this.tableNumber,
@@ -221,12 +231,20 @@
             this.createdDate,
             this.detail,
             this.billId});
-            this.mDataGridView1.Location = new System.Drawing.Point(7, 20);
-            this.mDataGridView1.MultiSelect = false;
-            this.mDataGridView1.Name = "mDataGridView1";
-            this.mDataGridView1.RowHeadersVisible = false;
-            this.mDataGridView1.Size = new System.Drawing.Size(746, 378);
-            this.mDataGridView1.TabIndex = 0;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBilling.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvBilling.Location = new System.Drawing.Point(7, 20);
+            this.dgvBilling.MultiSelect = false;
+            this.dgvBilling.Name = "dgvBilling";
+            this.dgvBilling.RowHeadersVisible = false;
+            this.dgvBilling.Size = new System.Drawing.Size(746, 378);
+            this.dgvBilling.TabIndex = 0;
             // 
             // billNumber
             // 
@@ -283,12 +301,14 @@
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.billListGroupBox);
             this.Controls.Add(this.tracuuGroupBox);
+            this.MaximizeBox = false;
             this.Name = "BillingManagement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tra cứu hóa đơn";
             this.tracuuGroupBox.ResumeLayout(false);
             this.tracuuGroupBox.PerformLayout();
             this.billListGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,7 +328,7 @@
         private mcontrol.MLabel lblBillingNumber;
         private mcontrol.MButton btnThucHien;
         private mcontrol.MGroupBox billListGroupBox;
-        private mcontrol.MDataGridView mDataGridView1;
+        private mcontrol.MDataGridView dgvBilling;
         private System.Windows.Forms.DataGridViewTextBoxColumn billNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn billDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn tableNumber;

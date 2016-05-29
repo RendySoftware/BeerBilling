@@ -18,7 +18,8 @@ namespace core_lib.common
         public const string INACTIVE_STATUS = "N";
 
         public const string ADMIN = "ADMIN";
-        public const string USER = "USER";
+        public const string QLKH = "QLKH";
+        public const string QLHD = "QLHD";
 
         public const string MONTH_FORMAT = "yyyyMM";
         public const string DISPLAY_MONTH_FORMAT = "MM/yyyy";

@@ -105,7 +105,7 @@ set IDENTITY_INSERT menu off
 go
 
 -- init Material
-set IDENTITY_INSERT Material off
+set IDENTITY_INSERT Material on
 go
 
 insert into Material(id, unit_id, code, name) values(1, 4, 'CACHEP', N'Cá chép')

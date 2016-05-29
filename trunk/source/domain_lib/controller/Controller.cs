@@ -57,6 +57,16 @@ namespace domain_lib.controller
             return m_PersistenceManager.changePassword(userId, oldPassword, newPassword);
         }
 
+        public string GetTenNsd(string userId)
+        {
+            return m_PersistenceManager.getTenNsd(userId);
+        }
+
+        public List<BillDto> GetAllBill()
+        {
+            return m_PersistenceManager.GetAllBill();
+        }
+
         #endregion
     }
 }
