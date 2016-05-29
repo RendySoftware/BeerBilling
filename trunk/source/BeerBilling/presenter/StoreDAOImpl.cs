@@ -22,5 +22,19 @@ namespace BeerBilling.presenter
         {
             return _controller.GetAllMaterial();
         }
+
+        public bool AddNew(StoreDto storeDto)
+        {
+            return _controller.AddNewStore(storeDto);
+        }
+
+        public bool AddList(List<StoreDto> list)
+        {
+            foreach (StoreDto store in list)
+            {
+                AddNew(store);
+            }
+            return true;
+        }
     }
 }

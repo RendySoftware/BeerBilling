@@ -10,5 +10,7 @@ namespace BeerBilling.view
     {
         List<StoreDto> GetAllStore();
         List<MaterialDto> GetAllMaterial();
+        bool AddNew(StoreDto storeDto);
+        bool AddList(List<StoreDto> list);
     }
 }

@@ -73,5 +73,29 @@ namespace domain_lib.controller
         {
             return m_PersistenceManager.GetAllMaterial();
         }
+
+        public bool AddNewStore(StoreDto storeDto)
+        {
+            try
+            {
+                Store store = new Store() { 
+                    MaterialId = storeDto.MaterialId,
+                    Amount = storeDto.Amount,
+                    StoredStatus = storeDto.StoredStatus,
+                    StoredDate = storeDto.StoredDate,
+                    StoredBy = storeDto.StoredBy,
+                    Reason = storeDto.Reason,
+                    CreatedBy = storeDto.StoredBy,
+                    CreatedDate = DateTime.Now,
+                    UpdatedBy = storeDto.StoredBy,
+                    UpdatedDate = DateTime.Now
+                };
+                m_PersistenceManager.SaveNew<Store>(store);
+                return true;
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }

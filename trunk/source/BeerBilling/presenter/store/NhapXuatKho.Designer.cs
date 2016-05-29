@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            var storeType = importExportType.name;
+
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,16 +47,16 @@
             this.lblMaterial = new mcontrol.MLabel(this.components);
             this.storeGroupBox = new mcontrol.MGroupBox(this.components);
             this.btnImpexpProcess = new mcontrol.MButton(this.components);
-            this.storeDataGridView = new mcontrol.MDataGridView(this.components);
-            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaterialId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStores = new mcontrol.MDataGridView(this.components);
+            this.materialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.impexpGroupBox.SuspendLayout();
             this.storeGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.storeDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStores)).BeginInit();
             this.SuspendLayout();
             // 
             // impexpGroupBox
@@ -77,7 +79,7 @@
             this.impexpGroupBox.Size = new System.Drawing.Size(681, 133);
             this.impexpGroupBox.TabIndex = 0;
             this.impexpGroupBox.TabStop = false;
-            this.impexpGroupBox.Text = "Nhập kho";
+            this.impexpGroupBox.Text = storeType;
             // 
             // txtAmount
             // 
@@ -86,7 +88,7 @@
             this.txtAmount.Location = new System.Drawing.Point(411, 21);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(158, 23);
-            this.txtAmount.TabIndex = 11;
+            this.txtAmount.TabIndex = 2;
             // 
             // txtUnit
             // 
@@ -116,7 +118,7 @@
             this.txtStoreDate.MaxLength = 10;
             this.txtStoreDate.Name = "txtStoreDate";
             this.txtStoreDate.Size = new System.Drawing.Size(225, 23);
-            this.txtStoreDate.TabIndex = 8;
+            this.txtStoreDate.TabIndex = 3;
             // 
             // lblStoreDate
             // 
@@ -126,7 +128,7 @@
             this.lblStoreDate.Name = "lblStoreDate";
             this.lblStoreDate.Size = new System.Drawing.Size(89, 14);
             this.lblStoreDate.TabIndex = 7;
-            this.lblStoreDate.Text = "Ngày nhập kho";
+            this.lblStoreDate.Text = "Ngày " + storeType.ToLower();
             // 
             // btnAddStore
             // 
@@ -195,7 +197,7 @@
             // storeGroupBox
             // 
             this.storeGroupBox.Controls.Add(this.btnImpexpProcess);
-            this.storeGroupBox.Controls.Add(this.storeDataGridView);
+            this.storeGroupBox.Controls.Add(this.dgvStores);
             this.storeGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.storeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.storeGroupBox.Location = new System.Drawing.Point(14, 158);
@@ -203,7 +205,7 @@
             this.storeGroupBox.Size = new System.Drawing.Size(681, 371);
             this.storeGroupBox.TabIndex = 1;
             this.storeGroupBox.TabStop = false;
-            this.storeGroupBox.Text = "Danh sách nhập kho";
+            this.storeGroupBox.Text = "Danh sách " + storeType.ToLower();
             // 
             // btnImpexpProcess
             // 
@@ -212,14 +214,15 @@
             this.btnImpexpProcess.Name = "btnImpexpProcess";
             this.btnImpexpProcess.Size = new System.Drawing.Size(94, 23);
             this.btnImpexpProcess.TabIndex = 1;
-            this.btnImpexpProcess.Text = "Nhập kho";
+            this.btnImpexpProcess.Text = storeType;
             this.btnImpexpProcess.UseVisualStyleBackColor = true;
+            this.btnImpexpProcess.Click += new System.EventHandler(this.btnImpexpProcess_Click);
             // 
-            // storeDataGridView
+            // dgvStores
             // 
-            this.storeDataGridView.AllowUserToAddRows = false;
-            this.storeDataGridView.AllowUserToDeleteRows = false;
-            this.storeDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvStores.AllowUserToAddRows = false;
+            this.dgvStores.AllowUserToDeleteRows = false;
+            this.dgvStores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F);
@@ -227,11 +230,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.storeDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.storeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.storeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.material,
-            this.colMaterialId,
+            this.dgvStores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvStores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.materialName,
+            this.materialId,
             this.amount,
             this.unit,
             this.storeDate,
@@ -243,26 +246,26 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.storeDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
-            this.storeDataGridView.Location = new System.Drawing.Point(9, 53);
-            this.storeDataGridView.MultiSelect = false;
-            this.storeDataGridView.Name = "storeDataGridView";
-            this.storeDataGridView.RowHeadersVisible = false;
-            this.storeDataGridView.Size = new System.Drawing.Size(661, 312);
-            this.storeDataGridView.TabIndex = 0;
+            this.dgvStores.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvStores.Location = new System.Drawing.Point(9, 53);
+            this.dgvStores.MultiSelect = false;
+            this.dgvStores.Name = "dgvStores";
+            this.dgvStores.RowHeadersVisible = false;
+            this.dgvStores.Size = new System.Drawing.Size(661, 312);
+            this.dgvStores.TabIndex = 0;
             // 
-            // material
+            // materialName
             // 
-            this.material.FillWeight = 250F;
-            this.material.HeaderText = "Nguyên liệu";
-            this.material.Name = "material";
-            this.material.Width = 250;
+            this.materialName.FillWeight = 250F;
+            this.materialName.HeaderText = "Nguyên liệu";
+            this.materialName.Name = "materialName";
+            this.materialName.Width = 250;
             // 
-            // colMaterialId
+            // materialId
             // 
-            this.colMaterialId.HeaderText = "materialId";
-            this.colMaterialId.Name = "colMaterialId";
-            this.colMaterialId.Visible = false;
+            this.materialId.HeaderText = "materialId";
+            this.materialId.Name = "materialId";
+            this.materialId.Visible = false;
             // 
             // amount
             // 
@@ -278,7 +281,7 @@
             // 
             // storeDate
             // 
-            this.storeDate.HeaderText = "Ngày nhập kho";
+            this.storeDate.HeaderText = "Ngày " + storeType.ToLower();
             this.storeDate.Name = "storeDate";
             // 
             // reason
@@ -297,11 +300,11 @@
             this.Controls.Add(this.impexpGroupBox);
             this.Name = "NhapXuatKho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nhập kho";
+            this.Text = storeType;
             this.impexpGroupBox.ResumeLayout(false);
             this.impexpGroupBox.PerformLayout();
             this.storeGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.storeDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStores)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -317,18 +320,18 @@
         private mcontrol.MButton btnAddStore;
         private mcontrol.MGroupBox storeGroupBox;
         private mcontrol.MButton btnImpexpProcess;
-        private mcontrol.MDataGridView storeDataGridView;
+        private mcontrol.MDataGridView dgvStores;
         private mcontrol.MDateTextBox txtStoreDate;
         private mcontrol.MLabel lblStoreDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaterialId;
+        private mcontrol.MTextBox txtUnit;
+        private mcontrol.MLabel lblUnit;
+        private mcontrol.MNumberTextBox txtAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialId;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn storeDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn reason;
-        private mcontrol.MTextBox txtUnit;
-        private mcontrol.MLabel lblUnit;
-        private mcontrol.MNumberTextBox txtAmount;
 
     }
 }

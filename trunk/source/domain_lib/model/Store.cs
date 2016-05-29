@@ -30,11 +30,11 @@ namespace domain_lib.model
 
         private string _created_By = String.Empty;
 
-        private DateTime _created_Date = default(DateTime);
+        private DateTime? _created_Date = default(DateTime);
 
         private string _updated_By = String.Empty;
 
-        private DateTime _updated_Date = default(DateTime);
+        private DateTime? _updated_Date = default(DateTime);
 
         #endregion
 
@@ -123,7 +123,7 @@ namespace domain_lib.model
         /// <summary>
         /// Created Date.
         /// </summary>
-        public virtual DateTime CreatedDate
+        public virtual DateTime? CreatedDate
         {
             get { return _created_Date; }
             set { _created_Date = value; }
@@ -141,7 +141,7 @@ namespace domain_lib.model
         /// <summary>
         /// Updated Date.
         /// </summary>
-        public virtual DateTime UpdatedDate
+        public virtual DateTime? UpdatedDate
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }

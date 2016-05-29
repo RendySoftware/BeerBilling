@@ -16,6 +16,9 @@ namespace domain_lib.dto
 
         private string _stored_Status = String.Empty;
 
+        private string _materialName = String.Empty;
+        private string _unitName = String.Empty;
+
         private DateTime? _stored_Date = default(DateTime);
 
         private string _stored_By = String.Empty;
@@ -139,6 +142,24 @@ namespace domain_lib.dto
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        /// <summary>
+        /// MaterialName.
+        /// </summary>
+        public virtual string MaterialName
+        {
+            get { return _materialName; }
+            set { _materialName = value; }
+        }
+
+        /// <summary>
+        /// UnitName
+        /// </summary>
+        public virtual string UnitName
+        {
+            get { return _unitName; }
+            set { _unitName = value; }
         }
 
         #endregion

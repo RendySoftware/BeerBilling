@@ -34,14 +34,12 @@ namespace BeerBilling.presenter.kho
 
             txtStoreDate.Text = DateUtil.GetDateTimeAsDdmmyyyy(DateTime.Now);
             listStoreDto = new List<StoreDto>();
-
-            storeDataGridView.DataSource = listStoreDto; 
-
         }
 
         private void materialComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtUnit.Text = ((MaterialDto)materialComboBox.SelectedItem).UnitName;
+            var item = materialComboBox.SelectedItem; 
+            txtUnit.Text = item ==null ? "" : ((MaterialDto)item).UnitName;
         }
 
         private void btnAddStore_Click(object sender, EventArgs e)
@@ -67,17 +65,58 @@ namespace BeerBilling.presenter.kho
                 MaterialId = materialDto.Id,
                 Amount = float.Parse(txtAmount.Text),
                 StoredDate = DateUtil.GetDateTime(txtStoreDate.Text),
-                StoredStatus = "NO",
+                StoredStatus = importExportType.code,
                 Reason = txtReason.Text,
                 StoredBy = "SYSTEM",
- 
+                MaterialName = materialDto.Name,
+                UnitName = txtUnit.Text
             };
             listStoreDto.Add(newStore);
-            
-            storeDataGridView.AutoGenerateColumns = false;
-            storeDataGridView.DataSource = listStoreDto; 
+
+            dgvStores.Rows.Clear();
+
+            foreach (StoreDto material in listStoreDto)
+            {
+                AddOneRow(material);
+            }
+
+            txtAmount.Text = "";
+            materialComboBox.Focus();
         }
 
+        private void AddOneRow(StoreDto dto)
+        {
+            int index = dgvStores.Rows.Add();
+            var r = dgvStores.Rows[index];
+            r.Cells["materialId"].Value = dto.MaterialId;
+            r.Cells["materialName"].Value = dto.MaterialName;
+            r.Cells["unit"].Value = dto.UnitName;
+            r.Cells["amount"].Value = dto.Amount;
+            r.Cells["storeDate"].Value = DateUtil.GetDateTimeAsDdmmyyyy(dto.StoredDate);
+            r.Cells["reason"].Value = dto.Reason;            
+        }
+
+        private void btnImpexpProcess_Click(object sender, EventArgs e)
+        {
+            _storeDao.AddList(listStoreDto);
+
+            MMessageBox.Show(this, "Bạn đã " + importExportType.name.ToLower() +" thành công", "Thông báo"
+                   , MMessageBoxButtons.OK, MMessageBoxIcon.Information);
+
+            ResetForm();
+
+            return;
+        }
+
+        private void ResetForm()
+        {
+            listStoreDto = new List<StoreDto>();
+            dgvStores.Rows.Clear();
+            txtAmount.Text = "";
+            txtReason.Text = "";
+            materialComboBox.SelectedItem = null;
+            materialComboBox.Focus();
+        }
       
     }
 }
