@@ -1,0 +1,82 @@
+;
+;  POS80.INF
+;
+; 
+;
+; Copyright (C) 2001
+;
+
+
+[Version]
+Signature="$Windows NT$"
+Provider=%AUTHOR%
+LayoutFile=ntprint.inf
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+DriverVer=08/09/2010
+CatalogFile=zjprinter.cat
+
+[Manufacturer]
+"ZJiang"=ZJiang, NTx86, NTamd64, NTia64
+
+[ZJiang]
+"POS80 10.0.0.11"      = DRIVER_POS80
+
+[ZJiang.NTx86]
+"POS80 10.0.0.11"      = DRIVER_POS80
+
+[ZJiang.NTamd64]
+"POS80 10.0.0.11"      = DRIVER_POS80
+
+[ZJiang.NTia64]
+"POS80 10.0.0.11"      = DRIVER_POS80
+
+[DRIVER_POS80]
+CopyFiles=@zjpos80.ini
+CopyFiles=@zjPOS80.GPD
+CopyFiles=POS80FILES
+DataSection=UNIDRV_DATA
+DataFile=zjPOS80.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+;Addreg = port_AddReg
+
+;[DefaultInstall.NT]
+;[ClassInstall32.ntx86]
+;[ClassInstall32]
+
+;[port_AddReg]
+;HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM1:",0x00000000,%COMMCONFIG%
+;HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM2:",0x00000000,%COMMCONFIG%
+;HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM3:",0x00000000,%COMMCONFIG%
+;HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM4:",0x00000000,%COMMCONFIG%
+
+[POS80FILES]
+zjpos80d.dll
+zjRES80.DLL
+
+[SourceDisksNames]
+100 = %disk1%
+
+[SourceDisksFiles.x86]
+zjpos80d.dll = 100,i386
+zjRES80.DLL =  100,i386
+
+[SourceDisksFiles.amd64]
+zjpos80d.dll = 100,x64
+zjRES80.DLL =  100,x64
+
+[SourceDisksFiles.ia64]
+zjpos80d.dll   = 100,ia64
+zjRES80.DLL =  100,ia64
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+;[ControlFlags]
+;ExcludeFromSelect = 2369
+
+[Strings]
+AUTHOR="Microsoft"
+COMMCONFIG="9600,n,8,1,p"
+disk1="POS80 DRIVER"

@@ -1,0 +1,641 @@
+*%
+*% ZJPOS76.GPD
+*%
+*%
+*%
+*% Copyright (C) 2001
+*%
+
+
+*GPDSpecVersion: "1.0"
+*GPDFileName: "ZJPOS76.GPD"
+*GPDFileVersion: "1.0"
+*Include: "stdnames.gpd"
+*ModelName: "POS76"
+*MasterUnits: PAIR(160,144)
+*ResourceDLL: "ZJRES76.DLL"
+*PrinterType: SERIAL
+*CodePage: 936
+*%*PrintRate: 120
+*%*PrintRateUnit: LPM
+
+
+*Macros: COMMAND_ID
+{
+    CMDID_BEEP_AFTER_PAGE: 50
+    CMDID_CUTTING_AFTER_PAGE: 51
+    CMDID_CUTTING_AFTER_DOC_FEED: 52
+    CMDID_CUTTING_AFTER_DOC_NOFEED: 53
+    CMDID_NO_CUTTING_FEED: 54
+    CMDID_NO_CUTTING_NOFEED: 55
+}
+
+
+*%
+*% Orientation
+*%
+*Feature: Orientation
+{
+	*rcNameID: =ORIENTATION_DISPLAY
+	*DefaultOption: PORTRAIT
+	*Option: PORTRAIT
+	{
+		*rcNameID: =PORTRAIT_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.6
+			*Cmd: ""
+		}
+	}
+	*Option: LANDSCAPE_CC270
+	{
+		*rcNameID: =LANDSCAPE_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.8
+			*Cmd: ""
+		}
+	}
+}
+
+*%
+*% Input bin
+*%
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: MANUAL
+
+    *Option: MANUAL
+    {
+        *rcNameID: =MANUAL_FEED_DISPLAY
+        *Command: CmdSelect
+        {
+         	*Order: DOC_SETUP.11
+         	*Cmd: ""
+        }
+    }
+}
+
+*%
+*% Resolution
+*%
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: resolution160x72
+
+    *Option: resolution160x144
+    {
+        *Name: "160 x 144 " =DOTS_PER_INCH
+        *DPI: PAIR(160, 144)
+        *TextDPI: PAIR(160, 144)
+        *PinsPerLogPass: 16
+        *PinsPerPhysPass: 8
+        EXTERN_GLOBAL: *StripBlanks: LIST(TRAILING)
+*% Warning: this resolution has RES_BO_NO_ADJACENT set in GPC, which is ignored by GPD. Custom code is needed.
+        *SpotDiameter: 140
+        *Command: CmdSendBlockData { *Cmd : "<1B>*<01>" %l{NumOfDataBytes} }
+    }
+    *Option: resolution160x72
+    {
+        *Name: "160 x 72 " =DOTS_PER_INCH
+        *DPI: PAIR(160, 72)
+        *TextDPI: PAIR(160, 72)
+        *PinsPerLogPass: 8
+        *PinsPerPhysPass: 8
+        EXTERN_GLOBAL: *StripBlanks: LIST(TRAILING)
+        *SpotDiameter: 140
+        *Command: CmdSendBlockData { *Cmd : "<1B>*<01>" %l{NumOfDataBytes} }
+    }
+    *Option: resolution80x72
+    {
+        *Name: "80 x 72 " =DOTS_PER_INCH
+        *DPI: PAIR(80, 72)
+        *TextDPI: PAIR(80, 72)
+        *PinsPerLogPass: 8
+        *PinsPerPhysPass: 8
+        EXTERN_GLOBAL: *StripBlanks: LIST(TRAILING)
+*% Warning: this resolution has RES_BO_NO_ADJACENT set in GPC, which is ignored by GPD. Custom code is needed.
+        *SpotDiameter: 140
+        *Command: CmdSendBlockData { *Cmd : "<1B>*<00>" %l{NumOfDataBytes} }
+    }
+}
+
+*%
+*% Paper size
+*%
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: ZIJIPAPER3276
+    *Option: ZIJIPAPER3276
+    {
+        *rcNameID: 852
+
+        *PageDimensions: PAIR(479, 18572)
+        *PrintableArea: PAIR(403, 18572)
+        *PrintableOrigin: PAIR(38, 0)
+    }
+    *Option: ZIJIPAPER297
+    {
+        *rcNameID: 851
+
+        *PageDimensions: PAIR(479, 1684)
+        *PrintableArea: PAIR(403, 1684)
+        *PrintableOrigin: PAIR(38, 0)
+    }
+    *Option: ZIJIPAPER210
+    {
+        *rcNameID: 850
+
+        *PageDimensions: PAIR(479, 1190)
+        *PrintableArea: PAIR(403, 1190)
+        *PrintableOrigin: PAIR(38, 0)
+    }
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(200, 200)
+        *MaxSize: PAIR(403, 18572)
+        *MaxPrintableWidth: 403
+        *MinLeftMargin: 38
+        *CenterPrintable?: FALSE
+    }
+}
+
+*Feature: PrintQuality
+{
+    *rcNameID: =TEXT_QUALITY_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 265
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.2
+            *Cmd: "<1B>U<01>"
+        }
+    }
+    *Option: Option2
+    {
+        *rcNameID: 266
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.2
+            *Cmd: "<1B>U<00>"
+        }
+    }
+}
+
+
+*%
+*% Color mode
+*%
+*Feature: ColorMode
+{
+    *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+    *DefaultOption: MONO
+
+    *Option: MONO
+    {
+        *rcNameID: =MONO_DISPLAY
+        *DrvBPP: 1
+        *DevNumOfPlanes: 0
+        *DevBPP: 0
+        *IPCallbackID: 1
+        *Color?: FALSE
+    }
+}
+
+*%
+*% Halftone
+*%
+*Feature: Halftone
+{
+    *rcNameID: =HALFTONING_DISPLAY
+    *DefaultOption: HT_PATSIZE_AUTO
+
+    *Option: HT_PATSIZE_AUTO
+    {
+        *rcNameID: =HT_AUTO_SELECT_DISPLAY
+    }
+    *Option: HT_PATSIZE_16x16_M
+    {
+        *Name: "16x16"
+    }
+    *Option: HT_PATSIZE_14x14_M
+    {
+        *Name: "14x14"
+    }
+    *Option: HT_PATSIZE_12x12_M
+    {
+        *Name: "12x12"
+    }
+    *Option: HT_PATSIZE_10x10_M
+    {
+        *Name: "10x10"
+    }
+    *Option: HT_PATSIZE_8x8_M
+    {
+        *Name: "8x8"
+    }
+    *Option: HT_PATSIZE_6x6_M
+    {
+        *Name: "6x6"
+    }
+    *Option: HT_PATSIZE_4x4_M
+    {
+        *Name: "4x4"
+    }
+}
+
+*Command: CmdStartDoc
+{
+    *Order: DOC_SETUP.1
+    *Cmd: "<1B>@"
+} 
+
+%*Command: CmdEndDoc
+%{
+%    *Order: JOB_FINISH.20
+%    *Cmd: "<0A><1D>V<01>"
+%}
+
+
+*Command: CmdEndJob
+{
+    *Order: JOB_FINISH.21
+    *Cmd: "<1B>r<1D>T<1B>@"
+}
+
+%*Command: CmdEndPage
+%{
+%    *Order: PAGE_FINISH.1
+%    *Cmd: "<1D>S"
+%}
+
+
+*Feature: zjPrintMode
+{
+    *rcNameID: 700
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjSoftFontMode
+
+    *Option: zjGraphMode
+    {
+        *rcNameID: 701
+        *Command:CmdSelect
+        {
+            *CallbackID: 10
+            *Order: DOC_SETUP.12
+        }
+    }
+    *Option: zjSoftFontMode
+    {
+        *rcNameID: 702
+        *Command:CmdSelect
+        {
+            *CallbackID: 11
+            *Order: DOC_SETUP.12
+        }
+    }
+}
+
+*Feature: zjCashDrawer
+{
+    *rcNameID: 870
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjEject1BeforePrint
+
+    *Option: zjNoCashDrawer
+    {
+        *rcNameID: 871
+        *Command:CmdSelect
+        {
+        }
+    }
+    *Option: zjEject1BeforePrint
+    {
+        *rcNameID: 872
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>p<004050>"
+        }
+    }
+    *Option: zjEject2BeforePrint
+    {
+        *rcNameID: 873
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>p<014050>"
+        }
+    }
+    *Option: zjEject12BeforePrint
+    {
+        *rcNameID: 874
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>p<0040501B>p<014050>"
+        }
+    }
+    *Option: zjEject1AfterPrint
+    {
+        *rcNameID: 875
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>q<004050>"
+        }
+    }
+    *Option: zjEject2AfterPrint
+    {
+        *rcNameID: 876
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>q<014050>"
+        }
+    }
+    *Option: zjEject12AfterPrint
+    {
+        *rcNameID: 877
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>q<0040501B>q<014050>"
+        }
+    }
+}
+
+
+*Feature: zjPrintTrailingMarginOrNot
+{
+    *rcNameID: 713
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjNotPrintTrailingMargin
+
+    *Option: zjPrintTrailingMargin
+    {
+        *rcNameID: 715
+        *Command:CmdSelect
+        {
+            *CallbackID: 20
+            *Order: DOC_SETUP.5
+        }
+    }
+    *Option: zjNotPrintTrailingMargin
+    {
+        *rcNameID: 714
+        *Command:CmdSelect
+        {
+            *CallbackID: 19
+            *Order: DOC_SETUP.5
+        }
+    }
+}
+
+
+*%*Feature: ITEM10
+*%{
+*%    *rcNameID: 709
+*%    *FeatureType: PRINTER_PROPERTY
+*%    *DefaultOption: ITEM13
+*%
+*%    *Option: ITEM11
+*%    {
+*%        *rcNameID: 710
+*%        *Command:CmdSelect
+*%        {
+*%            *CallbackID: 16
+*%            *Order: DOC_SETUP.4
+*%        }
+*%    }
+*%    *Option: ITEM12
+*%    {
+*%        *rcNameID: 711
+*%        *Command:CmdSelect
+*%        {
+*%            *CallbackID: 17
+*%            *Order: DOC_SETUP.4
+*%        }
+*%    }
+*%
+*%    *Option: ITEM13
+*%    {
+*%        *rcNameID: 712
+*%        *Command:CmdSelect
+*%        {
+*%            *CallbackID: 18
+*%            *Order: DOC_SETUP.4
+*%        }
+*%    }
+*%}
+
+*Feature: zjTrailingMargin
+{
+    *rcNameID: 801
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zj9mm
+
+    *Option: zj3mm
+    {
+        *rcNameID: 719
+        *Command:CmdSelect
+        {
+            *CallbackID: 30
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj6mm
+    {
+        *rcNameID: 720
+        *Command:CmdSelect
+        {
+            *CallbackID: 31
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj9mm
+    {
+        *rcNameID: 721
+        *Command:CmdSelect
+        {
+            *CallbackID: 32
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj12mm
+    {
+        *rcNameID: 722
+        *Command:CmdSelect
+        {
+            *CallbackID: 33
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj15mm
+    {
+        *rcNameID: 723
+        *Command:CmdSelect
+        {
+            *CallbackID: 34
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj18mm
+    {
+        *rcNameID: 724
+        *Command:CmdSelect
+        {
+            *CallbackID: 35
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj21mm
+    {
+        *rcNameID: 725
+        *Command:CmdSelect
+        {
+            *CallbackID: 36
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj24mm
+    {
+        *rcNameID: 726
+        *Command:CmdSelect
+        {
+            *CallbackID: 37
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj27mm
+    {
+        *rcNameID: 727
+        *Command:CmdSelect
+        {
+            *CallbackID: 38
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj30mm
+    {
+        *rcNameID: 728
+        *Command:CmdSelect
+        {
+            *CallbackID: 39
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj33mm
+    {
+        *rcNameID: 729
+        *Command:CmdSelect
+        {
+            *CallbackID: 40
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj36mm
+    {
+        *rcNameID: 730
+        *Command:CmdSelect
+        {
+            *CallbackID: 41
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj39mm
+    {
+        *rcNameID: 731
+        *Command:CmdSelect
+        {
+            *CallbackID: 42
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj42mm
+    {
+        *rcNameID: 732
+        *Command:CmdSelect
+        {
+            *CallbackID: 43
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj45mm
+    {
+        *rcNameID: 733
+        *Command:CmdSelect
+        {
+            *CallbackID: 44
+            *Order: DOC_SETUP.7
+        }
+    }
+}
+
+*Feature: zjPaperCutting
+{
+    *rcNameID: 860
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 861
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *CallbackID: =CMDID_CUTTING_AFTER_PAGE
+        }
+    }
+    *Option: Option2
+    {        
+        *rcNameID: 862
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *CallbackID: =CMDID_CUTTING_AFTER_DOC_FEED
+        }
+    }
+    *Option: zjNoCutting
+    {
+        *rcNameID: 863
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *CallbackID: =CMDID_CUTTING_AFTER_DOC_NOFEED
+        }
+    }
+    *Option: Option4
+    {
+        *rcNameID: 864
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *CallbackID: =CMDID_NO_CUTTING_FEED
+        }
+    }
+    *Option: Option5
+    {
+        *rcNameID: 865
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *CallbackID: =CMDID_NO_CUTTING_NOFEED
+        }
+    }
+}
+
+*Command: CmdCR: ""
+*Command: CmdLF: ""
+*Command: CmdFF: ""
+*%OptimizeLeftBound?: FALSE
+
+*RotateCoordinate?: TRUE
+*RotateFont?: TRUE
+*RotateRaster?: TRUE
+

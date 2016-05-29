@@ -1,0 +1,89 @@
+;
+;  NEWPOS58.INF
+;
+; 
+;
+; Copyright (C) 2001
+;
+
+
+[Version]
+Signature="$Windows NT$"
+Provider=%AUTHOR%
+LayoutFile=ntprint.inf
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+DriverVer=08/01/2001
+CatalogFile=zjprinter.cat
+
+[Manufacturer]
+"ZJiang"=ZJiang, NTx86, NTamd64, NTia64
+
+[ZJiang]
+"POS58 10.0.0.6"      = DRIVER_POS58
+
+[ZJiang.NTx86]
+"POS58 10.0.0.6"      = DRIVER_POS58
+
+[ZJiang.NTamd64]
+"POS58 10.0.0.6"      = DRIVER_POS58
+
+[ZJiang.NTia64]
+"POS58 10.0.0.6"      = DRIVER_POS58
+
+[DRIVER_POS58]
+CopyFiles=@ZIKU.UFM
+CopyFiles=@zjpos58.ini
+CopyFiles=@NEWPOS58.GPD
+;CopyFiles=@NEWPOS58.INF
+;CopyFiles=@NEWRES58.DLL
+CopyFiles=POS58FILES
+DataSection=UNIDRV_DATA
+DataFile=NEWPOS58.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+Addreg = port_AddReg
+
+;[DefaultInstall.NT]
+;[ClassInstall32.ntx86]
+;[ClassInstall32]
+
+[port_AddReg]
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM1:",0x00000000,%COMMCONFIG%
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM2:",0x00000000,%COMMCONFIG%
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM3:",0x00000000,%COMMCONFIG%
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports","COM4:",0x00000000,%COMMCONFIG%
+
+[POS58FILES]
+newpos58d.dll
+newpos58f.dll
+NEWRES58.DLL
+
+[SourceDisksNames]
+100 = %disk1%
+
+[SourceDisksFiles.x86]
+newpos58d.dll = 100,i386
+newpos58f.dll = 100,i386
+NEWRES58.DLL = 100,i386
+
+[SourceDisksFiles.amd64]
+newpos58d.dll = 100,x64
+newpos58f.dll = 100,x64
+NEWRES58.DLL = 100,x64
+
+[SourceDisksFiles.ia64]
+newpos58d.dll = 100,ia64
+newpos58f.dll = 100,ia64
+NEWRES58.DLL = 100,ia64
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+;[ControlFlags]
+;ExcludeFromSelect = 2369
+
+[Strings]
+AUTHOR="Microsoft"
+COMMCONFIG="9600,n,8,1,p"
+disk1="POS58 DRIVER"

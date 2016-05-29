@@ -1,0 +1,1525 @@
+*%
+*% ZJPOS80.GPD
+*%
+*%
+*%
+*% Copyright (C) 2001
+*%
+
+
+*GPDSpecVersion: "1.0"
+*GPDFileName: "ZJPOS80.GPD"
+*GPDFileVersion: "1.0"
+*Include: "stdnames.gpd"
+*ModelName: "POS80"
+*MasterUnits: PAIR(609,609)
+*ResourceDLL: "ZJRES80.DLL"
+*PrinterType: SERIAL
+*CodePage: 936
+*%*PrintRate: 120
+*%*PrintRateUnit: LPM
+
+
+*Macros: COMMAND_ID
+{
+    CMDID_BEEP_AFTER_PAGE: 50
+    CMDID_CUTTING_AFTER_PAGE: 51
+}
+
+
+*%
+*% Orientation
+*%
+*Feature: Orientation
+{
+	*rcNameID: =ORIENTATION_DISPLAY
+	*DefaultOption: PORTRAIT
+	*Option: PORTRAIT
+	{
+		*rcNameID: =PORTRAIT_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.6
+			*Cmd: ""
+		}
+	}
+	*Option: LANDSCAPE_CC270
+	{
+		*rcNameID: =LANDSCAPE_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.8
+			*Cmd: ""
+		}
+	}
+}
+
+*%
+*% Input bin
+*%
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: MANUAL
+
+    *Option: MANUAL
+    {
+        *rcNameID: =MANUAL_FEED_DISPLAY
+        *Command: CmdSelect
+        {
+         	*Order: DOC_SETUP.11
+         	*Cmd: ""
+        }
+    }
+}
+
+*%
+*% Resolution
+*%
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: Option1
+
+    *Option: Option1
+    {
+        *Name: "203 x 203" =DOTS_PER_INCH
+        *DPI: PAIR(203, 203)
+        *TextDPI: PAIR(203,203)
+        *SpotDiameter: 170
+        *Command: CmdSendBlockData { *Cmd: "" }
+    }
+}
+
+*%
+*% Paper size
+*%
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: ZIJIPAPER420
+    *Option: ZIJIPAPER210
+    {
+        *rcNameID: 850
+
+        *PageDimensions: PAIR(1920, 5034)
+        *PrintableArea: PAIR(1726, 5034)
+        *PrintableOrigin: PAIR(96, 0)
+    }
+    *Option: ZIJIPAPER297
+    {
+        *rcNameID: 851
+
+        *PageDimensions: PAIR(1920, 7122)
+        *PrintableArea: PAIR(1726, 7122)
+        *PrintableOrigin: PAIR(96, 0)
+    }
+    *Option: ZIJIPAPER420
+    {
+        *rcNameID: 852
+
+        *PageDimensions: PAIR(1920, 78546)
+        *PrintableArea: PAIR(1726, 78546)
+        *PrintableOrigin: PAIR(96, 0)
+    }
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(1920, 480)
+        *MaxSize: PAIR(1920, 98300)
+        *MaxPrintableWidth: 1152
+        *MinLeftMargin: 0
+        *CenterPrintable?: TRUE
+    }
+}
+
+*%
+*% Color mode
+*%
+*Feature: ColorMode
+{
+    *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+    *DefaultOption: MONO
+
+    *Option: MONO
+    {
+        *rcNameID: =MONO_DISPLAY
+        *DrvBPP: 1
+        *DevNumOfPlanes: 0
+        *DevBPP: 0
+        *IPCallbackID: 1
+        *Color?: FALSE
+    }
+}
+
+*%
+*% Halftone
+*%
+*Feature: Halftone
+{
+    *rcNameID: =HALFTONING_DISPLAY
+    *DefaultOption: HT_PATSIZE_AUTO
+
+    *Option: HT_PATSIZE_AUTO
+    {
+        *rcNameID: =HT_AUTO_SELECT_DISPLAY
+    }
+    *Option: HT_PATSIZE_16x16_M
+    {
+        *Name: "16x16"
+    }
+    *Option: HT_PATSIZE_14x14_M
+    {
+        *Name: "14x14"
+    }
+    *Option: HT_PATSIZE_12x12_M
+    {
+        *Name: "12x12"
+    }
+    *Option: HT_PATSIZE_10x10_M
+    {
+        *Name: "10x10"
+    }
+    *Option: HT_PATSIZE_8x8_M
+    {
+        *Name: "8x8"
+    }
+    *Option: HT_PATSIZE_6x6_M
+    {
+        *Name: "6x6"
+    }
+    *Option: HT_PATSIZE_4x4_M
+    {
+        *Name: "4x4"
+    }
+}
+
+*Command: CmdStartDoc
+{
+    *Order: DOC_SETUP.1
+    *Cmd: "<1B>@"
+} 
+
+%*Command: CmdEndDoc
+%{
+%    *Order: JOB_FINISH.20
+%    *Cmd: "<0A><1D>V<01>"
+%}
+
+
+%*Command: CmdEndJob
+%{
+%    *Order: JOB_FINISH.21
+%    *Cmd: "<0A0A0A1B>r<1D>T<1B>@"
+%}
+
+*Command: CmdEndJob
+{
+    *Order: JOB_FINISH.21
+    *Cmd: "<1B>r<1D>T<1B>@"
+}
+
+%*Command: CmdEndPage
+%{
+%    *Order: PAGE_FINISH.1
+%    *Cmd: "<1D>S"
+%}
+
+ *Feature: zjPrintSpeed
+ {
+    *rcNameID: 716
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjPrintFastSpeed
+
+    *Option: zjPrintFastSpeed
+    {
+        *rcNameID: 717
+        *Command:CmdSelect
+        {
+            *CallbackID: 21
+            *Order: DOC_SETUP.6
+        }
+    }
+    *Option: zjPrintNormalSpeed
+    {
+        *rcNameID: 718
+        *Command:CmdSelect
+        {
+            *CallbackID: 22
+            *Order: DOC_SETUP.6
+        }
+    }
+}
+
+*Feature: zjPrintMode
+{
+    *rcNameID: 700
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjGraphMode
+
+    *Option: zjGraphMode
+    {
+        *rcNameID: 701
+        *Command:CmdSelect
+        {
+            *CallbackID: 10
+            *Order: DOC_SETUP.12
+        }
+    }
+    *Option: zjSoftFontMode
+    {
+        *rcNameID: 702
+        *Command:CmdSelect
+        {
+            *CallbackID: 11
+            *Order: DOC_SETUP.12
+        }
+    }
+}
+
+*Feature: zjCashDrawer
+{
+    *rcNameID: 870
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjEject1BeforePrint
+
+    *Option: zjNoCashDrawer
+    {
+        *rcNameID: 871
+        *Command:CmdSelect
+        {
+        }
+    }
+    *Option: zjEject1BeforePrint
+    {
+        *rcNameID: 872
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>p<004050>"
+        }
+    }
+    *Option: zjEject2BeforePrint
+    {
+        *rcNameID: 873
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>p<014050>"
+        }
+    }
+    *Option: zjEject12BeforePrint
+    {
+        *rcNameID: 874
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>p<0040501B>p<014050>"
+        }
+    }
+    *Option: zjEject1AfterPrint
+    {
+        *rcNameID: 875
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>q<004050>"
+        }
+    }
+    *Option: zjEject2AfterPrint
+    {
+        *rcNameID: 876
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>q<014050>"
+        }
+    }
+    *Option: zjEject12AfterPrint
+    {
+        *rcNameID: 877
+        *Command:CmdSelect
+        {
+            *Order: JOB_SETUP.1
+            *Cmd: "<1B>q<0040501B>q<014050>"
+        }
+    }
+}
+
+*Feature: ITEM4
+{
+    *rcNameID: 703
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: ITEM5
+
+    *Option: ITEM5
+    {
+        *rcNameID: 704
+        *Command:CmdSelect
+        {
+            *CallbackID: 12
+            *Order: DOC_SETUP.2
+        }
+    }
+    *Option: ITEM6
+    {
+        *rcNameID: 705
+        *Command:CmdSelect
+        {
+            *CallbackID: 13
+            *Order: DOC_SETUP.2
+        }
+    }
+}
+
+*Feature: zjPrintTrailingMarginOrNot
+{
+    *rcNameID: 713
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjNotPrintTrailingMargin
+
+    *Option: zjPrintTrailingMargin
+    {
+        *rcNameID: 715
+        *Command:CmdSelect
+        {
+            *CallbackID: 20
+            *Order: DOC_SETUP.5
+        }
+    }
+    *Option: zjNotPrintTrailingMargin
+    {
+        *rcNameID: 714
+        *Command:CmdSelect
+        {
+            *CallbackID: 19
+            *Order: DOC_SETUP.5
+        }
+    }
+}
+
+
+*%*Feature: ITEM10
+*%{
+*%    *rcNameID: 709
+*%    *FeatureType: PRINTER_PROPERTY
+*%    *DefaultOption: ITEM13
+*%
+*%    *Option: ITEM11
+*%    {
+*%        *rcNameID: 710
+*%        *Command:CmdSelect
+*%        {
+*%            *CallbackID: 16
+*%            *Order: DOC_SETUP.4
+*%        }
+*%    }
+*%    *Option: ITEM12
+*%    {
+*%        *rcNameID: 711
+*%        *Command:CmdSelect
+*%        {
+*%            *CallbackID: 17
+*%            *Order: DOC_SETUP.4
+*%        }
+*%    }
+*%
+*%    *Option: ITEM13
+*%    {
+*%        *rcNameID: 712
+*%        *Command:CmdSelect
+*%        {
+*%            *CallbackID: 18
+*%            *Order: DOC_SETUP.4
+*%        }
+*%    }
+*%}
+
+*Feature: zjTrailingMargin
+{
+    *rcNameID: 801
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zj30mm
+
+    *Option: zj3mm
+    {
+        *rcNameID: 719
+        *Command:CmdSelect
+        {
+            *CallbackID: 30
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj6mm
+    {
+        *rcNameID: 720
+        *Command:CmdSelect
+        {
+            *CallbackID: 31
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj9mm
+    {
+        *rcNameID: 721
+        *Command:CmdSelect
+        {
+            *CallbackID: 32
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj12mm
+    {
+        *rcNameID: 722
+        *Command:CmdSelect
+        {
+            *CallbackID: 33
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj15mm
+    {
+        *rcNameID: 723
+        *Command:CmdSelect
+        {
+            *CallbackID: 34
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj18mm
+    {
+        *rcNameID: 724
+        *Command:CmdSelect
+        {
+            *CallbackID: 35
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj21mm
+    {
+        *rcNameID: 725
+        *Command:CmdSelect
+        {
+            *CallbackID: 36
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj24mm
+    {
+        *rcNameID: 726
+        *Command:CmdSelect
+        {
+            *CallbackID: 37
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj27mm
+    {
+        *rcNameID: 727
+        *Command:CmdSelect
+        {
+            *CallbackID: 38
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj30mm
+    {
+        *rcNameID: 728
+        *Command:CmdSelect
+        {
+            *CallbackID: 39
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj33mm
+    {
+        *rcNameID: 729
+        *Command:CmdSelect
+        {
+            *CallbackID: 40
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj36mm
+    {
+        *rcNameID: 730
+        *Command:CmdSelect
+        {
+            *CallbackID: 41
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj39mm
+    {
+        *rcNameID: 731
+        *Command:CmdSelect
+        {
+            *CallbackID: 42
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj42mm
+    {
+        *rcNameID: 732
+        *Command:CmdSelect
+        {
+            *CallbackID: 43
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj45mm
+    {
+        *rcNameID: 733
+        *Command:CmdSelect
+        {
+            *CallbackID: 44
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj51mm
+    {
+        *rcNameID: 734
+        *Command:CmdSelect
+        {
+            *CallbackID: 45
+            *Order: DOC_SETUP.7
+        }
+    }
+    *Option: zj57mm
+    {
+        *rcNameID: 735
+        *Command:CmdSelect
+        {
+            *CallbackID: 46
+            *Order: DOC_SETUP.7
+        }
+    }
+}
+
+*Feature: zjPaperCutting
+{
+    *rcNameID: 860
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 861
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *Cmd: ""
+        }
+    }
+    *Option: Option2
+    {        
+        *rcNameID: 862
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *Cmd: ""
+        }
+    }
+    *Option: zjNoCutting
+    {
+        *rcNameID: 863
+    }
+    *Option: Option4
+    {
+        *rcNameID: 864
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *Cmd: ""
+        }
+    }
+    *Option: Option5
+    {
+        *rcNameID: 865
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *Cmd: ""
+        }
+    }
+}
+
+*Switch: zjPaperCutting
+{
+    *Case: Option1
+    {
+        *Command: CmdEndPage
+        {
+            *Order: PAGE_FINISH.20
+            *CallbackID: =CMDID_CUTTING_AFTER_PAGE
+        }
+    }
+    *Case: Option2
+    {
+        *Command: CmdEndDoc
+        {
+            *Order: JOB_FINISH.20
+            *Cmd: "<1D>V<01>"
+        }
+    }
+    *Case: zjNoCutting
+    {
+        *Command: CmdEndDoc
+        {
+            *Order: JOB_FINISH.20
+            *Cmd: ""
+        }
+    }
+    *Case: Option4
+    {
+        *Command: CmdEndPage
+        {
+            *Order: JOB_FINISH.20
+            *Cmd: ""
+        }
+    }
+    *Case: Option5
+    {
+        *Command: CmdEndDoc
+        {
+            *Order: JOB_FINISH.20
+            *Cmd: ""
+        }
+    }
+} 
+
+*Feature: BeeperSetting
+{
+    *rcNameID: 880
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjBeepBeforePage
+    *Option: zjNoBeep
+    {
+        *rcNameID: 881
+    }
+    *Option: zjBeepAfterPage
+    {
+        *rcNameID: 882
+        *Command: CmdSelect
+        {
+            *Order: PAGE_FINISH.2 
+            *CallbackID: =CMDID_BEEP_AFTER_PAGE
+        }
+    }
+    *Option: zjBeepBeforePage
+    {
+        *rcNameID: 883
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.1
+            *Cmd: "<1B420401>"
+        }
+    }    
+    *Option: zjBeepAfterDoc
+    {
+        *rcNameID: 884
+        *Command: CmdSelect
+        {
+            *Order: JOB_FINISH.2 
+            *Cmd: "<1B420401>"
+        }
+    }
+    *Option: zjBeepBeforeDoc
+    {
+        *rcNameID: 885
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.14
+            *Cmd: "<1B420401>"
+        }
+    }  
+}
+
+*Feature: PrintNVLogo
+{
+    *rcNameID: 890
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: Option1
+
+    *Option: Option1
+    {
+        *rcNameID: 891
+    }
+    *Option: Option2
+    {
+        *rcNameID: 892
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<01001B>a<00>"
+        }
+    }
+    *Option: Option3
+    {
+        *rcNameID: 893
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<02001B>a<00>"
+        }
+    }
+    *Option: Option4
+    {
+        *rcNameID: 894
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<03001B>a<00>"
+        }
+    }
+    *Option: Option5
+    {
+        *rcNameID: 895
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<04001B>a<00>"
+        }
+    }
+    *Option: Option6
+    {
+        *rcNameID: 896
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *Cmd: "<1B>a<011C>p<05001B>a<00>"
+        }
+    }
+    *Option: Option7
+    {
+        *rcNameID: 897
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<06001B>a<00>"
+        }
+    }
+    *Option: Option8
+    {
+        *rcNameID: 898
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<07001B>a<00>"
+        }
+    }
+    *Option: Option9
+    {
+        *rcNameID: 899
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>a<011C>p<08001B>a<00>"
+        }
+    }
+}
+
+*Feature: zjCodePage
+{
+    *rcNameID: 900
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: zjPC437(Std.Europe)(1)
+
+    *Option: zjChinese
+    {
+        *rcNameID: 901
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><26>"
+        }
+    }
+    *Option: zj(Arabic)
+    {
+        *rcNameID: 902
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<16>"
+        }
+    }
+
+    *Option: zjPC864(Arabic)
+    {
+        *rcNameID: 903
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<3F>"
+        }
+    }
+
+    *Option: zjPC1001(Arabic)
+    {
+        *rcNameID: 904
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<52>"
+        }
+    }
+
+    *Option: zjPC3848(Brazil-ABICOMP)
+    {
+        *rcNameID: 905
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<51>"
+        }
+    }
+
+    *Option: zjPC3847(Brazil-ABNT)
+    {
+        *rcNameID: 906
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<50>"
+        }
+    }
+
+    *Option: zjPC855(Bulgarian)
+    {
+        *rcNameID: 907
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<3C>"
+        }
+    }
+
+    *Option: zjPC3021(Bulgarian)
+    {
+        *rcNameID: 908
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<58>"
+        }
+    }
+
+    *Option: zjPC863(Canadian)(1)
+    {
+        *rcNameID: 909
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<04>"
+        }
+    }
+
+    *Option: zjPC863(Canadian)(2)
+    {
+        *rcNameID: 910
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<39>"
+        }
+    }
+
+    *Option: zjPC3844(CS2)
+    {
+        *rcNameID: 911
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<4D>"
+        }
+    }
+
+    *Option: zjPC866(Cyrillic#2)
+    {
+        *rcNameID: 912
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<11>"
+        }
+    }
+
+    *Option: zjWPC1251(Cyrillic)
+    {
+        *rcNameID: 913
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<49>"
+        }
+    }
+
+    *Option: zj(EastEurope)
+    {
+        *rcNameID: 914
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<09>"
+        }
+    }
+
+    *Option: zjPC3001(Estonian-1)
+    {
+        *rcNameID: 915
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<54>"
+        }
+    }
+
+    *Option: zjPC3002(Estonian-2)
+    {
+        *rcNameID: 916
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<55>"
+        }
+    }
+
+    *Option: zjPC3841(Gost)
+    {
+        *rcNameID: 917
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<4B>"
+        }
+    }
+
+    *Option: zj(Greek)
+    {
+        *rcNameID: 918
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<07>"
+        }
+    }
+
+    *Option: zjPC737(Greek)
+    {
+        *rcNameID: 919
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<40>"
+        }
+    }
+
+    *Option: zjPC851(Greek)
+    {
+        *rcNameID: 920
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<41>"
+        }
+    }
+
+    *Option: zjPC869(Greek)
+    {
+        *rcNameID: 921
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<42>"
+        }
+    }
+
+    *Option: zjPC928(Greek)
+    {
+        *rcNameID: 922
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<43>"
+        }
+    }
+
+    *Option: zj(Hebrew)(1)
+    {
+        *rcNameID: 923
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<08>"
+        }
+    }
+
+    *Option: zj(Hebrew)(2)
+    {
+        *rcNameID: 924
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<1F>"
+        }
+    }
+
+    *Option: zjPC862(Hebrew)
+    {
+        *rcNameID: 925
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<3E>"
+        }
+    }
+
+    *Option: zjPC3845(Hungarian)
+    {
+        *rcNameID: 926
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<4E>"
+        }
+    }
+
+    *Option: zjPC861(Icelandic)
+    {
+        *rcNameID: 927
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<38>"
+        }
+    }
+
+    *Option: zj(Iran)
+    {
+        *rcNameID: 928
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<0A>"
+        }
+    }
+
+    *Option: zj(IranII)
+    {
+        *rcNameID: 929
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<14>"
+        }
+    }
+
+    *Option: zjWPC1255(Israel)
+    {
+        *rcNameID: 930
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<20>"
+        }
+    }
+
+    *Option: zj(Katakana)(1)
+    {
+        *rcNameID: 931
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<01>"
+        }
+    }
+
+    *Option: zj(Katakana)(2)
+    {
+        *rcNameID: 932
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<33>"
+        }
+    }
+
+    *Option: zjWPC1252(Latin-1)
+    {
+        *rcNameID: 933
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<47>"
+        }
+    }
+
+    *Option: zjPC852(Latin2)
+    {
+        *rcNameID: 934
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<12>"
+        }
+    }
+
+    *Option: zjPC852(Latin-2)
+    {
+        *rcNameID: 935
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<36>"
+        }
+    }
+
+    *Option: zjWPC1250(Latin-2)
+    {
+        *rcNameID: 936
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<48>"
+        }
+    }
+
+    *Option: zj(Latvian)
+    {
+        *rcNameID: 937
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<15>"
+        }
+    }
+
+    *Option: zjPC3011(Latvian-1)
+    {
+        *rcNameID: 938
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<56>"
+        }
+    }
+
+    *Option: zjPC3012(Latvian-2)
+    {
+        *rcNameID: 939
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<57>"
+        }
+    }
+
+    *Option: zjPC772(Lithuanian)
+    {
+        *rcNameID: 940
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<44>"
+        }
+    }
+
+    *Option: zjPC774(Lithuanian)
+    {
+        *rcNameID: 941
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<45>"
+        }
+    }
+
+    *Option: zjPC2001(Lithuanian-KBL)
+    {
+        *rcNameID: 942
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<53>"
+        }
+    }
+
+    *Option: zjPC3041(Maltese)
+    {
+        *rcNameID: 943
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<59>"
+        }
+    }
+
+    *Option: zjPC850(Multilingual)
+    {
+        *rcNameID: 944
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<02>"
+        }
+    }
+
+    *Option: zjPC858(Multilingual)
+    {
+        *rcNameID: 945
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<35>"
+        }
+    }
+
+    *Option: zjPC865(Nordic)(1)
+    {
+        *rcNameID: 946
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<05>"
+        }
+    }
+
+    *Option: zjPC865(Nordic)(2)
+    {
+        *rcNameID: 947
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<3A>"
+        }
+    }
+
+    *Option: zjPC1001
+    {
+        *rcNameID: 948
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<1D>"
+        }
+    }
+
+    *Option: zjPC747
+    {
+        *rcNameID: 949
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<18>"
+        }
+    }
+
+    *Option: zjPC858
+    {
+        *rcNameID: 950
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<13>"
+        }
+    }
+
+    *Option: zjPC864
+    {
+        *rcNameID: 951
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<1C>"
+        }
+    }
+
+    *Option: zjPC3843(Polish)
+    {
+        *rcNameID: 952
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<4C>"
+        }
+    }
+
+    *Option: zjPC860(Portuguese)(1)
+    {
+        *rcNameID: 953
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<03>"
+        }
+    }
+
+    *Option: zjPC860(Portuguese)(2)
+    {
+        *rcNameID: 954
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<37>"
+        }
+    }
+
+    *Option: zj(PT151,1251)
+    {
+        *rcNameID: 955
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<17>"
+        }
+    }
+
+    *Option: zjPC866(Russian)
+    {
+        *rcNameID: 956
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<3B>"
+        }
+    }
+
+    *Option: zjPC3840(Russian)
+    {
+        *rcNameID: 957
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<4A>"
+        }
+    }
+
+    *Option: zjPC437(Std.Europe)(1)
+    {
+        *rcNameID: 958
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<00>"
+        }
+    }
+
+    *Option: zjPC437(Std.Europe)(2)
+    {
+        *rcNameID: 959
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<32>"
+        }
+    }
+
+    *Option: zjPC437(Std.Europe)(3)
+    {
+        *rcNameID: 960
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<34>"
+        }
+    }
+
+    *Option: zj(Thai)
+    {
+        *rcNameID: 961
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<FF>"
+        }
+    }
+
+    *Option: zjPC874(Thai)
+    {
+        *rcNameID: 962
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<46>"
+        }
+    }
+
+    *Option: zjPC857(Turkey)
+    {
+        *rcNameID: 963
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<3D>"
+        }
+    }
+
+    *Option: zjPC3846(Turkish)
+    {
+        *rcNameID: 964
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<4F>"
+        }
+    }
+
+    *Option: zj(Uigur)
+    {
+        *rcNameID: 965
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<1E>"
+        }
+    }
+
+    *Option: zj(Vietnam)
+    {
+        *rcNameID: 966
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<1B>"
+        }
+    }
+
+    *Option: zj(WestEurope)
+    {
+        *rcNameID: 967
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<06>"
+        }
+    }
+
+    *Option: zjWPC1252
+    {
+        *rcNameID: 968
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<10>"
+        }
+    }
+
+    *Option: zjWPC1257
+    {
+        *rcNameID: 969
+        *Command:CmdSelect
+        {
+            *Order: DOC_SETUP.13
+            *Cmd: "<1C><2E><1B>t<19>"
+        }
+    }
+}
+
+*Command: CmdCR: ""
+*Command: CmdLF: ""
+*Command: CmdFF: ""
+*%OptimizeLeftBound?: FALSE
+
+*RotateCoordinate?: TRUE
+*RotateFont?: TRUE
+*RotateRaster?: TRUE
+
