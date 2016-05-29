@@ -22,12 +22,23 @@ namespace domain_lib.model
 
         private string _name = String.Empty;
 
+        
+
         #endregion
 
     	#region Constructor
 
         public Material()
         {
+        }
+
+        public Material(long id, long unit_id, string code, string name)
+        {
+            _id = id;
+            _unit_Id = unit_id;
+            _code = code;
+            _name = name;
+
         }
 
     	#endregion
@@ -69,6 +80,8 @@ namespace domain_lib.model
             get { return _name; }
             set { _name = value; }
         }
+
+        
 
         #endregion
 

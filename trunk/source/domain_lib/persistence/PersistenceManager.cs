@@ -399,6 +399,7 @@ namespace domain_lib.persistence
                 var listBillDtos = new List<BillDto>();
                 foreach (Bill bill in allBills)
                 {
+                    
 
                     var billDto = new BillDto()
                     {
@@ -416,6 +417,37 @@ namespace domain_lib.persistence
                     listBillDtos.Add(billDto);
                 }
                 return listBillDtos;
+            }
+        }
+
+        public List<MaterialDto> GetAllMaterial()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select new Material(b.Id, b.UnitId, b.Code, b.Name) "
+                        + "from Material b"); 
+
+                // Get the matching objects
+                var allMaterials = query.List();
+
+                // Update Role info
+                var listMaterialDtos = new List<MaterialDto>();
+                foreach (Material material in allMaterials)
+                {
+                    var units = RetrieveEquals<Unit>("Id", material.UnitId);
+
+                    var materialDto = new MaterialDto()
+                    {
+                        Id = material.Id,
+                        UnitId = material.UnitId,
+                        Code = material.Code,
+                        Name = material.Name,
+                        UnitCode = units[0].Code,
+                        UnitName = units[0].Name
+                    };
+                    listMaterialDtos.Add(materialDto);
+                }
+                return listMaterialDtos;
             }
         }
 
@@ -449,5 +481,7 @@ namespace domain_lib.persistence
         }
 
         #endregion
+
+        
     }
 }

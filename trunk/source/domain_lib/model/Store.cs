@@ -22,7 +22,7 @@ namespace domain_lib.model
 
         private string _stored_Status = String.Empty;
 
-        private DateTime _stored_Date = default(DateTime);
+        private DateTime? _stored_Date = default(DateTime);
 
         private string _stored_By = String.Empty;
 
@@ -87,7 +87,7 @@ namespace domain_lib.model
         /// <summary>
         /// Stored Date.
         /// </summary>
-        public virtual DateTime StoredDate
+        public virtual DateTime? StoredDate
         {
             get { return _stored_Date; }
             set { _stored_Date = value; }

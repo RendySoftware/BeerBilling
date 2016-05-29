@@ -5,13 +5,12 @@ using System.Text;
 
 namespace BeerBilling.util
 {
-    class ImportExportType
+    public class ImportExportType
     {
-        public static ImportExportType IMPORT = new ImportExportType("IMP", "Nhập kho");
-        public static ImportExportType EXPORT = new ImportExportType("EXP", "Xuất kho");
+        public static ImportExportType IMPORT = new ImportExportType("IMPORT", "Nhập kho");
+        public static ImportExportType EXPORT = new ImportExportType("EXPORT", "Xuất kho");
 
         private string _code;
-
         private string _name;
 
         private ImportExportType( String code, String name)

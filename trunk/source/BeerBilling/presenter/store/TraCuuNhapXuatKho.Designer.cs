@@ -265,6 +265,7 @@
             this.Controls.Add(this.impexpListGroupBox);
             this.Controls.Add(this.mGroupBox1);
             this.Name = "TraCuuNhapXuatKho";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tra cứu";
             this.mGroupBox1.ResumeLayout(false);
             this.mGroupBox1.PerformLayout();

@@ -81,6 +81,7 @@
     <Compile Include="presenter\statistic\ThongKeTonKho.Designer.cs">
       <DependentUpon>ThongKeTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\StoreDAOImpl.cs" />
     <Compile Include="presenter\store\NhapXuatKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +114,7 @@
     <Compile Include="view\IBillingDAO.cs" />
     <Compile Include="view\IDanhMuc.cs" />
     <Compile Include="view\IDanhSachUser.cs" />
+    <Compile Include="view\IStoreDAO.cs" />
     <EmbeddedResource Include="main\MdiMain.resx">
       <DependentUpon>MdiMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,7 +154,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

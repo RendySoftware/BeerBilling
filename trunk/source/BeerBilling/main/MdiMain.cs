@@ -60,7 +60,7 @@ namespace BeerBilling.main
 
         private void mnuNhapKho_Click(object sender, EventArgs e)
         {
-            NhapXuatKho nhapKhoFrm = new NhapXuatKho();
+            NhapXuatKho nhapKhoFrm = new NhapXuatKho(ImportExportType.IMPORT);
             nhapKhoFrm.MdiParent = this;
             nhapKhoFrm.Show();
         }
@@ -74,7 +74,7 @@ namespace BeerBilling.main
 
         private void mnuXuatHoaDon_Click(object sender, EventArgs e)
         {
-            NhapXuatKho nhapKhoFrm = new NhapXuatKho();
+            NhapXuatKho nhapKhoFrm = new NhapXuatKho(ImportExportType.EXPORT);
             nhapKhoFrm.MdiParent = this;
             nhapKhoFrm.Show();
         }

@@ -68,11 +68,13 @@
     <Compile Include="dto\CommonDto.cs" />
     <Compile Include="dto\CustomerDto.cs" />
     <Compile Include="dto\DanhMucDto.cs" />
+    <Compile Include="dto\MaterialDto.cs" />
     <Compile Include="dto\MenuDto.cs" />
     <Compile Include="dto\ResOrderDto.cs" />
     <Compile Include="dto\ResTableDto.cs" />
     <Compile Include="dto\RoleDto.cs" />
     <Compile Include="dto\StoreDto.cs" />
+    <Compile Include="dto\UnitDto.cs" />
     <Compile Include="dto\UserDto.cs" />
     <Compile Include="model\Category.cs" />
     <Compile Include="model\Bill.cs" />

@@ -68,5 +68,10 @@ namespace domain_lib.controller
         }
 
         #endregion
+
+        public List<MaterialDto> GetAllMaterial()
+        {
+            return m_PersistenceManager.GetAllMaterial();
+        }
     }
 }
