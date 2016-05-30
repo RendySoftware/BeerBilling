@@ -233,6 +233,7 @@
             this.btnThanhToan.TabIndex = 17;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnInHoaDon
             // 
@@ -243,6 +244,7 @@
             this.btnInHoaDon.TabIndex = 16;
             this.btnInHoaDon.Text = "In hóa đơn";
             this.btnInHoaDon.UseVisualStyleBackColor = true;
+            this.btnInHoaDon.Click += new System.EventHandler(this.btnInHoaDon_Click);
             // 
             // btnHuy
             // 

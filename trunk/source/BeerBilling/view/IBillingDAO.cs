@@ -11,6 +11,7 @@ namespace BeerBilling.view
         List<BillDto> GetAllBill();
         List<BillDto> GetAllNotCompletedBill();
         bool AddNewBill(BillDto billDto);
+        bool ThanhToan(BillDto billDto);
         List<ResTableDto> GetAllResTableDto();
         List<ResOrderDto> GetAllResOrderBy(long billId);
         List<MenuDto> GetAllMenuDto();

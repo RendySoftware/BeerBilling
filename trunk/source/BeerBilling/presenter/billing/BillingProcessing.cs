@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BeerBilling.presenter.user;
 using BeerBilling.view;
+using core_lib.common;
 using domain_lib.dto;
 using mcontrol;
 using mcontrol.util;
@@ -60,6 +61,20 @@ namespace BeerBilling.presenter.billing
         private void OnFillThucDon2Grid(object sender, EventArgs e)
         {
             var billId = GetSelectedBillId();
+            var billDto = _billingDao.getBillDto(billId);
+            txtInHoaDon.Text = "YES".Equals(billDto.IsPrinted) ? "Đã in" : "Chưa in";
+            string thanhToan;
+            if ("YES".Equals(billDto.Payment))
+            {
+                thanhToan = "Đã thanh toán";
+            } else if ("CANCEL".Equals(billDto.Payment))
+            {
+                thanhToan = "Hủy";
+            } else
+            {
+                thanhToan = "Chưa thanh toán";
+            }
+            txtThanhToan.Text = thanhToan;
             var allResOrderDtos = _billingDao.GetAllResOrderBy(billId);
             dgvThucDon.Rows.Clear();
             float tongTien = 0;
@@ -173,6 +188,36 @@ namespace BeerBilling.presenter.billing
                 return false;
             }
             return true;
+        }
+
+        private void btnInHoaDon_Click(object sender, EventArgs e)
+        {
+            var dr = MMessageBox.Show(this, "Bạn có muốn in hóa đơn?", "Thông báo"
+                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+            if (DialogResult.No == dr)
+            {
+                return;
+            }
+            var billId = GetSelectedBillId();
+            var billDto = _billingDao.getBillDto(billId);
+            billDto.IsPrinted = "YES";
+            _billingDao.ThanhToan(billDto);
+            OnFillThucDon2Grid(null, null);
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            var dr = MMessageBox.Show(this, "Bạn có muốn thanh toán?", "Thông báo"
+                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+            if (DialogResult.No == dr)
+            {
+                return;
+            }
+            var billId = GetSelectedBillId();
+            var billDto = _billingDao.getBillDto(billId);
+            billDto.Payment = "YES";
+            _billingDao.ThanhToan(billDto);
+            OnFillThucDon2Grid(null, null);
         }
     }
 }

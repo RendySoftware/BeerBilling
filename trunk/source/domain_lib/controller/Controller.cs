@@ -177,5 +177,28 @@ namespace domain_lib.controller
         {
             return m_PersistenceManager.GetAllMenuDto();
         }
+
+        public BillDto getBillDto(long billId)
+        {
+            var bill = m_PersistenceManager.RetrieveEquals<Bill>("Id", billId)[0];
+            return new BillDto()
+                       {
+                           Id = bill.Id,
+                           BillingDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.BillingDate),
+                           BillingNumber = bill.BillingNumber,
+                           CancelReason = bill.CancelReason,
+                           Payment = bill.Payment,
+                           IsPrinted = bill.IsPrinted
+                       };
+        }
+
+        public bool ThanhToan(BillDto billDto)
+        {
+            var bill = m_PersistenceManager.RetrieveEquals<Bill>("Id", billDto.Id)[0];
+            bill.Payment = billDto.Payment;
+            bill.IsPrinted = billDto.IsPrinted;
+            m_PersistenceManager.Save(bill);
+            return true;
+        }
     }
 }

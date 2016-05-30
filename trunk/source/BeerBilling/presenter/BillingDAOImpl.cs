@@ -47,5 +47,15 @@ namespace BeerBilling.presenter
         {
             return _controller.SaveResOrder(resOrderDto);
         }
+
+        public BillDto getBillDto(long billId)
+        {
+            return _controller.getBillDto(billId);
+        }
+
+        public bool ThanhToan(BillDto billDto)
+        {
+            return _controller.ThanhToan(billDto);
+        }
     }
 }

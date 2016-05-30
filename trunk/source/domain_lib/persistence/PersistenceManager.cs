@@ -482,9 +482,8 @@ namespace domain_lib.persistence
                 var query = session.CreateQuery("select new Bill(b.Id, b.BillingNumber, b.BillingDate, "
                     + "b.TableId, t.Position, b.Payment, b.CreatedBy, b.CreatedDate, b.IsPrinted, b.CancelReason) "
                     + "from Bill b, ResTable t "
-                    + " where b.TableId = t.Id and (b.IsPrinted is null or b.IsPrinted like :nullPrinted or b.CancelReason is null or b.CancelReason like :nullReason)");
-                query.SetParameter("nullPrinted", "");
-                query.SetParameter("nullReason", "");
+                    + " where b.TableId = t.Id and (b.Payment <> :payment)");
+                query.SetParameter("payment", "YES");
 
                 // Get the matching objects
                 var allBills = query.List();
