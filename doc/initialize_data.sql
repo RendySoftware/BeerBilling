@@ -120,4 +120,3 @@ go
 
 set IDENTITY_INSERT Material off
 go
- 

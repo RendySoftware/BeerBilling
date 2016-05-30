@@ -12,5 +12,8 @@ namespace BeerBilling.view
         List<BillDto> GetAllNotCompletedBill();
         bool AddNewBill(BillDto billDto);
         List<ResTableDto> GetAllResTableDto();
+        List<ResOrderDto> GetAllResOrderBy(long billId);
+        List<MenuDto> GetAllMenuDto();
+        bool AddNewResOrder(ResOrderDto resOrderDto);
     }
 }

@@ -117,10 +117,9 @@ namespace domain_lib.controller
         {
             try
             {
-                var tableId = GetTableIdByNumber(billDto.TableNumber);
                 Bill bill = new Bill()
                 {
-                    TableId = tableId,
+                    TableId = billDto.TableId,
                     BillingNumber = billDto.BillingNumber,
                     BillingDate = DateTime.Now,
                     CreatedBy = billDto.CreatedBy,
@@ -138,6 +137,32 @@ namespace domain_lib.controller
             }
         }
 
+        public bool SaveResOrder(ResOrderDto resOrderDto)
+        {
+            try
+            {
+                ResOrder resOrder = new ResOrder()
+                {
+                    Id = resOrderDto.Id,
+                    MenuId = resOrderDto.MenuId,
+                    BillId = resOrderDto.BillId,
+                    Amount = resOrderDto.Amount,
+                    Discount = resOrderDto.Discount,
+                    CreatedBy = resOrderDto.CreatedBy,
+                    CreatedDate = DateTime.Now,
+                    UpdatedBy = resOrderDto.UpdatedBy,
+                    UpdatedDate = DateTime.Now
+                };
+                m_PersistenceManager.Save<ResOrder>(resOrder);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
         public List<ResTableDto> GetAllResTableDto()
         {
             return m_PersistenceManager.GetAllResTableDto();
@@ -146,6 +171,11 @@ namespace domain_lib.controller
         public List<ResOrderDto> GetAllResOrderBy(long billId)
         {
             return m_PersistenceManager.GetAllResOrderBy(billId);
+        }
+
+        public List<MenuDto> GetAllMenuDto()
+        {
+            return m_PersistenceManager.GetAllMenuDto();
         }
     }
 }

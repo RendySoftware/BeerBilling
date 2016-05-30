@@ -482,7 +482,9 @@ namespace domain_lib.persistence
                 var query = session.CreateQuery("select new Bill(b.Id, b.BillingNumber, b.BillingDate, "
                     + "b.TableId, t.Position, b.Payment, b.CreatedBy, b.CreatedDate, b.IsPrinted, b.CancelReason) "
                     + "from Bill b, ResTable t "
-                    + " where b.TableId = t.Id and (b.IsPrinted is null or b.IsPrinted like '' or b.CancelReason is null or b.CancelReason like '')");
+                    + " where b.TableId = t.Id and (b.IsPrinted is null or b.IsPrinted like :nullPrinted or b.CancelReason is null or b.CancelReason like :nullReason)");
+                query.SetParameter("nullPrinted", "");
+                query.SetParameter("nullReason", "");
 
                 // Get the matching objects
                 var allBills = query.List();
@@ -554,11 +556,46 @@ namespace domain_lib.persistence
             }
         }
 
+        public List<MenuDto> GetAllMenuDto()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Menu m where m.IsActive = :isActive order by m.Code asc");
+                query.SetParameter("isActive", "YES");
+
+                // Get the matching objects
+                var allMenus = query.List();
+
+                // Update Role info
+                var listMenuDtos = new List<MenuDto>();
+                foreach (Menu menu in allMenus)
+                {
+                    var resTableDto = new MenuDto()
+                    {
+                        Id = menu.Id,
+                        CategoryId = menu.CategoryId,
+                        Code = menu.Code,
+                        Name = menu.Name,
+                        UnitId = menu.UnitId,
+                        Price = menu.Price,
+                        Description = menu.Description,
+                        IsActive = menu.IsActive,
+                        CreatedBy = menu.CreatedBy,
+                        CreatedDate = menu.CreatedDate,
+                        UpdatedBy = menu.UpdatedBy,
+                        UpdatedDate = menu.UpdatedDate
+                    };
+                    listMenuDtos.Add(resTableDto);
+                }
+                return listMenuDtos;
+            }
+        }
+
         public List<ResOrderDto> GetAllResOrderBy(long billId)
         {
             using (ISession session = m_SessionFactory.OpenSession())
             {
-                var query = session.CreateQuery("select new ResOrder(m.Name, o.amount, u.Name, m.Price)"
+                var query = session.CreateQuery("select new ResOrder(o.Id, m.Name, o.Amount, o.Discount, u.Name, m.Price)"
                         + " from ResOrder o, Menu m, Unit u where o.MenuId = m.Id and m.UnitId = u.Id and o.BillId = :billId");
                 query.SetParameter("billId", billId);
 
@@ -572,7 +609,11 @@ namespace domain_lib.persistence
                     var resOrderDto = new ResOrderDto()
                                           {
                                               Id = resOrder.Id,
-                                              Amount = resOrder.Amount
+                                              MenuName = resOrder.MenuName,
+                                              Amount = resOrder.Amount,
+                                              Discount = resOrder.Discount,
+                                              UnitName = resOrder.UnitName,
+                                              MenuPrice = resOrder.MenuPrice
                                           };
                     listResOrderDtos.Add(resOrderDto);
                 }

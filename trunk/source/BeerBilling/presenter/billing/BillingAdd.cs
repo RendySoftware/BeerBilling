@@ -10,6 +10,7 @@ using BeerBilling.presenter.user;
 using BeerBilling.view;
 using domain_lib.dto;
 using mcontrol;
+using mcontrol.util;
 
 namespace BeerBilling.presenter.billing
 {
@@ -31,10 +32,17 @@ namespace BeerBilling.presenter.billing
             InitializeComponent();
 
             var allResTableDtos = _billingDao.GetAllResTableDto();
-            foreach (var dto in allResTableDtos)
+            var allDanhMucDto = new List<DanhMucDto>();
+            foreach (ResTableDto dto in allResTableDtos)
             {
-                cboBanSo.Items.Add(dto.Position);
+                allDanhMucDto.Add(new DanhMucDto()
+                                      {
+                                          Id = Convert.ToString(dto.Id),
+                                          Ma = dto.Code,
+                                          Ten = dto.Position
+                                      });
             }
+            MControlUtil.FillToComboBox(cboBanSo, allDanhMucDto);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -53,10 +61,12 @@ namespace BeerBilling.presenter.billing
             string billingNumber = txtHoaDonSo.Text;
             _billNumber = tableNumber + "_" + billingNumber;
             var billDto = new BillDto();
-            billDto.TableNumber = tableNumber;
+            var tableId = MControlUtil.GetValueFromCombobox(cboBanSo);
+            billDto.TableId = long.Parse(tableId);
             billDto.BillingNumber = int.Parse(billingNumber);
-            billDto.CreatedBy = _danhSachUser.GetCurrentUserName();
-            billDto.UpdatedBy = _danhSachUser.GetCurrentUserName();
+            string currentUserName = _danhSachUser.GetCurrentUserName();
+            billDto.CreatedBy = currentUserName;
+            billDto.UpdatedBy = currentUserName;
             _billingDao.AddNewBill(billDto);
             Dispose();
         }

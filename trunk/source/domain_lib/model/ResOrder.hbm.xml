@@ -20,6 +20,10 @@ assembly="domain_lib">
       <column name="AMOUNT" not-null="false" />
     </property>
 
+    <property name="Discount">
+      <column name="DISCOUNT" not-null="false" />
+    </property>
+
     <property name="CreatedBy">
       <column name="CREATED_BY" not-null="false" />
     </property>

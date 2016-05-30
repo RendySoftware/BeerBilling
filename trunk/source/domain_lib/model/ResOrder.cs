@@ -22,6 +22,8 @@ namespace domain_lib.model
 
         private float _amount = 0;
 
+        private float _discount = 0;
+
         private string _created_By = String.Empty;
 
         private DateTime _created_Date = default(DateTime);
@@ -44,10 +46,12 @@ namespace domain_lib.model
         {
         }
 
-        public ResOrder(string menuName, float amount, string unitName, float menuPrice)
+        public ResOrder(long id, string menuName, float amount, float discount, string unitName, float menuPrice)
         {
+            _id = id;
             _menuName = menuName;
             _amount = amount;
+            _discount = discount;
             _unitName = unitName;
             _menuPrice = menuPrice;
         }
@@ -90,6 +94,12 @@ namespace domain_lib.model
         {
             get { return _amount; }
             set { _amount = value; }
+        }
+
+        public virtual float Discount
+        {
+            get { return _discount; }
+            set { _discount = value; }
         }
 
         /// <summary>
