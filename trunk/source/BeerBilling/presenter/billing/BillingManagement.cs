@@ -13,13 +13,13 @@ namespace BeerBilling.presenter.billing
 {
     public partial class BillingManagement : Form
     {
-        private BillingDAOImpl _billingDaoImpl = new BillingDAOImpl();
+        private BillingDAOImpl _billingDao = new BillingDAOImpl();
 
         public BillingManagement()
         {
             InitializeComponent();
 
-            var allBillDto = _billingDaoImpl.GetAllBill();
+            var allBillDto = _billingDao.GetAllBill();
             FillBill2Grid(allBillDto);
         }
 

@@ -51,6 +51,12 @@
       <DependentUpon>MdiMain.cs</DependentUpon>
     </Compile>
     <Compile Include="presenter\BillingDAOImpl.cs" />
+    <Compile Include="presenter\billing\BillingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\billing\BillingAdd.Designer.cs">
+      <DependentUpon>BillingAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="presenter\billing\BillingManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="view\IStoreDAO.cs" />
     <EmbeddedResource Include="main\MdiMain.resx">
       <DependentUpon>MdiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\billing\BillingAdd.resx">
+      <DependentUpon>BillingAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\billing\BillingManagement.resx">
       <DependentUpon>BillingManagement.cs</DependentUpon>

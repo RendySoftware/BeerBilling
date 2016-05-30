@@ -359,7 +359,7 @@ namespace domain_lib.persistence
             return "0";
         }
 
-        public string getTenNsd(string userId)
+        public string GetTenNsd(string userId)
         {
             if (string.IsNullOrEmpty(userId))
             {
@@ -380,6 +380,30 @@ namespace domain_lib.persistence
                     return String.Empty;
                 }
                 return fullName;
+            }
+        }
+
+        public string GetUserName(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return String.Empty;
+            }
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select u.UserName from Users u "
+                    + " where u.UserID = :userId");
+                query.SetParameter("userId", long.Parse(userId));
+
+                // Get the matching objects
+                var userName = query.UniqueResult<string>();
+
+                // Set return value
+                if (userName == null)
+                {
+                    return String.Empty;
+                }
+                return userName;
             }
         }
 
@@ -451,6 +475,111 @@ namespace domain_lib.persistence
             }
         }
 
+        public List<BillDto> GetAllNotCompletedBill()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select new Bill(b.Id, b.BillingNumber, b.BillingDate, "
+                    + "b.TableId, t.Position, b.Payment, b.CreatedBy, b.CreatedDate, b.IsPrinted, b.CancelReason) "
+                    + "from Bill b, ResTable t "
+                    + " where b.TableId = t.Id and (b.IsPrinted is null or b.IsPrinted like '' or b.CancelReason is null or b.CancelReason like '')");
+
+                // Get the matching objects
+                var allBills = query.List();
+
+                // Update Role info
+                var listBillDtos = new List<BillDto>();
+                foreach (Bill bill in allBills)
+                {
+
+
+                    var billDto = new BillDto()
+                    {
+                        Id = bill.Id,
+                        BillingNumber = bill.BillingNumber,
+                        BillingDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.BillingDate),
+                        TableId = bill.TableId,
+                        TableNumber = bill.TableNumber,
+                        Payment = bill.Payment,
+                        CreatedBy = bill.CreatedBy,
+                        CreatedDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.CreatedDate),
+                        IsPrinted = bill.IsPrinted,
+                        CancelReason = bill.CancelReason
+                    };
+                    listBillDtos.Add(billDto);
+                }
+                return listBillDtos;
+            }
+        }
+
+        public long GetTableIdByNumber(string tableNumber)
+        {
+            if (string.IsNullOrEmpty(tableNumber))
+            {
+                return -1;
+            }
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select t.Id from ResTable t "
+                    + " where t.Position = :tableNumber");
+                query.SetParameter("tableNumber", tableNumber);
+
+                // Get the matching objects
+                return query.UniqueResult<long>();
+            }
+        }
+
+        public List<ResTableDto> GetAllResTableDto()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from ResTable b order by b.Code asc");
+
+                // Get the matching objects
+                var allResTables = query.List();
+
+                // Update Role info
+                var listResTableDtos = new List<ResTableDto>();
+                foreach (ResTable resTable in allResTables)
+                {
+                    var resTableDto = new ResTableDto()
+                    {
+                        Id = resTable.Id,
+                        Code = resTable.Code,
+                        Position = resTable.Position
+                    };
+                    listResTableDtos.Add(resTableDto);
+                }
+                return listResTableDtos;
+            }
+        }
+
+        public List<ResOrderDto> GetAllResOrderBy(long billId)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select new ResOrder(m.Name, o.amount, u.Name, m.Price)"
+                        + " from ResOrder o, Menu m, Unit u where o.MenuId = m.Id and m.UnitId = u.Id and o.BillId = :billId");
+                query.SetParameter("billId", billId);
+
+                // Get the matching objects
+                var allResOrders = query.List();
+
+                // Update Role info
+                var listResOrderDtos = new List<ResOrderDto>();
+                foreach (ResOrder resOrder in allResOrders)
+                {
+                    var resOrderDto = new ResOrderDto()
+                                          {
+                                              Id = resOrder.Id,
+                                              Amount = resOrder.Amount
+                                          };
+                    listResOrderDtos.Add(resOrderDto);
+                }
+                return listResOrderDtos;
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -481,7 +610,5 @@ namespace domain_lib.persistence
         }
 
         #endregion
-
-        
     }
 }

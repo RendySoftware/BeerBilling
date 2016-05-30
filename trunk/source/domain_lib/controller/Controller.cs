@@ -59,12 +59,22 @@ namespace domain_lib.controller
 
         public string GetTenNsd(string userId)
         {
-            return m_PersistenceManager.getTenNsd(userId);
+            return m_PersistenceManager.GetTenNsd(userId);
+        }
+
+        public string GetUserName(string userId)
+        {
+            return m_PersistenceManager.GetUserName(userId);
         }
 
         public List<BillDto> GetAllBill()
         {
             return m_PersistenceManager.GetAllBill();
+        }
+
+        public List<BillDto> GetAllNotCompletedBill()
+        {
+            return m_PersistenceManager.GetAllNotCompletedBill();
         }
 
         #endregion
@@ -96,6 +106,46 @@ namespace domain_lib.controller
                 Console.WriteLine(e.Message);
                 return false;
             }
+        }
+
+        public long GetTableIdByNumber(string tableNumber)
+        {
+            return m_PersistenceManager.GetTableIdByNumber(tableNumber);
+        }
+
+        public bool AddNewBill(BillDto billDto)
+        {
+            try
+            {
+                var tableId = GetTableIdByNumber(billDto.TableNumber);
+                Bill bill = new Bill()
+                {
+                    TableId = tableId,
+                    BillingNumber = billDto.BillingNumber,
+                    BillingDate = DateTime.Now,
+                    CreatedBy = billDto.CreatedBy,
+                    CreatedDate = DateTime.Now,
+                    UpdatedBy = billDto.UpdatedBy,
+                    UpdatedDate = DateTime.Now
+                };
+                m_PersistenceManager.SaveNew<Bill>(bill);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public List<ResTableDto> GetAllResTableDto()
+        {
+            return m_PersistenceManager.GetAllResTableDto();
+        }
+
+        public List<ResOrderDto> GetAllResOrderBy(long billId)
+        {
+            return m_PersistenceManager.GetAllResOrderBy(billId);
         }
     }
 }

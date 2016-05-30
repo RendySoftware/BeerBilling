@@ -24,6 +24,14 @@ namespace domain_lib.dto
 
         private DateTime _updated_Date = default(DateTime);
 
+        private string _menuName = String.Empty;
+
+        private string _unitName = String.Empty;
+
+        private float _menuPrice = 0;
+
+        private float _discount = 0;
+
         #endregion
 
     	#region Constructor
@@ -106,6 +114,30 @@ namespace domain_lib.dto
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        public virtual string MenuName
+        {
+            get { return _menuName; }
+            set { _menuName = value; }
+        }
+
+        public virtual string UnitName
+        {
+            get { return _unitName; }
+            set { _unitName = value; }
+        }
+
+        public virtual float MenuPrice
+        {
+            get { return _menuPrice; }
+            set { _menuPrice = value; }
+        }
+
+        public virtual float Discount
+        {
+            get { return _discount; }
+            set { _discount = value; }
         }
 
         #endregion

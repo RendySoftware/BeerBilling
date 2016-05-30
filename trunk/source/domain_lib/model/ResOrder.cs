@@ -30,6 +30,12 @@ namespace domain_lib.model
 
         private DateTime _updated_Date = default(DateTime);
 
+        private string _menuName = String.Empty;
+
+        private string _unitName = String.Empty;
+
+        private float _menuPrice = 0;
+
         #endregion
 
     	#region Constructor
@@ -38,7 +44,15 @@ namespace domain_lib.model
         {
         }
 
-    	#endregion
+        public ResOrder(string menuName, float amount, string unitName, float menuPrice)
+        {
+            _menuName = menuName;
+            _amount = amount;
+            _unitName = unitName;
+            _menuPrice = menuPrice;
+        }
+
+        #endregion
 
         #region Properties
 
@@ -112,6 +126,24 @@ namespace domain_lib.model
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        public virtual string MenuName
+        {
+            get { return _menuName; }
+            set { _menuName = value; }
+        }
+
+        public virtual string UnitName
+        {
+            get { return _unitName; }
+            set { _unitName = value; }
+        }
+
+        public virtual float MenuPrice
+        {
+            get { return _menuPrice; }
+            set { _menuPrice = value; }
         }
 
         #endregion

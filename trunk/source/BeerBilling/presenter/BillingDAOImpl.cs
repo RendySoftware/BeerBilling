@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,26 @@ namespace BeerBilling.presenter
         public List<BillDto> GetAllBill()
         {
             return _controller.GetAllBill();
+        }
+
+        public List<BillDto> GetAllNotCompletedBill()
+        {
+            return _controller.GetAllNotCompletedBill();
+        }
+
+        public bool AddNewBill(BillDto billDto)
+        {
+            return _controller.AddNewBill(billDto);
+        }
+
+        public List<ResTableDto> GetAllResTableDto()
+        {
+            return _controller.GetAllResTableDto();
+        }
+
+        public List<ResOrderDto> GetAllResOrderBy(long billId)
+        {
+            return _controller.GetAllResOrderBy(billId);
         }
     }
 }

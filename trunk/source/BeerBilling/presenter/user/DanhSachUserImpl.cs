@@ -38,5 +38,9 @@ namespace BeerBilling.presenter.user
             return _controller.GetTenNsd(ThamSo.UserId);
         }
 
+        public string GetCurrentUserName()
+        {
+            return _controller.GetUserName(ThamSo.UserId);
+        }
     }
 }

@@ -31,44 +31,51 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
-            this.mButton5 = new mcontrol.MButton(this.components);
+            this.dgvHoaDon = new mcontrol.MDataGridView(this.components);
+            this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThemHoaDon = new mcontrol.MButton(this.components);
             this.mGroupBox2 = new mcontrol.MGroupBox(this.components);
-            this.mButton4 = new mcontrol.MButton(this.components);
-            this.mButton3 = new mcontrol.MButton(this.components);
-            this.mButton2 = new mcontrol.MButton(this.components);
-            this.mTextBox6 = new mcontrol.MTextBox(this.components);
+            this.mLabel8 = new mcontrol.MLabel(this.components);
+            this.txtChietKhau = new mcontrol.MNumberTextBox2(this.components);
+            this.txtSoLuong = new mcontrol.MNumberTextBox2(this.components);
+            this.cboMonAn = new mcontrol.MComboBox(this.components);
+            this.btnThanhToan = new mcontrol.MButton(this.components);
+            this.btnInHoaDon = new mcontrol.MButton(this.components);
+            this.btnHuy = new mcontrol.MButton(this.components);
+            this.txtTongTien = new mcontrol.MTextBox(this.components);
             this.mLabel7 = new mcontrol.MLabel(this.components);
-            this.mDataGridView1 = new mcontrol.MDataGridView(this.components);
+            this.dgvThucDon = new mcontrol.MDataGridView(this.components);
             this.MON_AN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SO_LUONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DON_VI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DON_GIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHIET_KHAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THANH_TIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mTextBox5 = new mcontrol.MTextBox(this.components);
+            this.ResOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtThanhToan = new mcontrol.MTextBox(this.components);
             this.mLabel6 = new mcontrol.MLabel(this.components);
-            this.mTextBox4 = new mcontrol.MTextBox(this.components);
+            this.txtInHoaDon = new mcontrol.MTextBox(this.components);
             this.mLabel5 = new mcontrol.MLabel(this.components);
             this.mLabel4 = new mcontrol.MLabel(this.components);
-            this.mButton1 = new mcontrol.MButton(this.components);
-            this.mTextBox3 = new mcontrol.MTextBox(this.components);
+            this.btnThemMonAn = new mcontrol.MButton(this.components);
             this.mLabel3 = new mcontrol.MLabel(this.components);
-            this.mTextBox2 = new mcontrol.MTextBox(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.mListBox1 = new mcontrol.MListBox(this.components);
-            this.mComboBox1 = new mcontrol.MComboBox(this.components);
             this.mGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.mGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).BeginInit();
             this.SuspendLayout();
             // 
             // mGroupBox1
             // 
-            this.mGroupBox1.Controls.Add(this.mButton5);
+            this.mGroupBox1.Controls.Add(this.dgvHoaDon);
+            this.mGroupBox1.Controls.Add(this.btnThemHoaDon);
             this.mGroupBox1.Controls.Add(this.mGroupBox2);
-            this.mGroupBox1.Controls.Add(this.mListBox1);
             this.mGroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.mGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.mGroupBox1.Location = new System.Drawing.Point(12, 12);
@@ -77,34 +84,83 @@
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
-            // mButton5
+            // dgvHoaDon
             // 
-            this.mButton5.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton5.Location = new System.Drawing.Point(16, 16);
-            this.mButton5.Name = "mButton5";
-            this.mButton5.Size = new System.Drawing.Size(119, 23);
-            this.mButton5.TabIndex = 18;
-            this.mButton5.Text = "Thêm mới";
-            this.mButton5.UseVisualStyleBackColor = true;
+            this.dgvHoaDon.AllowUserToAddRows = false;
+            this.dgvHoaDon.AllowUserToDeleteRows = false;
+            this.dgvHoaDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.billNumber,
+            this.billId});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHoaDon.Location = new System.Drawing.Point(16, 46);
+            this.dgvHoaDon.MultiSelect = false;
+            this.dgvHoaDon.Name = "dgvHoaDon";
+            this.dgvHoaDon.RowHeadersVisible = false;
+            this.dgvHoaDon.Size = new System.Drawing.Size(119, 484);
+            this.dgvHoaDon.TabIndex = 19;
+            // 
+            // billNumber
+            // 
+            this.billNumber.FillWeight = 110F;
+            this.billNumber.HeaderText = "Hóa đơn";
+            this.billNumber.Name = "billNumber";
+            this.billNumber.ReadOnly = true;
+            this.billNumber.Width = 110;
+            // 
+            // billId
+            // 
+            this.billId.HeaderText = "billId";
+            this.billId.Name = "billId";
+            this.billId.ReadOnly = true;
+            this.billId.Visible = false;
+            // 
+            // btnThemHoaDon
+            // 
+            this.btnThemHoaDon.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThemHoaDon.Location = new System.Drawing.Point(16, 16);
+            this.btnThemHoaDon.Name = "btnThemHoaDon";
+            this.btnThemHoaDon.Size = new System.Drawing.Size(119, 23);
+            this.btnThemHoaDon.TabIndex = 18;
+            this.btnThemHoaDon.Text = "Thêm mới";
+            this.btnThemHoaDon.UseVisualStyleBackColor = true;
+            this.btnThemHoaDon.Click += new System.EventHandler(this.btnThemHoaDon_Click);
             // 
             // mGroupBox2
             // 
-            this.mGroupBox2.Controls.Add(this.mComboBox1);
-            this.mGroupBox2.Controls.Add(this.mButton4);
-            this.mGroupBox2.Controls.Add(this.mButton3);
-            this.mGroupBox2.Controls.Add(this.mButton2);
-            this.mGroupBox2.Controls.Add(this.mTextBox6);
+            this.mGroupBox2.Controls.Add(this.mLabel8);
+            this.mGroupBox2.Controls.Add(this.txtChietKhau);
+            this.mGroupBox2.Controls.Add(this.txtSoLuong);
+            this.mGroupBox2.Controls.Add(this.cboMonAn);
+            this.mGroupBox2.Controls.Add(this.btnThanhToan);
+            this.mGroupBox2.Controls.Add(this.btnInHoaDon);
+            this.mGroupBox2.Controls.Add(this.btnHuy);
+            this.mGroupBox2.Controls.Add(this.txtTongTien);
             this.mGroupBox2.Controls.Add(this.mLabel7);
-            this.mGroupBox2.Controls.Add(this.mDataGridView1);
-            this.mGroupBox2.Controls.Add(this.mTextBox5);
+            this.mGroupBox2.Controls.Add(this.dgvThucDon);
+            this.mGroupBox2.Controls.Add(this.txtThanhToan);
             this.mGroupBox2.Controls.Add(this.mLabel6);
-            this.mGroupBox2.Controls.Add(this.mTextBox4);
+            this.mGroupBox2.Controls.Add(this.txtInHoaDon);
             this.mGroupBox2.Controls.Add(this.mLabel5);
             this.mGroupBox2.Controls.Add(this.mLabel4);
-            this.mGroupBox2.Controls.Add(this.mButton1);
-            this.mGroupBox2.Controls.Add(this.mTextBox3);
+            this.mGroupBox2.Controls.Add(this.btnThemMonAn);
             this.mGroupBox2.Controls.Add(this.mLabel3);
-            this.mGroupBox2.Controls.Add(this.mTextBox2);
             this.mGroupBox2.Controls.Add(this.mLabel2);
             this.mGroupBox2.Controls.Add(this.mLabel1);
             this.mGroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -115,45 +171,98 @@
             this.mGroupBox2.TabIndex = 1;
             this.mGroupBox2.TabStop = false;
             // 
-            // mButton4
+            // mLabel8
             // 
-            this.mButton4.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton4.Location = new System.Drawing.Point(554, 456);
-            this.mButton4.Name = "mButton4";
-            this.mButton4.Size = new System.Drawing.Size(100, 23);
-            this.mButton4.TabIndex = 17;
-            this.mButton4.Text = "Thanh toán";
-            this.mButton4.UseVisualStyleBackColor = true;
+            this.mLabel8.AutoSize = true;
+            this.mLabel8.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.mLabel8.Location = new System.Drawing.Point(551, 26);
+            this.mLabel8.Name = "mLabel8";
+            this.mLabel8.Size = new System.Drawing.Size(19, 14);
+            this.mLabel8.TabIndex = 21;
+            this.mLabel8.Text = "%";
             // 
-            // mButton3
+            // txtChietKhau
             // 
-            this.mButton3.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton3.Location = new System.Drawing.Point(442, 456);
-            this.mButton3.Name = "mButton3";
-            this.mButton3.Size = new System.Drawing.Size(100, 23);
-            this.mButton3.TabIndex = 16;
-            this.mButton3.Text = "In hóa đơn";
-            this.mButton3.UseVisualStyleBackColor = true;
+            this.txtChietKhau.AllowAlphaOnly = false;
+            this.txtChietKhau.AllowNumericOnly = false;
+            this.txtChietKhau.AllowSpecialCharecterOnly = false;
+            this.txtChietKhau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChietKhau.ErrorMessage = "";
+            this.txtChietKhau.ErrorMessageTitle = "";
+            this.txtChietKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtChietKhau.Location = new System.Drawing.Point(480, 23);
+            this.txtChietKhau.Mandatory = false;
+            this.txtChietKhau.Name = "txtChietKhau";
+            this.txtChietKhau.Size = new System.Drawing.Size(69, 23);
+            this.txtChietKhau.TabIndex = 20;
             // 
-            // mButton2
+            // txtSoLuong
             // 
-            this.mButton2.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton2.Location = new System.Drawing.Point(330, 456);
-            this.mButton2.Name = "mButton2";
-            this.mButton2.Size = new System.Drawing.Size(100, 23);
-            this.mButton2.TabIndex = 15;
-            this.mButton2.Text = "Hủy";
-            this.mButton2.UseVisualStyleBackColor = true;
+            this.txtSoLuong.AllowAlphaOnly = false;
+            this.txtSoLuong.AllowNumericOnly = false;
+            this.txtSoLuong.AllowSpecialCharecterOnly = false;
+            this.txtSoLuong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSoLuong.ErrorMessage = "";
+            this.txtSoLuong.ErrorMessageTitle = "";
+            this.txtSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtSoLuong.Location = new System.Drawing.Point(323, 23);
+            this.txtSoLuong.Mandatory = false;
+            this.txtSoLuong.Name = "txtSoLuong";
+            this.txtSoLuong.Size = new System.Drawing.Size(69, 23);
+            this.txtSoLuong.TabIndex = 19;
             // 
-            // mTextBox6
+            // cboMonAn
             // 
-            this.mTextBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.mTextBox6.Location = new System.Drawing.Point(511, 423);
-            this.mTextBox6.Name = "mTextBox6";
-            this.mTextBox6.Size = new System.Drawing.Size(142, 16);
-            this.mTextBox6.TabIndex = 14;
-            this.mTextBox6.Text = "1,344,000";
+            this.cboMonAn.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboMonAn.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboMonAn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboMonAn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboMonAn.FormattingEnabled = true;
+            this.cboMonAn.LimitToList = true;
+            this.cboMonAn.Location = new System.Drawing.Point(75, 21);
+            this.cboMonAn.Name = "cboMonAn";
+            this.cboMonAn.Size = new System.Drawing.Size(164, 24);
+            this.cboMonAn.TabIndex = 18;
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThanhToan.Location = new System.Drawing.Point(554, 456);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(100, 23);
+            this.btnThanhToan.TabIndex = 17;
+            this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = true;
+            // 
+            // btnInHoaDon
+            // 
+            this.btnInHoaDon.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnInHoaDon.Location = new System.Drawing.Point(442, 456);
+            this.btnInHoaDon.Name = "btnInHoaDon";
+            this.btnInHoaDon.Size = new System.Drawing.Size(100, 23);
+            this.btnInHoaDon.TabIndex = 16;
+            this.btnInHoaDon.Text = "In hóa đơn";
+            this.btnInHoaDon.UseVisualStyleBackColor = true;
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnHuy.Location = new System.Drawing.Point(330, 456);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(100, 23);
+            this.btnHuy.TabIndex = 15;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.txtTongTien.Location = new System.Drawing.Point(511, 423);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(142, 16);
+            this.txtTongTien.TabIndex = 14;
             // 
             // mLabel7
             // 
@@ -165,41 +274,42 @@
             this.mLabel7.TabIndex = 13;
             this.mLabel7.Text = "Tổng tiền";
             // 
-            // mDataGridView1
+            // dgvThucDon
             // 
-            this.mDataGridView1.AllowUserToAddRows = false;
-            this.mDataGridView1.AllowUserToDeleteRows = false;
-            this.mDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.mDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvThucDon.AllowUserToAddRows = false;
+            this.dgvThucDon.AllowUserToDeleteRows = false;
+            this.dgvThucDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvThucDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvThucDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThucDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MON_AN,
             this.SO_LUONG,
             this.DON_VI,
             this.DON_GIA,
             this.CHIET_KHAU,
-            this.THANH_TIEN});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.mDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.mDataGridView1.Location = new System.Drawing.Point(25, 133);
-            this.mDataGridView1.MultiSelect = false;
-            this.mDataGridView1.Name = "mDataGridView1";
-            this.mDataGridView1.RowHeadersVisible = false;
-            this.mDataGridView1.Size = new System.Drawing.Size(628, 284);
-            this.mDataGridView1.TabIndex = 12;
+            this.THANH_TIEN,
+            this.ResOrderId});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvThucDon.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvThucDon.Location = new System.Drawing.Point(25, 133);
+            this.dgvThucDon.MultiSelect = false;
+            this.dgvThucDon.Name = "dgvThucDon";
+            this.dgvThucDon.RowHeadersVisible = false;
+            this.dgvThucDon.Size = new System.Drawing.Size(628, 284);
+            this.dgvThucDon.TabIndex = 12;
             // 
             // MON_AN
             // 
@@ -237,17 +347,23 @@
             this.THANH_TIEN.Name = "THANH_TIEN";
             this.THANH_TIEN.ReadOnly = true;
             // 
-            // mTextBox5
+            // ResOrderId
             // 
-            this.mTextBox5.BackColor = System.Drawing.Color.White;
-            this.mTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox5.Location = new System.Drawing.Point(338, 94);
-            this.mTextBox5.Name = "mTextBox5";
-            this.mTextBox5.ReadOnly = true;
-            this.mTextBox5.Size = new System.Drawing.Size(136, 16);
-            this.mTextBox5.TabIndex = 11;
-            this.mTextBox5.Text = "Chưa thanh toán";
+            this.ResOrderId.HeaderText = "ResOrderId";
+            this.ResOrderId.Name = "ResOrderId";
+            this.ResOrderId.ReadOnly = true;
+            this.ResOrderId.Visible = false;
+            // 
+            // txtThanhToan
+            // 
+            this.txtThanhToan.BackColor = System.Drawing.Color.White;
+            this.txtThanhToan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtThanhToan.Location = new System.Drawing.Point(338, 97);
+            this.txtThanhToan.Name = "txtThanhToan";
+            this.txtThanhToan.ReadOnly = true;
+            this.txtThanhToan.Size = new System.Drawing.Size(136, 16);
+            this.txtThanhToan.TabIndex = 11;
             // 
             // mLabel6
             // 
@@ -259,17 +375,16 @@
             this.mLabel6.TabIndex = 10;
             this.mLabel6.Text = "Thanh toán";
             // 
-            // mTextBox4
+            // txtInHoaDon
             // 
-            this.mTextBox4.BackColor = System.Drawing.Color.White;
-            this.mTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox4.Location = new System.Drawing.Point(145, 94);
-            this.mTextBox4.Name = "mTextBox4";
-            this.mTextBox4.ReadOnly = true;
-            this.mTextBox4.Size = new System.Drawing.Size(100, 16);
-            this.mTextBox4.TabIndex = 9;
-            this.mTextBox4.Text = "Chưa in";
+            this.txtInHoaDon.BackColor = System.Drawing.Color.White;
+            this.txtInHoaDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtInHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtInHoaDon.Location = new System.Drawing.Point(145, 97);
+            this.txtInHoaDon.Name = "txtInHoaDon";
+            this.txtInHoaDon.ReadOnly = true;
+            this.txtInHoaDon.Size = new System.Drawing.Size(100, 16);
+            this.txtInHoaDon.TabIndex = 9;
             // 
             // mLabel5
             // 
@@ -291,24 +406,15 @@
             this.mLabel4.TabIndex = 7;
             this.mLabel4.Text = "Thực đơn";
             // 
-            // mButton1
+            // btnThemMonAn
             // 
-            this.mButton1.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton1.Location = new System.Drawing.Point(578, 22);
-            this.mButton1.Name = "mButton1";
-            this.mButton1.Size = new System.Drawing.Size(75, 23);
-            this.mButton1.TabIndex = 6;
-            this.mButton1.Text = "Thêm";
-            this.mButton1.UseVisualStyleBackColor = true;
-            // 
-            // mTextBox3
-            // 
-            this.mTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox3.Location = new System.Drawing.Point(480, 22);
-            this.mTextBox3.Name = "mTextBox3";
-            this.mTextBox3.Size = new System.Drawing.Size(69, 23);
-            this.mTextBox3.TabIndex = 5;
+            this.btnThemMonAn.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThemMonAn.Location = new System.Drawing.Point(578, 22);
+            this.btnThemMonAn.Name = "btnThemMonAn";
+            this.btnThemMonAn.Size = new System.Drawing.Size(75, 23);
+            this.btnThemMonAn.TabIndex = 6;
+            this.btnThemMonAn.Text = "Thêm";
+            this.btnThemMonAn.UseVisualStyleBackColor = true;
             // 
             // mLabel3
             // 
@@ -319,15 +425,6 @@
             this.mLabel3.Size = new System.Drawing.Size(65, 14);
             this.mLabel3.TabIndex = 4;
             this.mLabel3.Text = "Chiết khấu";
-            // 
-            // mTextBox2
-            // 
-            this.mTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox2.Location = new System.Drawing.Point(323, 22);
-            this.mTextBox2.Name = "mTextBox2";
-            this.mTextBox2.Size = new System.Drawing.Size(69, 23);
-            this.mTextBox2.TabIndex = 3;
             // 
             // mLabel2
             // 
@@ -349,30 +446,6 @@
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Món ăn";
             // 
-            // mListBox1
-            // 
-            this.mListBox1.FormattingEnabled = true;
-            this.mListBox1.Items.AddRange(new object[] {
-            "Bàn số 1_1",
-            "Bàn số 2_1"});
-            this.mListBox1.Location = new System.Drawing.Point(16, 45);
-            this.mListBox1.Name = "mListBox1";
-            this.mListBox1.Size = new System.Drawing.Size(119, 485);
-            this.mListBox1.TabIndex = 0;
-            // 
-            // mComboBox1
-            // 
-            this.mComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.mComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.mComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.mComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mComboBox1.FormattingEnabled = true;
-            this.mComboBox1.LimitToList = true;
-            this.mComboBox1.Location = new System.Drawing.Point(75, 21);
-            this.mComboBox1.Name = "mComboBox1";
-            this.mComboBox1.Size = new System.Drawing.Size(164, 24);
-            this.mComboBox1.TabIndex = 18;
-            // 
             // BillingProcessing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,9 +457,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhập hóa đơn";
             this.mGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();
             this.mGroupBox2.ResumeLayout(false);
             this.mGroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,33 +468,37 @@
         #endregion
 
         private mcontrol.MGroupBox mGroupBox1;
-        private mcontrol.MListBox mListBox1;
         private mcontrol.MGroupBox mGroupBox2;
         private mcontrol.MLabel mLabel1;
-        private mcontrol.MTextBox mTextBox5;
+        private mcontrol.MTextBox txtThanhToan;
         private mcontrol.MLabel mLabel6;
-        private mcontrol.MTextBox mTextBox4;
+        private mcontrol.MTextBox txtInHoaDon;
         private mcontrol.MLabel mLabel5;
         private mcontrol.MLabel mLabel4;
-        private mcontrol.MButton mButton1;
-        private mcontrol.MTextBox mTextBox3;
+        private mcontrol.MButton btnThemMonAn;
         private mcontrol.MLabel mLabel3;
-        private mcontrol.MTextBox mTextBox2;
         private mcontrol.MLabel mLabel2;
-        private mcontrol.MTextBox mTextBox6;
+        private mcontrol.MTextBox txtTongTien;
         private mcontrol.MLabel mLabel7;
-        private mcontrol.MDataGridView mDataGridView1;
+        private mcontrol.MDataGridView dgvThucDon;
+        private mcontrol.MButton btnInHoaDon;
+        private mcontrol.MButton btnHuy;
+        private mcontrol.MButton btnThanhToan;
+        private mcontrol.MButton btnThemHoaDon;
+        private mcontrol.MComboBox cboMonAn;
+        private mcontrol.MDataGridView dgvHoaDon;
+        private mcontrol.MNumberTextBox2 txtChietKhau;
+        private mcontrol.MNumberTextBox2 txtSoLuong;
+        private mcontrol.MLabel mLabel8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billId;
         private System.Windows.Forms.DataGridViewTextBoxColumn MON_AN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SO_LUONG;
         private System.Windows.Forms.DataGridViewTextBoxColumn DON_VI;
         private System.Windows.Forms.DataGridViewTextBoxColumn DON_GIA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHIET_KHAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THANH_TIEN;
-        private mcontrol.MButton mButton3;
-        private mcontrol.MButton mButton2;
-        private mcontrol.MButton mButton4;
-        private mcontrol.MButton mButton5;
-        private mcontrol.MComboBox mComboBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResOrderId;
 
     }
 }

@@ -11,5 +11,6 @@ namespace BeerBilling.view
         UserDto CheckUser(string userName, string password);
         bool changePassword(string userId, string newPass, string oldPass);
         string GetCurrentTenNsd();
+        string GetCurrentUserName();
     }
 }
