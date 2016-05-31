@@ -13,6 +13,27 @@ namespace core_lib.common
         private static List<string> _userRoleList;
         private static string _nhomQuyenId;
         private static bool _useWord = "1".Equals(ConfigurationSettings.AppSettings["use_word"]);
+        private static string _tenCongTy = ConfigurationSettings.AppSettings["ten_cong_ty"];
+        private static string _diaChi = ConfigurationSettings.AppSettings["dia_chi"];
+        private static string _printerName = ConfigurationSettings.AppSettings["printer"];
+
+        public static string TenCongTy
+        {
+            get { return _tenCongTy; }
+            set { _tenCongTy = value; }
+        }
+
+        public static string DiaChi
+        {
+            get { return _diaChi; }
+            set { _diaChi = value; }
+        }
+
+        public static string PrinterName
+        {
+            get { return _printerName; }
+            set { _printerName = value; }
+        }
 
         public static bool UseWord
         {

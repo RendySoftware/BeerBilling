@@ -34,5 +34,9 @@ namespace core_lib.common
         public const string DangNhapKhongTonTaiUser = "DangNhapKhongTonTaiUser";
         public const string DangNhapSaiPassword = "DangNhapSaiPassword";
         public const string DangNhapThanhCong = "DangNhapThanhCong";
+
+        public const string YES = "YES";
+        public const string NO = "NO";
+        public const string CANCEL = "CANCEL";
     }
 }

@@ -1,25 +1,31 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BeerBilling.presenter.user;
+using BeerBilling.report;
 using BeerBilling.view;
 using core_lib.common;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using domain_lib.dto;
 using mcontrol;
 using mcontrol.util;
+using reportutil;
 
 namespace BeerBilling.presenter.billing
 {
     public partial class BillingProcessing : Form
     {
         private IDanhSachUser _danhSachUser = new DanhSachUserImpl();
-        private BillingDAOImpl _billingDao = new BillingDAOImpl();
-        private IStoreDAO _storeDao = new StoreDAOImpl();
+        private IBillingDAO _billingDao = new BillingDAOImpl();
+        private BillingReportDAOImpl _billingReportDao = new BillingReportDAOImpl(new BillingDataSet());
 
         public BillingProcessing()
         {
@@ -40,7 +46,6 @@ namespace BeerBilling.presenter.billing
             txtChietKhau.Text = "0";
 
             FillBill2Grid();
-            dgvHoaDon.SelectionChanged += new EventHandler(OnFillThucDon2Grid);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -58,22 +63,12 @@ namespace BeerBilling.presenter.billing
             }
         }
 
-        private void OnFillThucDon2Grid(object sender, EventArgs e)
+        private void dgvHoaDon_SelectionChanged(object sender, EventArgs e)
         {
             var billId = GetSelectedBillId();
             var billDto = _billingDao.getBillDto(billId);
-            txtInHoaDon.Text = "YES".Equals(billDto.IsPrinted) ? "Đã in" : "Chưa in";
-            string thanhToan;
-            if ("YES".Equals(billDto.Payment))
-            {
-                thanhToan = "Đã thanh toán";
-            } else if ("CANCEL".Equals(billDto.Payment))
-            {
-                thanhToan = "Hủy";
-            } else
-            {
-                thanhToan = "Chưa thanh toán";
-            }
+            txtInHoaDon.Text = ConstUtil.YES.Equals(billDto.IsPrinted) ? "Đã in" : "Chưa in";
+            string thanhToan = GetThanhToan(billDto.Payment);
             txtThanhToan.Text = thanhToan;
             var allResOrderDtos = _billingDao.GetAllResOrderBy(billId);
             dgvThucDon.Rows.Clear();
@@ -84,7 +79,24 @@ namespace BeerBilling.presenter.billing
                 AddOneResOrderRow(dto, out oneTotal);
                 tongTien += oneTotal;
             }
-            txtTongTien.Text = tongTien.ToString();
+            txtTongTien.Text = tongTien.ToString("#,###,###");
+        }
+
+        private string GetThanhToan(string payment)
+        {
+            string thanhToan;
+            if (ConstUtil.YES.Equals(payment))
+            {
+                thanhToan = "Đã thanh toán";
+            }
+            else if (ConstUtil.CANCEL.Equals(payment))
+            {
+                thanhToan = "Hủy";
+            } else
+            {
+                thanhToan = "Chưa thanh toán";
+            }
+            return thanhToan;
         }
 
         private void AddOneResOrderRow(ResOrderDto dto, out float oneTotal)
@@ -95,9 +107,9 @@ namespace BeerBilling.presenter.billing
             r.Cells["MON_AN"].Value = dto.MenuName;
             r.Cells["SO_LUONG"].Value = dto.Amount;
             r.Cells["DON_VI"].Value = dto.UnitName;
-            r.Cells["DON_GIA"].Value = dto.MenuPrice;
-            r.Cells["CHIET_KHAU"].Value = dto.Discount;
-            r.Cells["THANH_TIEN"].Value = oneTotal;
+            r.Cells["DON_GIA"].Value = dto.MenuPrice.ToString("#,###,###");
+            r.Cells["CHIET_KHAU"].Value = (dto.Discount * 100) + "%";
+            r.Cells["THANH_TIEN"].Value = oneTotal.ToString("#,###,###");
             r.Cells["ResOrderId"].Value = dto.Id;
         }
 
@@ -111,7 +123,22 @@ namespace BeerBilling.presenter.billing
                 return -1;
             }
             var selectedBill = dgvHoaDon.Rows[selectedIndex];
-            return (long) selectedBill.Cells["billId"].Value;
+            var billId = selectedBill.Cells["billId"].Value;
+            return billId == null ? -1 : Convert.ToInt64(billId);
+        }
+
+        private long GetSelectedResOrderId()
+        {
+            int selectedIndex = dgvThucDon.CurrentRow == null ? 0 : dgvThucDon.CurrentRow.Index;
+            if (selectedIndex > dgvThucDon.RowCount - 1)
+                selectedIndex = dgvThucDon.RowCount - 1;
+            if (selectedIndex == -1)
+            {
+                return -1;
+            }
+            var selectedBill = dgvThucDon.Rows[selectedIndex];
+            var resOrderId = selectedBill.Cells["ResOrderId"].Value;
+            return resOrderId == null ? -1 : Convert.ToInt64(resOrderId);
         }
 
         private void FillBill2Grid()
@@ -159,7 +186,7 @@ namespace BeerBilling.presenter.billing
             resOrderDto.CreatedBy = currentUserName;
             resOrderDto.UpdatedBy = currentUserName;
             _billingDao.AddNewResOrder(resOrderDto);
-            OnFillThucDon2Grid(null, null);
+            dgvHoaDon_SelectionChanged(null, null);
         }
 
         private bool IsValidInputData()
@@ -167,7 +194,7 @@ namespace BeerBilling.presenter.billing
             var billId = GetSelectedBillId();
             if (billId == -1)
             {
-                MMessageBox.Show(this, "Bạn chưa thêm hóa đơn", "Thông báo"
+                MMessageBox.Show(this, "Bạn chưa chọn hóa đơn", "Thông báo"
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
                 btnThemHoaDon.Focus();
                 return false;
@@ -192,32 +219,152 @@ namespace BeerBilling.presenter.billing
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
+            var billId = GetSelectedBillId();
+            var billDto = _billingDao.getBillDto(billId);
+            if (ConstUtil.YES.Equals(billDto.IsPrinted))
+            {
+                MMessageBox.Show(this, "Hóa đơn đã được in!", "Thông báo"
+                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                return;
+            }
             var dr = MMessageBox.Show(this, "Bạn có muốn in hóa đơn?", "Thông báo"
                                       , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
             if (DialogResult.No == dr)
             {
                 return;
             }
-            var billId = GetSelectedBillId();
-            var billDto = _billingDao.getBillDto(billId);
-            billDto.IsPrinted = "YES";
+            var tongTien = float.Parse(txtTongTien.Text.Replace(",", ""));
+            var frmThongTinKhachTt = new ThongTinKhachTT(tongTien);
+            frmThongTinKhachTt.ShowDialog(this);
+            var khachTt = frmThongTinKhachTt.KhachTt*1000f;
+            if (khachTt == 0f)
+            {
+                return;
+            }
+            CreateReport(billDto, tongTien, khachTt);
+            billDto.IsPrinted = ConstUtil.YES;
             _billingDao.ThanhToan(billDto);
-            OnFillThucDon2Grid(null, null);
+            dgvHoaDon_SelectionChanged(null, null);
+        }
+
+        private void CreateReport(BillDto billDto, float tongTien, float khachTt)
+        {
+            var columnNames = new List<string> { "MonAn", "SoLuong", "DonGia", "Tong" };
+
+            var dataTable = new DataTable();
+            dataTable.Columns.Add(columnNames[0], Type.GetType("System.String"));
+            dataTable.Columns.Add(columnNames[1], Type.GetType("System.String"));
+            dataTable.Columns.Add(columnNames[2], Type.GetType("System.String"));
+            dataTable.Columns.Add(columnNames[3], Type.GetType("System.String"));
+
+            var allResOrderDtos = _billingDao.GetAllResOrderBy(billDto.Id);
+            foreach(var dto in allResOrderDtos)
+            {
+                DataRow dataRow = dataTable.NewRow();
+                dataRow[columnNames[0]] = dto.MenuName;
+                dataRow[columnNames[1]] = dto.Amount;
+                dataRow[columnNames[2]] = dto.MenuPrice.ToString("#,###,###");
+                float total = dto.Amount * dto.MenuPrice * (1 - dto.Discount);
+                dataRow[columnNames[3]] = total.ToString("#,###,###");
+                dataTable.Rows.Add(dataRow);
+            }
+
+            ReportClass report = new BillingReport();
+            report.Database.Tables["BillDto"].SetDataSource(dataTable);
+            report.SetParameterValue("TenCongTy", ThamSo.TenCongTy);
+            report.SetParameterValue("DiaChi", ThamSo.DiaChi);
+            report.SetParameterValue("BillNumber", billDto.BillingNumber.ToString());
+            report.SetParameterValue("TenKhach", String.Empty);
+            report.SetParameterValue("NhanVien", _danhSachUser.GetCurrentUserName());
+            report.SetParameterValue("TongTien", tongTien.ToString("#,###,###"));
+            report.SetParameterValue("KhachTT", khachTt.ToString("#,###,###"));
+            report.SetParameterValue("KhachThua", (khachTt - tongTien).ToString("#,###,###"));
+
+            report.PrintOptions.PrinterName = ThamSo.PrinterName;
+            report.PrintOptions.PaperOrientation = PaperOrientation.Portrait;
+            report.PrintToPrinter(1, false, 0, 0);
+
+//            var frm = new FrmReport(report, false);
+//            frm.Text = "In hóa đơn";
+//            frm.ShowDialog(this);
+//            frm.BringToFront();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            var billId = GetSelectedBillId();
+            var billDto = _billingDao.getBillDto(billId);
+            if (ConstUtil.YES.Equals(billDto.Payment))
+            {
+                MMessageBox.Show(this, "Hóa đơn đã được thanh toán!", "Thông báo"
+                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                return;
+            }
             var dr = MMessageBox.Show(this, "Bạn có muốn thanh toán?", "Thông báo"
                                       , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
             if (DialogResult.No == dr)
             {
                 return;
             }
-            var billId = GetSelectedBillId();
-            var billDto = _billingDao.getBillDto(billId);
-            billDto.Payment = "YES";
+            billDto.Payment = ConstUtil.YES;
             _billingDao.ThanhToan(billDto);
-            OnFillThucDon2Grid(null, null);
+            dgvHoaDon_SelectionChanged(null, null);
+        }
+        
+        private void dgvHoaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 'd' || e.KeyChar == 'D')
+            {
+                var billId = GetSelectedBillId();
+                if (billId == -1)
+                {
+                    MMessageBox.Show(this, "Bạn chưa chọn hóa đơn", "Thông báo"
+                        , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                    btnThemHoaDon.Focus();
+                    return;
+                }
+                var dr = MMessageBox.Show(this, "Bạn có muốn xóa hóa đơn?", "Thông báo"
+                                          , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+                if (DialogResult.No == dr)
+                {
+                    return;
+                }
+                var billingCancel = new BillingCancel();
+                billingCancel.ShowDialog(this);
+                var reason = billingCancel.Reason;
+                if (String.IsNullOrEmpty(reason))
+                {
+                    return;
+                }
+                var billDto = _billingDao.getBillDto(billId);
+                billDto.Payment = ConstUtil.CANCEL;
+                billDto.CancelReason = reason;
+                _billingDao.ThanhToan(billDto);
+                dgvHoaDon_SelectionChanged(null, null);
+            }
+        }
+
+        private void dgvThucDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 'd' || e.KeyChar == 'D')
+            {
+                var resOrderId = GetSelectedResOrderId();
+                if (resOrderId == -1)
+                {
+                    MMessageBox.Show(this, "Bạn chưa chọn thực đơn", "Thông báo"
+                        , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                    btnThemHoaDon.Focus();
+                    return;
+                }
+                var dr = MMessageBox.Show(this, "Bạn có muốn xóa thực đơn?", "Thông báo"
+                                          , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+                if (DialogResult.No == dr)
+                {
+                    return;
+                }
+                _billingDao.DeleteResOrder(resOrderId);
+                dgvHoaDon_SelectionChanged(null, null);
+            }
         }
     }
 }

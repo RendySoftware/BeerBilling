@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            var storeType = importExportType.name;
+            string storeType = importExportType.name;
 
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,7 +43,7 @@
             this.lblReason = new mcontrol.MLabel(this.components);
             this.txtReason = new mcontrol.MTextBox(this.components);
             this.lblAmount = new mcontrol.MLabel(this.components);
-            this.materialComboBox = new mcontrol.MComboBox(this.components);
+            this.materialComboBox = new mcontrol.MComboBox2(this.components);
             this.lblMaterial = new mcontrol.MLabel(this.components);
             this.storeGroupBox = new mcontrol.MGroupBox(this.components);
             this.btnImpexpProcess = new mcontrol.MButton(this.components);
@@ -315,7 +315,7 @@
         private mcontrol.MLabel lblReason;
         private mcontrol.MTextBox txtReason;
         private mcontrol.MLabel lblAmount;
-        private mcontrol.MComboBox materialComboBox;
+        private mcontrol.MComboBox2 materialComboBox;
         private mcontrol.MLabel lblMaterial;
         private mcontrol.MButton btnAddStore;
         private mcontrol.MGroupBox storeGroupBox;

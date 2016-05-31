@@ -15,6 +15,9 @@ namespace BeerBilling.view
         List<ResTableDto> GetAllResTableDto();
         List<ResOrderDto> GetAllResOrderBy(long billId);
         List<MenuDto> GetAllMenuDto();
+        BillDto getBillDto(long billId);
+        ResOrderDto getResOrderDto(long id);
+        bool DeleteResOrder(long id);
         bool AddNewResOrder(ResOrderDto resOrderDto);
     }
 }

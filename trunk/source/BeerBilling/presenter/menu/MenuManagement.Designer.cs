@@ -98,6 +98,7 @@
             this.mDataGridView1.MultiSelect = false;
             this.mDataGridView1.Name = "mDataGridView1";
             this.mDataGridView1.RowHeadersVisible = false;
+            this.mDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.mDataGridView1.Size = new System.Drawing.Size(746, 121);
             this.mDataGridView1.TabIndex = 1;
             // 
@@ -175,6 +176,7 @@
             this.mDataGridView2.MultiSelect = false;
             this.mDataGridView2.Name = "mDataGridView2";
             this.mDataGridView2.RowHeadersVisible = false;
+            this.mDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.mDataGridView2.Size = new System.Drawing.Size(746, 297);
             this.mDataGridView2.TabIndex = 1;
             // 

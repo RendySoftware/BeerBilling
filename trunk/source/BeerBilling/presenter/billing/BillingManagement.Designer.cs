@@ -34,7 +34,7 @@
             this.tracuuGroupBox = new mcontrol.MGroupBox(this.components);
             this.billStatusComboBox = new mcontrol.MComboBox(this.components);
             this.lblBillStatus = new mcontrol.MLabel(this.components);
-            this.tableComboBox = new mcontrol.MComboBox(this.components);
+            this.tableComboBox = new mcontrol.MComboBox2(this.components);
             this.lblTableNumber = new mcontrol.MLabel(this.components);
             this.txtBillingNumber = new mcontrol.MTextBox(this.components);
             this.lblBillingNumber = new mcontrol.MLabel(this.components);
@@ -76,7 +76,7 @@
             this.tracuuGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.tracuuGroupBox.Location = new System.Drawing.Point(13, 13);
             this.tracuuGroupBox.Name = "tracuuGroupBox";
-            this.tracuuGroupBox.Size = new System.Drawing.Size(759, 126);
+            this.tracuuGroupBox.Size = new System.Drawing.Size(898, 126);
             this.tracuuGroupBox.TabIndex = 0;
             this.tracuuGroupBox.TabStop = false;
             // 
@@ -88,7 +88,7 @@
             this.billStatusComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.billStatusComboBox.FormattingEnabled = true;
             this.billStatusComboBox.LimitToList = true;
-            this.billStatusComboBox.Location = new System.Drawing.Point(101, 89);
+            this.billStatusComboBox.Location = new System.Drawing.Point(190, 93);
             this.billStatusComboBox.Name = "billStatusComboBox";
             this.billStatusComboBox.Size = new System.Drawing.Size(142, 24);
             this.billStatusComboBox.TabIndex = 14;
@@ -97,7 +97,7 @@
             // 
             this.lblBillStatus.AutoSize = true;
             this.lblBillStatus.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblBillStatus.Location = new System.Drawing.Point(17, 94);
+            this.lblBillStatus.Location = new System.Drawing.Point(106, 98);
             this.lblBillStatus.Name = "lblBillStatus";
             this.lblBillStatus.Size = new System.Drawing.Size(64, 14);
             this.lblBillStatus.TabIndex = 13;
@@ -111,7 +111,7 @@
             this.tableComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableComboBox.FormattingEnabled = true;
             this.tableComboBox.LimitToList = true;
-            this.tableComboBox.Location = new System.Drawing.Point(328, 55);
+            this.tableComboBox.Location = new System.Drawing.Point(417, 55);
             this.tableComboBox.Name = "tableComboBox";
             this.tableComboBox.Size = new System.Drawing.Size(164, 24);
             this.tableComboBox.TabIndex = 12;
@@ -120,7 +120,7 @@
             // 
             this.lblTableNumber.AutoSize = true;
             this.lblTableNumber.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblTableNumber.Location = new System.Drawing.Point(263, 60);
+            this.lblTableNumber.Location = new System.Drawing.Point(352, 60);
             this.lblTableNumber.Name = "lblTableNumber";
             this.lblTableNumber.Size = new System.Drawing.Size(43, 14);
             this.lblTableNumber.TabIndex = 11;
@@ -130,7 +130,7 @@
             // 
             this.txtBillingNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBillingNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtBillingNumber.Location = new System.Drawing.Point(101, 56);
+            this.txtBillingNumber.Location = new System.Drawing.Point(190, 56);
             this.txtBillingNumber.Name = "txtBillingNumber";
             this.txtBillingNumber.Size = new System.Drawing.Size(142, 23);
             this.txtBillingNumber.TabIndex = 10;
@@ -139,7 +139,7 @@
             // 
             this.lblBillingNumber.AutoSize = true;
             this.lblBillingNumber.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblBillingNumber.Location = new System.Drawing.Point(17, 60);
+            this.lblBillingNumber.Location = new System.Drawing.Point(106, 60);
             this.lblBillingNumber.Name = "lblBillingNumber";
             this.lblBillingNumber.Size = new System.Drawing.Size(69, 14);
             this.lblBillingNumber.TabIndex = 9;
@@ -148,7 +148,7 @@
             // btnThucHien
             // 
             this.btnThucHien.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThucHien.Location = new System.Drawing.Point(636, 21);
+            this.btnThucHien.Location = new System.Drawing.Point(725, 51);
             this.btnThucHien.Name = "btnThucHien";
             this.btnThucHien.Size = new System.Drawing.Size(87, 23);
             this.btnThucHien.TabIndex = 8;
@@ -159,7 +159,7 @@
             // 
             this.txtToDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtToDate.Location = new System.Drawing.Point(328, 21);
+            this.txtToDate.Location = new System.Drawing.Point(417, 21);
             this.txtToDate.MaxLength = 10;
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(164, 23);
@@ -169,7 +169,7 @@
             // 
             this.lblToDate.AutoSize = true;
             this.lblToDate.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblToDate.Location = new System.Drawing.Point(263, 25);
+            this.lblToDate.Location = new System.Drawing.Point(352, 25);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(59, 14);
             this.lblToDate.TabIndex = 6;
@@ -179,7 +179,7 @@
             // 
             this.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtFromDate.Location = new System.Drawing.Point(101, 21);
+            this.txtFromDate.Location = new System.Drawing.Point(190, 19);
             this.txtFromDate.MaxLength = 10;
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.Size = new System.Drawing.Size(142, 23);
@@ -189,7 +189,7 @@
             // 
             this.lblFromDate.AutoSize = true;
             this.lblFromDate.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblFromDate.Location = new System.Drawing.Point(17, 25);
+            this.lblFromDate.Location = new System.Drawing.Point(106, 25);
             this.lblFromDate.Name = "lblFromDate";
             this.lblFromDate.Size = new System.Drawing.Size(53, 14);
             this.lblFromDate.TabIndex = 4;
@@ -202,7 +202,7 @@
             this.billListGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.billListGroupBox.Location = new System.Drawing.Point(13, 146);
             this.billListGroupBox.Name = "billListGroupBox";
-            this.billListGroupBox.Size = new System.Drawing.Size(759, 404);
+            this.billListGroupBox.Size = new System.Drawing.Size(898, 475);
             this.billListGroupBox.TabIndex = 1;
             this.billListGroupBox.TabStop = false;
             this.billListGroupBox.Text = "Danh sách hóa đơn";
@@ -243,8 +243,10 @@
             this.dgvBilling.MultiSelect = false;
             this.dgvBilling.Name = "dgvBilling";
             this.dgvBilling.RowHeadersVisible = false;
-            this.dgvBilling.Size = new System.Drawing.Size(746, 378);
+            this.dgvBilling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBilling.Size = new System.Drawing.Size(885, 449);
             this.dgvBilling.TabIndex = 0;
+            this.dgvBilling.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellDoubleClick);
             // 
             // billNumber
             // 
@@ -255,8 +257,10 @@
             // 
             // billDate
             // 
+            this.billDate.FillWeight = 110F;
             this.billDate.HeaderText = "Ngày hóa đơn";
             this.billDate.Name = "billDate";
+            this.billDate.Width = 110;
             // 
             // tableNumber
             // 
@@ -270,18 +274,24 @@
             // 
             // billStatus
             // 
+            this.billStatus.FillWeight = 150F;
             this.billStatus.HeaderText = "Tình trạng";
             this.billStatus.Name = "billStatus";
+            this.billStatus.Width = 150;
             // 
             // createdBy
             // 
+            this.createdBy.FillWeight = 120F;
             this.createdBy.HeaderText = "Người nhập";
             this.createdBy.Name = "createdBy";
+            this.createdBy.Width = 120;
             // 
             // createdDate
             // 
+            this.createdDate.FillWeight = 110F;
             this.createdDate.HeaderText = "Ngày nhập";
             this.createdDate.Name = "createdDate";
+            this.createdDate.Width = 110;
             // 
             // detail
             // 
@@ -298,7 +308,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(923, 633);
             this.Controls.Add(this.billListGroupBox);
             this.Controls.Add(this.tracuuGroupBox);
             this.MaximizeBox = false;
@@ -322,7 +332,7 @@
         private mcontrol.MLabel lblFromDate;
         private mcontrol.MComboBox billStatusComboBox;
         private mcontrol.MLabel lblBillStatus;
-        private mcontrol.MComboBox tableComboBox;
+        private mcontrol.MComboBox2 tableComboBox;
         private mcontrol.MLabel lblTableNumber;
         private mcontrol.MTextBox txtBillingNumber;
         private mcontrol.MLabel lblBillingNumber;

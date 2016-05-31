@@ -121,6 +121,8 @@ namespace domain_lib.controller
                 {
                     TableId = billDto.TableId,
                     BillingNumber = billDto.BillingNumber,
+                    Payment = ConstUtil.NO,
+                    IsPrinted = ConstUtil.NO,
                     BillingDate = DateTime.Now,
                     CreatedBy = billDto.CreatedBy,
                     CreatedDate = DateTime.Now,
@@ -180,6 +182,10 @@ namespace domain_lib.controller
 
         public BillDto getBillDto(long billId)
         {
+            if (billId == -1)
+            {
+                return new BillDto();
+            }
             var bill = m_PersistenceManager.RetrieveEquals<Bill>("Id", billId)[0];
             return new BillDto()
                        {
@@ -192,11 +198,40 @@ namespace domain_lib.controller
                        };
         }
 
+        public ResOrderDto getResOrderDto(long id)
+        {
+            if (id == -1)
+            {
+                return new ResOrderDto();
+            }
+            var resOrder = m_PersistenceManager.RetrieveEquals<ResOrder>("Id", id)[0];
+            return new ResOrderDto()
+            {
+                Id = resOrder.Id,
+                BillId = resOrder.BillId,
+                MenuId = resOrder.MenuId,
+                Amount = resOrder.Amount,
+                Discount = resOrder.Discount
+            };
+        }
+
+        public bool DeleteResOrder(long id)
+        {
+            if (id == -1)
+            {
+                return true;
+            }
+            var resOrder = m_PersistenceManager.RetrieveEquals<ResOrder>("Id", id)[0];
+            m_PersistenceManager.Delete<ResOrder>(resOrder);
+            return true;
+        }
+
         public bool ThanhToan(BillDto billDto)
         {
             var bill = m_PersistenceManager.RetrieveEquals<Bill>("Id", billDto.Id)[0];
             bill.Payment = billDto.Payment;
             bill.IsPrinted = billDto.IsPrinted;
+            bill.CancelReason = billDto.CancelReason;
             m_PersistenceManager.Save(bill);
             return true;
         }

@@ -34,7 +34,7 @@
             this.mLabel2 = new mcontrol.MLabel(this.components);
             this.txtHoaDonSo = new mcontrol.MNumberTextBox2(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.cboBanSo = new mcontrol.MComboBox(this.components);
+            this.cboBanSo = new mcontrol.MComboBox2(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +137,6 @@
         private mcontrol.MLabel mLabel2;
         private mcontrol.MNumberTextBox2 txtHoaDonSo;
         private mcontrol.MLabel mLabel1;
-        private mcontrol.MComboBox cboBanSo;
+        private mcontrol.MComboBox2 cboBanSo;
     }
 }
