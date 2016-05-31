@@ -73,8 +73,8 @@ namespace BeerBilling.presenter.menu
             var r = dgvMenu.Rows[index];
             r.Cells["menuCode"].Value = dto.Code;
             r.Cells["menuName"].Value = dto.Name;
-            r.Cells["unit"].Value = dto.UnitId;
-            r.Cells["price"].Value = dto.Price;
+            r.Cells["unit"].Value = dto.UnitName;
+            r.Cells["price"].Value = dto.Price.ToString("#,###,###") + " VNĐ";
             r.Cells["description"].Value = dto.Description;
             r.Cells["editMenu"].Value = "Sửa";
             r.Cells["menuId"].Value = dto.Id;

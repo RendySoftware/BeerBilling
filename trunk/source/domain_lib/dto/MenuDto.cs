@@ -32,6 +32,8 @@ namespace domain_lib.dto
 
         private DateTime _updated_Date = default(DateTime);
 
+        private string _unitName = String.Empty;
+
         #endregion
 
     	#region Constructor
@@ -150,6 +152,12 @@ namespace domain_lib.dto
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        public virtual string UnitName
+        {
+            get { return _unitName; }
+            set { _unitName = value; }
         }
 
         #endregion

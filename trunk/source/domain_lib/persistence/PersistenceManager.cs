@@ -618,7 +618,9 @@ namespace domain_lib.persistence
         {
             using (ISession session = m_SessionFactory.OpenSession())
             {
-                var query = session.CreateQuery("from Menu m where m.IsActive = :isActive and m.CategoryId = :categoryId order by m.Code asc");
+                var query = session.CreateQuery("select new Menu(m.Id, m.CategoryId, m.Code, m.Name, m.UnitId, u.Name, m.Price, m.Description, "
+                    +"m.IsActive, m.CreatedBy, m.CreatedDate, m.UpdatedBy, m.UpdatedDate) "
+                    +"from Menu m, Unit u where m.UnitId = u.Id and m.IsActive = :isActive and m.CategoryId = :categoryId order by m.Code asc");
                 query.SetParameter("isActive", "YES");
                 query.SetParameter("categoryId", categoryId);
 
@@ -635,6 +637,7 @@ namespace domain_lib.persistence
                         Code = menu.Code,
                         Name = menu.Name,
                         UnitId = menu.UnitId,
+                        UnitName = menu.UnitName,
                         Price = menu.Price,
                         Description = menu.Description,
                         IsActive = menu.IsActive,

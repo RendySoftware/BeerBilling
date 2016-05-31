@@ -36,14 +36,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuManagement));
             this.categoryGroupBox = new mcontrol.MGroupBox(this.components);
             this.dgvCategory = new mcontrol.MDataGridView(this.components);
-            this.btnAddCategory = new mcontrol.MButton(this.components);
-            this.menuListGroupBox = new mcontrol.MGroupBox(this.components);
-            this.dgvMenu = new mcontrol.MDataGridView(this.components);
-            this.btnAddMenu = new mcontrol.MButton(this.components);
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.categoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddCategory = new mcontrol.MButton(this.components);
+            this.menuListGroupBox = new mcontrol.MGroupBox(this.components);
+            this.dgvMenu = new mcontrol.MDataGridView(this.components);
+            this.btnAddMenu = new mcontrol.MButton(this.components);
             this.menuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +65,7 @@
             this.categoryGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.categoryGroupBox.Location = new System.Drawing.Point(13, 13);
             this.categoryGroupBox.Name = "categoryGroupBox";
-            this.categoryGroupBox.Size = new System.Drawing.Size(759, 177);
+            this.categoryGroupBox.Size = new System.Drawing.Size(759, 208);
             this.categoryGroupBox.TabIndex = 0;
             this.categoryGroupBox.TabStop = false;
             this.categoryGroupBox.Text = "Nhóm thực đơn";
@@ -102,9 +102,35 @@
             this.dgvCategory.Name = "dgvCategory";
             this.dgvCategory.RowHeadersVisible = false;
             this.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategory.Size = new System.Drawing.Size(746, 121);
+            this.dgvCategory.Size = new System.Drawing.Size(746, 152);
             this.dgvCategory.TabIndex = 1;
             this.dgvCategory.SelectionChanged += new System.EventHandler(this.dgvCategory_SelectionChanged);
+            // 
+            // code
+            // 
+            this.code.HeaderText = "Mã nhóm";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.FillWeight = 350F;
+            this.name.HeaderText = "Tên nhóm";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 350;
+            // 
+            // edit
+            // 
+            this.edit.HeaderText = "Sửa";
+            this.edit.Name = "edit";
+            // 
+            // categoryId
+            // 
+            this.categoryId.HeaderText = "categoryId";
+            this.categoryId.Name = "categoryId";
+            this.categoryId.ReadOnly = true;
+            this.categoryId.Visible = false;
             // 
             // btnAddCategory
             // 
@@ -125,9 +151,9 @@
             this.menuListGroupBox.Controls.Add(this.btnAddMenu);
             this.menuListGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.menuListGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.menuListGroupBox.Location = new System.Drawing.Point(13, 197);
+            this.menuListGroupBox.Location = new System.Drawing.Point(13, 227);
             this.menuListGroupBox.Name = "menuListGroupBox";
-            this.menuListGroupBox.Size = new System.Drawing.Size(759, 353);
+            this.menuListGroupBox.Size = new System.Drawing.Size(759, 323);
             this.menuListGroupBox.TabIndex = 1;
             this.menuListGroupBox.TabStop = false;
             this.menuListGroupBox.Text = "Danh sách thực đơn";
@@ -167,7 +193,7 @@
             this.dgvMenu.Name = "dgvMenu";
             this.dgvMenu.RowHeadersVisible = false;
             this.dgvMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMenu.Size = new System.Drawing.Size(746, 297);
+            this.dgvMenu.Size = new System.Drawing.Size(746, 265);
             this.dgvMenu.TabIndex = 1;
             // 
             // btnAddMenu
@@ -182,32 +208,6 @@
             this.btnAddMenu.Text = "&2. Thêm";
             this.btnAddMenu.UseVisualStyleBackColor = true;
             this.btnAddMenu.Click += new System.EventHandler(this.btnAddMenu_Click);
-            // 
-            // code
-            // 
-            this.code.HeaderText = "Mã nhóm";
-            this.code.Name = "code";
-            this.code.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.FillWeight = 300F;
-            this.name.HeaderText = "Tên nhóm";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 300;
-            // 
-            // edit
-            // 
-            this.edit.HeaderText = "Sửa";
-            this.edit.Name = "edit";
-            // 
-            // categoryId
-            // 
-            this.categoryId.HeaderText = "categoryId";
-            this.categoryId.Name = "categoryId";
-            this.categoryId.ReadOnly = true;
-            this.categoryId.Visible = false;
             // 
             // menuCode
             // 
@@ -231,9 +231,11 @@
             // 
             // price
             // 
+            this.price.FillWeight = 110F;
             this.price.HeaderText = "Giá";
             this.price.Name = "price";
             this.price.ReadOnly = true;
+            this.price.Width = 110;
             // 
             // description
             // 

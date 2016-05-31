@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingManagement));
+            this.billListGroupBox = new mcontrol.MGroupBox(this.components);
+            this.dgvBilling = new mcontrol.MDataGridView(this.components);
             this.tracuuGroupBox = new mcontrol.MGroupBox(this.components);
             this.billStatusComboBox = new mcontrol.MComboBox(this.components);
             this.lblBillStatus = new mcontrol.MLabel(this.components);
@@ -44,8 +46,6 @@
             this.lblToDate = new mcontrol.MLabel(this.components);
             this.txtFromDate = new mcontrol.MDateTextBox(this.components);
             this.lblFromDate = new mcontrol.MLabel(this.components);
-            this.billListGroupBox = new mcontrol.MGroupBox(this.components);
-            this.dgvBilling = new mcontrol.MDataGridView(this.components);
             this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,10 +55,63 @@
             this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detail = new System.Windows.Forms.DataGridViewButtonColumn();
             this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tracuuGroupBox.SuspendLayout();
             this.billListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).BeginInit();
+            this.tracuuGroupBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // billListGroupBox
+            // 
+            this.billListGroupBox.Controls.Add(this.dgvBilling);
+            this.billListGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.billListGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.billListGroupBox.Location = new System.Drawing.Point(13, 146);
+            this.billListGroupBox.Name = "billListGroupBox";
+            this.billListGroupBox.Size = new System.Drawing.Size(898, 475);
+            this.billListGroupBox.TabIndex = 1;
+            this.billListGroupBox.TabStop = false;
+            this.billListGroupBox.Text = "Danh sách hóa đơn";
+            // 
+            // dgvBilling
+            // 
+            this.dgvBilling.AllowUserToAddRows = false;
+            this.dgvBilling.AllowUserToDeleteRows = false;
+            this.dgvBilling.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBilling.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvBilling.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBilling.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.billNumber,
+            this.billDate,
+            this.tableNumber,
+            this.totalBill,
+            this.billStatus,
+            this.createdBy,
+            this.createdDate,
+            this.detail,
+            this.billId});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBilling.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvBilling.Location = new System.Drawing.Point(7, 20);
+            this.dgvBilling.MultiSelect = false;
+            this.dgvBilling.Name = "dgvBilling";
+            this.dgvBilling.RowHeadersVisible = false;
+            this.dgvBilling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBilling.Size = new System.Drawing.Size(885, 449);
+            this.dgvBilling.TabIndex = 0;
+            this.dgvBilling.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellClick);
             // 
             // tracuuGroupBox
             // 
@@ -207,59 +260,6 @@
             this.lblFromDate.TabIndex = 4;
             this.lblFromDate.Text = "Từ ngày";
             // 
-            // billListGroupBox
-            // 
-            this.billListGroupBox.Controls.Add(this.dgvBilling);
-            this.billListGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.billListGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.billListGroupBox.Location = new System.Drawing.Point(13, 146);
-            this.billListGroupBox.Name = "billListGroupBox";
-            this.billListGroupBox.Size = new System.Drawing.Size(898, 475);
-            this.billListGroupBox.TabIndex = 1;
-            this.billListGroupBox.TabStop = false;
-            this.billListGroupBox.Text = "Danh sách hóa đơn";
-            // 
-            // dgvBilling
-            // 
-            this.dgvBilling.AllowUserToAddRows = false;
-            this.dgvBilling.AllowUserToDeleteRows = false;
-            this.dgvBilling.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBilling.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvBilling.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBilling.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.billNumber,
-            this.billDate,
-            this.tableNumber,
-            this.totalBill,
-            this.billStatus,
-            this.createdBy,
-            this.createdDate,
-            this.detail,
-            this.billId});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBilling.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBilling.Location = new System.Drawing.Point(7, 20);
-            this.dgvBilling.MultiSelect = false;
-            this.dgvBilling.Name = "dgvBilling";
-            this.dgvBilling.RowHeadersVisible = false;
-            this.dgvBilling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBilling.Size = new System.Drawing.Size(885, 449);
-            this.dgvBilling.TabIndex = 0;
-            this.dgvBilling.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellClick);
-            // 
             // billNumber
             // 
             this.billNumber.FillWeight = 80F;
@@ -284,9 +284,11 @@
             // 
             // totalBill
             // 
+            this.totalBill.FillWeight = 120F;
             this.totalBill.HeaderText = "Thành tiền";
             this.totalBill.Name = "totalBill";
             this.totalBill.ReadOnly = true;
+            this.totalBill.Width = 120;
             // 
             // billStatus
             // 
@@ -337,10 +339,10 @@
             this.Name = "BillingManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tra cứu hóa đơn";
-            this.tracuuGroupBox.ResumeLayout(false);
-            this.tracuuGroupBox.PerformLayout();
             this.billListGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).EndInit();
+            this.tracuuGroupBox.ResumeLayout(false);
+            this.tracuuGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

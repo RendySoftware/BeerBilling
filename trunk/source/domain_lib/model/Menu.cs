@@ -38,6 +38,8 @@ namespace domain_lib.model
 
         private DateTime _updated_Date = default(DateTime);
 
+        private string _unitName = String.Empty;
+
         #endregion
 
     	#region Constructor
@@ -46,7 +48,25 @@ namespace domain_lib.model
         {
         }
 
-    	#endregion
+        public Menu(long id, long category_Id, string code, string name, long unit_Id, string unitName, float price, string description,
+            string is_Active, string created_By, DateTime created_Date, string updated_By, DateTime updated_Date)
+        {
+            _id = id;
+            _category_Id = category_Id;
+            _code = code;
+            _name = name;
+            _unit_Id = unit_Id;
+            _unitName = unitName;
+            _price = price;
+            _description = description;
+            _is_Active = is_Active;
+            _created_By = created_By;
+            _created_Date = created_Date;
+            _updated_By = updated_By;
+            _updated_Date = updated_Date;
+        }
+
+        #endregion
 
         #region Properties
 
@@ -156,6 +176,12 @@ namespace domain_lib.model
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        public virtual string UnitName
+        {
+            get { return _unitName; }
+            set { _unitName = value; }
         }
 
         #endregion

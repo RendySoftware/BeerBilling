@@ -103,7 +103,8 @@ namespace BeerBilling.presenter.billing
             r.Cells["billNumber"].Value = dto.BillingNumber;
             r.Cells["billDate"].Value = dto.BillingDate;
             r.Cells["tableNumber"].Value = dto.TableNumber;
-            r.Cells["totalBill"].Value = GetTotalBill(dto.Id).ToString("#,###,###");
+            string totalBill = GetTotalBill(dto.Id).ToString("#,###,###");
+            r.Cells["totalBill"].Value = String.IsNullOrEmpty(totalBill) ? String.Empty : totalBill + " VNĐ";
             r.Cells["billStatus"].Value = GetThanhToan(dto.Payment);
             r.Cells["createdBy"].Value = dto.CreatedBy;
             r.Cells["createdDate"].Value = dto.CreatedDate;

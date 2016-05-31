@@ -103,7 +103,8 @@ namespace BeerBilling.presenter.billing
                 AddOneResOrderRow(dto, out oneTotal);
                 tongTien += oneTotal;
             }
-            txtTongTien.Text = tongTien.ToString("#,###,###");
+            string tongVal = tongTien.ToString("#,###,###");
+            txtTongTien.Text = string.IsNullOrEmpty(tongVal) ? string.Empty : tongVal + " VNĐ";
         }
 
         private string GetThanhToan(string payment)
@@ -131,9 +132,9 @@ namespace BeerBilling.presenter.billing
             r.Cells["MON_AN"].Value = dto.MenuName;
             r.Cells["SO_LUONG"].Value = dto.Amount;
             r.Cells["DON_VI"].Value = dto.UnitName;
-            r.Cells["DON_GIA"].Value = dto.MenuPrice.ToString("#,###,###");
+            r.Cells["DON_GIA"].Value = dto.MenuPrice.ToString("#,###,###") + " VNĐ";
             r.Cells["CHIET_KHAU"].Value = (dto.Discount * 100) + "%";
-            r.Cells["THANH_TIEN"].Value = oneTotal.ToString("#,###,###");
+            r.Cells["THANH_TIEN"].Value = oneTotal.ToString("#,###,###") + " VNĐ";
             r.Cells["ResOrderId"].Value = dto.Id;
         }
 
