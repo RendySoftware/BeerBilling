@@ -17,3 +17,11 @@ insert into Employee(employee_id, full_name, phone) values ('BUIHAINGUYEN',N'Bù
 GO
 insert into Employee(employee_id, full_name, phone) values ('NGUYENVIETTHANH',N'Nguyễn Việt Thanh','0983368824')
 GO
+
+
+alter table bill add employee_id varchar(100) null
+GO
+alter table bill add employee_name nvarchar(100) null
+GO
+update bill set employee_id = 1, employee_name = (select full_name from Employee where id = 1)
+GO
