@@ -225,7 +225,7 @@ namespace BeerBilling.presenter.billing
             {
                 MMessageBox.Show(this, "Hóa đơn đã được in!", "Thông báo"
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
-                return;
+                //return;
             }
             var dr = MMessageBox.Show(this, "Bạn có muốn in hóa đơn?", "Thông báo"
                                       , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
@@ -284,10 +284,10 @@ namespace BeerBilling.presenter.billing
             report.PrintOptions.PaperOrientation = PaperOrientation.Portrait;
             report.PrintToPrinter(1, false, 0, 0);
 
-//            var frm = new FrmReport(report, false);
-//            frm.Text = "In hóa đơn";
-//            frm.ShowDialog(this);
-//            frm.BringToFront();
+            //var frm = new FrmReport(report, false);
+            //frm.Text = "In hóa đơn";
+            //frm.ShowDialog(this);
+            //frm.BringToFront();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
