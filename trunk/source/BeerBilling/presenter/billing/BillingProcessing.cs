@@ -247,7 +247,7 @@ namespace BeerBilling.presenter.billing
             {
                 return;
             }
-            var tongTien = float.Parse(txtTongTien.Text.Replace(",", ""));
+            var tongTien = float.Parse(System.Text.RegularExpressions.Regex.Replace(txtTongTien.Text, @"[VNĐ,$%]", String.Empty));
             var frmThongTinKhachTt = new ThongTinKhachTT(tongTien, billDto.EmployeeName);
             frmThongTinKhachTt.ShowDialog(this);
             var tenNhanVien = frmThongTinKhachTt.TenNhanVien;
