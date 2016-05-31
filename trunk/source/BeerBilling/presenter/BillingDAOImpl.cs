@@ -77,5 +77,15 @@ namespace BeerBilling.presenter
         {
             return _controller.GetAllBillBy(tuNgay, denNgay, billingNumber, tableId, billStatusCode);
         }
+
+        public List<DanhMucDto> GetAllCategory()
+        {
+            return _controller.GetAllCategory();
+        }
+
+        public List<MenuDto> GetAllMenuBy(long categoryId)
+        {
+            return _controller.GetAllMenuBy(categoryId);
+        }
     }
 }

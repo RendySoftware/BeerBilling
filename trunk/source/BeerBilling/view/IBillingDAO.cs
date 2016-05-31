@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,7 @@ namespace BeerBilling.view
         bool AddNewResOrder(ResOrderDto resOrderDto);
         List<EmployeeDto> GetAllEmployee();
         List<BillDto> GetAllBillBy(string tuNgay, string denNgay, string billingNumber, string tableId, string billStatusCode);
+        List<DanhMucDto> GetAllCategory();
+        List<MenuDto> GetAllMenuBy(long categoryId);
     }
 }

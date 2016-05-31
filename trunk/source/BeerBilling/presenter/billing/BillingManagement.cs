@@ -24,7 +24,8 @@ namespace BeerBilling.presenter.billing
 
             InitComboTable();
             InitComboStatus();
-
+            txtFromDate.Text = DateUtil.GetCurrentDateTimeAsDdmmyyString();
+            txtToDate.Text = DateUtil.GetCurrentDateTimeAsDdmmyyString();
             btnThucHien_Click(null, null);
         }
 

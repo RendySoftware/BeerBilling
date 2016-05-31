@@ -25,7 +25,6 @@ namespace BeerBilling.presenter.billing
     {
         private IDanhSachUser _danhSachUser = new DanhSachUserImpl();
         private IBillingDAO _billingDao = new BillingDAOImpl();
-        private BillingReportDAOImpl _billingReportDao = new BillingReportDAOImpl(new BillingDataSet());
 
         public BillingProcessing()
         {
@@ -174,6 +173,7 @@ namespace BeerBilling.presenter.billing
             {
                 AddOneBillRow(billDto);
             }
+            dgvHoaDon_SelectionChanged(null, null);
         }
 
         private void AddOneBillRow(BillDto billDto)

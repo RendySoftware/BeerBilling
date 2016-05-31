@@ -588,6 +588,65 @@ namespace domain_lib.persistence
             }
         }
 
+        public List<DanhMucDto> GetAllCategory()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Category c order by c.Code asc");
+
+                // Get the matching objects
+                var allCategorys = query.List();
+
+                var listCategoryDtos = new List<DanhMucDto>();
+                foreach (Category category in allCategorys)
+                {
+                    var resTableDto = new DanhMucDto()
+                    {
+                        Id = Convert.ToString(category.Id),
+                        Ma = category.Code,
+                        Ten = category.Name
+                    };
+                    listCategoryDtos.Add(resTableDto);
+                }
+                return listCategoryDtos;
+            }
+        }
+
+        public List<MenuDto> GetAllMenuBy(long categoryId)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Menu m where m.IsActive = :isActive and m.CategoryId = :categoryId order by m.Code asc");
+                query.SetParameter("isActive", "YES");
+                query.SetParameter("categoryId", categoryId);
+
+                // Get the matching objects
+                var allMenus = query.List();
+
+                var listMenuDtos = new List<MenuDto>();
+                foreach (Menu menu in allMenus)
+                {
+                    var resTableDto = new MenuDto()
+                    {
+                        Id = menu.Id,
+                        CategoryId = menu.CategoryId,
+                        Code = menu.Code,
+                        Name = menu.Name,
+                        UnitId = menu.UnitId,
+                        Price = menu.Price,
+                        Description = menu.Description,
+                        IsActive = menu.IsActive,
+                        CreatedBy = menu.CreatedBy,
+                        CreatedDate = menu.CreatedDate,
+                        UpdatedBy = menu.UpdatedBy,
+                        UpdatedDate = menu.UpdatedDate
+                    };
+                    listMenuDtos.Add(resTableDto);
+                }
+                return listMenuDtos;
+            }
+        }
+
         public List<EmployeeDto> GetAllEmployee()
         {
             using (ISession session = m_SessionFactory.OpenSession())

@@ -245,5 +245,15 @@ namespace domain_lib.controller
         {
             return m_PersistenceManager.GetAllBillBy(tuNgay, denNgay, billingNumber, tableId, billStatusCode);
         }
+
+        public List<DanhMucDto> GetAllCategory()
+        {
+            return m_PersistenceManager.GetAllCategory();
+        }
+
+        public List<MenuDto> GetAllMenuBy(long categoryId)
+        {
+            return m_PersistenceManager.GetAllMenuBy(categoryId);
+        }
     }
 }
