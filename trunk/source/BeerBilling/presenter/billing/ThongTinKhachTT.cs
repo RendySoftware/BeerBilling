@@ -6,7 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BeerBilling.view;
+using domain_lib.dto;
 using mcontrol;
+using mcontrol.util;
 
 namespace BeerBilling.presenter.billing
 {
@@ -14,6 +17,8 @@ namespace BeerBilling.presenter.billing
     {
         private float _tongTien;
         private float _khachTt = 0;
+        private string _tenNhanVien;
+        private IBillingDAO _billingDao = new BillingDAOImpl();
 
         public virtual float KhachTt
         {
@@ -21,10 +26,28 @@ namespace BeerBilling.presenter.billing
             set { _khachTt = value; }
         }
 
+        public virtual string TenNhanVien
+        {
+            get { return _tenNhanVien; }
+            set { _tenNhanVien = value; }
+        }
+
         public ThongTinKhachTT(float tongTien)
         {
             InitializeComponent();
             _tongTien = tongTien;
+            var allEmployeeDto = _billingDao.GetAllEmployee();
+            var allDanhMucDto = new List<DanhMucDto>();
+            foreach (EmployeeDto dto in allEmployeeDto)
+            {
+                allDanhMucDto.Add(new DanhMucDto()
+                {
+                    Id = Convert.ToString(dto.Id),
+                    Ma = dto.EmployeeId,
+                    Ten = dto.FullName
+                });
+            }
+            MControlUtil.FillToComboBox(cboEmployee, allDanhMucDto);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -39,21 +62,30 @@ namespace BeerBilling.presenter.billing
                 return;
             }
             _khachTt = float.Parse(txtKhachTt.Text);
+            _tenNhanVien = cboEmployee.Text.Trim();
             Dispose();
         }
 
         private bool IsValidInputData()
         {
-            if ("".Equals(txtKhachTt.Text.Trim()) || float.Parse(txtKhachTt.Text.Trim()) == 0f)
+            if ("".Equals(cboEmployee.Text.Trim()))
+            {
+                MMessageBox.Show(this, "Bạn chưa chọn nhân viên", "Thông báo"
+                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                cboEmployee.Focus();
+                return false;
+            }
+            float khachTt = float.Parse(txtKhachTt.Text.Trim());
+            if ("".Equals(txtKhachTt.Text.Trim()) || khachTt == 0f)
             {
                 MMessageBox.Show(this, "Bạn chưa nhập tiền khách thanh toán", "Thông báo"
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
                 txtKhachTt.Focus();
                 return false;
             }
-            if (float.Parse(txtKhachTt.Text.Trim())*1000 < _tongTien)
+            if (khachTt < _tongTien)
             {
-                MMessageBox.Show(this, "Tiền của khách ít hơn tổng thanh toán", "Thông báo"
+                MMessageBox.Show(this, "Tiền của khách ít hơn tổng thanh toán: " + (_tongTien - khachTt).ToString("#,###,###") + " VNĐ", "Thông báo"
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
                 txtKhachTt.Focus();
                 return false;

@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingCancel));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
-            this.txtReason = new mcontrol.MTextBox(this.components);
-            this.mLabel1 = new mcontrol.MLabel(this.components);
             this.btnClose = new mcontrol.MButton(this.components);
+            this.mLabel1 = new mcontrol.MLabel(this.components);
+            this.txtReason = new mcontrol.MTextBox(this.components);
             this.btnAccept = new mcontrol.MButton(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,16 +52,18 @@
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
-            // txtReason
+            // btnClose
             // 
-            this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtReason.Location = new System.Drawing.Point(15, 44);
-            this.txtReason.Multiline = true;
-            this.txtReason.Name = "txtReason";
-            this.txtReason.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtReason.Size = new System.Drawing.Size(531, 210);
-            this.txtReason.TabIndex = 0;
+            this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnClose.Image = global::BeerBilling.Properties.Resources.Exit;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(324, 280);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 25);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // mLabel1
             // 
@@ -72,23 +75,25 @@
             this.mLabel1.TabIndex = 1;
             this.mLabel1.Text = "Lý do";
             // 
-            // btnClose
+            // txtReason
             // 
-            this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnClose.Location = new System.Drawing.Point(324, 280);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 23);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtReason.Location = new System.Drawing.Point(15, 44);
+            this.txtReason.Multiline = true;
+            this.txtReason.Name = "txtReason";
+            this.txtReason.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtReason.Size = new System.Drawing.Size(531, 210);
+            this.txtReason.TabIndex = 0;
             // 
             // btnAccept
             // 
             this.btnAccept.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnAccept.Image = global::BeerBilling.Properties.Resources.Upload_comit;
+            this.btnAccept.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAccept.Location = new System.Drawing.Point(446, 280);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(100, 23);
+            this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 3;
             this.btnAccept.Text = "Cập nhật";
             this.btnAccept.UseVisualStyleBackColor = true;
@@ -100,6 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 347);
             this.Controls.Add(this.mGroupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BillingCancel";

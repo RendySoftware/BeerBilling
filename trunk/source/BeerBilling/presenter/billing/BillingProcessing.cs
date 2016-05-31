@@ -50,7 +50,32 @@ namespace BeerBilling.presenter.billing
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            Dispose();
+            var billId = GetSelectedBillId();
+            if (billId == -1)
+            {
+                MMessageBox.Show(this, "Bạn chưa chọn hóa đơn", "Thông báo"
+                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                btnThemHoaDon.Focus();
+                return;
+            }
+            var dr = MMessageBox.Show(this, "Bạn có muốn xóa hóa đơn?", "Thông báo"
+                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+            if (DialogResult.No == dr)
+            {
+                return;
+            }
+            var billingCancel = new BillingCancel();
+            billingCancel.ShowDialog(this);
+            var reason = billingCancel.Reason;
+            if (String.IsNullOrEmpty(reason))
+            {
+                return;
+            }
+            var billDto = _billingDao.getBillDto(billId);
+            billDto.Payment = ConstUtil.CANCEL;
+            billDto.CancelReason = reason;
+            _billingDao.ThanhToan(billDto);
+            dgvHoaDon_SelectionChanged(null, null);
         }
 
         private void btnThemHoaDon_Click(object sender, EventArgs e)
@@ -156,19 +181,13 @@ namespace BeerBilling.presenter.billing
             string billNumber = billDto.TableNumber + "_" + billDto.BillingNumber;
             int index = dgvHoaDon.Rows.Add();
             var r = dgvHoaDon.Rows[index];
-            r.Cells["billNumber"].Value = "Hóa đơn " + billNumber;
+            r.Cells["billNumber"].Value = "Bàn số " + billNumber;
             r.Cells["billId"].Value = billDto.Id;
         }
 
         private void btnThemMonAn_Click(object sender, EventArgs e)
         {
             if (!IsValidInputData())
-            {
-                return;
-            }
-            var dr = MMessageBox.Show(this, "Thêm thực đơn?", "Thông báo"
-                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
-            if (DialogResult.No == dr)
             {
                 return;
             }
@@ -227,27 +246,23 @@ namespace BeerBilling.presenter.billing
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
                 return;
             }
-            var dr = MMessageBox.Show(this, "Bạn có muốn in hóa đơn?", "Thông báo"
-                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
-            if (DialogResult.No == dr)
-            {
-                return;
-            }
             var tongTien = float.Parse(txtTongTien.Text.Replace(",", ""));
             var frmThongTinKhachTt = new ThongTinKhachTT(tongTien);
             frmThongTinKhachTt.ShowDialog(this);
-            var khachTt = frmThongTinKhachTt.KhachTt*1000f;
+            var tenNhanVien = frmThongTinKhachTt.TenNhanVien;
+            var khachTt = frmThongTinKhachTt.KhachTt;
             if (khachTt == 0f)
             {
                 return;
             }
-            CreateReport(billDto, tongTien, khachTt);
+            CreateReport(billDto, tongTien, khachTt, tenNhanVien);
             billDto.IsPrinted = ConstUtil.YES;
+            billDto.Payment = ConstUtil.YES;
             _billingDao.ThanhToan(billDto);
             dgvHoaDon_SelectionChanged(null, null);
         }
 
-        private void CreateReport(BillDto billDto, float tongTien, float khachTt)
+        private void CreateReport(BillDto billDto, float tongTien, float khachTt, string tenNhanVien)
         {
             var columnNames = new List<string> { "MonAn", "SoLuong", "DonGia", "Tong" };
 
@@ -275,7 +290,7 @@ namespace BeerBilling.presenter.billing
             report.SetParameterValue("DiaChi", ThamSo.DiaChi);
             report.SetParameterValue("BillNumber", billDto.BillingNumber.ToString());
             report.SetParameterValue("TenKhach", String.Empty);
-            report.SetParameterValue("NhanVien", _danhSachUser.GetCurrentUserName());
+            report.SetParameterValue("NhanVien", tenNhanVien);
             report.SetParameterValue("TongTien", tongTien.ToString("#,###,###"));
             report.SetParameterValue("KhachTT", khachTt.ToString("#,###,###"));
             report.SetParameterValue("KhachThua", (khachTt - tongTien).ToString("#,###,###"));
@@ -311,39 +326,6 @@ namespace BeerBilling.presenter.billing
             dgvHoaDon_SelectionChanged(null, null);
         }
         
-        private void dgvHoaDon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 'd' || e.KeyChar == 'D')
-            {
-                var billId = GetSelectedBillId();
-                if (billId == -1)
-                {
-                    MMessageBox.Show(this, "Bạn chưa chọn hóa đơn", "Thông báo"
-                        , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
-                    btnThemHoaDon.Focus();
-                    return;
-                }
-                var dr = MMessageBox.Show(this, "Bạn có muốn xóa hóa đơn?", "Thông báo"
-                                          , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
-                if (DialogResult.No == dr)
-                {
-                    return;
-                }
-                var billingCancel = new BillingCancel();
-                billingCancel.ShowDialog(this);
-                var reason = billingCancel.Reason;
-                if (String.IsNullOrEmpty(reason))
-                {
-                    return;
-                }
-                var billDto = _billingDao.getBillDto(billId);
-                billDto.Payment = ConstUtil.CANCEL;
-                billDto.CancelReason = reason;
-                _billingDao.ThanhToan(billDto);
-                dgvHoaDon_SelectionChanged(null, null);
-            }
-        }
-
         private void dgvThucDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 'd' || e.KeyChar == 'D')

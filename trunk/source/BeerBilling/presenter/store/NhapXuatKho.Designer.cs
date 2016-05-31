@@ -1,4 +1,6 @@
-﻿namespace BeerBilling.presenter.kho
+﻿using BeerBilling.util;
+
+namespace BeerBilling.presenter.kho
 {
     partial class NhapXuatKho
     {
@@ -28,11 +30,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            string storeType = importExportType.name;
-
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhapXuatKho));
             this.impexpGroupBox = new mcontrol.MGroupBox(this.components);
             this.txtAmount = new mcontrol.MNumberTextBox(this.components);
             this.txtUnit = new mcontrol.MTextBox(this.components);
@@ -76,7 +77,7 @@
             this.impexpGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.impexpGroupBox.Location = new System.Drawing.Point(14, 15);
             this.impexpGroupBox.Name = "impexpGroupBox";
-            this.impexpGroupBox.Size = new System.Drawing.Size(681, 133);
+            this.impexpGroupBox.Size = new System.Drawing.Size(712, 133);
             this.impexpGroupBox.TabIndex = 0;
             this.impexpGroupBox.TabStop = false;
             this.impexpGroupBox.Text = storeType;
@@ -133,9 +134,11 @@
             // btnAddStore
             // 
             this.btnAddStore.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnAddStore.Location = new System.Drawing.Point(576, 21);
+            this.btnAddStore.Image = global::BeerBilling.Properties.Resources.Add;
+            this.btnAddStore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddStore.Location = new System.Drawing.Point(585, 19);
             this.btnAddStore.Name = "btnAddStore";
-            this.btnAddStore.Size = new System.Drawing.Size(94, 23);
+            this.btnAddStore.Size = new System.Drawing.Size(114, 25);
             this.btnAddStore.TabIndex = 6;
             this.btnAddStore.Text = "Thêm mới";
             this.btnAddStore.UseVisualStyleBackColor = true;
@@ -202,7 +205,7 @@
             this.storeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.storeGroupBox.Location = new System.Drawing.Point(14, 158);
             this.storeGroupBox.Name = "storeGroupBox";
-            this.storeGroupBox.Size = new System.Drawing.Size(681, 371);
+            this.storeGroupBox.Size = new System.Drawing.Size(712, 371);
             this.storeGroupBox.TabIndex = 1;
             this.storeGroupBox.TabStop = false;
             this.storeGroupBox.Text = "Danh sách " + storeType.ToLower();
@@ -210,9 +213,11 @@
             // btnImpexpProcess
             // 
             this.btnImpexpProcess.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnImpexpProcess.Location = new System.Drawing.Point(576, 19);
+            this.btnImpexpProcess.Image = global::BeerBilling.Properties.Resources.Upload_comit;
+            this.btnImpexpProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImpexpProcess.Location = new System.Drawing.Point(585, 19);
             this.btnImpexpProcess.Name = "btnImpexpProcess";
-            this.btnImpexpProcess.Size = new System.Drawing.Size(94, 23);
+            this.btnImpexpProcess.Size = new System.Drawing.Size(114, 25);
             this.btnImpexpProcess.TabIndex = 1;
             this.btnImpexpProcess.Text = storeType;
             this.btnImpexpProcess.UseVisualStyleBackColor = true;
@@ -223,14 +228,14 @@
             this.dgvStores.AllowUserToAddRows = false;
             this.dgvStores.AllowUserToDeleteRows = false;
             this.dgvStores.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.materialName,
@@ -239,19 +244,19 @@
             this.unit,
             this.storeDate,
             this.reason});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStores.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStores.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvStores.Location = new System.Drawing.Point(9, 53);
             this.dgvStores.MultiSelect = false;
             this.dgvStores.Name = "dgvStores";
             this.dgvStores.RowHeadersVisible = false;
-            this.dgvStores.Size = new System.Drawing.Size(661, 312);
+            this.dgvStores.Size = new System.Drawing.Size(690, 312);
             this.dgvStores.TabIndex = 0;
             // 
             // materialName
@@ -295,9 +300,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 541);
+            this.ClientSize = new System.Drawing.Size(738, 541);
             this.Controls.Add(this.storeGroupBox);
             this.Controls.Add(this.impexpGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NhapXuatKho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = storeType;
@@ -311,6 +317,7 @@
 
         #endregion
 
+        private string storeType = string.Empty;
         private mcontrol.MGroupBox impexpGroupBox;
         private mcontrol.MLabel lblReason;
         private mcontrol.MTextBox txtReason;

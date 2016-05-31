@@ -43,6 +43,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnHuy.Image = global::BeerBilling.Properties.Resources.Exit;
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHuy.Location = new System.Drawing.Point(225, 135);
             this.btnHuy.Name = "btnHuy";
@@ -55,6 +56,7 @@
             // btnDongY
             // 
             this.btnDongY.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnDongY.Image = global::BeerBilling.Properties.Resources.Apply;
             this.btnDongY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDongY.Location = new System.Drawing.Point(116, 135);
             this.btnDongY.Name = "btnDongY";

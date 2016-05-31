@@ -95,5 +95,10 @@ namespace BeerBilling.presenter.billing
         {
 
         }
+
+        private void btnThucHien_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

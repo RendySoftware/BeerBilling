@@ -235,5 +235,10 @@ namespace domain_lib.controller
             m_PersistenceManager.Save(bill);
             return true;
         }
+
+        public List<EmployeeDto> GetAllEmployee()
+        {
+            return m_PersistenceManager.GetAllEmployee();
+        }
     }
 }

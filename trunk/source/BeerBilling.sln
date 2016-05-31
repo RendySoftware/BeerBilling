@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "export2word", "export2word\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wordviewer", "wordviewer\wordviewer.csproj", "{5A388857-15EA-4BC7-8559-6DDCF5F0B969}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupBB", "SetupBB\SetupBB.vdproj", "{6A89207D-57AF-4ACC-AB08-834E3CA39134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,14 @@ Global
 		{5A388857-15EA-4BC7-8559-6DDCF5F0B969}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5A388857-15EA-4BC7-8559-6DDCF5F0B969}.Release|x64.ActiveCfg = Release|Any CPU
 		{5A388857-15EA-4BC7-8559-6DDCF5F0B969}.Release|x86.ActiveCfg = Release|Any CPU
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Debug|Any CPU.ActiveCfg = Debug
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Debug|x64.ActiveCfg = Debug
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Debug|x86.ActiveCfg = Debug
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Release|Any CPU.ActiveCfg = Release
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Release|Mixed Platforms.ActiveCfg = Release
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Release|x64.ActiveCfg = Release
+		{6A89207D-57AF-4ACC-AB08-834E3CA39134}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

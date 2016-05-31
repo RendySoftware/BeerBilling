@@ -23,6 +23,7 @@ namespace BeerBilling.presenter.kho
         public NhapXuatKho(ImportExportType type)
         {
             this.importExportType = type;
+            this.storeType = type.name;
             InitializeComponent();
             
             _storeDao = new StoreDAOImpl();

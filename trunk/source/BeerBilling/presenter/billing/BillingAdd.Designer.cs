@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
+            this.cboBanSo = new mcontrol.MComboBox2(this.components);
             this.btnThem = new mcontrol.MButton(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
             this.txtHoaDonSo = new mcontrol.MNumberTextBox2(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.cboBanSo = new mcontrol.MComboBox2(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,12 +53,27 @@
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
+            // cboBanSo
+            // 
+            this.cboBanSo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboBanSo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboBanSo.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboBanSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboBanSo.FormattingEnabled = true;
+            this.cboBanSo.LimitToList = true;
+            this.cboBanSo.Location = new System.Drawing.Point(112, 69);
+            this.cboBanSo.Name = "cboBanSo";
+            this.cboBanSo.Size = new System.Drawing.Size(100, 24);
+            this.cboBanSo.TabIndex = 5;
+            // 
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThem.Location = new System.Drawing.Point(84, 120);
+            this.btnThem.Image = global::BeerBilling.Properties.Resources.Add;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(75, 118);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Size = new System.Drawing.Size(100, 25);
             this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -98,19 +113,6 @@
             this.mLabel1.Size = new System.Drawing.Size(69, 14);
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Hóa đơn số";
-            // 
-            // cboBanSo
-            // 
-            this.cboBanSo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboBanSo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboBanSo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboBanSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cboBanSo.FormattingEnabled = true;
-            this.cboBanSo.LimitToList = true;
-            this.cboBanSo.Location = new System.Drawing.Point(112, 69);
-            this.cboBanSo.Name = "cboBanSo";
-            this.cboBanSo.Size = new System.Drawing.Size(100, 24);
-            this.cboBanSo.TabIndex = 5;
             // 
             // BillingAdd
             // 

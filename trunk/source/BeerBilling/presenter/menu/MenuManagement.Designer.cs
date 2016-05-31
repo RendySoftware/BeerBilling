@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuManagement));
             this.categoryGroupBox = new mcontrol.MGroupBox(this.components);
             this.mDataGridView1 = new mcontrol.MDataGridView(this.components);
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,9 +123,11 @@
             // btnAddCategory
             // 
             this.btnAddCategory.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnAddCategory.Image = global::BeerBilling.Properties.Resources.Add;
+            this.btnAddCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddCategory.Location = new System.Drawing.Point(7, 20);
             this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.Size = new System.Drawing.Size(100, 25);
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "Thêm";
             this.btnAddCategory.UseVisualStyleBackColor = true;
@@ -237,6 +240,7 @@
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.menuListGroupBox);
             this.Controls.Add(this.categoryGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý thực đơn";

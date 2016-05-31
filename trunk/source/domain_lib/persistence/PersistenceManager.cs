@@ -591,6 +591,37 @@ namespace domain_lib.persistence
             }
         }
 
+        public List<EmployeeDto> GetAllEmployee()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Employee e order by e.FullName asc");
+
+                // Get the matching objects
+                var allEmployees = query.List();
+
+                var listMEmployeeDtos = new List<EmployeeDto>();
+                foreach (Employee employee in allEmployees)
+                {
+                    var employeeDto = new EmployeeDto()
+                    {
+                        Id = employee.Id,
+                        EmployeeId = employee.EmployeeId,
+                        FullName = employee.FullName,
+                        Birthday = employee.Birthday,
+                        Email = employee.Email,
+                        Phone = employee.Phone,
+                        CreatedBy = employee.CreatedBy,
+                        CreatedDate = employee.CreatedDate,
+                        UpdatedBy = employee.UpdatedBy,
+                        UpdatedDate = employee.UpdatedDate
+                    };
+                    listMEmployeeDtos.Add(employeeDto);
+                }
+                return listMEmployeeDtos;
+            }
+        }
+
         public List<ResOrderDto> GetAllResOrderBy(long billId)
         {
             using (ISession session = m_SessionFactory.OpenSession())

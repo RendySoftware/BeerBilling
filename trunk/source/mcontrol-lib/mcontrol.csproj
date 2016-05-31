@@ -99,6 +99,12 @@
     <Compile Include="AutoCompleted.Designer.cs">
       <DependentUpon>AutoCompleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="MNumberTextBox3.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MNumberTextBox3.Designer.cs">
+      <DependentUpon>MNumberTextBox3.cs</DependentUpon>
+    </Compile>
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MHoTenTextBox2.cs">
       <SubType>Component</SubType>

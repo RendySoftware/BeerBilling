@@ -68,6 +68,7 @@
     <Compile Include="dto\CommonDto.cs" />
     <Compile Include="dto\CustomerDto.cs" />
     <Compile Include="dto\DanhMucDto.cs" />
+    <Compile Include="dto\EmployeeDto.cs" />
     <Compile Include="dto\MaterialDto.cs" />
     <Compile Include="dto\MenuDto.cs" />
     <Compile Include="dto\ResOrderDto.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="model\Category.cs" />
     <Compile Include="model\Bill.cs" />
     <Compile Include="model\BookedTable.cs" />
+    <Compile Include="model\Employee.cs" />
     <Compile Include="model\ResTable.cs" />
     <Compile Include="model\Customer.cs" />
     <Compile Include="model\ResOrder.cs" />
@@ -168,6 +170,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="model\BookedTable.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="model\Employee.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

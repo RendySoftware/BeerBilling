@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TraCuuNhapXuatKho));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
             this.btnThucHien = new mcontrol.MButton(this.components);
             this.expCheckBox = new mcontrol.MCheckBox(this.components);
@@ -68,16 +69,18 @@
             this.mGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.mGroupBox1.Location = new System.Drawing.Point(13, 12);
             this.mGroupBox1.Name = "mGroupBox1";
-            this.mGroupBox1.Size = new System.Drawing.Size(753, 70);
+            this.mGroupBox1.Size = new System.Drawing.Size(788, 70);
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
             // btnThucHien
             // 
             this.btnThucHien.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThucHien.Image = global::BeerBilling.Properties.Resources.Search;
+            this.btnThucHien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThucHien.Location = new System.Drawing.Point(660, 24);
             this.btnThucHien.Name = "btnThucHien";
-            this.btnThucHien.Size = new System.Drawing.Size(87, 23);
+            this.btnThucHien.Size = new System.Drawing.Size(114, 25);
             this.btnThucHien.TabIndex = 6;
             this.btnThucHien.Text = "Thực hiện";
             this.btnThucHien.UseVisualStyleBackColor = true;
@@ -156,7 +159,7 @@
             this.impexpListGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.impexpListGroupBox.Location = new System.Drawing.Point(13, 98);
             this.impexpListGroupBox.Name = "impexpListGroupBox";
-            this.impexpListGroupBox.Size = new System.Drawing.Size(759, 452);
+            this.impexpListGroupBox.Size = new System.Drawing.Size(788, 452);
             this.impexpListGroupBox.TabIndex = 1;
             this.impexpListGroupBox.TabStop = false;
             this.impexpListGroupBox.Text = "Danh sách Nhập/Xuất kho";
@@ -197,7 +200,7 @@
             this.impexpDataGridView.MultiSelect = false;
             this.impexpDataGridView.Name = "impexpDataGridView";
             this.impexpDataGridView.RowHeadersVisible = false;
-            this.impexpDataGridView.Size = new System.Drawing.Size(746, 362);
+            this.impexpDataGridView.Size = new System.Drawing.Size(770, 400);
             this.impexpDataGridView.TabIndex = 0;
             // 
             // material
@@ -261,9 +264,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(813, 562);
             this.Controls.Add(this.impexpListGroupBox);
             this.Controls.Add(this.mGroupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TraCuuNhapXuatKho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tra cứu";

@@ -48,6 +48,11 @@ namespace BeerBilling.presenter
             return _controller.SaveResOrder(resOrderDto);
         }
 
+        public List<EmployeeDto> GetAllEmployee()
+        {
+            return _controller.GetAllEmployee();
+        }
+
         public BillDto getBillDto(long billId)
         {
             return _controller.getBillDto(billId);
