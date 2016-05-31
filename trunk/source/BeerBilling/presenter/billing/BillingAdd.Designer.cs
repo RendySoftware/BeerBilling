@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingAdd));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
+            this.cboEmployee = new mcontrol.MComboBox2(this.components);
+            this.mLabel3 = new mcontrol.MLabel(this.components);
             this.cboBanSo = new mcontrol.MComboBox2(this.components);
             this.btnThem = new mcontrol.MButton(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
             this.txtHoaDonSo = new mcontrol.MNumberTextBox2(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.cboEmployee = new mcontrol.MComboBox2(this.components);
-            this.mLabel3 = new mcontrol.MLabel(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,29 @@
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
+            // cboEmployee
+            // 
+            this.cboEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboEmployee.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboEmployee.FormattingEnabled = true;
+            this.cboEmployee.LimitToList = true;
+            this.cboEmployee.Location = new System.Drawing.Point(116, 36);
+            this.cboEmployee.Name = "cboEmployee";
+            this.cboEmployee.Size = new System.Drawing.Size(193, 24);
+            this.cboEmployee.TabIndex = 1;
+            // 
+            // mLabel3
+            // 
+            this.mLabel3.AutoSize = true;
+            this.mLabel3.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.mLabel3.Location = new System.Drawing.Point(40, 40);
+            this.mLabel3.Name = "mLabel3";
+            this.mLabel3.Size = new System.Drawing.Size(61, 14);
+            this.mLabel3.TabIndex = 7;
+            this.mLabel3.Text = "Nhân viên";
+            // 
             // cboBanSo
             // 
             this.cboBanSo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -69,7 +92,7 @@
             this.cboBanSo.Location = new System.Drawing.Point(116, 121);
             this.cboBanSo.Name = "cboBanSo";
             this.cboBanSo.Size = new System.Drawing.Size(193, 24);
-            this.cboBanSo.TabIndex = 5;
+            this.cboBanSo.TabIndex = 3;
             // 
             // btnThem
             // 
@@ -107,7 +130,7 @@
             this.txtHoaDonSo.Mandatory = false;
             this.txtHoaDonSo.Name = "txtHoaDonSo";
             this.txtHoaDonSo.Size = new System.Drawing.Size(193, 23);
-            this.txtHoaDonSo.TabIndex = 1;
+            this.txtHoaDonSo.TabIndex = 2;
             // 
             // mLabel1
             // 
@@ -118,29 +141,6 @@
             this.mLabel1.Size = new System.Drawing.Size(69, 14);
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Hóa đơn số";
-            // 
-            // cboEmployee
-            // 
-            this.cboEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboEmployee.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cboEmployee.FormattingEnabled = true;
-            this.cboEmployee.LimitToList = true;
-            this.cboEmployee.Location = new System.Drawing.Point(116, 36);
-            this.cboEmployee.Name = "cboEmployee";
-            this.cboEmployee.Size = new System.Drawing.Size(193, 24);
-            this.cboEmployee.TabIndex = 8;
-            // 
-            // mLabel3
-            // 
-            this.mLabel3.AutoSize = true;
-            this.mLabel3.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mLabel3.Location = new System.Drawing.Point(40, 40);
-            this.mLabel3.Name = "mLabel3";
-            this.mLabel3.Size = new System.Drawing.Size(61, 14);
-            this.mLabel3.TabIndex = 7;
-            this.mLabel3.Text = "Nhân viên";
             // 
             // BillingAdd
             // 

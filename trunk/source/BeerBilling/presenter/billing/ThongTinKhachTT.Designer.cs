@@ -90,7 +90,7 @@
             this.btnDongY.Location = new System.Drawing.Point(60, 122);
             this.btnDongY.Name = "btnDongY";
             this.btnDongY.Size = new System.Drawing.Size(100, 25);
-            this.btnDongY.TabIndex = 4;
+            this.btnDongY.TabIndex = 2;
             this.btnDongY.Text = "Đồng ý";
             this.btnDongY.UseVisualStyleBackColor = true;
             this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
