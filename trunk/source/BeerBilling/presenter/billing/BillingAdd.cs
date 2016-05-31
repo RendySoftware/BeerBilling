@@ -43,6 +43,19 @@ namespace BeerBilling.presenter.billing
                                       });
             }
             MControlUtil.FillToComboBox(cboBanSo, allDanhMucDto);
+
+            var allEmployeeDto = _billingDao.GetAllEmployee();
+            allDanhMucDto = new List<DanhMucDto>();
+            foreach (EmployeeDto dto in allEmployeeDto)
+            {
+                allDanhMucDto.Add(new DanhMucDto()
+                {
+                    Id = Convert.ToString(dto.Id),
+                    Ma = dto.EmployeeId,
+                    Ten = dto.FullName
+                });
+            }
+            MControlUtil.FillToComboBox(cboEmployee, allDanhMucDto);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -64,6 +77,8 @@ namespace BeerBilling.presenter.billing
             var tableId = MControlUtil.GetValueFromCombobox(cboBanSo);
             billDto.TableId = long.Parse(tableId);
             billDto.BillingNumber = int.Parse(billingNumber);
+            billDto.EmployeeId = MControlUtil.GetValueFromCombobox(cboEmployee);
+            billDto.EmployeeName = cboEmployee.Text.Trim();
             string currentUserName = _danhSachUser.GetCurrentUserName();
             billDto.CreatedBy = currentUserName;
             billDto.UpdatedBy = currentUserName;
@@ -73,6 +88,13 @@ namespace BeerBilling.presenter.billing
 
         private bool IsValidInputData()
         {
+            if ("".Equals(cboEmployee.Text.Trim()))
+            {
+                MMessageBox.Show(this, "Bạn chưa chọn nhân viên", "Thông báo"
+                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                cboEmployee.Focus();
+                return false;
+            }
             if ("".Equals(txtHoaDonSo.Text.Trim()))
             {
                 MMessageBox.Show(this, "Bạn chưa nhập số hóa đơn", "Thông báo"

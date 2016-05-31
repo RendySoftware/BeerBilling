@@ -32,10 +32,11 @@ namespace BeerBilling.presenter.billing
             set { _tenNhanVien = value; }
         }
 
-        public ThongTinKhachTT(float tongTien)
+        public ThongTinKhachTT(float tongTien, string tenNhanVien)
         {
             InitializeComponent();
             _tongTien = tongTien;
+            _tenNhanVien = tenNhanVien;
             var allEmployeeDto = _billingDao.GetAllEmployee();
             var allDanhMucDto = new List<DanhMucDto>();
             foreach (EmployeeDto dto in allEmployeeDto)
@@ -47,7 +48,7 @@ namespace BeerBilling.presenter.billing
                     Ten = dto.FullName
                 });
             }
-            MControlUtil.FillToComboBox(cboEmployee, allDanhMucDto);
+            MControlUtil.FillToComboBox(cboEmployee, allDanhMucDto, tenNhanVien);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -68,13 +69,6 @@ namespace BeerBilling.presenter.billing
 
         private bool IsValidInputData()
         {
-            if ("".Equals(cboEmployee.Text.Trim()))
-            {
-                MMessageBox.Show(this, "Bạn chưa chọn nhân viên", "Thông báo"
-                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
-                cboEmployee.Focus();
-                return false;
-            }
             float khachTt = float.Parse(txtKhachTt.Text.Trim());
             if ("".Equals(txtKhachTt.Text.Trim()) || khachTt == 0f)
             {

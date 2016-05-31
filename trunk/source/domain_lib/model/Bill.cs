@@ -38,6 +38,10 @@ namespace domain_lib.model
 
         private DateTime _updated_Date = default(DateTime);
 
+        private string _employee_Id = String.Empty;
+
+        private string _employee_Name = String.Empty;
+
         private string _customerName = String.Empty;
 
         private string _tableNumber = String.Empty;
@@ -193,6 +197,18 @@ namespace domain_lib.model
         {
             get { return _tableNumber; }
             set { _tableNumber = value; }
+        }
+
+        public virtual string EmployeeId
+        {
+            get { return _employee_Id; }
+            set { _employee_Id = value; }
+        }
+
+        public virtual string EmployeeName
+        {
+            get { return _employee_Name; }
+            set { _employee_Name = value; }
         }
 
         #endregion

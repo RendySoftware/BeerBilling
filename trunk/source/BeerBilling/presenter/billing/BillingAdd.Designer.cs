@@ -29,17 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingAdd));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
             this.cboBanSo = new mcontrol.MComboBox2(this.components);
             this.btnThem = new mcontrol.MButton(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
             this.txtHoaDonSo = new mcontrol.MNumberTextBox2(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
+            this.cboEmployee = new mcontrol.MComboBox2(this.components);
+            this.mLabel3 = new mcontrol.MLabel(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mGroupBox1
             // 
+            this.mGroupBox1.Controls.Add(this.cboEmployee);
+            this.mGroupBox1.Controls.Add(this.mLabel3);
             this.mGroupBox1.Controls.Add(this.cboBanSo);
             this.mGroupBox1.Controls.Add(this.btnThem);
             this.mGroupBox1.Controls.Add(this.mLabel2);
@@ -49,7 +54,7 @@
             this.mGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.mGroupBox1.Location = new System.Drawing.Point(13, 13);
             this.mGroupBox1.Name = "mGroupBox1";
-            this.mGroupBox1.Size = new System.Drawing.Size(256, 170);
+            this.mGroupBox1.Size = new System.Drawing.Size(357, 221);
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
@@ -61,9 +66,9 @@
             this.cboBanSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboBanSo.FormattingEnabled = true;
             this.cboBanSo.LimitToList = true;
-            this.cboBanSo.Location = new System.Drawing.Point(112, 69);
+            this.cboBanSo.Location = new System.Drawing.Point(116, 121);
             this.cboBanSo.Name = "cboBanSo";
-            this.cboBanSo.Size = new System.Drawing.Size(100, 24);
+            this.cboBanSo.Size = new System.Drawing.Size(193, 24);
             this.cboBanSo.TabIndex = 5;
             // 
             // btnThem
@@ -71,7 +76,7 @@
             this.btnThem.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btnThem.Image = global::BeerBilling.Properties.Resources.Add;
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(75, 118);
+            this.btnThem.Location = new System.Drawing.Point(128, 170);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(100, 25);
             this.btnThem.TabIndex = 4;
@@ -83,7 +88,7 @@
             // 
             this.mLabel2.AutoSize = true;
             this.mLabel2.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mLabel2.Location = new System.Drawing.Point(36, 73);
+            this.mLabel2.Location = new System.Drawing.Point(40, 125);
             this.mLabel2.Name = "mLabel2";
             this.mLabel2.Size = new System.Drawing.Size(43, 14);
             this.mLabel2.TabIndex = 2;
@@ -98,29 +103,53 @@
             this.txtHoaDonSo.ErrorMessage = "";
             this.txtHoaDonSo.ErrorMessageTitle = "";
             this.txtHoaDonSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtHoaDonSo.Location = new System.Drawing.Point(112, 27);
+            this.txtHoaDonSo.Location = new System.Drawing.Point(116, 79);
             this.txtHoaDonSo.Mandatory = false;
             this.txtHoaDonSo.Name = "txtHoaDonSo";
-            this.txtHoaDonSo.Size = new System.Drawing.Size(100, 23);
+            this.txtHoaDonSo.Size = new System.Drawing.Size(193, 23);
             this.txtHoaDonSo.TabIndex = 1;
             // 
             // mLabel1
             // 
             this.mLabel1.AutoSize = true;
             this.mLabel1.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mLabel1.Location = new System.Drawing.Point(36, 30);
+            this.mLabel1.Location = new System.Drawing.Point(40, 82);
             this.mLabel1.Name = "mLabel1";
             this.mLabel1.Size = new System.Drawing.Size(69, 14);
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Hóa đơn số";
             // 
+            // cboEmployee
+            // 
+            this.cboEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboEmployee.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboEmployee.FormattingEnabled = true;
+            this.cboEmployee.LimitToList = true;
+            this.cboEmployee.Location = new System.Drawing.Point(116, 36);
+            this.cboEmployee.Name = "cboEmployee";
+            this.cboEmployee.Size = new System.Drawing.Size(193, 24);
+            this.cboEmployee.TabIndex = 8;
+            // 
+            // mLabel3
+            // 
+            this.mLabel3.AutoSize = true;
+            this.mLabel3.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.mLabel3.Location = new System.Drawing.Point(40, 40);
+            this.mLabel3.Name = "mLabel3";
+            this.mLabel3.Size = new System.Drawing.Size(61, 14);
+            this.mLabel3.TabIndex = 7;
+            this.mLabel3.Text = "Nhân viên";
+            // 
             // BillingAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 198);
+            this.ClientSize = new System.Drawing.Size(382, 246);
             this.Controls.Add(this.mGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BillingAdd";
@@ -140,5 +169,7 @@
         private mcontrol.MNumberTextBox2 txtHoaDonSo;
         private mcontrol.MLabel mLabel1;
         private mcontrol.MComboBox2 cboBanSo;
+        private mcontrol.MComboBox2 cboEmployee;
+        private mcontrol.MLabel mLabel3;
     }
 }

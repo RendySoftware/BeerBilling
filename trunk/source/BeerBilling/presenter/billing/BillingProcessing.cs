@@ -240,14 +240,14 @@ namespace BeerBilling.presenter.billing
         {
             var billId = GetSelectedBillId();
             var billDto = _billingDao.getBillDto(billId);
-            if (ConstUtil.YES.Equals(billDto.IsPrinted))
+            var dr = MMessageBox.Show(this, "Hóa đơn đã được in, bạn có muốn in hóa đơn?", "Thông báo"
+                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+            if (DialogResult.No == dr)
             {
-                MMessageBox.Show(this, "Hóa đơn đã được in!", "Thông báo"
-                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
-                //return;
+                return;
             }
             var tongTien = float.Parse(txtTongTien.Text.Replace(",", ""));
-            var frmThongTinKhachTt = new ThongTinKhachTT(tongTien);
+            var frmThongTinKhachTt = new ThongTinKhachTT(tongTien, billDto.EmployeeName);
             frmThongTinKhachTt.ShowDialog(this);
             var tenNhanVien = frmThongTinKhachTt.TenNhanVien;
             var khachTt = frmThongTinKhachTt.KhachTt;
@@ -257,7 +257,6 @@ namespace BeerBilling.presenter.billing
             }
             CreateReport(billDto, tongTien, khachTt, tenNhanVien);
             billDto.IsPrinted = ConstUtil.YES;
-            billDto.Payment = ConstUtil.YES;
             _billingDao.ThanhToan(billDto);
             dgvHoaDon_SelectionChanged(null, null);
         }

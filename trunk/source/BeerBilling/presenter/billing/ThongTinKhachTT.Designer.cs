@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinKhachTT));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
+            this.cboEmployee = new mcontrol.MComboBox2(this.components);
+            this.mLabel3 = new mcontrol.MLabel(this.components);
             this.btnDongY = new mcontrol.MButton(this.components);
             this.btnHuy = new mcontrol.MButton(this.components);
+            this.mLabel2 = new mcontrol.MLabel(this.components);
             this.txtKhachTt = new mcontrol.MNumberTextBox3(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.mLabel2 = new mcontrol.MLabel(this.components);
-            this.mLabel3 = new mcontrol.MLabel(this.components);
-            this.cboEmployee = new mcontrol.MComboBox2(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,30 @@
             this.mGroupBox1.Size = new System.Drawing.Size(348, 173);
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
+            // 
+            // cboEmployee
+            // 
+            this.cboEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboEmployee.Enabled = false;
+            this.cboEmployee.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboEmployee.FormattingEnabled = true;
+            this.cboEmployee.LimitToList = true;
+            this.cboEmployee.Location = new System.Drawing.Point(92, 30);
+            this.cboEmployee.Name = "cboEmployee";
+            this.cboEmployee.Size = new System.Drawing.Size(193, 24);
+            this.cboEmployee.TabIndex = 6;
+            // 
+            // mLabel3
+            // 
+            this.mLabel3.AutoSize = true;
+            this.mLabel3.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.mLabel3.Location = new System.Drawing.Point(25, 34);
+            this.mLabel3.Name = "mLabel3";
+            this.mLabel3.Size = new System.Drawing.Size(61, 14);
+            this.mLabel3.TabIndex = 5;
+            this.mLabel3.Text = "Nhân viên";
             // 
             // btnDongY
             // 
@@ -84,6 +108,16 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // mLabel2
+            // 
+            this.mLabel2.AutoSize = true;
+            this.mLabel2.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.mLabel2.Location = new System.Drawing.Point(291, 80);
+            this.mLabel2.Name = "mLabel2";
+            this.mLabel2.Size = new System.Drawing.Size(31, 14);
+            this.mLabel2.TabIndex = 2;
+            this.mLabel2.Text = "VNĐ";
+            // 
             // txtKhachTt
             // 
             this.txtKhachTt.AllowAlphaOnly = false;
@@ -108,39 +142,6 @@
             this.mLabel1.Size = new System.Drawing.Size(46, 14);
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Số tiền";
-            // 
-            // mLabel2
-            // 
-            this.mLabel2.AutoSize = true;
-            this.mLabel2.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mLabel2.Location = new System.Drawing.Point(291, 80);
-            this.mLabel2.Name = "mLabel2";
-            this.mLabel2.Size = new System.Drawing.Size(31, 14);
-            this.mLabel2.TabIndex = 2;
-            this.mLabel2.Text = "VNĐ";
-            // 
-            // mLabel3
-            // 
-            this.mLabel3.AutoSize = true;
-            this.mLabel3.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mLabel3.Location = new System.Drawing.Point(25, 34);
-            this.mLabel3.Name = "mLabel3";
-            this.mLabel3.Size = new System.Drawing.Size(61, 14);
-            this.mLabel3.TabIndex = 5;
-            this.mLabel3.Text = "Nhân viên";
-            // 
-            // cboEmployee
-            // 
-            this.cboEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboEmployee.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cboEmployee.FormattingEnabled = true;
-            this.cboEmployee.LimitToList = true;
-            this.cboEmployee.Location = new System.Drawing.Point(92, 30);
-            this.cboEmployee.Name = "cboEmployee";
-            this.cboEmployee.Size = new System.Drawing.Size(193, 24);
-            this.cboEmployee.TabIndex = 6;
             // 
             // ThongTinKhachTT
             // 

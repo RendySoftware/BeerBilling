@@ -123,6 +123,8 @@ namespace domain_lib.controller
                     BillingNumber = billDto.BillingNumber,
                     Payment = ConstUtil.NO,
                     IsPrinted = ConstUtil.NO,
+                    EmployeeId = billDto.EmployeeId,
+                    EmployeeName = billDto.EmployeeName,
                     BillingDate = DateTime.Now,
                     CreatedBy = billDto.CreatedBy,
                     CreatedDate = DateTime.Now,
@@ -194,7 +196,9 @@ namespace domain_lib.controller
                            BillingNumber = bill.BillingNumber,
                            CancelReason = bill.CancelReason,
                            Payment = bill.Payment,
-                           IsPrinted = bill.IsPrinted
+                           IsPrinted = bill.IsPrinted,
+                           EmployeeId = bill.EmployeeId,
+                           EmployeeName = bill.EmployeeName
                        };
         }
 

@@ -16,6 +16,14 @@ assembly="domain_lib">
       <column name="TABLE_ID" not-null="false" />
     </property>
 
+    <property name="EmployeeId">
+      <column name="EMPLOYEE_ID" not-null="false" />
+    </property>
+
+    <property name="EmployeeName">
+      <column name="EMPLOYEE_NAME" not-null="false" />
+    </property>
+
     <property name="IsPrinted">
       <column name="IS_PRINTED" not-null="false" />
     </property>

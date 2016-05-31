@@ -32,6 +32,10 @@ namespace domain_lib.dto
 
         private string _updated_Date = String.Empty;
 
+        private string _employee_Id = String.Empty;
+
+        private string _employee_Name = String.Empty;
+
         private string _customerName = String.Empty;
 
         private string _tableNumber = String.Empty;
@@ -172,6 +176,18 @@ namespace domain_lib.dto
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        public virtual string EmployeeId
+        {
+            get { return _employee_Id; }
+            set { _employee_Id = value; }
+        }
+
+        public virtual string EmployeeName
+        {
+            get { return _employee_Name; }
+            set { _employee_Name = value; }
         }
 
         #endregion
