@@ -326,5 +326,12 @@ namespace BeerBilling.main
             UpdateToolStripSeparatorStatus(mnuTroGiup);
         }
 
+        private void mnuTraCuuXuatNhap_Click(object sender, EventArgs e)
+        {
+            TraCuuNhapXuatKho traCuuNhapXuatKhoFrm = new TraCuuNhapXuatKho();
+            traCuuNhapXuatKhoFrm.MdiParent = this;
+            traCuuNhapXuatKhoFrm.Show();
+        }
+
     }
 }

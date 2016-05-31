@@ -36,5 +36,10 @@ namespace BeerBilling.presenter
             }
             return true;
         }
+
+        public List<StoreDto> GetStores(DateTime? fromDate, DateTime? toDate, bool isImport, bool isExport)
+        {
+            return _controller.getStores(fromDate, toDate, isImport, isExport);
+        }
     }
 }

@@ -774,6 +774,57 @@ namespace domain_lib.persistence
             }
         }
 
+        public List<StoreDto> getStores(DateTime? fromDate, DateTime? toDate, bool isImport, bool isExport)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                String storeStatus = "";
+
+                if (isImport)
+                {
+                    storeStatus = " and s.StoredStatus = 'IMPORT'";
+                }
+
+                if (isExport)
+                {
+                    if (storeStatus.Length > 0)
+                        storeStatus = " and s.StoredStatus in ('IMPORT','EXPORT')";
+                    else
+                        storeStatus = " and s.StoredStatus = 'EXPORT'";
+                }
+
+                var query = session.CreateQuery("select new Store(s.Id, m.Name, s.Amount, u.Name, s.StoredStatus, s.StoredDate, s.StoredBy, s.Reason)"
+                                                + " from Store s, Material m, Unit u"
+                                                + " where m.Id = s.MaterialId"
+                                                + " and u.Id = m.UnitId"
+                                                + " and s.StoredDate between :fromDate and :toDate"
+                                                + storeStatus);
+                query.SetParameter("fromDate", fromDate);
+                query.SetParameter("toDate", toDate);
+
+                // Get the matching objects
+                var allStores = query.List();
+
+                // Update Role info
+                var listStoreDtos = new List<StoreDto>();
+                foreach (Store store in allStores)
+                {
+                    var storeDto = new StoreDto()
+                    {
+                        Id = store.Id,
+                        Amount = store.Amount,
+                        MaterialName = store.MaterialName,
+                        UnitName = store.UnitName,
+                        StoredStatus = store.StoredStatus,
+                        StoredBy = store.StoredBy,
+                        StoredDate = store.StoredDate,
+                        Reason = store.Reason
+                    };
+                    listStoreDtos.Add(storeDto);
+                }
+                return listStoreDtos;
+            }
+        }
         #endregion
 
         #region Private Methods

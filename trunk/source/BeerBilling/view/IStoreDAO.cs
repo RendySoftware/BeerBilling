@@ -12,5 +12,6 @@ namespace BeerBilling.view
         List<MaterialDto> GetAllMaterial();
         bool AddNew(StoreDto storeDto);
         bool AddList(List<StoreDto> list);
+        List<StoreDto> GetStores(DateTime? fromDate, DateTime? toDate, bool isImport, bool isExport);
     }
 }
