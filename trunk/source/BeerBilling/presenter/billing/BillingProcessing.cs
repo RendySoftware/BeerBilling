@@ -244,7 +244,7 @@ namespace BeerBilling.presenter.billing
             {
                 MMessageBox.Show(this, "Hóa đơn đã được in!", "Thông báo"
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
-                return;
+                //return;
             }
             var tongTien = float.Parse(txtTongTien.Text.Replace(",", ""));
             var frmThongTinKhachTt = new ThongTinKhachTT(tongTien);
@@ -299,10 +299,10 @@ namespace BeerBilling.presenter.billing
             report.PrintOptions.PaperOrientation = PaperOrientation.Portrait;
             report.PrintToPrinter(1, false, 0, 0);
 
-//            var frm = new FrmReport(report, false);
-//            frm.Text = "In hóa đơn";
-//            frm.ShowDialog(this);
-//            frm.BringToFront();
+            //var frm = new FrmReport(report, false);
+            //frm.Text = "In hóa đơn";
+            //frm.ShowDialog(this);
+            //frm.BringToFront();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
