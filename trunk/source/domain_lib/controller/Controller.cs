@@ -245,5 +245,10 @@ namespace domain_lib.controller
         {
             return m_PersistenceManager.GetAllBillBy(tuNgay, denNgay, billingNumber, tableId, billStatusCode);
         }
+
+        public List<StoreDto> getStores(DateTime? fromDate, DateTime? toDate, bool isImport, bool isExport)
+        {
+            return m_PersistenceManager.getStores(fromDate, toDate, isImport, isExport);
+        }
     }
 }

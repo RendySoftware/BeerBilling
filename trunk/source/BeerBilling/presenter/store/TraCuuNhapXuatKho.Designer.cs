@@ -42,15 +42,13 @@
             this.lblFromDate = new mcontrol.MLabel(this.components);
             this.impexpListGroupBox = new mcontrol.MGroupBox(this.components);
             this.impexpDataGridView = new mcontrol.MDataGridView(this.components);
-            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.impexpType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storeStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storeBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mGroupBox1.SuspendLayout();
             this.impexpListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.impexpDataGridView)).BeginInit();
@@ -84,6 +82,7 @@
             this.btnThucHien.TabIndex = 6;
             this.btnThucHien.Text = "Thực hiện";
             this.btnThucHien.UseVisualStyleBackColor = true;
+            this.btnThucHien.Click += new System.EventHandler(this.btnThucHien_Click);
             // 
             // expCheckBox
             // 
@@ -179,15 +178,13 @@
             this.impexpDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.impexpDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.impexpDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.material,
+            this.materialName,
             this.amount,
-            this.unit,
-            this.impexpType,
-            this.createBy,
-            this.createdDate,
-            this.reason,
-            this.updatedBy,
-            this.updatedDate});
+            this.unitName,
+            this.storeStatus,
+            this.storeBy,
+            this.storeDate,
+            this.reason});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -203,12 +200,12 @@
             this.impexpDataGridView.Size = new System.Drawing.Size(770, 400);
             this.impexpDataGridView.TabIndex = 0;
             // 
-            // material
+            // materialName
             // 
-            this.material.FillWeight = 200F;
-            this.material.HeaderText = "Nguyên liệu";
-            this.material.Name = "material";
-            this.material.Width = 200;
+            this.materialName.FillWeight = 200F;
+            this.materialName.HeaderText = "Nguyên liệu";
+            this.materialName.Name = "materialName";
+            this.materialName.Width = 200;
             // 
             // amount
             // 
@@ -217,31 +214,31 @@
             this.amount.Name = "amount";
             this.amount.Width = 90;
             // 
-            // unit
+            // unitName
             // 
-            this.unit.FillWeight = 80F;
-            this.unit.HeaderText = "Đơn vị";
-            this.unit.Name = "unit";
-            this.unit.Width = 80;
+            this.unitName.FillWeight = 80F;
+            this.unitName.HeaderText = "Đơn vị";
+            this.unitName.Name = "unitName";
+            this.unitName.Width = 80;
             // 
-            // impexpType
+            // storeStatus
             // 
-            this.impexpType.HeaderText = "Nhập/Xuất";
-            this.impexpType.Name = "impexpType";
+            this.storeStatus.HeaderText = "Nhập/Xuất";
+            this.storeStatus.Name = "storeStatus";
             // 
-            // createBy
+            // storeBy
             // 
-            this.createBy.FillWeight = 130F;
-            this.createBy.HeaderText = "Người thực hiện";
-            this.createBy.Name = "createBy";
-            this.createBy.Width = 130;
+            this.storeBy.FillWeight = 130F;
+            this.storeBy.HeaderText = "Người thực hiện";
+            this.storeBy.Name = "storeBy";
+            this.storeBy.Width = 130;
             // 
-            // createdDate
+            // storeDate
             // 
-            this.createdDate.FillWeight = 130F;
-            this.createdDate.HeaderText = "Ngày thực hiện";
-            this.createdDate.Name = "createdDate";
-            this.createdDate.Width = 130;
+            this.storeDate.FillWeight = 130F;
+            this.storeDate.HeaderText = "Ngày thực hiện";
+            this.storeDate.Name = "storeDate";
+            this.storeDate.Width = 130;
             // 
             // reason
             // 
@@ -249,16 +246,6 @@
             this.reason.HeaderText = "Lý do";
             this.reason.Name = "reason";
             this.reason.Width = 150;
-            // 
-            // updatedBy
-            // 
-            this.updatedBy.HeaderText = "Người sửa";
-            this.updatedBy.Name = "updatedBy";
-            // 
-            // updatedDate
-            // 
-            this.updatedDate.HeaderText = "Ngày sửa";
-            this.updatedDate.Name = "updatedDate";
             // 
             // TraCuuNhapXuatKho
             // 
@@ -269,7 +256,7 @@
             this.Controls.Add(this.mGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TraCuuNhapXuatKho";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tra cứu";
             this.mGroupBox1.ResumeLayout(false);
             this.mGroupBox1.PerformLayout();
@@ -291,14 +278,12 @@
         private mcontrol.MDateTextBox txtToDate;
         private mcontrol.MLabel lblToDate;
         private mcontrol.MDataGridView impexpDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialName;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impexpType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createBy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storeStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storeBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storeDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn reason;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedBy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedDate;
     }
 }

@@ -26,6 +26,10 @@ namespace domain_lib.model
 
         private string _stored_By = String.Empty;
 
+        private string _material_name = String.Empty;
+
+        private string _unit_name = String.Empty;
+
         private string _reason = String.Empty;
 
         private string _created_By = String.Empty;
@@ -42,6 +46,18 @@ namespace domain_lib.model
 
         public Store()
         {
+        }
+
+        public Store(long id, String materialName, float amount, String unitName, String storedStatus, DateTime storedDate, String storedBy, String reason)
+        {
+            this.Id = id;
+            this.MaterialName = materialName;
+            this.Amount = amount;
+            this.UnitName = unitName;
+            this.StoredStatus = storedStatus;
+            this.StoredDate = storedDate;
+            this.StoredBy = storedBy;
+            this.Reason = reason;
         }
 
     	#endregion
@@ -145,6 +161,24 @@ namespace domain_lib.model
         {
             get { return _updated_Date; }
             set { _updated_Date = value; }
+        }
+
+        /// <summary>
+        /// MaterialName.
+        /// </summary>
+        public virtual string MaterialName
+        {
+            get { return _material_name; }
+            set { _material_name = value; }
+        }
+
+        /// <summary>
+        /// UnitName By.
+        /// </summary>
+        public virtual string UnitName
+        {
+            get { return _unit_name; }
+            set { _unit_name = value; }
         }
 
         #endregion
