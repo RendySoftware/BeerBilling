@@ -20,5 +20,6 @@ namespace BeerBilling.view
         bool DeleteResOrder(long id);
         bool AddNewResOrder(ResOrderDto resOrderDto);
         List<EmployeeDto> GetAllEmployee();
+        List<BillDto> GetAllBillBy(string tuNgay, string denNgay, string billingNumber, string tableId, string billStatusCode);
     }
 }

@@ -29,32 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingProcessing));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
             this.dgvHoaDon = new mcontrol.MDataGridView(this.components);
             this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThemHoaDon = new mcontrol.MButton(this.components);
             this.mGroupBox2 = new mcontrol.MGroupBox(this.components);
             this.mLabel8 = new mcontrol.MLabel(this.components);
-            this.txtChietKhau = new mcontrol.MNumberTextBox2(this.components);
-            this.txtSoLuong = new mcontrol.MNumberTextBox2(this.components);
+            this.txtChietKhau = new mcontrol.MNumberTextBox3(this.components);
+            this.txtSoLuong = new mcontrol.MNumberTextBox3(this.components);
             this.cboMonAn = new mcontrol.MComboBox2(this.components);
-            this.txtTongTien = new mcontrol.MTextBox(this.components);
-            this.mLabel7 = new mcontrol.MLabel(this.components);
-            this.dgvThucDon = new mcontrol.MDataGridView(this.components);
-            this.txtThanhToan = new mcontrol.MTextBox(this.components);
-            this.mLabel6 = new mcontrol.MLabel(this.components);
-            this.txtInHoaDon = new mcontrol.MTextBox(this.components);
-            this.mLabel5 = new mcontrol.MLabel(this.components);
-            this.mLabel4 = new mcontrol.MLabel(this.components);
-            this.mLabel3 = new mcontrol.MLabel(this.components);
-            this.mLabel2 = new mcontrol.MLabel(this.components);
-            this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.btnThemHoaDon = new mcontrol.MButton(this.components);
             this.btnThanhToan = new mcontrol.MButton(this.components);
             this.btnInHoaDon = new mcontrol.MButton(this.components);
             this.btnHuy = new mcontrol.MButton(this.components);
-            this.btnThemMonAn = new mcontrol.MButton(this.components);
+            this.txtTongTien = new mcontrol.MTextBox(this.components);
+            this.mLabel7 = new mcontrol.MLabel(this.components);
+            this.dgvThucDon = new mcontrol.MDataGridView(this.components);
             this.MON_AN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SO_LUONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DON_VI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +57,15 @@
             this.CHIET_KHAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THANH_TIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtThanhToan = new mcontrol.MTextBox(this.components);
+            this.mLabel6 = new mcontrol.MLabel(this.components);
+            this.txtInHoaDon = new mcontrol.MTextBox(this.components);
+            this.mLabel5 = new mcontrol.MLabel(this.components);
+            this.mLabel4 = new mcontrol.MLabel(this.components);
+            this.btnThemMonAn = new mcontrol.MButton(this.components);
+            this.mLabel3 = new mcontrol.MLabel(this.components);
+            this.mLabel2 = new mcontrol.MLabel(this.components);
+            this.mLabel1 = new mcontrol.MLabel(this.components);
             this.mGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.mGroupBox2.SuspendLayout();
@@ -86,10 +90,26 @@
             this.dgvHoaDon.AllowUserToAddRows = false;
             this.dgvHoaDon.AllowUserToDeleteRows = false;
             this.dgvHoaDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.billNumber,
             this.billId});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHoaDon.Location = new System.Drawing.Point(16, 46);
             this.dgvHoaDon.MultiSelect = false;
             this.dgvHoaDon.Name = "dgvHoaDon";
@@ -113,6 +133,19 @@
             this.billId.Name = "billId";
             this.billId.ReadOnly = true;
             this.billId.Visible = false;
+            // 
+            // btnThemHoaDon
+            // 
+            this.btnThemHoaDon.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThemHoaDon.Image = global::BeerBilling.Properties.Resources.Add;
+            this.btnThemHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThemHoaDon.Location = new System.Drawing.Point(16, 16);
+            this.btnThemHoaDon.Name = "btnThemHoaDon";
+            this.btnThemHoaDon.Size = new System.Drawing.Size(119, 23);
+            this.btnThemHoaDon.TabIndex = 18;
+            this.btnThemHoaDon.Text = "Thêm &mới";
+            this.btnThemHoaDon.UseVisualStyleBackColor = true;
+            this.btnThemHoaDon.Click += new System.EventHandler(this.btnThemHoaDon_Click);
             // 
             // mGroupBox2
             // 
@@ -196,12 +229,53 @@
             this.cboMonAn.Size = new System.Drawing.Size(257, 24);
             this.cboMonAn.TabIndex = 18;
             // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThanhToan.Image = global::BeerBilling.Properties.Resources.Apply;
+            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThanhToan.Location = new System.Drawing.Point(690, 440);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(134, 25);
+            this.btnThanhToan.TabIndex = 17;
+            this.btnThanhToan.Text = "&3. Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
+            // 
+            // btnInHoaDon
+            // 
+            this.btnInHoaDon.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnInHoaDon.Image = global::BeerBilling.Properties.Resources.print3;
+            this.btnInHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInHoaDon.Location = new System.Drawing.Point(544, 440);
+            this.btnInHoaDon.Name = "btnInHoaDon";
+            this.btnInHoaDon.Size = new System.Drawing.Size(134, 25);
+            this.btnInHoaDon.TabIndex = 16;
+            this.btnInHoaDon.Text = "&2. In hóa đơn";
+            this.btnInHoaDon.UseVisualStyleBackColor = true;
+            this.btnInHoaDon.Click += new System.EventHandler(this.btnInHoaDon_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnHuy.Image = global::BeerBilling.Properties.Resources.Cance_Delete;
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHuy.Location = new System.Drawing.Point(432, 440);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(100, 25);
+            this.btnHuy.TabIndex = 15;
+            this.btnHuy.Text = "&1. Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
             // txtTongTien
             // 
+            this.txtTongTien.BackColor = System.Drawing.Color.White;
             this.txtTongTien.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.txtTongTien.Location = new System.Drawing.Point(681, 404);
             this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.ReadOnly = true;
             this.txtTongTien.Size = new System.Drawing.Size(142, 23);
             this.txtTongTien.TabIndex = 14;
             // 
@@ -220,6 +294,14 @@
             this.dgvThucDon.AllowUserToAddRows = false;
             this.dgvThucDon.AllowUserToDeleteRows = false;
             this.dgvThucDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvThucDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvThucDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvThucDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MON_AN,
@@ -229,6 +311,14 @@
             this.CHIET_KHAU,
             this.THANH_TIEN,
             this.ResOrderId});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvThucDon.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvThucDon.Location = new System.Drawing.Point(25, 133);
             this.dgvThucDon.MultiSelect = false;
             this.dgvThucDon.Name = "dgvThucDon";
@@ -237,6 +327,57 @@
             this.dgvThucDon.Size = new System.Drawing.Size(795, 260);
             this.dgvThucDon.TabIndex = 12;
             this.dgvThucDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvThucDon_KeyPress);
+            // 
+            // MON_AN
+            // 
+            this.MON_AN.FillWeight = 250F;
+            this.MON_AN.HeaderText = "Món ăn";
+            this.MON_AN.Name = "MON_AN";
+            this.MON_AN.ReadOnly = true;
+            this.MON_AN.Width = 250;
+            // 
+            // SO_LUONG
+            // 
+            this.SO_LUONG.HeaderText = "Số lượng";
+            this.SO_LUONG.Name = "SO_LUONG";
+            this.SO_LUONG.ReadOnly = true;
+            // 
+            // DON_VI
+            // 
+            this.DON_VI.FillWeight = 120F;
+            this.DON_VI.HeaderText = "Đơn vị";
+            this.DON_VI.Name = "DON_VI";
+            this.DON_VI.ReadOnly = true;
+            this.DON_VI.Width = 120;
+            // 
+            // DON_GIA
+            // 
+            this.DON_GIA.FillWeight = 130F;
+            this.DON_GIA.HeaderText = "Đơn giá";
+            this.DON_GIA.Name = "DON_GIA";
+            this.DON_GIA.ReadOnly = true;
+            this.DON_GIA.Width = 130;
+            // 
+            // CHIET_KHAU
+            // 
+            this.CHIET_KHAU.HeaderText = "Chiết khấu";
+            this.CHIET_KHAU.Name = "CHIET_KHAU";
+            this.CHIET_KHAU.ReadOnly = true;
+            // 
+            // THANH_TIEN
+            // 
+            this.THANH_TIEN.FillWeight = 130F;
+            this.THANH_TIEN.HeaderText = "Thành tiền";
+            this.THANH_TIEN.Name = "THANH_TIEN";
+            this.THANH_TIEN.ReadOnly = true;
+            this.THANH_TIEN.Width = 130;
+            // 
+            // ResOrderId
+            // 
+            this.ResOrderId.HeaderText = "ResOrderId";
+            this.ResOrderId.Name = "ResOrderId";
+            this.ResOrderId.ReadOnly = true;
+            this.ResOrderId.Visible = false;
             // 
             // txtThanhToan
             // 
@@ -290,6 +431,19 @@
             this.mLabel4.TabIndex = 7;
             this.mLabel4.Text = "Thực đơn";
             // 
+            // btnThemMonAn
+            // 
+            this.btnThemMonAn.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThemMonAn.Image = global::BeerBilling.Properties.Resources.Add;
+            this.btnThemMonAn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThemMonAn.Location = new System.Drawing.Point(711, 31);
+            this.btnThemMonAn.Name = "btnThemMonAn";
+            this.btnThemMonAn.Size = new System.Drawing.Size(100, 23);
+            this.btnThemMonAn.TabIndex = 6;
+            this.btnThemMonAn.Text = "&Thêm";
+            this.btnThemMonAn.UseVisualStyleBackColor = true;
+            this.btnThemMonAn.Click += new System.EventHandler(this.btnThemMonAn_Click);
+            // 
             // mLabel3
             // 
             this.mLabel3.AutoSize = true;
@@ -319,122 +473,6 @@
             this.mLabel1.Size = new System.Drawing.Size(47, 14);
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Món ăn";
-            // 
-            // btnThemHoaDon
-            // 
-            this.btnThemHoaDon.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThemHoaDon.Image = global::BeerBilling.Properties.Resources.Add;
-            this.btnThemHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemHoaDon.Location = new System.Drawing.Point(16, 16);
-            this.btnThemHoaDon.Name = "btnThemHoaDon";
-            this.btnThemHoaDon.Size = new System.Drawing.Size(119, 23);
-            this.btnThemHoaDon.TabIndex = 18;
-            this.btnThemHoaDon.Text = "Thêm &mới";
-            this.btnThemHoaDon.UseVisualStyleBackColor = true;
-            this.btnThemHoaDon.Click += new System.EventHandler(this.btnThemHoaDon_Click);
-            // 
-            // btnThanhToan
-            // 
-            this.btnThanhToan.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThanhToan.Image = global::BeerBilling.Properties.Resources.Apply;
-            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThanhToan.Location = new System.Drawing.Point(690, 440);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(134, 25);
-            this.btnThanhToan.TabIndex = 17;
-            this.btnThanhToan.Text = "&3. Thanh toán";
-            this.btnThanhToan.UseVisualStyleBackColor = true;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
-            // 
-            // btnInHoaDon
-            // 
-            this.btnInHoaDon.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnInHoaDon.Image = global::BeerBilling.Properties.Resources.print3;
-            this.btnInHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInHoaDon.Location = new System.Drawing.Point(544, 440);
-            this.btnInHoaDon.Name = "btnInHoaDon";
-            this.btnInHoaDon.Size = new System.Drawing.Size(134, 25);
-            this.btnInHoaDon.TabIndex = 16;
-            this.btnInHoaDon.Text = "&2. In hóa đơn";
-            this.btnInHoaDon.UseVisualStyleBackColor = true;
-            this.btnInHoaDon.Click += new System.EventHandler(this.btnInHoaDon_Click);
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnHuy.Image = global::BeerBilling.Properties.Resources.Cance_Delete;
-            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHuy.Location = new System.Drawing.Point(432, 440);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(100, 25);
-            this.btnHuy.TabIndex = 15;
-            this.btnHuy.Text = "&1. Hủy";
-            this.btnHuy.UseVisualStyleBackColor = true;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnThemMonAn
-            // 
-            this.btnThemMonAn.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThemMonAn.Image = global::BeerBilling.Properties.Resources.Add;
-            this.btnThemMonAn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemMonAn.Location = new System.Drawing.Point(711, 31);
-            this.btnThemMonAn.Name = "btnThemMonAn";
-            this.btnThemMonAn.Size = new System.Drawing.Size(100, 23);
-            this.btnThemMonAn.TabIndex = 6;
-            this.btnThemMonAn.Text = "&Thêm";
-            this.btnThemMonAn.UseVisualStyleBackColor = true;
-            this.btnThemMonAn.Click += new System.EventHandler(this.btnThemMonAn_Click);
-            // 
-            // MON_AN
-            // 
-            this.MON_AN.FillWeight = 250F;
-            this.MON_AN.HeaderText = "Món ăn";
-            this.MON_AN.Name = "MON_AN";
-            this.MON_AN.ReadOnly = true;
-            this.MON_AN.Width = 250;
-            // 
-            // SO_LUONG
-            // 
-            this.SO_LUONG.HeaderText = "Số lượng";
-            this.SO_LUONG.Name = "SO_LUONG";
-            this.SO_LUONG.ReadOnly = true;
-            // 
-            // DON_VI
-            // 
-            this.DON_VI.FillWeight = 120F;
-            this.DON_VI.HeaderText = "Đơn vị";
-            this.DON_VI.Name = "DON_VI";
-            this.DON_VI.ReadOnly = true;
-            this.DON_VI.Width = 120;
-            // 
-            // DON_GIA
-            // 
-            this.DON_GIA.FillWeight = 130F;
-            this.DON_GIA.HeaderText = "Đơn giá";
-            this.DON_GIA.Name = "DON_GIA";
-            this.DON_GIA.ReadOnly = true;
-            this.DON_GIA.Width = 130;
-            // 
-            // CHIET_KHAU
-            // 
-            this.CHIET_KHAU.HeaderText = "Chiết khấu";
-            this.CHIET_KHAU.Name = "CHIET_KHAU";
-            this.CHIET_KHAU.ReadOnly = true;
-            // 
-            // THANH_TIEN
-            // 
-            this.THANH_TIEN.FillWeight = 130F;
-            this.THANH_TIEN.HeaderText = "Thành tiền";
-            this.THANH_TIEN.Name = "THANH_TIEN";
-            this.THANH_TIEN.ReadOnly = true;
-            this.THANH_TIEN.Width = 130;
-            // 
-            // ResOrderId
-            // 
-            this.ResOrderId.HeaderText = "ResOrderId";
-            this.ResOrderId.Name = "ResOrderId";
-            this.ResOrderId.ReadOnly = true;
-            this.ResOrderId.Visible = false;
             // 
             // BillingProcessing
             // 
@@ -478,8 +516,8 @@
         private mcontrol.MButton btnThemHoaDon;
         private mcontrol.MComboBox2 cboMonAn;
         private mcontrol.MDataGridView dgvHoaDon;
-        private mcontrol.MNumberTextBox2 txtChietKhau;
-        private mcontrol.MNumberTextBox2 txtSoLuong;
+        private mcontrol.MNumberTextBox3 txtChietKhau;
+        private mcontrol.MNumberTextBox3 txtSoLuong;
         private mcontrol.MLabel mLabel8;
         private System.Windows.Forms.DataGridViewTextBoxColumn billNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn billId;

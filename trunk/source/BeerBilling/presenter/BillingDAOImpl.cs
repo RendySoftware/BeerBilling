@@ -72,5 +72,10 @@ namespace BeerBilling.presenter
         {
             return _controller.ThanhToan(billDto);
         }
+
+        public List<BillDto> GetAllBillBy(string tuNgay, string denNgay, string billingNumber, string tableId, string billStatusCode)
+        {
+            return _controller.GetAllBillBy(tuNgay, denNgay, billingNumber, tableId, billStatusCode);
+        }
     }
 }

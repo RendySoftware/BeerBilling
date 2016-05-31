@@ -58,7 +58,7 @@ namespace BeerBilling.presenter.billing
                 btnThemHoaDon.Focus();
                 return;
             }
-            var dr = MMessageBox.Show(this, "Bạn có muốn xóa hóa đơn?", "Thông báo"
+            var dr = MMessageBox.Show(this, "Bạn có muốn hủy hóa đơn?", "Thông báo"
                                       , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
             if (DialogResult.No == dr)
             {
@@ -338,7 +338,7 @@ namespace BeerBilling.presenter.billing
                     btnThemHoaDon.Focus();
                     return;
                 }
-                var dr = MMessageBox.Show(this, "Bạn có muốn xóa thực đơn?", "Thông báo"
+                var dr = MMessageBox.Show(this, "Bạn có muốn loại bỏ thực đơn?", "Thông báo"
                                           , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
                 if (DialogResult.No == dr)
                 {

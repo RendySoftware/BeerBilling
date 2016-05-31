@@ -240,5 +240,10 @@ namespace domain_lib.controller
         {
             return m_PersistenceManager.GetAllEmployee();
         }
+
+        public List<BillDto> GetAllBillBy(string tuNgay, string denNgay, string billingNumber, string tableId, string billStatusCode)
+        {
+            return m_PersistenceManager.GetAllBillBy(tuNgay, denNgay, billingNumber, tableId, billStatusCode);
+        }
     }
 }

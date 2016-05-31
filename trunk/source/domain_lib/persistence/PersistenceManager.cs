@@ -419,12 +419,9 @@ namespace domain_lib.persistence
                 // Get the matching objects
                 var allBills = query.List();
 
-                // Update Role info
                 var listBillDtos = new List<BillDto>();
                 foreach (Bill bill in allBills)
                 {
-                    
-
                     var billDto = new BillDto()
                     {
                         Id = bill.Id,
@@ -649,6 +646,72 @@ namespace domain_lib.persistence
                     listResOrderDtos.Add(resOrderDto);
                 }
                 return listResOrderDtos;
+            }
+        }
+
+        public List<BillDto> GetAllBillBy(string tuNgay, string denNgay, string billingNumber, string tableId, string billStatusCode)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                string sqlQuery = "select new Bill(b.Id, b.BillingNumber, b.BillingDate, "
+                                     + "b.TableId, t.Position, b.Payment, b.CreatedBy, b.CreatedDate, b.IsPrinted, b.CancelReason) "
+                                     + "from Bill b, ResTable t "
+                                     + " where b.TableId = t.Id";
+                var mapParams = new Hashtable();
+
+                if (!String.IsNullOrEmpty(tuNgay))
+                {
+                    sqlQuery += " and b.CreatedDate >= :tuNgay";
+                    mapParams.Add("tuNgay", DateUtil.GetDateTime(tuNgay));
+                }
+                if (!String.IsNullOrEmpty(denNgay))
+                {
+                    sqlQuery += " and b.CreatedDate < :denNgay";
+                    mapParams.Add("denNgay", ((DateTime)DateUtil.GetDateTime(denNgay)).AddDays(1));
+                }
+                if (!String.IsNullOrEmpty(billingNumber))
+                {
+                    sqlQuery += " and b.BillingNumber = :billingNumber";
+                    mapParams.Add("billingNumber", Convert.ToInt32(billingNumber));
+                }
+                if (!String.IsNullOrEmpty(tableId) && ! "-1".Equals(tableId))
+                {
+                    sqlQuery += " and b.TableId = :tableId";
+                    mapParams.Add("tableId", Convert.ToInt64(tableId));
+                }
+                if (!String.IsNullOrEmpty(billStatusCode))
+                {
+                    sqlQuery += " and b.Payment = :payment";
+                    mapParams.Add("payment", billStatusCode);
+                }
+                var query = session.CreateQuery(sqlQuery);
+                foreach (DictionaryEntry param in mapParams)
+                {
+                    query.SetParameter(param.Key.ToString(), param.Value);
+                }
+
+                // Get the matching objects
+                var allBills = query.List();
+
+                var listBillDtos = new List<BillDto>();
+                foreach (Bill bill in allBills)
+                {
+                    var billDto = new BillDto()
+                    {
+                        Id = bill.Id,
+                        BillingNumber = bill.BillingNumber,
+                        BillingDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.BillingDate),
+                        TableId = bill.TableId,
+                        TableNumber = bill.TableNumber,
+                        Payment = bill.Payment,
+                        CreatedBy = bill.CreatedBy,
+                        CreatedDate = DateUtil.GetDateTimeAsDdmmyyyy(bill.CreatedDate),
+                        IsPrinted = bill.IsPrinted,
+                        CancelReason = bill.CancelReason
+                    };
+                    listBillDtos.Add(billDto);
+                }
+                return listBillDtos;
             }
         }
 

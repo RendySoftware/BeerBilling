@@ -75,6 +75,12 @@
     <Compile Include="presenter\billing\BillingCancel.Designer.cs">
       <DependentUpon>BillingCancel.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\billing\BillingDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\billing\BillingDetail.Designer.cs">
+      <DependentUpon>BillingDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="presenter\billing\BillingManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\billing\BillingCancel.resx">
       <DependentUpon>BillingCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\billing\BillingDetail.resx">
+      <DependentUpon>BillingDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\billing\BillingManagement.resx">
       <DependentUpon>BillingManagement.cs</DependentUpon>

@@ -37,7 +37,7 @@
             this.lblBillStatus = new mcontrol.MLabel(this.components);
             this.tableComboBox = new mcontrol.MComboBox2(this.components);
             this.lblTableNumber = new mcontrol.MLabel(this.components);
-            this.txtBillingNumber = new mcontrol.MTextBox(this.components);
+            this.txtBillingNumber = new mcontrol.MNumberTextBox2(this.components);
             this.lblBillingNumber = new mcontrol.MLabel(this.components);
             this.btnThucHien = new mcontrol.MButton(this.components);
             this.txtToDate = new mcontrol.MDateTextBox(this.components);
@@ -53,7 +53,7 @@
             this.billStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewButtonColumn();
             this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracuuGroupBox.SuspendLayout();
             this.billListGroupBox.SuspendLayout();
@@ -129,9 +129,15 @@
             // 
             // txtBillingNumber
             // 
+            this.txtBillingNumber.AllowAlphaOnly = false;
+            this.txtBillingNumber.AllowNumericOnly = false;
+            this.txtBillingNumber.AllowSpecialCharecterOnly = false;
             this.txtBillingNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBillingNumber.ErrorMessage = "";
+            this.txtBillingNumber.ErrorMessageTitle = "";
             this.txtBillingNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtBillingNumber.Location = new System.Drawing.Point(190, 56);
+            this.txtBillingNumber.Mandatory = false;
             this.txtBillingNumber.Name = "txtBillingNumber";
             this.txtBillingNumber.Size = new System.Drawing.Size(142, 23);
             this.txtBillingNumber.TabIndex = 10;
@@ -155,7 +161,7 @@
             this.btnThucHien.Name = "btnThucHien";
             this.btnThucHien.Size = new System.Drawing.Size(114, 25);
             this.btnThucHien.TabIndex = 8;
-            this.btnThucHien.Text = "Thực hiện";
+            this.btnThucHien.Text = "&Thực hiện";
             this.btnThucHien.UseVisualStyleBackColor = true;
             this.btnThucHien.Click += new System.EventHandler(this.btnThucHien_Click);
             // 
@@ -168,6 +174,7 @@
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(164, 23);
             this.txtToDate.TabIndex = 7;
+            this.txtToDate.Validated += new System.EventHandler(this.txtToDate_Validated);
             // 
             // lblToDate
             // 
@@ -188,6 +195,7 @@
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.Size = new System.Drawing.Size(142, 23);
             this.txtFromDate.TabIndex = 5;
+            this.txtFromDate.Validated += new System.EventHandler(this.txtFromDate_Validated);
             // 
             // lblFromDate
             // 
@@ -250,7 +258,7 @@
             this.dgvBilling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBilling.Size = new System.Drawing.Size(885, 449);
             this.dgvBilling.TabIndex = 0;
-            this.dgvBilling.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellDoubleClick);
+            this.dgvBilling.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellClick);
             // 
             // billNumber
             // 
@@ -308,9 +316,7 @@
             // 
             this.detail.HeaderText = "Chi tiết";
             this.detail.Name = "detail";
-            this.detail.ReadOnly = true;
             this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // billId
             // 
@@ -350,7 +356,7 @@
         private mcontrol.MLabel lblBillStatus;
         private mcontrol.MComboBox2 tableComboBox;
         private mcontrol.MLabel lblTableNumber;
-        private mcontrol.MTextBox txtBillingNumber;
+        private mcontrol.MNumberTextBox2 txtBillingNumber;
         private mcontrol.MLabel lblBillingNumber;
         private mcontrol.MButton btnThucHien;
         private mcontrol.MGroupBox billListGroupBox;
@@ -362,7 +368,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn billStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detail;
+        private System.Windows.Forms.DataGridViewButtonColumn detail;
         private System.Windows.Forms.DataGridViewTextBoxColumn billId;
     }
 }

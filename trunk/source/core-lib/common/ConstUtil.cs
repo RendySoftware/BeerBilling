@@ -38,5 +38,6 @@ namespace core_lib.common
         public const string YES = "YES";
         public const string NO = "NO";
         public const string CANCEL = "CANCEL";
+        public const string XEM = "Xem";
     }
 }
