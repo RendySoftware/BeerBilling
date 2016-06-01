@@ -241,13 +241,24 @@ namespace BeerBilling.presenter.billing
         {
             var billId = GetSelectedBillId();
             var billDto = _billingDao.getBillDto(billId);
-            var dr = MMessageBox.Show(this, "Hóa đơn đã được in, bạn có muốn in hóa đơn?", "Thông báo"
-                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
-            if (DialogResult.No == dr)
+            if (ConstUtil.YES.Equals(billDto.IsPrinted))
             {
+                var dr = MMessageBox.Show(this, "Hóa đơn đã được in, bạn có muốn in hóa đơn?", "Thông báo"
+                                          , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+                if (DialogResult.No == dr)
+                {
+                    return;
+                }
+            }
+            var totalVal = txtTongTien.Text.Replace(" VNĐ", "").Replace(",","");
+            if (String.IsNullOrEmpty(totalVal))
+            {
+                MMessageBox.Show(this, "Bạn chưa nhập thực đơn", "Thông báo"
+                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                btnThemMonAn.Focus();
                 return;
             }
-            var tongTien = float.Parse(System.Text.RegularExpressions.Regex.Replace(txtTongTien.Text, @"[VNĐ,$%]", String.Empty));
+            var tongTien = float.Parse(totalVal);
             var frmThongTinKhachTt = new ThongTinKhachTT(tongTien, billDto.EmployeeName);
             frmThongTinKhachTt.ShowDialog(this);
             var tenNhanVien = frmThongTinKhachTt.TenNhanVien;

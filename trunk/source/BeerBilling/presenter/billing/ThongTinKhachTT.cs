@@ -69,14 +69,14 @@ namespace BeerBilling.presenter.billing
 
         private bool IsValidInputData()
         {
-            float khachTt = float.Parse(txtKhachTt.Text.Trim());
-            if ("".Equals(txtKhachTt.Text.Trim()) || khachTt == 0f)
+            if ("".Equals(txtKhachTt.Text.Trim()))
             {
                 MMessageBox.Show(this, "Bạn chưa nhập tiền khách thanh toán", "Thông báo"
                     , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
                 txtKhachTt.Focus();
                 return false;
             }
+            float khachTt = float.Parse(txtKhachTt.Text.Trim());
             if (khachTt < _tongTien)
             {
                 MMessageBox.Show(this, "Tiền của khách ít hơn tổng thanh toán: " + (_tongTien - khachTt).ToString("#,###,###") + " VNĐ", "Thông báo"
