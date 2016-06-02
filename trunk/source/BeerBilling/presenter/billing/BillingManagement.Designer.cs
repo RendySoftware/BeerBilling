@@ -46,15 +46,15 @@
             this.lblToDate = new mcontrol.MLabel(this.components);
             this.txtFromDate = new mcontrol.MDateTextBox(this.components);
             this.lblFromDate = new mcontrol.MLabel(this.components);
-            this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.billDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalBill = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.billStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewButtonColumn();
             this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalBill = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).BeginInit();
             this.tracuuGroupBox.SuspendLayout();
@@ -260,51 +260,18 @@
             this.lblFromDate.TabIndex = 4;
             this.lblFromDate.Text = "Từ ngày";
             // 
-            // billNumber
+            // billId
             // 
-            this.billNumber.FillWeight = 80F;
-            this.billNumber.HeaderText = "Hóa đơn số";
-            this.billNumber.Name = "billNumber";
-            this.billNumber.ReadOnly = true;
-            this.billNumber.Width = 80;
+            this.billId.HeaderText = "billId";
+            this.billId.Name = "billId";
+            this.billId.ReadOnly = true;
+            this.billId.Visible = false;
             // 
-            // billDate
+            // detail
             // 
-            this.billDate.FillWeight = 110F;
-            this.billDate.HeaderText = "Ngày hóa đơn";
-            this.billDate.Name = "billDate";
-            this.billDate.ReadOnly = true;
-            this.billDate.Width = 110;
-            // 
-            // tableNumber
-            // 
-            this.tableNumber.HeaderText = "Bàn số";
-            this.tableNumber.Name = "tableNumber";
-            this.tableNumber.ReadOnly = true;
-            // 
-            // totalBill
-            // 
-            this.totalBill.FillWeight = 120F;
-            this.totalBill.HeaderText = "Thành tiền";
-            this.totalBill.Name = "totalBill";
-            this.totalBill.ReadOnly = true;
-            this.totalBill.Width = 120;
-            // 
-            // billStatus
-            // 
-            this.billStatus.FillWeight = 150F;
-            this.billStatus.HeaderText = "Tình trạng";
-            this.billStatus.Name = "billStatus";
-            this.billStatus.ReadOnly = true;
-            this.billStatus.Width = 150;
-            // 
-            // createdBy
-            // 
-            this.createdBy.FillWeight = 120F;
-            this.createdBy.HeaderText = "Người nhập";
-            this.createdBy.Name = "createdBy";
-            this.createdBy.ReadOnly = true;
-            this.createdBy.Width = 120;
+            this.detail.HeaderText = "Chi tiết";
+            this.detail.Name = "detail";
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // createdDate
             // 
@@ -314,18 +281,51 @@
             this.createdDate.ReadOnly = true;
             this.createdDate.Width = 110;
             // 
-            // detail
+            // createdBy
             // 
-            this.detail.HeaderText = "Chi tiết";
-            this.detail.Name = "detail";
-            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.createdBy.FillWeight = 120F;
+            this.createdBy.HeaderText = "Người nhập";
+            this.createdBy.Name = "createdBy";
+            this.createdBy.ReadOnly = true;
+            this.createdBy.Width = 120;
             // 
-            // billId
+            // billStatus
             // 
-            this.billId.HeaderText = "billId";
-            this.billId.Name = "billId";
-            this.billId.ReadOnly = true;
-            this.billId.Visible = false;
+            this.billStatus.FillWeight = 150F;
+            this.billStatus.HeaderText = "Tình trạng";
+            this.billStatus.Name = "billStatus";
+            this.billStatus.ReadOnly = true;
+            this.billStatus.Width = 150;
+            // 
+            // totalBill
+            // 
+            this.totalBill.FillWeight = 120F;
+            this.totalBill.HeaderText = "Thành tiền";
+            this.totalBill.Name = "totalBill";
+            this.totalBill.ReadOnly = true;
+            this.totalBill.Width = 120;
+            // 
+            // tableNumber
+            // 
+            this.tableNumber.HeaderText = "Bàn số";
+            this.tableNumber.Name = "tableNumber";
+            this.tableNumber.ReadOnly = true;
+            // 
+            // billDate
+            // 
+            this.billDate.FillWeight = 110F;
+            this.billDate.HeaderText = "Ngày hóa đơn";
+            this.billDate.Name = "billDate";
+            this.billDate.ReadOnly = true;
+            this.billDate.Width = 110;
+            // 
+            // billNumber
+            // 
+            this.billNumber.FillWeight = 80F;
+            this.billNumber.HeaderText = "Hóa đơn số";
+            this.billNumber.Name = "billNumber";
+            this.billNumber.ReadOnly = true;
+            this.billNumber.Width = 80;
             // 
             // BillingManagement
             // 

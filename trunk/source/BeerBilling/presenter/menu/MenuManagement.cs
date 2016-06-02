@@ -44,12 +44,14 @@ namespace BeerBilling.presenter.menu
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-
+            var frm = new CategoryProcessing();
+            frm.ShowDialog(this);
         }
 
         private void btnAddMenu_Click(object sender, EventArgs e)
         {
-
+            var frm = new MenuProcessing();
+            frm.ShowDialog(this);
         }
 
         private void dgvCategory_SelectionChanged(object sender, EventArgs e)

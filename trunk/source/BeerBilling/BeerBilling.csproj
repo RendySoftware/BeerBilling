@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
@@ -99,11 +105,23 @@
     <Compile Include="presenter\billing\ThongTinKhachTT.Designer.cs">
       <DependentUpon>ThongTinKhachTT.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\menu\CategoryProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\menu\CategoryProcessing.Designer.cs">
+      <DependentUpon>CategoryProcessing.cs</DependentUpon>
+    </Compile>
     <Compile Include="presenter\menu\MenuManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="presenter\menu\MenuManagement.Designer.cs">
       <DependentUpon>MenuManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\menu\MenuProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\menu\MenuProcessing.Designer.cs">
+      <DependentUpon>MenuProcessing.cs</DependentUpon>
     </Compile>
     <Compile Include="presenter\statistic\ThongKeDoanhSoBanHang.cs">
       <SubType>Form</SubType>
@@ -142,6 +160,12 @@
     </Compile>
     <Compile Include="presenter\user\FrmDoiMatKhau.Designer.cs">
       <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presenter\user\QuanLyNguoiDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\user\QuanLyNguoiDung.Designer.cs">
+      <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,8 +209,14 @@
     <EmbeddedResource Include="presenter\billing\ThongTinKhachTT.resx">
       <DependentUpon>ThongTinKhachTT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="presenter\menu\CategoryProcessing.resx">
+      <DependentUpon>CategoryProcessing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presenter\menu\MenuManagement.resx">
       <DependentUpon>MenuManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\menu\MenuProcessing.resx">
+      <DependentUpon>MenuProcessing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\statistic\ThongKeDoanhSoBanHang.resx">
       <DependentUpon>ThongKeDoanhSoBanHang.cs</DependentUpon>
@@ -206,6 +236,9 @@
     <EmbeddedResource Include="presenter\user\FrmDoiMatKhau.resx">
       <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="presenter\user\QuanLyNguoiDung.resx">
+      <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -223,6 +256,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="key.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -285,6 +319,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

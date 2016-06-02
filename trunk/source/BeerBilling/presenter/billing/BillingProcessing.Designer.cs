@@ -36,8 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingProcessing));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
             this.dgvHoaDon = new mcontrol.MDataGridView(this.components);
-            this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThemHoaDon = new mcontrol.MButton(this.components);
             this.mGroupBox2 = new mcontrol.MGroupBox(this.components);
             this.mLabel8 = new mcontrol.MLabel(this.components);
@@ -50,13 +48,6 @@
             this.txtTongTien = new mcontrol.MTextBox(this.components);
             this.mLabel7 = new mcontrol.MLabel(this.components);
             this.dgvThucDon = new mcontrol.MDataGridView(this.components);
-            this.MON_AN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SO_LUONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DON_VI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DON_GIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHIET_KHAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.THANH_TIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtThanhToan = new mcontrol.MTextBox(this.components);
             this.mLabel6 = new mcontrol.MLabel(this.components);
             this.txtInHoaDon = new mcontrol.MTextBox(this.components);
@@ -66,6 +57,17 @@
             this.mLabel3 = new mcontrol.MLabel(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
+            this.MON_AN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SO_LUONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DON_VI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DON_GIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHIET_KHAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.THANH_TIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ResOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.mGroupBox2.SuspendLayout();
@@ -101,6 +103,7 @@
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.billNumber,
+            this.Edit,
             this.billId});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -118,21 +121,6 @@
             this.dgvHoaDon.Size = new System.Drawing.Size(119, 474);
             this.dgvHoaDon.TabIndex = 19;
             this.dgvHoaDon.SelectionChanged += new System.EventHandler(this.dgvHoaDon_SelectionChanged);
-            // 
-            // billNumber
-            // 
-            this.billNumber.FillWeight = 110F;
-            this.billNumber.HeaderText = "Hóa đơn";
-            this.billNumber.Name = "billNumber";
-            this.billNumber.ReadOnly = true;
-            this.billNumber.Width = 110;
-            // 
-            // billId
-            // 
-            this.billId.HeaderText = "billId";
-            this.billId.Name = "billId";
-            this.billId.ReadOnly = true;
-            this.billId.Visible = false;
             // 
             // btnThemHoaDon
             // 
@@ -310,6 +298,7 @@
             this.DON_GIA,
             this.CHIET_KHAU,
             this.THANH_TIEN,
+            this.Delete,
             this.ResOrderId});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
@@ -327,57 +316,6 @@
             this.dgvThucDon.Size = new System.Drawing.Size(795, 260);
             this.dgvThucDon.TabIndex = 12;
             this.dgvThucDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvThucDon_KeyPress);
-            // 
-            // MON_AN
-            // 
-            this.MON_AN.FillWeight = 250F;
-            this.MON_AN.HeaderText = "Món ăn";
-            this.MON_AN.Name = "MON_AN";
-            this.MON_AN.ReadOnly = true;
-            this.MON_AN.Width = 250;
-            // 
-            // SO_LUONG
-            // 
-            this.SO_LUONG.HeaderText = "Số lượng";
-            this.SO_LUONG.Name = "SO_LUONG";
-            this.SO_LUONG.ReadOnly = true;
-            // 
-            // DON_VI
-            // 
-            this.DON_VI.FillWeight = 120F;
-            this.DON_VI.HeaderText = "Đơn vị";
-            this.DON_VI.Name = "DON_VI";
-            this.DON_VI.ReadOnly = true;
-            this.DON_VI.Width = 120;
-            // 
-            // DON_GIA
-            // 
-            this.DON_GIA.FillWeight = 130F;
-            this.DON_GIA.HeaderText = "Đơn giá";
-            this.DON_GIA.Name = "DON_GIA";
-            this.DON_GIA.ReadOnly = true;
-            this.DON_GIA.Width = 130;
-            // 
-            // CHIET_KHAU
-            // 
-            this.CHIET_KHAU.HeaderText = "Chiết khấu";
-            this.CHIET_KHAU.Name = "CHIET_KHAU";
-            this.CHIET_KHAU.ReadOnly = true;
-            // 
-            // THANH_TIEN
-            // 
-            this.THANH_TIEN.FillWeight = 130F;
-            this.THANH_TIEN.HeaderText = "Thành tiền";
-            this.THANH_TIEN.Name = "THANH_TIEN";
-            this.THANH_TIEN.ReadOnly = true;
-            this.THANH_TIEN.Width = 130;
-            // 
-            // ResOrderId
-            // 
-            this.ResOrderId.HeaderText = "ResOrderId";
-            this.ResOrderId.Name = "ResOrderId";
-            this.ResOrderId.ReadOnly = true;
-            this.ResOrderId.Visible = false;
             // 
             // txtThanhToan
             // 
@@ -474,6 +412,88 @@
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Món ăn";
             // 
+            // MON_AN
+            // 
+            this.MON_AN.FillWeight = 250F;
+            this.MON_AN.HeaderText = "Món ăn";
+            this.MON_AN.Name = "MON_AN";
+            this.MON_AN.ReadOnly = true;
+            this.MON_AN.Width = 250;
+            // 
+            // SO_LUONG
+            // 
+            this.SO_LUONG.HeaderText = "Số lượng";
+            this.SO_LUONG.Name = "SO_LUONG";
+            this.SO_LUONG.ReadOnly = true;
+            // 
+            // DON_VI
+            // 
+            this.DON_VI.FillWeight = 120F;
+            this.DON_VI.HeaderText = "Đơn vị";
+            this.DON_VI.Name = "DON_VI";
+            this.DON_VI.ReadOnly = true;
+            this.DON_VI.Width = 120;
+            // 
+            // DON_GIA
+            // 
+            this.DON_GIA.FillWeight = 130F;
+            this.DON_GIA.HeaderText = "Đơn giá";
+            this.DON_GIA.Name = "DON_GIA";
+            this.DON_GIA.ReadOnly = true;
+            this.DON_GIA.Width = 130;
+            // 
+            // CHIET_KHAU
+            // 
+            this.CHIET_KHAU.HeaderText = "Chiết khấu";
+            this.CHIET_KHAU.Name = "CHIET_KHAU";
+            this.CHIET_KHAU.ReadOnly = true;
+            // 
+            // THANH_TIEN
+            // 
+            this.THANH_TIEN.FillWeight = 130F;
+            this.THANH_TIEN.HeaderText = "Thành tiền";
+            this.THANH_TIEN.Name = "THANH_TIEN";
+            this.THANH_TIEN.ReadOnly = true;
+            this.THANH_TIEN.Width = 130;
+            // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 60F;
+            this.Delete.HeaderText = "Xóa";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Width = 60;
+            // 
+            // ResOrderId
+            // 
+            this.ResOrderId.HeaderText = "ResOrderId";
+            this.ResOrderId.Name = "ResOrderId";
+            this.ResOrderId.ReadOnly = true;
+            this.ResOrderId.Visible = false;
+            // 
+            // billNumber
+            // 
+            this.billNumber.FillWeight = 110F;
+            this.billNumber.HeaderText = "Hóa đơn";
+            this.billNumber.Name = "billNumber";
+            this.billNumber.ReadOnly = true;
+            this.billNumber.Width = 110;
+            // 
+            // Edit
+            // 
+            this.Edit.FillWeight = 60F;
+            this.Edit.HeaderText = "Sửa";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Width = 60;
+            // 
+            // billId
+            // 
+            this.billId.HeaderText = "billId";
+            this.billId.Name = "billId";
+            this.billId.ReadOnly = true;
+            this.billId.Visible = false;
+            // 
             // BillingProcessing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,6 +540,7 @@
         private mcontrol.MNumberTextBox3 txtSoLuong;
         private mcontrol.MLabel mLabel8;
         private System.Windows.Forms.DataGridViewTextBoxColumn billNumber;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewTextBoxColumn billId;
         private System.Windows.Forms.DataGridViewTextBoxColumn MON_AN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SO_LUONG;
@@ -527,6 +548,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DON_GIA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHIET_KHAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THANH_TIEN;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResOrderId;
 
     }

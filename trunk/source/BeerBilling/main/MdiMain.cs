@@ -95,16 +95,16 @@ namespace BeerBilling.main
 
         private void mnuThongKeTonKho_Click(object sender, EventArgs e)
         {
-//            ThongKeTonKho thongKeTonKhoFrm = new ThongKeTonKho();
-//            thongKeTonKhoFrm.MdiParent = this;
-//            thongKeTonKhoFrm.Show();
+            ThongKeTonKho thongKeTonKhoFrm = new ThongKeTonKho();
+            thongKeTonKhoFrm.MdiParent = this;
+            thongKeTonKhoFrm.Show();
         }
 
         private void mnuThongKeBanHang_Click(object sender, EventArgs e)
         {
-//            ThongKeDoanhSoBanHang thongKeDoanhSoBanHangFrm = new ThongKeDoanhSoBanHang();
-//            thongKeDoanhSoBanHangFrm.MdiParent = this;
-//            thongKeDoanhSoBanHangFrm.Show();
+            ThongKeDoanhSoBanHang thongKeDoanhSoBanHangFrm = new ThongKeDoanhSoBanHang();
+            thongKeDoanhSoBanHangFrm.MdiParent = this;
+            thongKeDoanhSoBanHangFrm.Show();
         }
 
         private void mnuDangNhap_Click(object sender, EventArgs e)
@@ -331,6 +331,13 @@ namespace BeerBilling.main
             TraCuuNhapXuatKho traCuuNhapXuatKhoFrm = new TraCuuNhapXuatKho();
             traCuuNhapXuatKhoFrm.MdiParent = this;
             traCuuNhapXuatKhoFrm.Show();
+        }
+
+        private void mnuQuanTriNguoiDung_Click(object sender, EventArgs e)
+        {
+            var frm = new QuanLyNguoiDung();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
     }
