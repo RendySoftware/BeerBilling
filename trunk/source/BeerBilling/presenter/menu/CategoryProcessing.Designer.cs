@@ -31,22 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryProcessing));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
-            this.mLabel1 = new mcontrol.MLabel(this.components);
-            this.mTextBox1 = new mcontrol.MTextBox(this.components);
-            this.mTextBox2 = new mcontrol.MTextBox(this.components);
+            this.btnThoat = new mcontrol.MButton(this.components);
+            this.btnCapNhat = new mcontrol.MButton(this.components);
+            this.txtTenNhom = new mcontrol.MTextBox(this.components);
             this.mLabel2 = new mcontrol.MLabel(this.components);
-            this.mButton1 = new mcontrol.MButton(this.components);
-            this.mButton2 = new mcontrol.MButton(this.components);
+            this.txtMaNhom = new mcontrol.MTextBox(this.components);
+            this.mLabel1 = new mcontrol.MLabel(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mGroupBox1
             // 
-            this.mGroupBox1.Controls.Add(this.mButton2);
-            this.mGroupBox1.Controls.Add(this.mButton1);
-            this.mGroupBox1.Controls.Add(this.mTextBox2);
+            this.mGroupBox1.Controls.Add(this.btnThoat);
+            this.mGroupBox1.Controls.Add(this.btnCapNhat);
+            this.mGroupBox1.Controls.Add(this.txtTenNhom);
             this.mGroupBox1.Controls.Add(this.mLabel2);
-            this.mGroupBox1.Controls.Add(this.mTextBox1);
+            this.mGroupBox1.Controls.Add(this.txtMaNhom);
             this.mGroupBox1.Controls.Add(this.mLabel1);
             this.mGroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.mGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
@@ -56,33 +56,40 @@
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
-            // mLabel1
+            // btnThoat
             // 
-            this.mLabel1.AutoSize = true;
-            this.mLabel1.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mLabel1.Location = new System.Drawing.Point(15, 25);
-            this.mLabel1.Name = "mLabel1";
-            this.mLabel1.Size = new System.Drawing.Size(57, 14);
-            this.mLabel1.TabIndex = 0;
-            this.mLabel1.Text = "Mã nhóm";
+            this.btnThoat.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThoat.Image = global::BeerBilling.Properties.Resources.Exit;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(170, 115);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(114, 25);
+            this.btnThoat.TabIndex = 4;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // mTextBox1
+            // btnCapNhat
             // 
-            this.mTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox1.Location = new System.Drawing.Point(85, 22);
-            this.mTextBox1.Name = "mTextBox1";
-            this.mTextBox1.Size = new System.Drawing.Size(212, 23);
-            this.mTextBox1.TabIndex = 1;
+            this.btnCapNhat.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnCapNhat.Image = global::BeerBilling.Properties.Resources.Save;
+            this.btnCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhat.Location = new System.Drawing.Point(35, 115);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(114, 25);
+            this.btnCapNhat.TabIndex = 3;
+            this.btnCapNhat.Text = "Cập nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
-            // mTextBox2
+            // txtTenNhom
             // 
-            this.mTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox2.Location = new System.Drawing.Point(85, 61);
-            this.mTextBox2.Name = "mTextBox2";
-            this.mTextBox2.Size = new System.Drawing.Size(212, 23);
-            this.mTextBox2.TabIndex = 3;
+            this.txtTenNhom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTenNhom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtTenNhom.Location = new System.Drawing.Point(85, 61);
+            this.txtTenNhom.Name = "txtTenNhom";
+            this.txtTenNhom.Size = new System.Drawing.Size(212, 23);
+            this.txtTenNhom.TabIndex = 2;
             // 
             // mLabel2
             // 
@@ -94,32 +101,29 @@
             this.mLabel2.TabIndex = 2;
             this.mLabel2.Text = "Tên nhóm";
             // 
-            // mButton1
+            // txtMaNhom
             // 
-            this.mButton1.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton1.Image = global::BeerBilling.Properties.Resources.Save;
-            this.mButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mButton1.Location = new System.Drawing.Point(35, 115);
-            this.mButton1.Name = "mButton1";
-            this.mButton1.Size = new System.Drawing.Size(114, 25);
-            this.mButton1.TabIndex = 4;
-            this.mButton1.Text = "Cập nhật";
-            this.mButton1.UseVisualStyleBackColor = true;
+            this.txtMaNhom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaNhom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMaNhom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtMaNhom.Location = new System.Drawing.Point(85, 22);
+            this.txtMaNhom.Name = "txtMaNhom";
+            this.txtMaNhom.Size = new System.Drawing.Size(212, 23);
+            this.txtMaNhom.TabIndex = 1;
             // 
-            // mButton2
+            // mLabel1
             // 
-            this.mButton2.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.mButton2.Image = global::BeerBilling.Properties.Resources.Exit;
-            this.mButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mButton2.Location = new System.Drawing.Point(170, 115);
-            this.mButton2.Name = "mButton2";
-            this.mButton2.Size = new System.Drawing.Size(114, 25);
-            this.mButton2.TabIndex = 5;
-            this.mButton2.Text = "Thoát";
-            this.mButton2.UseVisualStyleBackColor = true;
+            this.mLabel1.AutoSize = true;
+            this.mLabel1.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.mLabel1.Location = new System.Drawing.Point(15, 25);
+            this.mLabel1.Name = "mLabel1";
+            this.mLabel1.Size = new System.Drawing.Size(57, 14);
+            this.mLabel1.TabIndex = 0;
+            this.mLabel1.Text = "Mã nhóm";
             // 
             // CategoryProcessing
             // 
+            this.AcceptButton = this.btnCapNhat;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 207);
@@ -139,11 +143,11 @@
         #endregion
 
         private mcontrol.MGroupBox mGroupBox1;
-        private mcontrol.MButton mButton1;
-        private mcontrol.MTextBox mTextBox2;
+        private mcontrol.MButton btnCapNhat;
+        private mcontrol.MTextBox txtTenNhom;
         private mcontrol.MLabel mLabel2;
-        private mcontrol.MTextBox mTextBox1;
+        private mcontrol.MTextBox txtMaNhom;
         private mcontrol.MLabel mLabel1;
-        private mcontrol.MButton mButton2;
+        private mcontrol.MButton btnThoat;
     }
 }

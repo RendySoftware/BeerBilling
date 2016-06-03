@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillingCancel));
             this.mGroupBox1 = new mcontrol.MGroupBox(this.components);
+            this.btnAccept = new mcontrol.MButton(this.components);
             this.btnClose = new mcontrol.MButton(this.components);
             this.mLabel1 = new mcontrol.MLabel(this.components);
             this.txtReason = new mcontrol.MTextBox(this.components);
-            this.btnAccept = new mcontrol.MButton(this.components);
             this.mGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,19 @@
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
+            // btnAccept
+            // 
+            this.btnAccept.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnAccept.Image = global::BeerBilling.Properties.Resources.Upload_comit;
+            this.btnAccept.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAccept.Location = new System.Drawing.Point(446, 280);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(100, 25);
+            this.btnAccept.TabIndex = 2;
+            this.btnAccept.Text = "Cập nhật";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F);
@@ -60,7 +73,7 @@
             this.btnClose.Location = new System.Drawing.Point(324, 280);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 25);
-            this.btnClose.TabIndex = 2;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -86,21 +99,9 @@
             this.txtReason.Size = new System.Drawing.Size(531, 210);
             this.txtReason.TabIndex = 0;
             // 
-            // btnAccept
-            // 
-            this.btnAccept.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnAccept.Image = global::BeerBilling.Properties.Resources.Upload_comit;
-            this.btnAccept.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccept.Location = new System.Drawing.Point(446, 280);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(100, 25);
-            this.btnAccept.TabIndex = 3;
-            this.btnAccept.Text = "Cập nhật";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
-            // 
             // BillingCancel
             // 
+            this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 347);

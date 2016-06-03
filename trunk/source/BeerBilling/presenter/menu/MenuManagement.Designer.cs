@@ -36,10 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuManagement));
             this.categoryGroupBox = new mcontrol.MGroupBox(this.components);
             this.dgvCategory = new mcontrol.MDataGridView(this.components);
-            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.categoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddCategory = new mcontrol.MButton(this.components);
             this.menuListGroupBox = new mcontrol.MGroupBox(this.components);
             this.dgvMenu = new mcontrol.MDataGridView(this.components);
@@ -51,6 +47,10 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editMenu = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.categoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.menuListGroupBox.SuspendLayout();
@@ -104,33 +104,8 @@
             this.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategory.Size = new System.Drawing.Size(746, 152);
             this.dgvCategory.TabIndex = 1;
+            this.dgvCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategory_CellClick);
             this.dgvCategory.SelectionChanged += new System.EventHandler(this.dgvCategory_SelectionChanged);
-            // 
-            // code
-            // 
-            this.code.HeaderText = "Mã nhóm";
-            this.code.Name = "code";
-            this.code.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.FillWeight = 350F;
-            this.name.HeaderText = "Tên nhóm";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 350;
-            // 
-            // edit
-            // 
-            this.edit.HeaderText = "Sửa";
-            this.edit.Name = "edit";
-            // 
-            // categoryId
-            // 
-            this.categoryId.HeaderText = "categoryId";
-            this.categoryId.Name = "categoryId";
-            this.categoryId.ReadOnly = true;
-            this.categoryId.Visible = false;
             // 
             // btnAddCategory
             // 
@@ -194,7 +169,8 @@
             this.dgvMenu.RowHeadersVisible = false;
             this.dgvMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMenu.Size = new System.Drawing.Size(746, 265);
-            this.dgvMenu.TabIndex = 1;
+            this.dgvMenu.TabIndex = 3;
+            this.dgvMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMenu_CellClick);
             // 
             // btnAddMenu
             // 
@@ -204,7 +180,7 @@
             this.btnAddMenu.Location = new System.Drawing.Point(7, 20);
             this.btnAddMenu.Name = "btnAddMenu";
             this.btnAddMenu.Size = new System.Drawing.Size(114, 25);
-            this.btnAddMenu.TabIndex = 0;
+            this.btnAddMenu.TabIndex = 2;
             this.btnAddMenu.Text = "&2. Thêm";
             this.btnAddMenu.UseVisualStyleBackColor = true;
             this.btnAddMenu.Click += new System.EventHandler(this.btnAddMenu_Click);
@@ -245,10 +221,12 @@
             // 
             // editMenu
             // 
-            this.editMenu.HeaderText = "Sửa";
+            this.editMenu.FillWeight = 85F;
+            this.editMenu.HeaderText = "";
             this.editMenu.Name = "editMenu";
+            this.editMenu.ReadOnly = true;
             this.editMenu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.editMenu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.editMenu.Width = 85;
             // 
             // menuId
             // 
@@ -257,8 +235,38 @@
             this.menuId.ReadOnly = true;
             this.menuId.Visible = false;
             // 
+            // code
+            // 
+            this.code.HeaderText = "Mã nhóm";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.FillWeight = 350F;
+            this.name.HeaderText = "Tên nhóm";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 350;
+            // 
+            // edit
+            // 
+            this.edit.FillWeight = 85F;
+            this.edit.HeaderText = "";
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 85;
+            // 
+            // categoryId
+            // 
+            this.categoryId.HeaderText = "categoryId";
+            this.categoryId.Name = "categoryId";
+            this.categoryId.ReadOnly = true;
+            this.categoryId.Visible = false;
+            // 
             // MenuManagement
             // 
+            this.AcceptButton = this.btnAddCategory;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);

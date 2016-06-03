@@ -113,25 +113,69 @@ namespace domain_lib.controller
             return m_PersistenceManager.GetTableIdByNumber(tableNumber);
         }
 
-        public bool AddNewBill(BillDto billDto)
+        public bool SaveBill(BillDto billDto)
         {
             try
             {
-                Bill bill = new Bill()
-                {
-                    TableId = billDto.TableId,
-                    BillingNumber = billDto.BillingNumber,
-                    Payment = ConstUtil.NO,
-                    IsPrinted = ConstUtil.NO,
-                    EmployeeId = billDto.EmployeeId,
-                    EmployeeName = billDto.EmployeeName,
-                    BillingDate = DateTime.Now,
-                    CreatedBy = billDto.CreatedBy,
-                    CreatedDate = DateTime.Now,
-                    UpdatedBy = billDto.UpdatedBy,
-                    UpdatedDate = DateTime.Now
-                };
-                m_PersistenceManager.SaveNew<Bill>(bill);
+                var bills = m_PersistenceManager.RetrieveEquals<Bill>("Id", billDto.Id);
+                var bill = bills.Count == 0 ? new Bill() : bills[0];
+                bill.TableId = billDto.TableId;
+                bill.BillingNumber = billDto.BillingNumber;
+                bill.Payment = ConstUtil.NO;
+                bill.IsPrinted = ConstUtil.NO;
+                bill.EmployeeId = billDto.EmployeeId;
+                bill.EmployeeName = billDto.EmployeeName;
+                bill.BillingDate = DateTime.Now;
+                bill.CreatedBy = billDto.CreatedBy;
+                bill.CreatedDate = DateTime.Now;
+                bill.UpdatedBy = billDto.UpdatedBy;
+                bill.UpdatedDate = DateTime.Now;
+                m_PersistenceManager.Save<Bill>(bill);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public bool SaveCategory(DanhMucDto dto)
+        {
+            try
+            {
+                var categories = m_PersistenceManager.RetrieveEquals<Category>("Id", long.Parse(dto.Id));
+                var category = categories.Count == 0 ? new Category() : categories[0];
+                category.Code = dto.Ma;
+                category.Name = dto.Ten;
+                m_PersistenceManager.Save<Category>(category);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public bool SaveMenu(MenuDto dto)
+        {
+            try
+            {
+                var menus = m_PersistenceManager.RetrieveEquals<Menu>("Id", dto.Id);
+                var menu = menus.Count == 0 ? new Menu() : menus[0];
+                menu.Code = dto.Code;
+                menu.Name = dto.Name;
+                menu.CategoryId = dto.CategoryId;
+                menu.UnitId = dto.UnitId;
+                menu.Price = dto.Price;
+                menu.Description = dto.Description;
+                menu.IsActive = ConstUtil.YES;
+                menu.CreatedBy = dto.CreatedBy;
+                menu.CreatedDate = DateTime.Now;
+                menu.UpdatedBy = dto.UpdatedBy;
+                menu.UpdatedDate = DateTime.Now;
+                m_PersistenceManager.Save<Menu>(menu);
                 return true;
             }
             catch (Exception e)
@@ -198,7 +242,8 @@ namespace domain_lib.controller
                            Payment = bill.Payment,
                            IsPrinted = bill.IsPrinted,
                            EmployeeId = bill.EmployeeId,
-                           EmployeeName = bill.EmployeeName
+                           EmployeeName = bill.EmployeeName,
+                           TableId = bill.TableId
                        };
         }
 
@@ -255,6 +300,11 @@ namespace domain_lib.controller
             return m_PersistenceManager.GetAllCategory();
         }
 
+        public List<DanhMucDto> GetAllUnit()
+        {
+            return m_PersistenceManager.GetAllUnit();
+        }
+
         public List<MenuDto> GetAllMenuBy(long categoryId)
         {
             return m_PersistenceManager.GetAllMenuBy(categoryId);
@@ -263,6 +313,61 @@ namespace domain_lib.controller
         public List<StoreDto> getStores(DateTime? fromDate, DateTime? toDate, bool isImport, bool isExport)
         {
             return m_PersistenceManager.getStores(fromDate, toDate, isImport, isExport);
+        }
+
+        public List<UserDto> getAllUser()
+        {
+            return m_PersistenceManager.getAllUser();
+        }
+
+        public DanhMucDto getCategoryDto(long categoryId)
+        {
+            var categorys = m_PersistenceManager.RetrieveEquals<Category>("Id", categoryId);
+            var dto = new DanhMucDto();
+            if (categorys.Count == 0)
+            {
+                return dto;
+            }
+            var category = categorys[0];
+            dto.Id = Convert.ToString(category.Id);
+            dto.Ma = category.Code;
+            dto.Ten = category.Name;
+            return dto;
+        }
+
+        public bool IsExistCategoryCode(string categoryCode, long oldCategoryId)
+        {
+            if (String.IsNullOrEmpty(categoryCode))
+            {
+                return false;
+            }
+            var categories = m_PersistenceManager.RetrieveEquals<Category>("Code", categoryCode.ToUpper());
+            if (categories.Count == 0)
+            {
+                return false;
+            }
+            var category = categories[0];
+            return oldCategoryId != category.Id;
+        }
+
+        public bool IsExistMenuCode(string menuCode, long oldMenuId)
+        {
+            if (String.IsNullOrEmpty(menuCode))
+            {
+                return false;
+            }
+            var menus = m_PersistenceManager.RetrieveEquals<Menu>("Code", menuCode.ToUpper());
+            if (menus.Count == 0)
+            {
+                return false;
+            }
+            var menu = menus[0];
+            return oldMenuId != menu.Id;
+        }
+
+        public MenuDto getMenuDto(long menuId)
+        {
+            return m_PersistenceManager.getMenuDto(menuId);
         }
     }
 }

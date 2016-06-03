@@ -70,7 +70,7 @@
             this.cboEmployee.Location = new System.Drawing.Point(92, 30);
             this.cboEmployee.Name = "cboEmployee";
             this.cboEmployee.Size = new System.Drawing.Size(193, 24);
-            this.cboEmployee.TabIndex = 6;
+            this.cboEmployee.TabIndex = 4;
             // 
             // mLabel3
             // 
@@ -145,6 +145,7 @@
             // 
             // ThongTinKhachTT
             // 
+            this.AcceptButton = this.btnDongY;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 198);

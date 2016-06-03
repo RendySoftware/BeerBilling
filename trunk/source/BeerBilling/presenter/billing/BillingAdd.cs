@@ -20,6 +20,8 @@ namespace BeerBilling.presenter.billing
         private BillingDAOImpl _billingDao = new BillingDAOImpl();
 
         private string _billNumber = String.Empty;
+        private long _billId = -1;
+        private bool _isChange = false;
 
         public virtual string BillNumber
         {
@@ -27,9 +29,16 @@ namespace BeerBilling.presenter.billing
             set { _billNumber = value; }
         }
 
-        public BillingAdd()
+        public virtual bool IsChange
+        {
+            get { return _isChange; }
+            set { _isChange = value; }
+        }
+
+        public BillingAdd(long billId)
         {
             InitializeComponent();
+            _billId = billId;
 
             var allResTableDtos = _billingDao.GetAllResTableDto();
             var allDanhMucDto = new List<DanhMucDto>();
@@ -56,6 +65,19 @@ namespace BeerBilling.presenter.billing
                 });
             }
             MControlUtil.FillToComboBox(cboEmployee, allDanhMucDto);
+
+            if (billId != -1)
+            {
+                var billDto = _billingDao.getBillDto(billId);
+                cboBanSo.SelectedValue = Convert.ToString(billDto.TableId);
+                cboEmployee.Text = billDto.EmployeeName;
+                txtHoaDonSo.Text = Convert.ToString(billDto.BillingNumber);
+                string tableNumber = cboBanSo.Text;
+                string billingNumber = txtHoaDonSo.Text;
+                _billNumber = tableNumber + "_" + billingNumber;
+                this.Text = "Cập nhật";
+                btnThem.Text = "Cập nhật";
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -74,6 +96,7 @@ namespace BeerBilling.presenter.billing
             string billingNumber = txtHoaDonSo.Text;
             _billNumber = tableNumber + "_" + billingNumber;
             var billDto = new BillDto();
+            billDto.Id = _billId;
             var tableId = MControlUtil.GetValueFromCombobox(cboBanSo);
             billDto.TableId = long.Parse(tableId);
             billDto.BillingNumber = int.Parse(billingNumber);
@@ -82,7 +105,8 @@ namespace BeerBilling.presenter.billing
             string currentUserName = _danhSachUser.GetCurrentUserName();
             billDto.CreatedBy = currentUserName;
             billDto.UpdatedBy = currentUserName;
-            _billingDao.AddNewBill(billDto);
+            _billingDao.SaveBill(billDto);
+            _isChange = true;
             Dispose();
         }
 

@@ -23,9 +23,19 @@ namespace BeerBilling.presenter
             return _controller.GetAllNotCompletedBill();
         }
 
-        public bool AddNewBill(BillDto billDto)
+        public bool SaveBill(BillDto billDto)
         {
-            return _controller.AddNewBill(billDto);
+            return _controller.SaveBill(billDto);
+        }
+
+        public bool SaveCategory(DanhMucDto dto)
+        {
+            return _controller.SaveCategory(dto);
+        }
+
+        public bool SaveMenu(MenuDto dto)
+        {
+            return _controller.SaveMenu(dto);
         }
 
         public List<ResTableDto> GetAllResTableDto()
@@ -86,6 +96,31 @@ namespace BeerBilling.presenter
         public List<MenuDto> GetAllMenuBy(long categoryId)
         {
             return _controller.GetAllMenuBy(categoryId);
+        }
+
+        public DanhMucDto getCategoryDto(long categoryId)
+        {
+            return _controller.getCategoryDto(categoryId);
+        }
+
+        public bool IsExistCategoryCode(string categoryCode, long oldCategoryId)
+        {
+            return _controller.IsExistCategoryCode(categoryCode, oldCategoryId);
+        }
+
+        public bool IsExistMenuCode(string menuCode, long oldMenuId)
+        {
+            return _controller.IsExistMenuCode(menuCode, oldMenuId);
+        }
+
+        public List<DanhMucDto> GetAllUnit()
+        {
+            return _controller.GetAllUnit();
+        }
+
+        public MenuDto getMenuDto(long menuId)
+        {
+            return _controller.getMenuDto(menuId);
         }
     }
 }

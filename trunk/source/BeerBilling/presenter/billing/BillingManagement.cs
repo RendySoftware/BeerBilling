@@ -71,11 +71,17 @@ namespace BeerBilling.presenter.billing
 
         private void FillBill2Grid(List<BillDto> allBillDto)
         {
+            var selectedIndex = GetSelectedBillIndex();
+            if (selectedIndex > allBillDto.Count - 1)
+            {
+                selectedIndex = allBillDto.Count - 1;
+            }
             dgvBilling.Rows.Clear();
             foreach (var billDto in allBillDto)
             {
                 AddOneBillRow(billDto);
             }
+            MControlUtil.SetSelectedIndex(dgvBilling, selectedIndex, "billNumber");
         }
 
         private string GetThanhToan(string payment)
@@ -112,11 +118,17 @@ namespace BeerBilling.presenter.billing
             r.Cells["billId"].Value = dto.Id;
         }
 
-        private long GetSelectedBillId()
+        private int GetSelectedBillIndex()
         {
             int selectedIndex = dgvBilling.CurrentRow == null ? 0 : dgvBilling.CurrentRow.Index;
             if (selectedIndex > dgvBilling.RowCount - 1)
                 selectedIndex = dgvBilling.RowCount - 1;
+            return selectedIndex;
+        }
+
+        private long GetSelectedBillId()
+        {
+            int selectedIndex = GetSelectedBillIndex();
             if (selectedIndex == -1)
             {
                 return -1;

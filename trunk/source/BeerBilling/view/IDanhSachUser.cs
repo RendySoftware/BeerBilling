@@ -12,5 +12,6 @@ namespace BeerBilling.view
         bool changePassword(string userId, string newPass, string oldPass);
         string GetCurrentTenNsd();
         string GetCurrentUserName();
+        List<UserDto> getAllUser();
     }
 }

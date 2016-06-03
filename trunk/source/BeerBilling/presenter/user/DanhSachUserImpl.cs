@@ -42,5 +42,10 @@ namespace BeerBilling.presenter.user
         {
             return _controller.GetUserName(ThamSo.UserId);
         }
+
+        public List<UserDto> getAllUser()
+        {
+            return _controller.getAllUser();
+        }
     }
 }

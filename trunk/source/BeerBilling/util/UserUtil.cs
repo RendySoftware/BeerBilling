@@ -22,6 +22,20 @@ namespace BeerBilling.util
             return allRoles[0].RoleCode;
         }
 
+        public static string GetRoleName(UserDto userDto)
+        {
+            if (userDto == null)
+            {
+                return String.Empty;
+            }
+            var allRoles = userDto.AllRoles;
+            if (allRoles.Length == 0)
+            {
+                return String.Empty;
+            }
+            return allRoles[0].Description;
+        }
+
         public static bool IsQthtRole(UserDto userDto)
         {
             return string.Compare(GetRoleCode(userDto), ConstUtil.ADMIN, true) == 0;

@@ -8,6 +8,10 @@ namespace mcontrol.util
     {
         public static void SetSelectedIndex(DataGridView grid, int selectedIndex, string selectedCellName)
         {
+            if (selectedIndex == -1)
+            {
+                return;
+            }
             grid.CurrentCell = grid.Rows[selectedIndex].Cells[selectedCellName];
             grid.Rows[selectedIndex].Selected = true;
         }

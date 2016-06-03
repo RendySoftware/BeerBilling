@@ -79,9 +79,9 @@ namespace BeerBilling.presenter.billing
 
         private void btnThemHoaDon_Click(object sender, EventArgs e)
         {
-            var form = new BillingAdd();
+            var form = new BillingAdd(-1);
             form.ShowDialog(this);
-            if (!"".Equals(form.BillNumber))
+            if (form.IsChange)
             {
                 FillBill2Grid();
             }
@@ -95,6 +95,11 @@ namespace BeerBilling.presenter.billing
             string thanhToan = GetThanhToan(billDto.Payment);
             txtThanhToan.Text = thanhToan;
             var allResOrderDtos = _billingDao.GetAllResOrderBy(billId);
+            var selectedIndex = GetSelectedResOrderIndex();
+            if (selectedIndex > allResOrderDtos.Count-1)
+            {
+                selectedIndex = allResOrderDtos.Count - 1;
+            }
             dgvThucDon.Rows.Clear();
             float tongTien = 0;
             float oneTotal;
@@ -103,6 +108,7 @@ namespace BeerBilling.presenter.billing
                 AddOneResOrderRow(dto, out oneTotal);
                 tongTien += oneTotal;
             }
+            MControlUtil.SetSelectedIndex(dgvThucDon, selectedIndex, "MON_AN");
             string tongVal = tongTien.ToString("#,###,###");
             txtTongTien.Text = string.IsNullOrEmpty(tongVal) ? string.Empty : tongVal + " VNĐ";
         }
@@ -135,14 +141,29 @@ namespace BeerBilling.presenter.billing
             r.Cells["DON_GIA"].Value = dto.MenuPrice.ToString("#,###,###") + " VNĐ";
             r.Cells["CHIET_KHAU"].Value = (dto.Discount * 100) + "%";
             r.Cells["THANH_TIEN"].Value = oneTotal.ToString("#,###,###") + " VNĐ";
+            r.Cells["Delete"].Value = "Xóa";
             r.Cells["ResOrderId"].Value = dto.Id;
         }
 
-        private long GetSelectedBillId()
+        private int GetSelectedBillIndex()
         {
             int selectedIndex = dgvHoaDon.CurrentRow == null ? 0 : dgvHoaDon.CurrentRow.Index;
             if (selectedIndex > dgvHoaDon.RowCount - 1)
                 selectedIndex = dgvHoaDon.RowCount - 1;
+            return selectedIndex;
+        }
+
+        private int GetSelectedResOrderIndex()
+        {
+            int selectedIndex = dgvThucDon.CurrentRow == null ? 0 : dgvThucDon.CurrentRow.Index;
+            if (selectedIndex > dgvThucDon.RowCount - 1)
+                selectedIndex = dgvThucDon.RowCount - 1;
+            return selectedIndex;
+        }
+
+        private long GetSelectedBillId()
+        {
+            int selectedIndex = GetSelectedBillIndex();
             if (selectedIndex == -1)
             {
                 return -1;
@@ -169,11 +190,17 @@ namespace BeerBilling.presenter.billing
         private void FillBill2Grid()
         {
             var allBillDto = _billingDao.GetAllNotCompletedBill();
+            var selectedIndex = GetSelectedBillIndex();
+            if (selectedIndex > allBillDto.Count - 1)
+            {
+                selectedIndex = allBillDto.Count - 1;
+            }
             dgvHoaDon.Rows.Clear();
             foreach (var billDto in allBillDto)
             {
                 AddOneBillRow(billDto);
             }
+            MControlUtil.SetSelectedIndex(dgvHoaDon, selectedIndex, "billNumber");
             dgvHoaDon_SelectionChanged(null, null);
         }
 
@@ -183,6 +210,7 @@ namespace BeerBilling.presenter.billing
             int index = dgvHoaDon.Rows.Add();
             var r = dgvHoaDon.Rows[index];
             r.Cells["billNumber"].Value = "Bàn số " + billNumber;
+            r.Cells["Edit"].Value = "Sửa";
             r.Cells["billId"].Value = billDto.Id;
         }
 
@@ -357,6 +385,36 @@ namespace BeerBilling.presenter.billing
                 }
                 _billingDao.DeleteResOrder(resOrderId);
                 dgvHoaDon_SelectionChanged(null, null);
+            }
+        }
+
+        private void dgvThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvThucDon.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                var resOrderId = GetSelectedResOrderId();
+                var dr = MMessageBox.Show(this, "Bạn có muốn loại bỏ thực đơn?", "Thông báo"
+                                          , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+                if (DialogResult.No == dr)
+                {
+                    return;
+                }
+                _billingDao.DeleteResOrder(resOrderId);
+                dgvHoaDon_SelectionChanged(null, null);
+            }
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                var billId = GetSelectedBillId();
+                var form = new BillingAdd(billId);
+                form.ShowDialog(this);
+                if (form.IsChange)
+                {
+                    FillBill2Grid();
+                }
             }
         }
     }

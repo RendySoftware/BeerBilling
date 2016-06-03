@@ -79,7 +79,7 @@
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.ReadOnly = true;
             this.txtTongTien.Size = new System.Drawing.Size(142, 23);
-            this.txtTongTien.TabIndex = 22;
+            this.txtTongTien.TabIndex = 4;
             // 
             // mLabel5
             // 
@@ -147,7 +147,7 @@
             this.dgvThucDon.RowHeadersVisible = false;
             this.dgvThucDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvThucDon.Size = new System.Drawing.Size(795, 260);
-            this.dgvThucDon.TabIndex = 20;
+            this.dgvThucDon.TabIndex = 3;
             // 
             // MON_AN
             // 
@@ -209,7 +209,7 @@
             this.txtInHoaDon.Name = "txtInHoaDon";
             this.txtInHoaDon.ReadOnly = true;
             this.txtInHoaDon.Size = new System.Drawing.Size(100, 23);
-            this.txtInHoaDon.TabIndex = 17;
+            this.txtInHoaDon.TabIndex = 1;
             // 
             // txtThanhToan
             // 
@@ -220,7 +220,7 @@
             this.txtThanhToan.Name = "txtThanhToan";
             this.txtThanhToan.ReadOnly = true;
             this.txtThanhToan.Size = new System.Drawing.Size(136, 23);
-            this.txtThanhToan.TabIndex = 19;
+            this.txtThanhToan.TabIndex = 2;
             // 
             // mLabel6
             // 

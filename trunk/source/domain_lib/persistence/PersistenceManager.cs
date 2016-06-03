@@ -530,6 +530,41 @@ namespace domain_lib.persistence
             }
         }
 
+        public MenuDto getMenuDto(long menuId)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("select new Menu(m.Id, m.CategoryId, m.Code, m.Name, m.UnitId, u.Name, m.Price, m.Description, "
+                    + "m.IsActive, m.CreatedBy, m.CreatedDate, m.UpdatedBy, m.UpdatedDate) "
+                    + "from Menu m, Unit u where m.UnitId = u.Id and m.IsActive = :isActive and m.Id = :menuId");
+                query.SetParameter("isActive", ConstUtil.YES);
+                query.SetParameter("menuId", menuId);
+
+                // Get the matching objects
+                var menu = query.UniqueResult<Menu>();
+                if (menu == null)
+                {
+                    return new MenuDto();
+                }
+                return new MenuDto()
+                           {
+                               Id = menu.Id,
+                               Code = menu.Code,
+                               Name = menu.Name,
+                               CategoryId = menu.CategoryId,
+                               UnitId = menu.UnitId,
+                               UnitName = menu.UnitName,
+                               Price = menu.Price,
+                               Description = menu.Description,
+                               IsActive = menu.IsActive,
+                               CreatedBy = menu.CreatedBy,
+                               CreatedDate = menu.CreatedDate,
+                               UpdatedBy = menu.UpdatedBy,
+                               UpdatedDate = menu.UpdatedDate
+                           };
+            }
+        }
+
         public List<ResTableDto> GetAllResTableDto()
         {
             using (ISession session = m_SessionFactory.OpenSession())
@@ -597,20 +632,44 @@ namespace domain_lib.persistence
                 var query = session.CreateQuery("from Category c order by c.Code asc");
 
                 // Get the matching objects
-                var allCategorys = query.List();
+                var allCategories = query.List();
 
                 var listCategoryDtos = new List<DanhMucDto>();
-                foreach (Category category in allCategorys)
+                foreach (Category category in allCategories)
                 {
-                    var resTableDto = new DanhMucDto()
+                    var dto = new DanhMucDto()
                     {
                         Id = Convert.ToString(category.Id),
                         Ma = category.Code,
                         Ten = category.Name
                     };
-                    listCategoryDtos.Add(resTableDto);
+                    listCategoryDtos.Add(dto);
                 }
                 return listCategoryDtos;
+            }
+        }
+
+        public List<DanhMucDto> GetAllUnit()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Unit c order by c.Code asc");
+
+                // Get the matching objects
+                var allUnits = query.List();
+
+                var listUnitDtos = new List<DanhMucDto>();
+                foreach (Unit unit in allUnits)
+                {
+                    var dto = new DanhMucDto()
+                    {
+                        Id = Convert.ToString(unit.Id),
+                        Ma = unit.Code,
+                        Ten = unit.Name
+                    };
+                    listUnitDtos.Add(dto);
+                }
+                return listUnitDtos;
             }
         }
 
@@ -621,7 +680,7 @@ namespace domain_lib.persistence
                 var query = session.CreateQuery("select new Menu(m.Id, m.CategoryId, m.Code, m.Name, m.UnitId, u.Name, m.Price, m.Description, "
                     +"m.IsActive, m.CreatedBy, m.CreatedDate, m.UpdatedBy, m.UpdatedDate) "
                     +"from Menu m, Unit u where m.UnitId = u.Id and m.IsActive = :isActive and m.CategoryId = :categoryId order by m.Code asc");
-                query.SetParameter("isActive", "YES");
+                query.SetParameter("isActive", ConstUtil.YES);
                 query.SetParameter("categoryId", categoryId);
 
                 // Get the matching objects
@@ -661,7 +720,7 @@ namespace domain_lib.persistence
                 // Get the matching objects
                 var allEmployees = query.List();
 
-                var listMEmployeeDtos = new List<EmployeeDto>();
+                var listEmployeeDtos = new List<EmployeeDto>();
                 foreach (Employee employee in allEmployees)
                 {
                     var employeeDto = new EmployeeDto()
@@ -677,9 +736,34 @@ namespace domain_lib.persistence
                         UpdatedBy = employee.UpdatedBy,
                         UpdatedDate = employee.UpdatedDate
                     };
-                    listMEmployeeDtos.Add(employeeDto);
+                    listEmployeeDtos.Add(employeeDto);
                 }
-                return listMEmployeeDtos;
+                return listEmployeeDtos;
+            }
+        }
+
+        public List<UserDto> getAllUser()
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Users e order by e.FullName asc");
+
+                // Get the matching objects
+                var allUsers = query.List();
+
+                var listUserDtos = new List<UserDto>();
+                foreach (Users user in allUsers)
+                {
+                    var userDto = new UserDto()
+                    {
+                        UserID = user.UserID,
+                        UserName = user.UserName,
+                        FullName = user.FullName
+                    };
+                    LoadUserRole(userDto);
+                    listUserDtos.Add(userDto);
+                }
+                return listUserDtos;
             }
         }
 
