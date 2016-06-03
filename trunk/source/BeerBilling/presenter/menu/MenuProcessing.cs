@@ -68,6 +68,7 @@ namespace BeerBilling.presenter.menu
             if (DialogResult.No == dr)
             {
                 Dispose();
+                return;
             }
             var menuCode = txtMenuCode.Text.Trim();
             var menuName = txtMenuName.Text.Trim();

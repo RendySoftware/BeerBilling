@@ -91,6 +91,7 @@ namespace BeerBilling.presenter.billing
             if (DialogResult.No == dr)
             {
                 Dispose();
+                return;
             }
             string tableNumber = cboBanSo.Text;
             string billingNumber = txtHoaDonSo.Text;

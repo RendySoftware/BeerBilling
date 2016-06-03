@@ -69,6 +69,7 @@ namespace BeerBilling.presenter.user
             if (DialogResult.No == dr)
             {
                 Dispose();
+                return;
             }
             _danhSachUser.SaveUser(CreateUserDto());
             _isChange = true;
