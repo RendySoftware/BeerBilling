@@ -221,6 +221,7 @@
             this.mnuAbout.Name = "mnuAbout";
             this.mnuAbout.Size = new System.Drawing.Size(199, 22);
             this.mnuAbout.Text = "&1. Thông tin phần mềm";
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
             // statusStrip1
             // 

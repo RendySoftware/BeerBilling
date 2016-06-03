@@ -320,6 +320,16 @@ namespace domain_lib.controller
             return m_PersistenceManager.getAllUser();
         }
 
+        public List<UserDto> QueryUser(string userName, string fullName)
+        {
+            return m_PersistenceManager.QueryUser(userName, fullName);
+        }
+
+        public UserDto GetUser(long userId)
+        {
+            return m_PersistenceManager.GetUser(userId);
+        }
+
         public DanhMucDto getCategoryDto(long categoryId)
         {
             var categorys = m_PersistenceManager.RetrieveEquals<Category>("Id", categoryId);
@@ -368,6 +378,21 @@ namespace domain_lib.controller
         public MenuDto getMenuDto(long menuId)
         {
             return m_PersistenceManager.getMenuDto(menuId);
+        }
+
+        public bool SaveUser(UserDto userDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ExistsUser(long userId, string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteUser(long userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

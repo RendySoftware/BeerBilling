@@ -13,5 +13,10 @@ namespace BeerBilling.view
         string GetCurrentTenNsd();
         string GetCurrentUserName();
         List<UserDto> getAllUser();
+        List<UserDto> QueryUser(string userName, string fullName);
+        bool SaveUser(UserDto userDto);
+        bool ExistsUser(long userId, string username);
+        bool DeleteUser(long userId);
+        UserDto GetUser(long userId);
     }
 }

@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="main\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="main\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="main\MdiMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,12 @@
     <Compile Include="presenter\user\FrmDoiMatKhau.Designer.cs">
       <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
     </Compile>
+    <Compile Include="presenter\user\FrmThemNsd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presenter\user\FrmThemNsd.Designer.cs">
+      <DependentUpon>FrmThemNsd.cs</DependentUpon>
+    </Compile>
     <Compile Include="presenter\user\QuanLyNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +200,9 @@
     <Compile Include="view\IDanhMuc.cs" />
     <Compile Include="view\IDanhSachUser.cs" />
     <Compile Include="view\IStoreDAO.cs" />
+    <EmbeddedResource Include="main\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main\MdiMain.resx">
       <DependentUpon>MdiMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\user\FrmDoiMatKhau.resx">
       <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presenter\user\FrmThemNsd.resx">
+      <DependentUpon>FrmThemNsd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presenter\user\QuanLyNguoiDung.resx">
       <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>

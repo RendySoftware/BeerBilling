@@ -340,5 +340,12 @@ namespace BeerBilling.main
             frm.Show();
         }
 
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmAbout();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
     }
 }

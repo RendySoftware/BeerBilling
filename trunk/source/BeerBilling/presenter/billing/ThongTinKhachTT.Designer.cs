@@ -97,6 +97,7 @@
             // 
             // btnHuy
             // 
+            this.btnHuy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnHuy.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btnHuy.Image = global::BeerBilling.Properties.Resources.Cance_Delete;
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,6 +149,7 @@
             this.AcceptButton = this.btnDongY;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnHuy;
             this.ClientSize = new System.Drawing.Size(372, 198);
             this.Controls.Add(this.mGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

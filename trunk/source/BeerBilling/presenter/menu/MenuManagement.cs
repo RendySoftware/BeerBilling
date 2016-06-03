@@ -54,6 +54,10 @@ namespace BeerBilling.presenter.menu
         {
             var frm = new CategoryProcessing(-1);
             frm.ShowDialog(this);
+            if (frm.IsChange)
+            {
+                FillData2CategoryGrid();
+            }
         }
 
         private void btnAddMenu_Click(object sender, EventArgs e)
@@ -61,6 +65,10 @@ namespace BeerBilling.presenter.menu
             var categoryId = GetSelectedCategoryId();
             var frm = new MenuProcessing(categoryId, -1);
             frm.ShowDialog(this);
+            if (frm.IsChange)
+            {
+                dgvCategory_SelectionChanged(null, null);
+            }
         }
 
         private void dgvCategory_SelectionChanged(object sender, EventArgs e)

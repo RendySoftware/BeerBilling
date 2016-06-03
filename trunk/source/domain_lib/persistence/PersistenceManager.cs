@@ -766,6 +766,70 @@ namespace domain_lib.persistence
                 return listUserDtos;
             }
         }
+        
+        public List<UserDto> QueryUser(string userName, string fullName)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                string sqlQuery = "from Users e where 1=1 ";
+                var mapParams = new Hashtable();
+                if (!String.IsNullOrEmpty(userName))
+                {
+                    sqlQuery += "and e.UserName like :userName ";
+                    mapParams.Add("userName", "%" + userName.ToUpper() + "%");
+                }
+                if (!String.IsNullOrEmpty(fullName))
+                {
+                    sqlQuery += "and e.FullName like :fullName ";
+                    mapParams.Add("fullName", "%" + fullName + "%");
+                }
+                sqlQuery  += "order by e.FullName asc";
+                var query = session.CreateQuery(sqlQuery);
+                foreach (DictionaryEntry param in mapParams)
+                {
+                    query.SetParameter(param.Key.ToString(), param.Value);
+                }
+
+                // Get the matching objects
+                var allUsers = query.List();
+
+                var listUserDtos = new List<UserDto>();
+                foreach (Users user in allUsers)
+                {
+                    var userDto = new UserDto()
+                    {
+                        UserID = user.UserID,
+                        UserName = user.UserName,
+                        FullName = user.FullName
+                    };
+                    LoadUserRole(userDto);
+                    listUserDtos.Add(userDto);
+                }
+                return listUserDtos;
+            }
+        }
+
+        public UserDto GetUser(long userId)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                var query = session.CreateQuery("from Users e where e.UserID = :userId");
+                query.SetParameter("userId", userId);
+
+                // Get the matching objects
+                var user = query.UniqueResult<Users>();
+
+                var userDto = new UserDto()
+                {
+                    UserID = user.UserID,
+                    UserName = user.UserName,
+                    FullName = user.FullName
+                };
+                LoadUserRole(userDto);
+
+                return userDto;
+            }
+        }
 
         public List<ResOrderDto> GetAllResOrderBy(long billId)
         {

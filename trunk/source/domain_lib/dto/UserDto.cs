@@ -19,6 +19,8 @@ namespace domain_lib.dto
 
         private string _fullName = String.Empty;
 
+        private string password = String.Empty;
+
         private DateTime? _ngaySinh;
 
         private String _soCmnd = String.Empty;
@@ -113,6 +115,15 @@ namespace domain_lib.dto
         {
             get { return _fullName; }
             set { _fullName = value; }
+        }
+
+        /// <summary>
+        /// Password
+        /// </summary>
+        public virtual string Password
+        {
+            get { return password; }
+            set { password = value; }
         }
 
         /// <summary>

@@ -115,6 +115,7 @@
             this.dgvUser.RowHeadersVisible = false;
             this.dgvUser.Size = new System.Drawing.Size(688, 283);
             this.dgvUser.TabIndex = 5;
+            this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
             // 
             // UserName
             // 

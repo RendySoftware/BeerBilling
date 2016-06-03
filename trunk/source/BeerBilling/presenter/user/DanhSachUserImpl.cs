@@ -47,5 +47,30 @@ namespace BeerBilling.presenter.user
         {
             return _controller.getAllUser();
         }
+
+        public List<UserDto> QueryUser(string userName, string fullName)
+        {
+            return _controller.QueryUser(userName, fullName);
+        }
+
+        public bool SaveUser(UserDto userDto)
+        {
+            return _controller.SaveUser(userDto);
+        }
+
+        public bool ExistsUser(long userId, string username)
+        {
+            return _controller.ExistsUser(userId, username);
+        }
+
+        public bool DeleteUser(long userId)
+        {
+            return _controller.DeleteUser(userId);
+        }
+
+        public UserDto GetUser(long userId)
+        {
+            return _controller.GetUser(userId);
+        }
     }
 }

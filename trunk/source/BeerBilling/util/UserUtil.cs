@@ -36,19 +36,40 @@ namespace BeerBilling.util
             return allRoles[0].Description;
         }
 
-        public static bool IsQthtRole(UserDto userDto)
+        public static bool HasRole(UserDto userDto, string roleCode)
         {
-            return string.Compare(GetRoleCode(userDto), ConstUtil.ADMIN, true) == 0;
+            if (userDto == null)
+            {
+                return false;
+            }
+            var allRoles = userDto.AllRoles;
+            if (allRoles.Length == 0)
+            {
+                return false;
+            }
+            foreach(RoleDto dto in allRoles)
+            {
+                if (string.Compare(dto.RoleCode, roleCode, true) == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        public static bool IsQlkhRole(UserDto userDto)
+        public static bool HasQthtRole(UserDto userDto)
         {
-            return string.Compare(GetRoleCode(userDto), ConstUtil.QLKH, true) == 0;
+            return HasRole(userDto, ConstUtil.ADMIN);
         }
 
-        public static bool IsQlhdRole(UserDto userDto)
+        public static bool HasQlkhRole(UserDto userDto)
         {
-            return string.Compare(GetRoleCode(userDto), ConstUtil.QLHD, true) == 0;
+            return HasRole(userDto, ConstUtil.QLKH);
+        }
+
+        public static bool HasQlhdRole(UserDto userDto)
+        {
+            return HasRole(userDto, ConstUtil.QLHD);
         }
 
         public static List<string> getAllRoleCode(UserDto userDto)

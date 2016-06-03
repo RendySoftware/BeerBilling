@@ -175,15 +175,13 @@ namespace BeerBilling.presenter.billing
 
         private long GetSelectedResOrderId()
         {
-            int selectedIndex = dgvThucDon.CurrentRow == null ? 0 : dgvThucDon.CurrentRow.Index;
-            if (selectedIndex > dgvThucDon.RowCount - 1)
-                selectedIndex = dgvThucDon.RowCount - 1;
+            int selectedIndex = GetSelectedResOrderIndex();
             if (selectedIndex == -1)
             {
                 return -1;
             }
-            var selectedBill = dgvThucDon.Rows[selectedIndex];
-            var resOrderId = selectedBill.Cells["ResOrderId"].Value;
+            var selectedResOrder = dgvThucDon.Rows[selectedIndex];
+            var resOrderId = selectedResOrder.Cells["ResOrderId"].Value;
             return resOrderId == null ? -1 : Convert.ToInt64(resOrderId);
         }
 
