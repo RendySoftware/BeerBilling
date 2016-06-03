@@ -711,6 +711,106 @@ namespace domain_lib.persistence
             }
         }
 
+        public List<ResOrderDto> GetAllResOrderDto(StatisticMenuSearchDto dto)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                string sqlQuery = "select new ResOrder(o.Id, m.Name, o.Amount, o.Discount, u.Name, m.Price)"
+                                     + " from ResOrder o, Menu m, Unit u where o.MenuId = m.Id and m.UnitId = u.Id";
+                var mapParams = new Hashtable();
+                if (!String.IsNullOrEmpty(dto.FromDate))
+                {
+                    sqlQuery += " and o.CreatedDate >= :fromDate";
+                    mapParams.Add("fromDate", DateUtil.GetDateTime(dto.FromDate));
+                }
+                if (!String.IsNullOrEmpty(dto.ToDate))
+                {
+                    sqlQuery += " and o.CreatedDate < :toDate";
+                    mapParams.Add("toDate", ((DateTime)DateUtil.GetDateTime(dto.ToDate)).AddDays(1));
+                }
+                if (!String.IsNullOrEmpty(dto.Thang))
+                {
+                    DateTime fromDate = (DateTime) DateUtil.GetDateTime("01/" + dto.Thang);
+                    sqlQuery += " and o.CreatedDate >= :fromDate";
+                    mapParams.Add("fromDate", fromDate);
+                    DateTime toDate = fromDate.AddMonths(1);
+                    sqlQuery += " and o.CreatedDate < :toDate";
+                    mapParams.Add("toDate", toDate);
+                }
+                if (!String.IsNullOrEmpty(dto.Nam))
+                {
+                    DateTime fromDate = (DateTime)DateUtil.GetDateTime("01/01/" + dto.Nam);
+                    sqlQuery += " and o.CreatedDate >= :fromDate";
+                    mapParams.Add("fromDate", fromDate);
+                    DateTime toDate = fromDate.AddYears(1);
+                    sqlQuery += " and o.CreatedDate < :toDate";
+                    mapParams.Add("toDate", toDate);
+                }
+                if (!String.IsNullOrEmpty(dto.Quy))
+                {
+                    var quater = int.Parse(dto.Quy.Substring(0, 1));
+                    var year = dto.Quy.Substring(2);
+                    DateTime fromDate;
+                    switch (quater)
+                    {
+                        case 1:
+                            fromDate = (DateTime)DateUtil.GetDateTime("01/01/" + year);
+                            break;
+                        case 2:
+                            fromDate = (DateTime)DateUtil.GetDateTime("01/04/" + year);
+                            break;
+                        case 3:
+                            fromDate = (DateTime)DateUtil.GetDateTime("01/07/" + year);
+                            break;
+                        default:
+                            fromDate = (DateTime)DateUtil.GetDateTime("01/10/" + year);
+                            break;
+                    }
+                    sqlQuery += " and o.CreatedDate >= :fromDate";
+                    mapParams.Add("fromDate", fromDate);
+                    DateTime toDate = fromDate.AddMonths(3);
+                    sqlQuery += " and o.CreatedDate < :toDate";
+                    mapParams.Add("toDate", toDate);
+                }
+                var query = session.CreateQuery(sqlQuery);
+                foreach (DictionaryEntry param in mapParams)
+                {
+                    query.SetParameter(param.Key.ToString(), param.Value);
+                }
+
+                // Get the matching objects
+                var allResOrders = query.List();
+
+                // Update Role info
+                var listResOrderDtos = new List<ResOrderDto>();
+                var mapResOrder = new Hashtable();
+                foreach (ResOrder resOrder in allResOrders)
+                {
+                    var total = resOrder.Amount*resOrder.MenuPrice*(1 - resOrder.Discount);
+                    string key = resOrder.MenuName+"|"+resOrder.UnitName;
+                    if (mapResOrder.ContainsKey(key))
+                    {
+                        var resOrderdto = (ResOrderDto) mapResOrder[key];
+                        resOrderdto.Amount += resOrder.Amount;
+                        resOrderdto.Total += total;
+                    }
+                    else
+                    {
+                        var resOrderdto = new ResOrderDto()
+                        {
+                            MenuName = resOrder.MenuName,
+                            UnitName = resOrder.UnitName,
+                            Amount = resOrder.Amount,
+                            Total = total
+                        };
+                        listResOrderDtos.Add(resOrderdto);
+                        mapResOrder.Add(key, resOrderdto);
+                    }
+                }
+                return listResOrderDtos;
+            }
+        }
+
         public List<EmployeeDto> GetAllEmployee()
         {
             using (ISession session = m_SessionFactory.OpenSession())
@@ -980,6 +1080,77 @@ namespace domain_lib.persistence
                 return listStoreDtos;
             }
         }
+
+        public List<StatisticStoreDto> GetStatisticStores(string fromDate, string toDate)
+        {
+            using (ISession session = m_SessionFactory.OpenSession())
+            {
+                string sqlQuery = "select new Store(s.Id, m.Name, s.Amount, u.Name, s.StoredStatus, s.StoredDate, s.StoredBy, s.Reason)"
+                                     + " from Store s, Material m, Unit u"
+                                     + " where m.Id = s.MaterialId"
+                                     + " and u.Id = m.UnitId";
+                var mapParams = new Hashtable();
+                if (!String.IsNullOrEmpty(fromDate))
+                {
+                    sqlQuery += " and s.StoredDate >= :fromDate";
+                    mapParams.Add("fromDate", DateUtil.GetDateTime(fromDate));
+                }
+                if (!String.IsNullOrEmpty(toDate))
+                {
+                    sqlQuery += " and s.StoredDate < :toDate";
+                    mapParams.Add("toDate", ((DateTime)DateUtil.GetDateTime(toDate)).AddDays(1));
+                }
+                var query = session.CreateQuery(sqlQuery);
+                foreach (DictionaryEntry param in mapParams)
+                {
+                    query.SetParameter(param.Key.ToString(), param.Value);
+                }
+
+                // Get the matching objects
+                var allStatisticStores = query.List();
+
+                // Update Role info
+                var listStatisticStoreDtos = new List<StatisticStoreDto>();
+                var mapStore = new Hashtable();
+                foreach (Store store in allStatisticStores)
+                {
+                    string key = store.MaterialName + "|" + store.UnitName;
+                    float impAmount = 0;
+                    float expAmount = 0;
+                    if (store.StoredStatus.Equals("IMPORT"))
+                    {
+                        impAmount = store.Amount;
+                    }
+                    else
+                    {
+                        expAmount = store.Amount;
+                    }
+                    float inventory = impAmount-expAmount;
+                    if (mapStore.ContainsKey(key))
+                    {
+                        StatisticStoreDto storeDto = (StatisticStoreDto) mapStore[key];
+                        storeDto.ImpAmount += impAmount;
+                        storeDto.ExpAmount += expAmount;
+                        storeDto.Inventory += inventory;
+                    }
+                    else
+                    {
+                        var storeDto = new StatisticStoreDto()
+                        {
+                            MaterialName = store.MaterialName,
+                            UnitName = store.UnitName,
+                            ImpAmount = impAmount,
+                            ExpAmount = expAmount,
+                            Inventory = inventory
+                        };
+                        listStatisticStoreDtos.Add(storeDto);
+                        mapStore.Add(key, storeDto);
+                    }
+                }
+                return listStatisticStoreDtos;
+            }
+        }
+
         #endregion
 
         #region Private Methods

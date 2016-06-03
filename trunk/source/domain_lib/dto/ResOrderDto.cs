@@ -32,6 +32,8 @@ namespace domain_lib.dto
 
         private float _discount = 0;
 
+        private float _total = 0;
+
         #endregion
 
     	#region Constructor
@@ -138,6 +140,12 @@ namespace domain_lib.dto
         {
             get { return _discount; }
             set { _discount = value; }
+        }
+
+        public virtual float Total
+        {
+            get { return _total; }
+            set { _total = value; }
         }
 
         #endregion

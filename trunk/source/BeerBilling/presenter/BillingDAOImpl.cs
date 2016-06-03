@@ -53,6 +53,11 @@ namespace BeerBilling.presenter
             return _controller.GetAllMenuDto();
         }
 
+        public List<ResOrderDto> GetAllResOrderDto(StatisticMenuSearchDto dto)
+        {
+            return _controller.GetAllResOrderDto(dto);
+        }
+
         public bool AddNewResOrder(ResOrderDto resOrderDto)
         {
             return _controller.SaveResOrder(resOrderDto);

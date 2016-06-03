@@ -101,6 +101,8 @@
     <Compile Include="dto\BillDto.cs" />
     <Compile Include="dto\BookedTableDto.cs" />
     <Compile Include="dto\CommonDto.cs" />
+    <Compile Include="dto\StatisticStoreDto.cs" />
+    <Compile Include="dto\SatisticMenuSearchDto.cs" />
     <Compile Include="dto\CustomerDto.cs" />
     <Compile Include="dto\DanhMucDto.cs" />
     <Compile Include="dto\EmployeeDto.cs" />

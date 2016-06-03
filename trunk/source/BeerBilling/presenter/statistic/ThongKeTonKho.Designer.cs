@@ -32,12 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongKeTonKho));
-            this.inventoryStatisticGroupBox = new mcontrol.MGroupBox(this.components);
-            this.btnThucHien = new mcontrol.MButton(this.components);
-            this.txtToDate = new mcontrol.MDateTextBox(this.components);
-            this.lblToDate = new mcontrol.MLabel(this.components);
-            this.txtFromDate = new mcontrol.MDateTextBox(this.components);
-            this.lblFromDate = new mcontrol.MLabel(this.components);
             this.inventoryListGroupBox = new mcontrol.MGroupBox(this.components);
             this.inventoryDataGridView = new mcontrol.MDataGridView(this.components);
             this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,78 +40,16 @@
             this.impAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventoryStatisticGroupBox.SuspendLayout();
+            this.inventoryStatisticGroupBox = new mcontrol.MGroupBox(this.components);
+            this.btnThucHien = new mcontrol.MButton(this.components);
+            this.txtToDate = new mcontrol.MDateTextBox(this.components);
+            this.lblToDate = new mcontrol.MLabel(this.components);
+            this.txtFromDate = new mcontrol.MDateTextBox(this.components);
+            this.lblFromDate = new mcontrol.MLabel(this.components);
             this.inventoryListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataGridView)).BeginInit();
+            this.inventoryStatisticGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // inventoryStatisticGroupBox
-            // 
-            this.inventoryStatisticGroupBox.Controls.Add(this.btnThucHien);
-            this.inventoryStatisticGroupBox.Controls.Add(this.txtToDate);
-            this.inventoryStatisticGroupBox.Controls.Add(this.lblToDate);
-            this.inventoryStatisticGroupBox.Controls.Add(this.txtFromDate);
-            this.inventoryStatisticGroupBox.Controls.Add(this.lblFromDate);
-            this.inventoryStatisticGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.inventoryStatisticGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.inventoryStatisticGroupBox.Location = new System.Drawing.Point(13, 13);
-            this.inventoryStatisticGroupBox.Name = "inventoryStatisticGroupBox";
-            this.inventoryStatisticGroupBox.Size = new System.Drawing.Size(759, 68);
-            this.inventoryStatisticGroupBox.TabIndex = 0;
-            this.inventoryStatisticGroupBox.TabStop = false;
-            this.inventoryStatisticGroupBox.Text = "Tra cứu tồn kho";
-            // 
-            // btnThucHien
-            // 
-            this.btnThucHien.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnThucHien.Image = global::BeerBilling.Properties.Resources.Search;
-            this.btnThucHien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThucHien.Location = new System.Drawing.Point(585, 23);
-            this.btnThucHien.Name = "btnThucHien";
-            this.btnThucHien.Size = new System.Drawing.Size(114, 25);
-            this.btnThucHien.TabIndex = 4;
-            this.btnThucHien.Text = "Thực hiện";
-            this.btnThucHien.UseVisualStyleBackColor = true;
-            // 
-            // txtToDate
-            // 
-            this.txtToDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtToDate.Location = new System.Drawing.Point(360, 23);
-            this.txtToDate.MaxLength = 10;
-            this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(171, 23);
-            this.txtToDate.TabIndex = 3;
-            // 
-            // lblToDate
-            // 
-            this.lblToDate.AutoSize = true;
-            this.lblToDate.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblToDate.Location = new System.Drawing.Point(296, 27);
-            this.lblToDate.Name = "lblToDate";
-            this.lblToDate.Size = new System.Drawing.Size(59, 14);
-            this.lblToDate.TabIndex = 2;
-            this.lblToDate.Text = "Đến ngày";
-            // 
-            // txtFromDate
-            // 
-            this.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtFromDate.Location = new System.Drawing.Point(63, 23);
-            this.txtFromDate.MaxLength = 10;
-            this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(195, 23);
-            this.txtFromDate.TabIndex = 1;
-            // 
-            // lblFromDate
-            // 
-            this.lblFromDate.AutoSize = true;
-            this.lblFromDate.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblFromDate.Location = new System.Drawing.Point(7, 27);
-            this.lblFromDate.Name = "lblFromDate";
-            this.lblFromDate.Size = new System.Drawing.Size(53, 14);
-            this.lblFromDate.TabIndex = 0;
-            this.lblFromDate.Text = "Từ ngày";
             // 
             // inventoryListGroupBox
             // 
@@ -207,20 +139,93 @@
             this.inventory.HeaderText = "Tồn kho";
             this.inventory.Name = "inventory";
             // 
+            // inventoryStatisticGroupBox
+            // 
+            this.inventoryStatisticGroupBox.Controls.Add(this.btnThucHien);
+            this.inventoryStatisticGroupBox.Controls.Add(this.txtToDate);
+            this.inventoryStatisticGroupBox.Controls.Add(this.lblToDate);
+            this.inventoryStatisticGroupBox.Controls.Add(this.txtFromDate);
+            this.inventoryStatisticGroupBox.Controls.Add(this.lblFromDate);
+            this.inventoryStatisticGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.inventoryStatisticGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.inventoryStatisticGroupBox.Location = new System.Drawing.Point(13, 13);
+            this.inventoryStatisticGroupBox.Name = "inventoryStatisticGroupBox";
+            this.inventoryStatisticGroupBox.Size = new System.Drawing.Size(759, 68);
+            this.inventoryStatisticGroupBox.TabIndex = 0;
+            this.inventoryStatisticGroupBox.TabStop = false;
+            this.inventoryStatisticGroupBox.Text = "Tra cứu tồn kho";
+            // 
+            // btnThucHien
+            // 
+            this.btnThucHien.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnThucHien.Image = global::BeerBilling.Properties.Resources.Search;
+            this.btnThucHien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThucHien.Location = new System.Drawing.Point(585, 23);
+            this.btnThucHien.Name = "btnThucHien";
+            this.btnThucHien.Size = new System.Drawing.Size(114, 25);
+            this.btnThucHien.TabIndex = 4;
+            this.btnThucHien.Text = "Thực hiện";
+            this.btnThucHien.UseVisualStyleBackColor = true;
+            this.btnThucHien.Click += new System.EventHandler(this.btnThucHien_Click);
+            // 
+            // txtToDate
+            // 
+            this.txtToDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtToDate.Location = new System.Drawing.Point(360, 23);
+            this.txtToDate.MaxLength = 10;
+            this.txtToDate.Name = "txtToDate";
+            this.txtToDate.Size = new System.Drawing.Size(171, 23);
+            this.txtToDate.TabIndex = 3;
+            // 
+            // lblToDate
+            // 
+            this.lblToDate.AutoSize = true;
+            this.lblToDate.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lblToDate.Location = new System.Drawing.Point(296, 27);
+            this.lblToDate.Name = "lblToDate";
+            this.lblToDate.Size = new System.Drawing.Size(59, 14);
+            this.lblToDate.TabIndex = 2;
+            this.lblToDate.Text = "Đến ngày";
+            // 
+            // txtFromDate
+            // 
+            this.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtFromDate.Location = new System.Drawing.Point(63, 23);
+            this.txtFromDate.MaxLength = 10;
+            this.txtFromDate.Name = "txtFromDate";
+            this.txtFromDate.Size = new System.Drawing.Size(195, 23);
+            this.txtFromDate.TabIndex = 1;
+            // 
+            // lblFromDate
+            // 
+            this.lblFromDate.AutoSize = true;
+            this.lblFromDate.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lblFromDate.Location = new System.Drawing.Point(7, 27);
+            this.lblFromDate.Name = "lblFromDate";
+            this.lblFromDate.Size = new System.Drawing.Size(53, 14);
+            this.lblFromDate.TabIndex = 0;
+            this.lblFromDate.Text = "Từ ngày";
+            // 
             // ThongKeTonKho
             // 
+            this.AcceptButton = this.btnThucHien;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.inventoryListGroupBox);
             this.Controls.Add(this.inventoryStatisticGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ThongKeTonKho";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tồn kho";
-            this.inventoryStatisticGroupBox.ResumeLayout(false);
-            this.inventoryStatisticGroupBox.PerformLayout();
             this.inventoryListGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataGridView)).EndInit();
+            this.inventoryStatisticGroupBox.ResumeLayout(false);
+            this.inventoryStatisticGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

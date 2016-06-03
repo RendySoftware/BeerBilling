@@ -36,10 +36,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuManagement));
             this.categoryGroupBox = new mcontrol.MGroupBox(this.components);
             this.dgvCategory = new mcontrol.MDataGridView(this.components);
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.categoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddCategory = new mcontrol.MButton(this.components);
             this.menuListGroupBox = new mcontrol.MGroupBox(this.components);
             this.dgvMenu = new mcontrol.MDataGridView(this.components);
-            this.btnAddMenu = new mcontrol.MButton(this.components);
             this.menuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +50,7 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editMenu = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.categoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddMenu = new mcontrol.MButton(this.components);
             this.categoryGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.menuListGroupBox.SuspendLayout();
@@ -106,6 +106,35 @@
             this.dgvCategory.TabIndex = 1;
             this.dgvCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategory_CellClick);
             this.dgvCategory.SelectionChanged += new System.EventHandler(this.dgvCategory_SelectionChanged);
+            // 
+            // code
+            // 
+            this.code.HeaderText = "Mã nhóm";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.FillWeight = 350F;
+            this.name.HeaderText = "Tên nhóm";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 350;
+            // 
+            // edit
+            // 
+            this.edit.FillWeight = 85F;
+            this.edit.HeaderText = "";
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 85;
+            // 
+            // categoryId
+            // 
+            this.categoryId.HeaderText = "categoryId";
+            this.categoryId.Name = "categoryId";
+            this.categoryId.ReadOnly = true;
+            this.categoryId.Visible = false;
             // 
             // btnAddCategory
             // 
@@ -172,19 +201,6 @@
             this.dgvMenu.TabIndex = 3;
             this.dgvMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMenu_CellClick);
             // 
-            // btnAddMenu
-            // 
-            this.btnAddMenu.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnAddMenu.Image = global::BeerBilling.Properties.Resources.Add;
-            this.btnAddMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddMenu.Location = new System.Drawing.Point(7, 20);
-            this.btnAddMenu.Name = "btnAddMenu";
-            this.btnAddMenu.Size = new System.Drawing.Size(114, 25);
-            this.btnAddMenu.TabIndex = 2;
-            this.btnAddMenu.Text = "&2. Thêm";
-            this.btnAddMenu.UseVisualStyleBackColor = true;
-            this.btnAddMenu.Click += new System.EventHandler(this.btnAddMenu_Click);
-            // 
             // menuCode
             // 
             this.menuCode.HeaderText = "Mã";
@@ -235,34 +251,18 @@
             this.menuId.ReadOnly = true;
             this.menuId.Visible = false;
             // 
-            // code
+            // btnAddMenu
             // 
-            this.code.HeaderText = "Mã nhóm";
-            this.code.Name = "code";
-            this.code.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.FillWeight = 350F;
-            this.name.HeaderText = "Tên nhóm";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 350;
-            // 
-            // edit
-            // 
-            this.edit.FillWeight = 85F;
-            this.edit.HeaderText = "";
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 85;
-            // 
-            // categoryId
-            // 
-            this.categoryId.HeaderText = "categoryId";
-            this.categoryId.Name = "categoryId";
-            this.categoryId.ReadOnly = true;
-            this.categoryId.Visible = false;
+            this.btnAddMenu.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnAddMenu.Image = global::BeerBilling.Properties.Resources.Add;
+            this.btnAddMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddMenu.Location = new System.Drawing.Point(7, 20);
+            this.btnAddMenu.Name = "btnAddMenu";
+            this.btnAddMenu.Size = new System.Drawing.Size(114, 25);
+            this.btnAddMenu.TabIndex = 2;
+            this.btnAddMenu.Text = "&2. Thêm";
+            this.btnAddMenu.UseVisualStyleBackColor = true;
+            this.btnAddMenu.Click += new System.EventHandler(this.btnAddMenu_Click);
             // 
             // MenuManagement
             // 
@@ -273,6 +273,8 @@
             this.Controls.Add(this.menuListGroupBox);
             this.Controls.Add(this.categoryGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MenuManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý thực đơn";

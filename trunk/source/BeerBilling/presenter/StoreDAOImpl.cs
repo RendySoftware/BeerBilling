@@ -41,5 +41,10 @@ namespace BeerBilling.presenter
         {
             return _controller.getStores(fromDate, toDate, isImport, isExport);
         }
+
+        public List<StatisticStoreDto> GetStatisticStores(string fromDate, string toDate)
+        {
+            return _controller.GetStatisticStores(fromDate, toDate);
+        }
     }
 }

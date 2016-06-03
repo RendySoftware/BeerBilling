@@ -49,7 +49,7 @@
             this.txtFromDate = new mcontrol.MDateTextBox(this.components);
             this.lblFromDate = new mcontrol.MLabel(this.components);
             this.banhangGroupBox = new mcontrol.MGroupBox(this.components);
-            this.mTextBox1 = new mcontrol.MTextBox(this.components);
+            this.txtTongSo = new mcontrol.MTextBox(this.components);
             this.lblTotal = new mcontrol.MLabel(this.components);
             this.sellDataGridView = new mcontrol.MDataGridView(this.components);
             this.menu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,6 +90,7 @@
             // 
             this.namComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.namComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.namComboBox.Enabled = false;
             this.namComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.namComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.namComboBox.FormattingEnabled = true;
@@ -98,7 +99,6 @@
             this.namComboBox.Name = "namComboBox";
             this.namComboBox.Size = new System.Drawing.Size(195, 24);
             this.namComboBox.TabIndex = 19;
-            this.namComboBox.Visible = false;
             // 
             // lblNam
             // 
@@ -114,6 +114,7 @@
             // 
             this.quyComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.quyComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.quyComboBox.Enabled = false;
             this.quyComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.quyComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.quyComboBox.FormattingEnabled = true;
@@ -122,7 +123,6 @@
             this.quyComboBox.Name = "quyComboBox";
             this.quyComboBox.Size = new System.Drawing.Size(195, 24);
             this.quyComboBox.TabIndex = 17;
-            this.quyComboBox.Visible = false;
             // 
             // lblQuy
             // 
@@ -138,6 +138,7 @@
             // 
             this.thangComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.thangComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.thangComboBox.Enabled = false;
             this.thangComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.thangComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.thangComboBox.FormattingEnabled = true;
@@ -146,7 +147,6 @@
             this.thangComboBox.Name = "thangComboBox";
             this.thangComboBox.Size = new System.Drawing.Size(195, 24);
             this.thangComboBox.TabIndex = 15;
-            this.thangComboBox.Visible = false;
             // 
             // lblThang
             // 
@@ -167,6 +167,7 @@
             this.namRadioButton.Size = new System.Drawing.Size(14, 13);
             this.namRadioButton.TabIndex = 13;
             this.namRadioButton.UseVisualStyleBackColor = true;
+            this.namRadioButton.CheckedChanged += new System.EventHandler(this.namRadioButton_CheckedChanged);
             // 
             // quyRadioButton
             // 
@@ -177,6 +178,7 @@
             this.quyRadioButton.Size = new System.Drawing.Size(14, 13);
             this.quyRadioButton.TabIndex = 12;
             this.quyRadioButton.UseVisualStyleBackColor = true;
+            this.quyRadioButton.CheckedChanged += new System.EventHandler(this.quyRadioButton_CheckedChanged);
             // 
             // thangRadioButton
             // 
@@ -187,6 +189,7 @@
             this.thangRadioButton.Size = new System.Drawing.Size(14, 13);
             this.thangRadioButton.TabIndex = 11;
             this.thangRadioButton.UseVisualStyleBackColor = true;
+            this.thangRadioButton.CheckedChanged += new System.EventHandler(this.thangRadioButton_CheckedChanged);
             // 
             // ngayRadioButton
             // 
@@ -199,6 +202,7 @@
             this.ngayRadioButton.TabIndex = 10;
             this.ngayRadioButton.TabStop = true;
             this.ngayRadioButton.UseVisualStyleBackColor = true;
+            this.ngayRadioButton.CheckedChanged += new System.EventHandler(this.ngayRadioButton_CheckedChanged);
             // 
             // btnThucHien
             // 
@@ -211,6 +215,7 @@
             this.btnThucHien.TabIndex = 9;
             this.btnThucHien.Text = "Thực hiện";
             this.btnThucHien.UseVisualStyleBackColor = true;
+            this.btnThucHien.Click += new System.EventHandler(this.btnThucHien_Click);
             // 
             // txtToDate
             // 
@@ -254,7 +259,7 @@
             // 
             // banhangGroupBox
             // 
-            this.banhangGroupBox.Controls.Add(this.mTextBox1);
+            this.banhangGroupBox.Controls.Add(this.txtTongSo);
             this.banhangGroupBox.Controls.Add(this.lblTotal);
             this.banhangGroupBox.Controls.Add(this.sellDataGridView);
             this.banhangGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -266,16 +271,16 @@
             this.banhangGroupBox.TabStop = false;
             this.banhangGroupBox.Text = "Doanh số bán hàng";
             // 
-            // mTextBox1
+            // txtTongSo
             // 
-            this.mTextBox1.BackColor = System.Drawing.Color.White;
-            this.mTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.mTextBox1.Location = new System.Drawing.Point(607, 14);
-            this.mTextBox1.Name = "mTextBox1";
-            this.mTextBox1.ReadOnly = true;
-            this.mTextBox1.Size = new System.Drawing.Size(146, 23);
-            this.mTextBox1.TabIndex = 2;
+            this.txtTongSo.BackColor = System.Drawing.Color.White;
+            this.txtTongSo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTongSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtTongSo.Location = new System.Drawing.Point(607, 14);
+            this.txtTongSo.Name = "txtTongSo";
+            this.txtTongSo.ReadOnly = true;
+            this.txtTongSo.Size = new System.Drawing.Size(146, 23);
+            this.txtTongSo.TabIndex = 2;
             // 
             // lblTotal
             // 
@@ -318,6 +323,7 @@
             this.sellDataGridView.MultiSelect = false;
             this.sellDataGridView.Name = "sellDataGridView";
             this.sellDataGridView.RowHeadersVisible = false;
+            this.sellDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.sellDataGridView.Size = new System.Drawing.Size(746, 309);
             this.sellDataGridView.TabIndex = 0;
             // 
@@ -349,13 +355,17 @@
             // 
             // ThongKeDoanhSoBanHang
             // 
+            this.AcceptButton = this.btnThucHien;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.banhangGroupBox);
             this.Controls.Add(this.tracuuGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ThongKeDoanhSoBanHang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Doanh số bán hàng";
             this.tracuuGroupBox.ResumeLayout(false);
             this.tracuuGroupBox.PerformLayout();
@@ -385,7 +395,7 @@
         private mcontrol.MDateTextBox txtFromDate;
         private mcontrol.MLabel lblFromDate;
         private mcontrol.MGroupBox banhangGroupBox;
-        private mcontrol.MTextBox mTextBox1;
+        private mcontrol.MTextBox txtTongSo;
         private mcontrol.MLabel lblTotal;
         private mcontrol.MDataGridView sellDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn menu;

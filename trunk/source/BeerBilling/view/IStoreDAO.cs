@@ -13,5 +13,6 @@ namespace BeerBilling.view
         bool AddNew(StoreDto storeDto);
         bool AddList(List<StoreDto> list);
         List<StoreDto> GetStores(DateTime? fromDate, DateTime? toDate, bool isImport, bool isExport);
+        List<StatisticStoreDto> GetStatisticStores(string fromDate, string toDate);
     }
 }

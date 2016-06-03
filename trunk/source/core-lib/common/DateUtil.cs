@@ -151,6 +151,30 @@ namespace core_lib.common
         {
             return DateTime.Now.Year.ToString();
         }
+
+        public static int GetQuyHienTai()
+        {
+            var month = DateTime.Now.Month;
+            int quater;
+            if (1 <= month && month <= 3)
+            {
+                quater = 1;
+            }
+            else if (4 <= month && month <= 6)
+            {
+                quater = 2;
+            }
+            else if (7 <= month && month <= 9)
+            {
+                quater = 3;
+            }
+            else
+            {
+                quater = 4;
+            }
+            return quater;
+        }
+
         public static int CompareWithCurrentDate(string strDate)
         {
             return CompareDate(strDate, GetCurrentDateTimeAsDdmmyyString());
