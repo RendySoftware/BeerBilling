@@ -72,5 +72,10 @@ namespace BeerBilling.presenter.user
         {
             return _controller.GetUser(userId);
         }
+
+        public string ResetPassword(long userId)
+        {
+            return _controller.ResetPassword(userId);
+        }
     }
 }

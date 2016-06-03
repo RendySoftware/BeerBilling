@@ -212,8 +212,10 @@ namespace BeerBilling.main
             mapItems.Add(mnuQuanLyHoaDon);
             mapItems.Add(mnuQuanLyThucDon);
             mapRoles.Add(ConstUtil.QLHD, mapItems);
-
-            InitMenuItemStatus(mapItems);
+            foreach(var items in mapRoles.Values)
+            {
+                InitMenuItemStatus((List<ToolStripItem>)items);
+            }
             foreach (string userRole in userRoleList)
             {
                 List<ToolStripItem> allItems = (List<ToolStripItem>) mapRoles[userRole.ToUpper()];

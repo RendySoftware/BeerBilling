@@ -39,6 +39,7 @@
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ResetPassword = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearch = new mcontrol.MButton(this.components);
@@ -63,7 +64,7 @@
             this.mGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.mGroupBox1.Location = new System.Drawing.Point(12, 12);
             this.mGroupBox1.Name = "mGroupBox1";
-            this.mGroupBox1.Size = new System.Drawing.Size(726, 395);
+            this.mGroupBox1.Size = new System.Drawing.Size(810, 458);
             this.mGroupBox1.TabIndex = 0;
             this.mGroupBox1.TabStop = false;
             // 
@@ -99,6 +100,7 @@
             this.FullName,
             this.RoleName,
             this.Edit,
+            this.ResetPassword,
             this.Delete,
             this.UserId});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -113,7 +115,8 @@
             this.dgvUser.MultiSelect = false;
             this.dgvUser.Name = "dgvUser";
             this.dgvUser.RowHeadersVisible = false;
-            this.dgvUser.Size = new System.Drawing.Size(688, 283);
+            this.dgvUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUser.Size = new System.Drawing.Size(772, 342);
             this.dgvUser.TabIndex = 5;
             this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
             // 
@@ -149,6 +152,12 @@
             this.Edit.ReadOnly = true;
             this.Edit.Width = 60;
             // 
+            // ResetPassword
+            // 
+            this.ResetPassword.HeaderText = "";
+            this.ResetPassword.Name = "ResetPassword";
+            this.ResetPassword.ReadOnly = true;
+            // 
             // Delete
             // 
             this.Delete.FillWeight = 60F;
@@ -169,7 +178,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btnSearch.Image = global::BeerBilling.Properties.Resources.Search;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(594, 26);
+            this.btnSearch.Location = new System.Drawing.Point(660, 26);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(114, 25);
             this.btnSearch.TabIndex = 3;
@@ -183,7 +192,7 @@
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtFullName.Location = new System.Drawing.Point(365, 26);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(214, 23);
+            this.txtFullName.Size = new System.Drawing.Size(254, 23);
             this.txtFullName.TabIndex = 2;
             // 
             // mLabel2
@@ -221,7 +230,7 @@
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 419);
+            this.ClientSize = new System.Drawing.Size(835, 482);
             this.Controls.Add(this.mGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -250,6 +259,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoleName;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn ResetPassword;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
     }

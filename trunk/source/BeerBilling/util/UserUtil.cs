@@ -12,10 +12,18 @@ namespace BeerBilling.util
         {
             if (userDto == null)
             {
-                return ConstUtil.QLHD;
+                return String.Empty;
             }
             var allRoles = userDto.AllRoles;
             if (allRoles.Length == 0)
+            {
+                return String.Empty;
+            }
+            if (HasQthtRole(userDto))
+            {
+                return ConstUtil.ADMIN;
+            }
+            if (HasQlhdRole(userDto))
             {
                 return ConstUtil.QLHD;
             }

@@ -211,6 +211,87 @@ namespace domain_lib.controller
             }
         }
 
+        public bool SaveUser(UserDto userDto)
+        {
+            try
+            {
+                var users = m_PersistenceManager.RetrieveEquals<Users>("UserID", userDto.UserID);
+                Users user;
+                if (users.Count == 0)
+                {
+                    user = new Users()
+                    {
+                        UserID = userDto.UserID,
+                        UserName = userDto.UserName,
+                        FullName = userDto.FullName,
+                        Password = MD5Util.EncodeMD5(userDto.Password),
+                    }; 
+                } else
+                {
+                    user = users[0];
+                    user.FullName = userDto.FullName;
+                }
+                m_PersistenceManager.Save<Users>(user);
+                var allUserRoles = m_PersistenceManager.RetrieveEquals<UserRole>("UserID", user.UserID);
+                var allOldRoleId = new HashSet<long>();
+                foreach (var userRole in allUserRoles)
+                {
+                    allOldRoleId.Add(userRole.RoleID);
+                    userRole.IsActive = false;
+                    m_PersistenceManager.Save(userRole);
+                }
+                foreach (var roleDto in userDto.AllRoles)
+                {
+                    var role = m_PersistenceManager.RetrieveEquals<Roles>("RoleCode", roleDto.RoleCode)[0];
+                    if (allOldRoleId.Contains(role.RoleID))
+                    {
+                        m_PersistenceManager.Save(new UserRole()
+                        {
+                            UserID = user.UserID,
+                            RoleID = role.RoleID,
+                            IsActive = true
+                        });
+                    } else
+                    {
+                        m_PersistenceManager.SaveNew(new UserRole()
+                        {
+                            UserID = user.UserID,
+                            RoleID = role.RoleID,
+                            IsActive = true
+                        }); 
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public string ResetPassword(long userId)
+        {
+            try
+            {
+                var users = m_PersistenceManager.RetrieveEquals<Users>("UserID", userId);
+                Users user;
+                if (users.Count == 0)
+                {
+                    return String.Empty;
+                }
+                user = users[0];
+                user.Password = MD5Util.EncodeMD5(ConstUtil.DEFAULT_PASSWORD);
+                m_PersistenceManager.Save<Users>(user);
+                return ConstUtil.DEFAULT_PASSWORD;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return String.Empty;
+            }
+        }
+
         public List<ResTableDto> GetAllResTableDto()
         {
             return m_PersistenceManager.GetAllResTableDto();
@@ -272,6 +353,22 @@ namespace domain_lib.controller
             }
             var resOrder = m_PersistenceManager.RetrieveEquals<ResOrder>("Id", id)[0];
             m_PersistenceManager.Delete<ResOrder>(resOrder);
+            return true;
+        }
+
+        public bool DeleteUser(long userId)
+        {
+            if (userId == -1)
+            {
+                return true;
+            }
+            var user = m_PersistenceManager.RetrieveEquals<Users>("UserID", userId)[0];
+            var allUserRoles = m_PersistenceManager.RetrieveEquals<UserRole>("UserID", user.UserID);
+            foreach (var userRole in allUserRoles)
+            {
+                m_PersistenceManager.Delete<UserRole>(userRole);
+            }
+            m_PersistenceManager.Delete<Users>(user);
             return true;
         }
 
@@ -375,24 +472,24 @@ namespace domain_lib.controller
             return oldMenuId != menu.Id;
         }
 
-        public MenuDto getMenuDto(long menuId)
+        public bool ExistsUser(long oldUserId, string username)
+        {
+            if (String.IsNullOrEmpty(username))
+            {
+                return false;
+            }
+            var users = m_PersistenceManager.RetrieveEquals<Users>("UserName", username.ToUpper());
+            if (users.Count == 0)
+            {
+                return false;
+            }
+            var user = users[0];
+            return oldUserId != user.UserID;
+        }
+
+        public MenuDto GetMenuDto(long menuId)
         {
             return m_PersistenceManager.getMenuDto(menuId);
-        }
-
-        public bool SaveUser(UserDto userDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ExistsUser(long userId, string username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteUser(long userId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

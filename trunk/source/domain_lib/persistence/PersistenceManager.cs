@@ -287,18 +287,18 @@ namespace domain_lib.persistence
             userDto.UserID = user.UserID;
             userDto.UserName = user.UserName;
             userDto.FullName = user.FullName;
-            LoadUserRole(userDto);
+            userDto.AllRoles = GetAllUserRole(user.UserID).ToArray();
             return userDto;
         }
 
-        private void LoadUserRole(UserDto userDto)
+        public List<RoleDto> GetAllUserRole(long userId)
         {
             using (ISession session = m_SessionFactory.OpenSession())
             {
                 var query = session.CreateQuery("select new Roles(r.RoleID, r.RoleCode, r.Description) from Roles r, UserRole ur "
                     + " where r.RoleID = ur.RoleID and r.Status = 1 and ur.IsActive = :status and ur.UserID = :userId");
                 query.SetParameter("status", true);
-                query.SetParameter("userId", userDto.UserID);
+                query.SetParameter("userId", userId);
 
                 // Get the matching objects
                 var allRoleInfos = query.List();
@@ -316,7 +316,7 @@ namespace domain_lib.persistence
                     };
                     listRoleDtos.Add(roleDto);
                 }
-                userDto.AllRoles = listRoleDtos.ToArray();
+                return listRoleDtos;
             }
         }
 
@@ -760,7 +760,7 @@ namespace domain_lib.persistence
                         UserName = user.UserName,
                         FullName = user.FullName
                     };
-                    LoadUserRole(userDto);
+                    userDto.AllRoles = GetAllUserRole(user.UserID).ToArray();
                     listUserDtos.Add(userDto);
                 }
                 return listUserDtos;
@@ -802,7 +802,7 @@ namespace domain_lib.persistence
                         UserName = user.UserName,
                         FullName = user.FullName
                     };
-                    LoadUserRole(userDto);
+                    userDto.AllRoles = GetAllUserRole(user.UserID).ToArray();
                     listUserDtos.Add(userDto);
                 }
                 return listUserDtos;
@@ -825,7 +825,7 @@ namespace domain_lib.persistence
                     UserName = user.UserName,
                     FullName = user.FullName
                 };
-                LoadUserRole(userDto);
+                userDto.AllRoles = GetAllUserRole(user.UserID).ToArray();
 
                 return userDto;
             }

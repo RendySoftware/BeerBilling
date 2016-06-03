@@ -120,7 +120,7 @@ namespace BeerBilling.presenter
 
         public MenuDto getMenuDto(long menuId)
         {
-            return _controller.getMenuDto(menuId);
+            return _controller.GetMenuDto(menuId);
         }
     }
 }

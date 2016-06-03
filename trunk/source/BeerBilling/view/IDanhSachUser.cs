@@ -18,5 +18,6 @@ namespace BeerBilling.view
         bool ExistsUser(long userId, string username);
         bool DeleteUser(long userId);
         UserDto GetUser(long userId);
+        string ResetPassword(long userId);
     }
 }

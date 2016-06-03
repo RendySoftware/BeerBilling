@@ -24,7 +24,7 @@ namespace BeerBilling.presenter.user
             InitializeComponent();
             _danhSachUser = new DanhSachUserImpl();
             _userID = userID;
-            if (IsNewUser())
+            if (!IsNewUser())
             {
                 Text = "Sửa thông tin người sử dụng";
                 var userDto = _danhSachUser.GetUser(userID);
@@ -58,13 +58,20 @@ namespace BeerBilling.presenter.user
 
         private bool IsNewUser()
         {
-            return _userID != -1;
+            return _userID == -1;
         }
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
             if (!IsValidInputData()) return;
+            var dr = MMessageBox.Show(this, "Lưu người dùng?", "Thông báo"
+                                      , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+            if (DialogResult.No == dr)
+            {
+                Dispose();
+            }
             _danhSachUser.SaveUser(CreateUserDto());
+            _isChange = true;
             DialogResult = DialogResult.OK;
         }
         private UserDto CreateUserDto()
@@ -75,8 +82,35 @@ namespace BeerBilling.presenter.user
             result.UserName = txtUsername.Text.Trim();
             result.FullName = txtFullName.Text.Trim();
             result.Password = txtMkMoi.Text.Trim();
-
+            UpdateUserRole(result);
             return result;
+        }
+
+        private void UpdateUserRole(UserDto userDto)
+        {
+            List<RoleDto> allRoleDto = new List<RoleDto>();
+            if (chkQtht.Checked)
+            {
+                allRoleDto.Add(new RoleDto()
+                {
+                    RoleCode = ConstUtil.ADMIN
+                });
+            }
+            if (chkQlKho.Checked)
+            {
+                allRoleDto.Add(new RoleDto()
+                {
+                    RoleCode = ConstUtil.QLKH
+                });
+            }
+            if (chkQlHd.Checked)
+            {
+                allRoleDto.Add(new RoleDto()
+                {
+                    RoleCode = ConstUtil.QLHD
+                });
+            }
+            userDto.AllRoles = allRoleDto.ToArray();
         }
 
         public bool IsValidInputData()

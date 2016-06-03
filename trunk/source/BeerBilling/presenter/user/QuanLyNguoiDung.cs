@@ -68,6 +68,7 @@ namespace BeerBilling.presenter.user
             r.Cells["FullName"].Value = dto.FullName;
             r.Cells["RoleName"].Value = UserUtil.GetRoleName(dto);
             r.Cells["Edit"].Value = "Sửa";
+            r.Cells["ResetPassword"].Value = "Reset MK";
             r.Cells["Delete"].Value = "Xóa";
             r.Cells["UserId"].Value = dto.UserID;
         }
@@ -101,6 +102,19 @@ namespace BeerBilling.presenter.user
                 {
                     btnSearch_Click(null, null);
                 }
+            }
+            if (dgvUser.Columns[e.ColumnIndex].Name == "ResetPassword")
+            {
+                var userId = GetSelectedUserId();
+                var dr = MMessageBox.Show(this, "Bạn có muốn reset mật khẩu người dùng?", "Thông báo"
+                                          , MMessageBoxButtons.YesNo, MMessageBoxIcon.Warning);
+                if (DialogResult.No == dr)
+                {
+                    return;
+                }
+                var password = _danhSachUser.ResetPassword(userId);
+                MMessageBox.Show(this, "Mật khẩu mới của người dùng là: " + password, "Thông báo", 
+                    MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
             }
             if (dgvUser.Columns[e.ColumnIndex].Name == "Delete")
             {
