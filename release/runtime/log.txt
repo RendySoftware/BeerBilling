@@ -1,0 +1,30 @@
+2016-06-04 01:33:22,221 [9] ERROR NHibernate.Impl.SessionImpl [(null)] <(null)> - could not synchronize database state with session
+NHibernate.StaleStateException: Unexpected row count: 0; expected: 1
+   at NHibernate.AdoNet.Expectations.BasicExpectation.VerifyOutcomeNonBatched(Int32 rowCount, IDbCommand statement)
+   at NHibernate.Impl.NonBatchingBatcher.AddToBatch(IExpectation expectation)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Update(Object id, Object[] fields, Object[] oldFields, Boolean[] includeProperty, Int32 j, Object oldVersion, Object obj, SqlCommandInfo sql, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Update(Object id, Object[] fields, Int32[] dirtyFields, Boolean hasDirtyCollection, Object[] oldFields, Object oldVersion, Object obj, ISessionImplementor session)
+   at NHibernate.Impl.ScheduledUpdate.Execute()
+   at NHibernate.Impl.SessionImpl.Execute(IExecutable executable)
+   at NHibernate.Impl.SessionImpl.ExecuteAll(IList list)
+   at NHibernate.Impl.SessionImpl.Execute()
+2016-06-04 01:36:20,651 [9] ERROR NHibernate.Impl.SessionImpl [(null)] <(null)> - could not synchronize database state with session
+NHibernate.StaleStateException: Unexpected row count: 0; expected: 1
+   at NHibernate.AdoNet.Expectations.BasicExpectation.VerifyOutcomeNonBatched(Int32 rowCount, IDbCommand statement)
+   at NHibernate.Impl.NonBatchingBatcher.AddToBatch(IExpectation expectation)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Update(Object id, Object[] fields, Object[] oldFields, Boolean[] includeProperty, Int32 j, Object oldVersion, Object obj, SqlCommandInfo sql, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Update(Object id, Object[] fields, Int32[] dirtyFields, Boolean hasDirtyCollection, Object[] oldFields, Object oldVersion, Object obj, ISessionImplementor session)
+   at NHibernate.Impl.ScheduledUpdate.Execute()
+   at NHibernate.Impl.SessionImpl.Execute(IExecutable executable)
+   at NHibernate.Impl.SessionImpl.ExecuteAll(IList list)
+   at NHibernate.Impl.SessionImpl.Execute()
+2016-06-04 01:41:36,030 [9] ERROR NHibernate.Impl.SessionImpl [(null)] <(null)> - could not synchronize database state with session
+NHibernate.StaleStateException: Unexpected row count: 0; expected: 1
+   at NHibernate.AdoNet.Expectations.BasicExpectation.VerifyOutcomeNonBatched(Int32 rowCount, IDbCommand statement)
+   at NHibernate.Impl.NonBatchingBatcher.AddToBatch(IExpectation expectation)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Update(Object id, Object[] fields, Object[] oldFields, Boolean[] includeProperty, Int32 j, Object oldVersion, Object obj, SqlCommandInfo sql, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Update(Object id, Object[] fields, Int32[] dirtyFields, Boolean hasDirtyCollection, Object[] oldFields, Object oldVersion, Object obj, ISessionImplementor session)
+   at NHibernate.Impl.ScheduledUpdate.Execute()
+   at NHibernate.Impl.SessionImpl.Execute(IExecutable executable)
+   at NHibernate.Impl.SessionImpl.ExecuteAll(IList list)
+   at NHibernate.Impl.SessionImpl.Execute()
