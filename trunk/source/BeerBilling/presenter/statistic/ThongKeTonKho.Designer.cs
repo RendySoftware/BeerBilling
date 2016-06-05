@@ -96,6 +96,7 @@
             this.inventoryDataGridView.MultiSelect = false;
             this.inventoryDataGridView.Name = "inventoryDataGridView";
             this.inventoryDataGridView.RowHeadersVisible = false;
+            this.inventoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.inventoryDataGridView.Size = new System.Drawing.Size(743, 416);
             this.inventoryDataGridView.TabIndex = 0;
             // 
@@ -177,6 +178,7 @@
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(171, 23);
             this.txtToDate.TabIndex = 3;
+            this.txtToDate.Validated += new System.EventHandler(this.txtToDate_Validated);
             // 
             // lblToDate
             // 
@@ -197,6 +199,7 @@
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.Size = new System.Drawing.Size(195, 23);
             this.txtFromDate.TabIndex = 1;
+            this.txtFromDate.Validated += new System.EventHandler(this.txtFromDate_Validated);
             // 
             // lblFromDate
             // 

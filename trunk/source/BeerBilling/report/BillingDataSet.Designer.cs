@@ -287,6 +287,8 @@ namespace BeerBilling.report {
             
             private global::System.Data.DataColumn columnTong;
             
+            private global::System.Data.DataColumn columnChietKhau;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BillDtoDataTable() {
@@ -354,6 +356,14 @@ namespace BeerBilling.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChietKhauColumn {
+                get {
+                    return this.columnChietKhau;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +399,14 @@ namespace BeerBilling.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BillDtoRow AddBillDtoRow(string MonAn, string SoLuong, string DonGia, string Tong) {
+            public BillDtoRow AddBillDtoRow(string MonAn, string SoLuong, string DonGia, string Tong, string ChietKhau) {
                 BillDtoRow rowBillDtoRow = ((BillDtoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MonAn,
                         SoLuong,
                         DonGia,
-                        Tong};
+                        Tong,
+                        ChietKhau};
                 rowBillDtoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBillDtoRow);
                 return rowBillDtoRow;
@@ -422,6 +433,7 @@ namespace BeerBilling.report {
                 this.columnSoLuong = base.Columns["SoLuong"];
                 this.columnDonGia = base.Columns["DonGia"];
                 this.columnTong = base.Columns["Tong"];
+                this.columnChietKhau = base.Columns["ChietKhau"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +447,8 @@ namespace BeerBilling.report {
                 base.Columns.Add(this.columnDonGia);
                 this.columnTong = new global::System.Data.DataColumn("Tong", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTong);
+                this.columnChietKhau = new global::System.Data.DataColumn("ChietKhau", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChietKhau);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -641,6 +655,22 @@ namespace BeerBilling.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ChietKhau {
+                get {
+                    try {
+                        return ((string)(this[this.tableBillDto.ChietKhauColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChietKhau\' in table \'BillDto\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBillDto.ChietKhauColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMonAnNull() {
                 return this.IsNull(this.tableBillDto.MonAnColumn);
             }
@@ -685,6 +715,18 @@ namespace BeerBilling.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTongNull() {
                 this[this.tableBillDto.TongColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChietKhauNull() {
+                return this.IsNull(this.tableBillDto.ChietKhauColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChietKhauNull() {
+                this[this.tableBillDto.ChietKhauColumn] = global::System.Convert.DBNull;
             }
         }
         

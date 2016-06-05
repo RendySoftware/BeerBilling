@@ -226,6 +226,7 @@
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(171, 23);
             this.txtToDate.TabIndex = 8;
+            this.txtToDate.Validated += new System.EventHandler(this.txtToDate_Validated);
             // 
             // lblToDate
             // 
@@ -246,6 +247,7 @@
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.Size = new System.Drawing.Size(195, 23);
             this.txtFromDate.TabIndex = 6;
+            this.txtFromDate.Validated += new System.EventHandler(this.txtFromDate_Validated);
             // 
             // lblFromDate
             // 

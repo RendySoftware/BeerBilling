@@ -301,13 +301,14 @@ namespace BeerBilling.presenter.billing
 
         private void CreateReport(BillDto billDto, float tongTien, float khachTt, string tenNhanVien)
         {
-            var columnNames = new List<string> { "MonAn", "SoLuong", "DonGia", "Tong" };
+            var columnNames = new List<string> { "MonAn", "SoLuong", "DonGia", "Tong", "ChietKhau" };
 
             var dataTable = new DataTable();
             dataTable.Columns.Add(columnNames[0], Type.GetType("System.String"));
             dataTable.Columns.Add(columnNames[1], Type.GetType("System.String"));
             dataTable.Columns.Add(columnNames[2], Type.GetType("System.String"));
             dataTable.Columns.Add(columnNames[3], Type.GetType("System.String"));
+            dataTable.Columns.Add(columnNames[4], Type.GetType("System.String"));
 
             var allResOrderDtos = _billingDao.GetAllResOrderBy(billDto.Id);
             foreach(var dto in allResOrderDtos)
@@ -318,6 +319,7 @@ namespace BeerBilling.presenter.billing
                 dataRow[columnNames[2]] = dto.MenuPrice.ToString("#,###,###");
                 float total = dto.Amount * dto.MenuPrice * (1 - dto.Discount);
                 dataRow[columnNames[3]] = total.ToString("#,###,###");
+                dataRow[columnNames[4]] = dto.Discount == 0 ? String.Empty : "CK" + (100*dto.Discount) + "%";
                 dataTable.Rows.Add(dataRow);
             }
 

@@ -153,6 +153,10 @@ namespace BeerBilling.presenter.billing
 
         private void btnThucHien_Click(object sender, EventArgs e)
         {
+            if (!IsValidInputData())
+            {
+                return;
+            }
             var tuNgay = txtFromDate.Text.Trim();
             var denNgay = txtToDate.Text.Trim();
             var billingNumber = txtBillingNumber.Text.Trim();
@@ -160,6 +164,18 @@ namespace BeerBilling.presenter.billing
             var billStatus = MControlUtil.GetValueFromCombobox(billStatusComboBox);
             var allBillDto = _billingDao.GetAllBillBy(tuNgay, denNgay, billingNumber, tableId, billStatus);
             FillBill2Grid(allBillDto);
+        }
+
+        private bool IsValidInputData()
+        {
+            if (String.IsNullOrEmpty(txtFromDate.Text))
+            {
+                MMessageBox.Show(this, "Bạn chưa nhập Từ ngày", "Thông báo"
+                   , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                txtFromDate.Focus();
+                return false;
+            }
+            return true;
         }
 
         private void dgvBilling_CellClick(object sender, DataGridViewCellEventArgs e)

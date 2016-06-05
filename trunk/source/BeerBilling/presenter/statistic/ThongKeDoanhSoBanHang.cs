@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using BeerBilling.view;
 using core_lib.common;
 using domain_lib.dto;
+using mcontrol;
 using mcontrol.util;
 
 namespace BeerBilling.presenter.statistic
@@ -25,9 +26,7 @@ namespace BeerBilling.presenter.statistic
             var currentDate = DateUtil.GetCurrentDateTime();
             var currentMonth = DateUtil.GetDateTimeAsDdmmyyyy(currentDate).Substring(3);
             txtFromDate.Text = "01/" + currentMonth;
-            txtToDate.Text =
-                DateUtil.GetDateTimeAsDdmmyyyy(
-                    ((DateTime) DateUtil.GetDateTime(txtFromDate.Text)).AddMonths(1).AddDays(-1));
+            txtToDate.Text = DateUtil.GetDateTimeAsDdmmyyyy(currentDate);
             btnThucHien_Click(null, null);
         }
 
@@ -96,6 +95,10 @@ namespace BeerBilling.presenter.statistic
 
         private void btnThucHien_Click(object sender, EventArgs e)
         {
+            if (!IsValidInputData())
+            {
+                return;
+            }
             var searchDto = CreateSearchDto();
             var allResOrderDto = _billingDao.GetAllResOrderDto(searchDto);
 
@@ -113,6 +116,18 @@ namespace BeerBilling.presenter.statistic
             }
             txtTongSo.Text = tongSo.ToString("#,###,###") + " VNĐ";
             MControlUtil.SetSelectedIndex(sellDataGridView, selectedIndex, "menu");
+        }
+
+        private bool IsValidInputData()
+        {
+            if (String.IsNullOrEmpty(txtFromDate.Text))
+            {
+                MMessageBox.Show(this, "Bạn chưa nhập Từ ngày", "Thông báo"
+                   , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                txtFromDate.Focus();
+                return false;
+            }
+            return true;
         }
 
         private int GetSelectedSellIndex()
@@ -205,6 +220,56 @@ namespace BeerBilling.presenter.statistic
                 quyComboBox.Enabled = false;
                 namComboBox.Enabled = true;
                 btnThucHien_Click(null, null);
+            }
+        }
+
+        private void txtFromDate_Validated(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtFromDate.Text.Trim()))
+            {
+                if (DateUtil.CompareWithCurrentDate(txtFromDate.Text.Trim()) == 1)
+                {
+                    MMessageBox.Show(this, "Giá trị từ ngày không được sau ngày hiện tại!", "Thông báo"
+                                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                    txtFromDate.Focus();
+                    return;
+                }
+            }
+            if (!String.IsNullOrEmpty(txtFromDate.Text.Trim())
+                && !String.IsNullOrEmpty(txtToDate.Text.Trim()))
+            {
+                if (DateUtil.CompareDate(txtFromDate.Text.Trim(), txtToDate.Text.Trim()) == 1)
+                {
+                    MMessageBox.Show(this, "Giá trị từ ngày không được sau giá trị đến ngày", "Thông báo"
+                                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                    txtFromDate.Focus();
+                    return;
+                }
+            }
+        }
+
+        private void txtToDate_Validated(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtToDate.Text.Trim()))
+            {
+                if (DateUtil.CompareWithCurrentDate(txtToDate.Text.Trim()) == 1)
+                {
+                    MMessageBox.Show(this, "Giá trị đến ngày không được sau ngày hiện tại!", "Thông báo"
+                                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                    txtToDate.Focus();
+                    return;
+                }
+            }
+            if (!String.IsNullOrEmpty(txtFromDate.Text.Trim())
+                && !String.IsNullOrEmpty(txtToDate.Text.Trim()))
+            {
+                if (DateUtil.CompareDate(txtFromDate.Text.Trim(), txtToDate.Text.Trim()) == 1)
+                {
+                    MMessageBox.Show(this, "Giá trị từ ngày không được sau giá trị đến ngày", "Thông báo"
+                                    , MMessageBoxButtons.OK, MMessageBoxIcon.Warning);
+                    txtToDate.Focus();
+                    return;
+                }
             }
         }
     }

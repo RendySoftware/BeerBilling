@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using core_lib.common;
 using domain_lib.dto;
@@ -419,7 +420,29 @@ namespace domain_lib.controller
 
         public List<StatisticStoreDto> GetStatisticStores(string fromDate, string toDate)
         {
-            return m_PersistenceManager.GetStatisticStores(fromDate, toDate);
+            var allStatisticDto = m_PersistenceManager.GetStatisticStores(fromDate, toDate);
+            if (!String.IsNullOrEmpty(fromDate))
+            {
+                var preFromDate = DateUtil.GetDateTimeAsDdmmyyyy(((DateTime) DateUtil.GetDateTime(fromDate)).AddDays(-1));
+                var allPreStatisticDto = m_PersistenceManager.GetStatisticStores(String.Empty, preFromDate);
+                var mapPreStatisticStore = new Hashtable();
+                foreach (var dto in allPreStatisticDto)
+                {
+                    string key = dto.MaterialName + "|" + dto.UnitName;
+                    mapPreStatisticStore.Add(key, dto);
+                }
+                foreach (var statisticDto in allStatisticDto)
+                {
+                    string key = statisticDto.MaterialName + "|" + statisticDto.UnitName;
+                    if (mapPreStatisticStore.ContainsKey(key))
+                    {
+                        StatisticStoreDto preStatisticDto = (StatisticStoreDto) mapPreStatisticStore[key];
+                        statisticDto.PreviousInventory = preStatisticDto.Inventory;
+                        statisticDto.Inventory += preStatisticDto.Inventory;
+                    }
+                }
+            }
+            return allStatisticDto;
         }
 
         public List<UserDto> getAllUser()
